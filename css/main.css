@@ -1,0 +1,45 @@
+html, body{
+	height: 100%;
+	background-color: #888888;
+}
+
+.contentContainer{
+	margin: 0 auto;
+/*	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;*/
+	height: 910px;
+	width: 1200px;
+	background-color: #CCCCCC;
+	border-radius: 15px;
+	padding:20px;
+	/*padding:20px;*/
+}
+
+.treePanel{
+	background-color: #bbbbbb;
+	height:100%;
+	width: 30%;
+	float:left;
+	/*margin-top: 10px;*/
+
+	/*flex-direction: row;*/
+}
+
+.editPanel{
+	background-color: #DDDDDD;
+	height:50%;
+	/*flex-direction: row;*/
+}
+
+.outputPanel{
+	background-color: #aaaaaa;
+	height:50%;
+	/*flex-direction: row;*/
+}
+
+.treeList{
+	width: 80%;
+	height: 200px;
+}
