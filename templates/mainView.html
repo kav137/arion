@@ -3,7 +3,10 @@
 	<!-- <ion-content scroll="y"> -->
 	
 	<!-- </ion-content> -->
-		<button class="button button-assertive" ng-repeat="btn in tree">Asd</button>
+		<button ng-repeat="btn in tree" class="listNode listElement">value : {{btn}}</button>
+		<hr></hr>
+		<button class="button button-assertive" ng-click="pushValue(number)">add</button>
+		<input type="text" ng-model="number" placeholder="write here"></input>
 	</div>
 	<div class="editPanel">editPane</div>
 	<div class="outputPanel">outputpane</div>

@@ -1,18 +1,20 @@
-var app = angular.module('app', ['ngRoute', 'app-tree']);
+/**
+* app Module
+*
+* aggregator for all the modules
+*/
+angular.module('app', ['ngRoute', 'app-tree'])
+	.run(['$log', function ($log){
+		$log.info('app module is initialized')
+		
+	}])
 
-app.config(['$routeProvider', function($routeProvider) {
+	.config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/',
 	{
-		templateUrl : "templates/mainView.html",
-		controller: 'displayCtrl'
+		templateUrl : "templates/mainView.html"
 	})
 	.otherwise({
 		redirectTo: '/'
 	})
-}]);
-
-app.controller('displayCtrl', ['$scope', function($scope){
-	$scope.test = "adasdsd"
-	
-}]);
-
+}])
