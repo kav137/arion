@@ -1,13 +1,6 @@
 <div class="contentContainer">
-	<div class="treePanel" ng-controller="TreeCtrl">
-	<!-- <ion-content scroll="y"> -->
-	
-	<!-- </ion-content> -->
-		<button ng-repeat="btn in tree" class="listNode listElement">value : {{btn}}</button>
-		<hr></hr>
-		<button class="button button-assertive" ng-click="pushValue(number)">add</button>
-		<input type="text" ng-model="number" placeholder="write here"></input>
+	<div class="treePanel" ng-controller="TreeCtrl" ng-include="'templates/treePanel.html'">
 	</div>
-	<div class="editPanel">editPane</div>
+	<div class="editPanel" ng-include="'templates/editPanel.html'"></div>
 	<div class="outputPanel">outputpane</div>
 </div>	

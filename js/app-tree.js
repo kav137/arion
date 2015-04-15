@@ -1,38 +1,109 @@
 angular.module('app-tree.service', [])
-	.factory('moduleFactory', function(){
-		return function createModule(modName){
-			var module = {"children": [], "moduleName": modName};
-			return module;
-		};
-	})
-	.factory('elementFactory', function(){
-		return function name(){
-			
-		};
-	})
-	.service('treeDataService', function(){
-		this.data = ['ready', 'set', 'go'];
-		var tree = [];
-		this.getTree = function () {
-			return angular.extend({}, tree);
+	.service('treeDataService', function (){
+		var tree = {};
+		//todel
+		this.getTree = function(){
+			return tree;
 		}
-		this.pushNode = function (arg) {
-			tree.push(arg);
+		this.initTree = function (){
+			tree = 
+			{
+				'id': 'root',
+				'type': "module",
+				'children':
+				[
+					{
+						'id': 1,
+						'type': "module",
+						'children':
+						[
+							{
+								'id':11,
+								'type': "element"
+							},
+							{
+								'id':12,
+								'type': "module",
+								'children':
+								[
+									{
+										'id': 121,
+										'yeap' : true,
+										'type': "element"
+									}
+								]
+							}
+						]
+					},
+					{
+						'id': 2,
+						'type': "module",
+						'children':[]
+					},
+					{
+						'id': 3,
+						'type': "module",
+						'children':
+						[
+							{
+								'id': 31,
+								'type': "element"
+							}
+						]
+					}
+				]
+			}
+			console.log('built')
+		}
+		this.pushNode = function (type, parentId, id) {
+			var object = {};
+			object.id = id;
+			object.type = type;
+			if (type == "module"){
+				object.children = [];
+			}
+			var parentNode = recursiveSearch(tree, parentId);
+			if (!parentNode){
+				throw new Error('impossible to find parent during pushing');
+			}
+			if (!parentNode.children){
+				throw new Error('parent has no children (pushing)');
+			}
+			parentNode.children.push(object);
+			console.log(tree);
+		}
+		this.searchNode = function (argModule, argId){
+			return recursiveSearch(argModule, argId);
+		}
+		var recursiveSearch = function (argModule, argId){
+			var outValue = {};
+			angular.forEach(argModule.children, function (child){
+				if (child.id == argId){
+					outValue = child;
+					return;
+				}
+				if (child.type == "module"){
+					var retValue = recursiveSearch(child, argId);
+					if (retValue !== null){
+						outValue = retValue;
+					}
+				}
+			});
+			if(!outValue.id){
+				return null;
+			}
+			return outValue;
 		}
 	});
 
 angular.module('app-tree.controller', ['ngRoute'])
-	.controller('TreeCtrl', ['$scope', 'treeDataService', 'moduleFactory', 
-	function ($scope, treeDataService, moduleFactory){
-		$scope.tree = treeDataService.getTree();
-		$scope.pushValue = function (arg) {
-			treeDataService.pushNode(arg);
-			$scope.tree = treeDataService.getTree();
-			// var mod = moduleFactory.createModule(arg);
-			// console.log(mod);
-			console.log(moduleFactory(arg))
+	.controller('TreeCtrl', ['$scope', 'treeDataService', 
+	function ($scope, treeDataService){
+		$scope.treeModel = treeDataService.getTree();
+		$scope.addNode = function (type, parentId, newId){
+			treeDataService.pushNode(type, parentId, newId)
 		}
-	}]);
+	}]);	
 
 /**
 * app-tree Module
@@ -40,6 +111,7 @@ angular.module('app-tree.controller', ['ngRoute'])
 * aggregator
 */
 angular.module('app-tree', ['ngRoute', 'app-tree.service', 'app-tree.controller'])
-	.run(['$log', function($log){
+	.run(['$log', 'treeDataService', function($log, treeDataService){
+		treeDataService.initTree();
 		$log.info('app-tree is initialized')
 	}]);

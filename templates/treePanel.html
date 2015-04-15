@@ -1,0 +1,13 @@
+<span ng-init="modElemTrigger='element'"></span>
+<input type="radio" ng-model="modElemTrigger" value="module">Module</input>
+<br>
+<input type="radio" ng-model="modElemTrigger" value="element">Element</input>
+<br>
+<input type="text" ng-model="elemName" placeholder="id">
+<button ng-click="addNode(modElemTrigger, '12', elemName)">Add node</button>
+
+<br>
+{{modElemTrigger}}
+<br>
+<!-- <p ng-repeat="item in treeModel"> {{item}}</p> -->
+ <p ng-repeat="item in treeModel.children" style="border: 1px solid black" ng-include="'templates/treeItem.html'"></p>
