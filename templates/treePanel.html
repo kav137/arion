@@ -1,13 +1,23 @@
-<span ng-init="modElemTrigger='element'"></span>
-<input type="radio" ng-model="modElemTrigger" value="module">Module</input>
-<br>
-<input type="radio" ng-model="modElemTrigger" value="element">Element</input>
-<br>
-<input type="text" ng-model="elemName" placeholder="id">
-<button ng-click="addNode(modElemTrigger, '12', elemName)">Add node</button>
+<div ng-controller="TreeCtrl">
+	<span ng-init="modElemTrigger='element'"></span>
+	<input type="radio" ng-model="modElemTrigger" value="module">
+			Module
+	</input>	
+	<input type="radio" ng-model="modElemTrigger" value="element">
+			Element
+	</input>
 
-<br>
-{{modElemTrigger}}
-<br>
-<!-- <p ng-repeat="item in treeModel"> {{item}}</p> -->
- <p ng-repeat="item in treeModel.children" style="border: 1px solid black" ng-include="'templates/treeItem.html'"></p>
+	<input type="text" ng-model="elemName" placeholder="id">
+	<button ng-click="addNode(modElemTrigger, selectedNode, elemName)">Add node</button>
+	<button ng-click="selectedNode.name = elemName">Rename</button>
+	<!-- <button ng-click="deleteNode(selectedNode)"> Delete </button> -->
+	<br>
+	<br>
+	<div class="treeArea">
+		<p ng-repeat="item in treeModel.children"
+		 	ng-include="'templates/treeItem.html'" 
+		 	ng-click="selectNode($event, item)" 
+		 	ng-class="{'selectedItem': item.selected, 'deselectedItem': !item.selected}">
+		</p>
+	</div>	
+</div>

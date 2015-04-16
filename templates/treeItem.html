@@ -1,4 +1,4 @@
-{{item.id}}
+{{item.name + " (" + item.type + ")"}}
 <!-- <button ng-click="add(data)">Add node</button> -->
 <!-- <button ng-click="delete(data)" ng-show="data.nodes.length > 0">Delete nodes</button> -->
-    <p style="margin-left:5px" ng-repeat="item in item.children" style="background-color:red" ng-include="'templates/treeItem.html'"></p>
+    <p style="margin-left:10px; margin-bottom:0px" ng-repeat="item in item.children" style="background-color:red" ng-include="'templates/treeItem.html'" ng-click="selectNode($event, item)" ng-class="{'selectedItem': item.selected, 'deselectedItem': !item.selected}"></p>

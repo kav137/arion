@@ -1,0 +1,79 @@
+{
+	"groups":[
+		{
+			"groupId": "resistors"
+		},
+		{
+			"groupId": "capacitors"
+		},
+		{
+			"groupId": "transistors"
+		}
+	],
+	"owners":[
+		{
+			"ownerId": "native"
+		},
+		{
+			"ownerId": "foreign"
+		}
+	],
+	"subGroups":[
+		{
+			"subGroup": "RC",
+			"belongsTo":{
+				"groupId": ["resistors"],
+				"ownerId": ["native", "foreign"]
+			}
+		},
+		{
+			"subGroup": "RD",
+			"belongsTo":{
+				"groupId": ["resistors"],
+				"ownerId": ["native", "foreign"]
+			}
+		},
+		{
+			"subGroup": "RTH",
+			"belongsTo":{
+				"groupId": ["resistors"],
+				"ownerId": ["foreign"]
+			}
+		},
+		{
+			"subGroup": "CP",
+			"belongsTo":{
+				"groupId": ["capacitors"],
+				"ownerId": ["native", "foreign"]
+			}
+		},
+		{
+			"subGroup": "CZ",
+			"belongsTo":{
+				"groupId": ["capacitors"],
+				"ownerId": ["native"]
+			}
+		},
+		{
+			"subGroup": "CM",
+			"belongsTo":{
+				"groupId": ["capacitors"],
+				"ownerId": ["foreign"]
+			}
+		},
+		{
+			"subGroup": "N-P-N",
+			"belongsTo":{
+				"groupId": ["transistors"],
+				"ownerId": ["native", "foreign"]
+			}
+		},
+		{
+			"subGroup": "P-N-P",
+			"belongsTo":{
+				"groupId": ["transistors"],
+				"ownerId": ["native", "foreign"]
+			}
+		}
+	]
+}
