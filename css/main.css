@@ -48,4 +48,9 @@ html, body{
 	background-color: #EEEEEE;
 	padding: 15px;
 	margin: 0px 10px;
+	height:650px;
+	overflow: scroll;
+}
+.selectArea{
+	width:150px;
 }

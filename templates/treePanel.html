@@ -1,18 +1,44 @@
 <div ng-controller="TreeCtrl">
-	<span ng-init="modElemTrigger='element'"></span>
-	<input type="radio" ng-model="modElemTrigger" value="module">
-			Module
-	</input>	
-	<input type="radio" ng-model="modElemTrigger" value="element">
-			Element
-	</input>
 
-	<input type="text" ng-model="elemName" placeholder="id">
-	<button ng-click="addNode(modElemTrigger, selectedNode, elemName)">Add node</button>
-	<button ng-click="selectedNode.name = elemName">Rename</button>
-	<!-- <button ng-click="deleteNode(selectedNode)"> Delete </button> -->
-	<br>
-	<br>
+	<div class="panel panel-default">
+		<form>
+			<input type="radio" ng-model="typeTrigger.value" value="module">
+					Module
+			</input>	
+			<input type="radio" ng-model="typeTrigger.value" value="element">
+					Element
+			</input>
+		</form>
+		<div>
+			<span>Group : </span>
+ 			<select class="selectArea"
+ 					ng-model="elementGroup" 
+ 					ng-options="group.groupId for group in elementData.groups" 
+ 					ng-change="updateSubGroups()">
+ 			</select>
+ 		</div>
+ 		<div>
+ 			<span>Owner : </span>
+			<select class="selectArea"
+					ng-model="elementOwner" 
+					ng-options="owner.ownerId for owner in elementData.owners"
+					ng-change="updateSubGroups()">
+			</select>
+		</div>
+		<div>
+			<span>SubGroup : </span>
+			<select class="selectArea"
+					ng-model="elementType" 
+					ng-options="type.subGroup for type in elementTypes">
+			</select>
+		</div>
+
+		<input type="text" ng-model="elementName" placeholder="name" style="margin:auto">
+		<div style="margin: auto">
+			<button ng-click="addNode(selectedNode, elemName)">Add node</button>
+			<!-- <button ng-click="selectedNode.name = elemName">Rename</button> -->
+		</div>
+	</div>
 	<div class="treeArea">
 		<p ng-repeat="item in treeModel.children"
 		 	ng-include="'templates/treeItem.html'" 

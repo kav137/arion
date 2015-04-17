@@ -28,16 +28,26 @@ angular.module('app-tree.service', [])
 			}
 		}
 
-		this.pushNode = function (type, parentNode, id) {
-			var object = {};
-			object.localId = localIdCounter++;
-			object.name = id;
-			object.type = type;
-			if (type == "module"){
-				object.children = [];
+		//UNCHANGED VERSION
+		// this.pushNode = function (type, parentNode, id) {
+		// 	var object = {};
+		// 	object.localId = localIdCounter++;
+		// 	object.name = id;
+		// 	object.type = type;
+		// 	if (type == "module"){
+		// 		object.children = [];
+		// 	}
+		// 	parentNode.children.push(object);
+		// }
+		
+		this.pushNode = function (parentNode, element) {
+			element.localId = localIdCounter++;
+			if (element.type == "module"){
+				element.children = [];
 			}
-			parentNode.children.push(object);
-		}
+			parentNode.children.push(element);
+		} 
+		
 
 		this.searchNode = function (argModule, argId){
 			var outValue = {};
@@ -74,19 +84,110 @@ angular.module('app-tree.service', [])
 		}
 	})
 
+	.service('elementDataService',['$http', function ($http){
+		var eds = this;
+		var data = {};
+
+		this.init = function(){
+			$http.get('resources/elements.json').
+				success(function (data, status, headers, config){
+					eds.data = data;
+				})
+		}	
+
+		this.getData = function(){
+			return eds.data;
+		}	
+
+		/**
+		 * maybe there is a sense to define subGroups in .json file
+		 * this way
+		 * 	[..{
+		 * 	'id': 'smth',
+		 * 	'subGroup': 'smth',
+		 * 	'group': 'smth',
+		 * 	'owner': 'smth'
+		 * 	}..]
+		 *
+		 * it allows to use $filter
+		 *
+		 * owners and groups would be stored separately (groups.json)
+		 * so, editors would be formed using groups.json
+		 */
+		this.getSubGroups = function (groupId, ownerId){
+			var outArray = [];
+			angular.forEach(eds.data.subGroups, function (item){
+				var isOwnerPresent = false;
+				var isGroupPresent = false;
+				angular.forEach(item.belongsTo.groupId, function (grId){
+					if (grId == groupId){
+						isGroupPresent = true;
+					}
+				})
+				angular.forEach(item.belongsTo.ownerId, function (ownId){
+					if (ownId == ownerId){
+						isOwnerPresent = true;
+					}
+				})
+				if (isOwnerPresent && isGroupPresent){
+					outArray.push(item);
+				}
+			})
+			return outArray;
+		}
+	}])
+
 angular.module('app-tree.controller', ['ngRoute'])
-	.controller('TreeCtrl', ['$scope', 'treeDataService', 
-	function ($scope, treeDataService){
+	.controller('TreeCtrl', ['$scope', 'treeDataService', 'elementDataService',
+	function ($scope, treeDataService, elementDataService){
+		//RENAME ELEMENTTYPE -> SUBGROUP
 		$scope.treeModel = treeDataService.getTree();
 		$scope.selectedNode;
+		$scope.typeTrigger = {value: "module"};
+
+		$scope.elementData = elementDataService.getData();
+		$scope.elementOwner;
+		$scope.elementGroup;
+		$scope.elementName;
+		$scope.elementTypes;
+		$scope.elementType;
+
 		// $scope.searchNode = function()
-		$scope.addNode = function (type, parentNode, newId){
+		$scope.addNode = function (parentNode, newId){
 			if (!parentNode || parentNode.type != "module"){
 				alert('please select module');
 				return;
 			}
-			treeDataService.pushNode(type, parentNode, newId)
+			// if (!$scope.elementName ||
+			// 		!$scope.typeTrigger || 
+			// 		!$scope.elementGroup ||
+			// 		!$scope.elementOwner ||
+			// 		!$scope.elementType){
+			// 	alert('define params')
+			// 	return
+			// }
+			if ($scope.typeTrigger.value == "element" && 
+				(!$scope.elementOwner || !$scope.elementType || !$scope.elementGroup)){
+					alert('define group, owner, subGroup')
+					return;
+			}
+			var element = {};
+			element.name = $scope.elementName? $scope.elementName : "unnamed";
+			element.type = $scope.typeTrigger.value;
+			if ($scope.typeTrigger.value == "element"){
+				element.group = $scope.elementGroup.groupId;
+				element.owner = $scope.elementOwner.ownerId;
+				element.subGroup = $scope.elementType.subGroup;
+			}
+			treeDataService.pushNode(parentNode, element);
+			console.log("scope tree");
+			console.log($scope.treeModel)
+			console.log("**************");
+			console.log("service tree");
+			console.log(treeDataService.getTree())
+
 		}
+
 		$scope.selectNode = function($event, node){
 			treeDataService.selectNode(node, $scope.treeModel);
 			$scope.selectedNode = node;
@@ -94,14 +195,22 @@ angular.module('app-tree.controller', ['ngRoute'])
 				$event.stopPropagation();
 			}
 		}
+		//BUG: when value of select is dropped by dependsOn value of scope.elementSubGroup is still assigned
+		$scope.updateSubGroups = function(){
+			if ($scope.elementOwner && $scope.elementGroup){
+				$scope.elementTypes = elementDataService.getSubGroups($scope.elementGroup.groupId, $scope.elementOwner.ownerId);
+			}
+			// else{
+			// 	// alert('specify group and owner')
+			// }
+		}
+
+		//useless stuff yet
 		$scope.deleteNode = function (node){
 			var nodeToDel = treeDataService.searchNode($scope.treeModel, node);
 			delete nodeToDel;
 		}
-		$scope.useless = function(){
-			alert('aa')
-			console.log(treeDataService.searchNode($scope.treeModel, '3'));
-		}
+
 	}]);	
 
 /**
@@ -110,7 +219,9 @@ angular.module('app-tree.controller', ['ngRoute'])
 * aggregator
 */
 angular.module('app-tree', ['ngRoute', 'app-tree.service', 'app-tree.controller'])
-	.run(['$log', 'treeDataService', function($log, treeDataService){
+	.run(['$log', 'treeDataService', 'elementDataService', 
+		function($log, treeDataService, elementDataService){
 		treeDataService.initTree();
+		elementDataService.init();
 		$log.info('app-tree is initialized')
 	}]);
