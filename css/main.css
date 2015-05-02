@@ -1,0 +1,56 @@
+html, body{
+	height: 100%;
+	/*background-color: #888888;*/
+	background-image: url("../images/texture.png")
+}
+
+.contentContainer{
+	margin: 10px auto;
+	height: 910px;
+	width: 1200px;
+	background-color: #CCCCCC;
+	border-radius: 15px;
+	padding:30px;
+	box-shadow: 4px 4px 30px 0px rgba(50, 49, 50, 0.87);
+}
+
+.treePanel{
+	background-color: #bbbbbb;
+	height:100%;
+	width: 30%;
+	/*margin-right:10px;*/
+	float:left;
+	padding: 10px;
+	/*margin-top: 10px;*/
+
+	/*flex-direction: row;*/
+}
+
+.editPanel{
+	background-color: #DDDDDD;
+	height:50%;
+	/*flex-direction: row;*/
+}
+
+.outputPanel{
+	background-color: #aaaaaa;
+	height:50%;
+	/*flex-direction: row;*/
+}
+
+.selectedItem{
+	color: red;
+}
+.deselectedItem{
+	color: black;
+}
+.treeArea{
+	background-color: #EEEEEE;
+	padding: 15px;
+	margin: 0px 10px;
+	height:650px;
+	overflow: scroll;
+}
+.selectArea{
+	width:150px;
+}
