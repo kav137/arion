@@ -39,11 +39,12 @@
 			<!-- <button ng-click="selectedNode.name = elemName">Rename</button> -->
 		</div>
 	</div>
+
+
 	<div class="treeArea">
-		<p ng-repeat="item in treeModel.children"
+		<div ng-repeat="item in treeModel.children"
 		 	ng-include="'templates/treeItem.html'" 
-		 	ng-click="selectNode($event, item)" 
-		 	ng-class="{'selectedItem': item.selected, 'deselectedItem': !item.selected}">
-		</p>
+		 	ng-click="selectNode($event, item)">
+		</div>
 	</div>	
 </div>

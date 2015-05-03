@@ -54,3 +54,11 @@ html, body{
 .selectArea{
 	width:150px;
 }
+/*module higlighting in tree*/
+.boldText{
+	font-weight: bold
+}
+/*plus-minus buttons in tree view*/
+.removeMargin{
+	margin: 0;
+}

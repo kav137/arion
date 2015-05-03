@@ -2,6 +2,7 @@ angular.module('app-tree.service', [])
 	.service('treeDataService', function (){
 		//use tds var inside angularjs functions (like foreach), 'cause 
 		//angular creates it's own 'this' scope
+		//wtf??
 		var tds = this;
 		var tree = {};
 		var localIdCounter = 0;
@@ -16,39 +17,20 @@ angular.module('app-tree.service', [])
 				'localId': 'root',
 				'name' : 'root',
 				'type': "module",
-				'children':
-				[
-					{
-						'localId': localIdCounter++,
-						'type': "module",
-						'name' : 'myDevice',
-						'children':[]
-					}
-				]
+				'children': []
 			}
 		}
-
-		//UNCHANGED VERSION
-		// this.pushNode = function (type, parentNode, id) {
-		// 	var object = {};
-		// 	object.localId = localIdCounter++;
-		// 	object.name = id;
-		// 	object.type = type;
-		// 	if (type == "module"){
-		// 		object.children = [];
-		// 	}
-		// 	parentNode.children.push(object);
-		// }
 		
-		this.pushNode = function (parentNode, element) {
+		this.unshiftNode = function (parentNode, element) {
 			element.localId = localIdCounter++;
 			if (element.type == "module"){
 				element.children = [];
+				element.expanded = true;
 			}
-			parentNode.children.push(element);
+			// parentNode.children.push(element);
+			parentNode.children.unshift(element);
 		} 
 		
-
 		this.searchNode = function (argModule, argId){
 			var outValue = {};
 			angular.forEach(argModule.children, function (child){
@@ -138,8 +120,8 @@ angular.module('app-tree.service', [])
 	}])
 
 angular.module('app-tree.controller', ['ngRoute'])
-	.controller('TreeCtrl', ['$scope', 'treeDataService', 'elementDataService',
-	function ($scope, treeDataService, elementDataService){
+	.controller('TreeCtrl', ['$scope', 'treeDataService', 'elementDataService', 
+	function ($scope, treeDataService, elementDataService, $modal){
 		//RENAME ELEMENTTYPE -> SUBGROUP
 		$scope.treeModel = treeDataService.getTree();
 		$scope.selectedNode;
@@ -152,20 +134,19 @@ angular.module('app-tree.controller', ['ngRoute'])
 		$scope.elementTypes;
 		$scope.elementType;
 
-		// $scope.searchNode = function()
 		$scope.addNode = function (parentNode, newId){
-			if (!parentNode || parentNode.type != "module"){
+			if (!parentNode){
+				parentNode = $scope.treeModel;
+			}
+			if (parentNode.type != "module"){
 				alert('please select module');
 				return;
 			}
-			// if (!$scope.elementName ||
-			// 		!$scope.typeTrigger || 
-			// 		!$scope.elementGroup ||
-			// 		!$scope.elementOwner ||
-			// 		!$scope.elementType){
-			// 	alert('define params')
-			// 	return
-			// }
+			else{
+				if (parentNode.expanded == false){
+					alert("warning. you're triyng to add node to module, which children are hidden. expnand it to see changes")
+				}
+			}
 			if ($scope.typeTrigger.value == "element" && 
 				(!$scope.elementOwner || !$scope.elementType || !$scope.elementGroup)){
 					alert('define group, owner, subGroup')
@@ -179,12 +160,12 @@ angular.module('app-tree.controller', ['ngRoute'])
 				element.owner = $scope.elementOwner.ownerId;
 				element.subGroup = $scope.elementType.subGroup;
 			}
-			treeDataService.pushNode(parentNode, element);
-			console.log("scope tree");
-			console.log($scope.treeModel)
-			console.log("**************");
-			console.log("service tree");
-			console.log(treeDataService.getTree())
+			treeDataService.unshiftNode(parentNode, element);
+			// console.log("scope tree");
+			// console.log($scope.treeModel)
+			// console.log("**************");
+			// console.log("service tree");
+			// console.log(treeDataService.getTree())
 
 		}
 
@@ -205,12 +186,18 @@ angular.module('app-tree.controller', ['ngRoute'])
 			// }
 		}
 
+		$scope.expandModule = function ($event, module){
+			module.expanded = !module.expanded;
+			//decomment it in case you put expand-button inside another clickable block
+			// if($event){
+			// 	$event.stopPropagation();
+			// }
+		}
 		//useless stuff yet
 		$scope.deleteNode = function (node){
 			var nodeToDel = treeDataService.searchNode($scope.treeModel, node);
 			delete nodeToDel;
 		}
-
 	}]);	
 
 /**
