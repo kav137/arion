@@ -11,7 +11,7 @@ Misiulia Edit.
 	"data":{
 		"className": "someClass",
 		"ownerName": "someOwner",
-		"groupName": "someGroup"
+		"groupName": "someGroup",
 		"elementName": "k-73a",
 		"method":{
 		"(Lc*Kk*Kf+Lp*N*F)*Kp*Ke*Kq"
