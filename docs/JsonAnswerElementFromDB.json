@@ -1,0 +1,45 @@
+Misiulia Edit.
+
+Пример запроса(когда пользователь выбрал элемент из бд):
+	/dbPath/db?className=someClass& ownerName=someOwner& groupName = someGroup & elementName=k-73a&...
+	
+	Если пользователь выбрал только класс, то onwerName = null, groupName = null
+	
+	пример ответа:
+	
+{
+	"data":{
+		"className": "someClass",
+		"ownerName": "someOwner",
+		"groupName": "someGroup"
+		"elementName": "k-73a",
+		"method":{
+		"(Lc*Kk*Kf+Lp*N*F)*Kp*Ke*Kq"
+		},
+		
+		"coefficients":[
+			{
+				"name":"Коэффициент приёмки",
+				"formula":"Q",
+				"key":"Kq"
+			},
+            .....			
+		
+		],
+		
+		"properties":[
+		{
+			"name":"Интенсивность отказов в целом, 1/ч",
+			"type":2,
+			"key":"L",
+			"min":0,
+			"max":1,
+			"default":0,000000045,
+			"visible":false	
+		},
+		...
+		],
+		
+	}
+}	
+

@@ -1,3 +1,22 @@
+
+Пример запроса к серверу (когда пользователь не выбрал конкретную модель из бд)
+
+Не знаю, в каком формате оно передаётся, но надо получить что-то похожее.
+Или как говорят знатоки /dbPath/db?className=someClass&ownerName=someOwner&groupName...
+
+***{
+	"data":{
+		"className": "someClass",
+		"ownerName": "someOwner",
+		"groupName": "someGroup"
+	
+	}
+} ***
+
+
+
+Пример ответа:
+
 {	
 	"data": {
 		"method": "(Lc*Kk*Kf+Lp*N*F)*Kp*Ke*Kq",
@@ -111,6 +130,8 @@
 				
 				
 				]
+				},
+           
 			
 			
 			
