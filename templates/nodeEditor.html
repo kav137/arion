@@ -1,0 +1,54 @@
+<!-- <div class="modal">
+
+ 		<ion-header-bar class="bar bar-stable">
+      	<h1 class="title">{{SelectTitle()}}</h1>
+      	<button class="button button-calm" ng-click="closeModal()">
+    		  Отмена
+      	</button>
+  	</ion-header-bar>
+
+		<ion-content scroll="false" style="overflow:scroll">
+
+      {{temporaryVar.val}}
+    	<div class="panel panel-default">
+    <form>
+      <input type="radio" ng-model="typeTrigger.value" value="module">
+          Module
+      </input>  
+      <input type="radio" ng-model="typeTrigger.value" value="element">
+          Element
+      </input>
+    </form>
+    <div>
+      <span>Group : </span>
+      <select class="selectArea"
+          ng-model="elementGroup" 
+          ng-options="group.groupId for group in elementData.groups" 
+          ng-change="updateSubGroups()">
+      </select>
+    </div>
+    <div>
+      <span>Owner : </span>
+      <select class="selectArea"
+          ng-model="elementOwner" 
+          ng-options="owner.ownerId for owner in elementData.owners"
+          ng-change="updateSubGroups()">
+      </select>
+    </div>
+    <div>
+      <span>SubGroup : </span>
+      <select class="selectArea"
+          ng-model="elementSubGroup" 
+          ng-options="type.subGroup for type in elementSubGroups">
+      </select>
+    </div>
+
+    <input type="text" ng-model="temporaryVar.val" placeholder="name" style="margin:auto">
+    <div style="margin: auto">
+      <button ng-click="addNode(selectedNode, elemName)">Add node</button>
+      <!-- <button ng-click="selectedNode.name = elemName">Rename</button> -->
+    </div>
+  </div>
+    </ion-content>
+    
+</div> -->

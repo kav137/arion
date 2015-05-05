@@ -2,6 +2,7 @@ angular.module('app-tree.service', [])
 	.service('treeDataService', function (){
 		//use tds var inside angularjs functions (like foreach), 'cause 
 		//angular creates it's own 'this' scope
+		//wtf??
 		var tds = this;
 		var tree = {};
 		var localIdCounter = 0;
@@ -16,55 +17,68 @@ angular.module('app-tree.service', [])
 				'localId': 'root',
 				'name' : 'root',
 				'type': "module",
-				'children':
-				[
+				'children': [
 					{
 						'localId': localIdCounter++,
+						'name': 'myDevice',
 						'type': "module",
-						'name' : 'myDevice',
-						'children':[]
+						'expanded': true,
+						'selected': true,
+						'children': []
 					}
 				]
 			}
 		}
-
-		//UNCHANGED VERSION
-		// this.pushNode = function (type, parentNode, id) {
-		// 	var object = {};
-		// 	object.localId = localIdCounter++;
-		// 	object.name = id;
-		// 	object.type = type;
-		// 	if (type == "module"){
-		// 		object.children = [];
-		// 	}
-		// 	parentNode.children.push(object);
-		// }
 		
-		this.pushNode = function (parentNode, element) {
+		//it doesn't affect anything if you swap unshift for push. everything would work in a proper way
+		this.unshiftNode = function (parentNode, element) {
 			element.localId = localIdCounter++;
 			if (element.type == "module"){
 				element.children = [];
+				element.expanded = true;
 			}
-			parentNode.children.push(element);
+			// parentNode.children.push(element);
+			parentNode.children.unshift(element);
 		} 
 		
+		this.searchNode = function (parentNode, arglocalId){
+			// var outValue = {};
+			// angular.forEach(parentNode.children, function (child){
+			// 	if (child.localId == arglocalId){
+			// 		outValue = child;
+			// 		return;
+			// 	}
+			// 	if (child.type == "module"){
+			// 		var retValue = tds.searchNode(child, arglocalId);
+			// 		if (retValue !== null){
+			// 			outValue = retValue;
+			// 		}
+			// 	}
+			// });
+			// if(outValue.localId == undefined){
+			// 	return null;
+			// }
+			// return outValue;
 
-		this.searchNode = function (argModule, argId){
 			var outValue = {};
-			angular.forEach(argModule.children, function (child){
-				if (child.localId == argId){
-					outValue = child;
+			outValue.parent = null;
+			outValue.node = null;
+			angular.forEach(parentNode.children, function (child){
+				if (child.localId == arglocalId){
+					outValue.parent = parentNode;
+					outValue.node = child;
 					return;
 				}
 				if (child.type == "module"){
-					var retValue = tds.searchNode(child, argId);
-					if (retValue !== null){
+					var retValue = tds.searchNode(child, arglocalId);
+					if (retValue && retValue.node !== null){
 						outValue = retValue;
 					}
 				}
 			});
-			if(outValue.localId == undefined){
+			if(outValue.node == undefined){
 				return null;
+				alert('tds.searchNode exception branch; shit happens:(')
 			}
 			return outValue;
 		}
@@ -137,10 +151,17 @@ angular.module('app-tree.service', [])
 		}
 	}])
 
+/**
+*  Module
+*
+* Description
+*/
+// angular.module('app-core.controller', [])
+// 	.controller('MainCtrl', ['$scope, treeDataService', 'elementDataService',
+// 		function ()])
 angular.module('app-tree.controller', ['ngRoute'])
 	.controller('TreeCtrl', ['$scope', 'treeDataService', 'elementDataService',
 	function ($scope, treeDataService, elementDataService){
-		//RENAME ELEMENTTYPE -> SUBGROUP
 		$scope.treeModel = treeDataService.getTree();
 		$scope.selectedNode;
 		$scope.typeTrigger = {value: "module"};
@@ -149,25 +170,27 @@ angular.module('app-tree.controller', ['ngRoute'])
 		$scope.elementOwner;
 		$scope.elementGroup;
 		$scope.elementName;
-		$scope.elementTypes;
-		$scope.elementType;
+		$scope.elementSubGroups;
+		$scope.elementSubGroup;
 
-		// $scope.searchNode = function()
+		$scope.temporaryVar = {};
+		$scope.temporaryVar.val = "i'm here"
 		$scope.addNode = function (parentNode, newId){
-			if (!parentNode || parentNode.type != "module"){
-				alert('please select module');
+			if (!parentNode){
+				parentNode = (treeDataService.searchNode($scope.treeModel, '0')).node;
+				$scope.selectedNode = parentNode; 
+			}
+			if (parentNode.type != "module"){
+				alert("you can't add nodes to element. select module please");
 				return;
 			}
-			// if (!$scope.elementName ||
-			// 		!$scope.typeTrigger || 
-			// 		!$scope.elementGroup ||
-			// 		!$scope.elementOwner ||
-			// 		!$scope.elementType){
-			// 	alert('define params')
-			// 	return
-			// }
+			else{
+				if (parentNode.expanded == false){
+					alert("warning. you're triyng to add node to module, which children are hidden. expnand it to see changes")
+				}
+			}
 			if ($scope.typeTrigger.value == "element" && 
-				(!$scope.elementOwner || !$scope.elementType || !$scope.elementGroup)){
+				(!$scope.elementOwner || !$scope.elementSubGroup || !$scope.elementGroup)){
 					alert('define group, owner, subGroup')
 					return;
 			}
@@ -177,17 +200,12 @@ angular.module('app-tree.controller', ['ngRoute'])
 			if ($scope.typeTrigger.value == "element"){
 				element.group = $scope.elementGroup.groupId;
 				element.owner = $scope.elementOwner.ownerId;
-				element.subGroup = $scope.elementType.subGroup;
+				element.subGroup = $scope.elementSubGroup.subGroup;
 			}
-			treeDataService.pushNode(parentNode, element);
-			console.log("scope tree");
-			console.log($scope.treeModel)
-			console.log("**************");
-			console.log("service tree");
-			console.log(treeDataService.getTree())
-
+			treeDataService.unshiftNode(parentNode, element);
 		}
 
+		//use it to select node in the tree (for further adding, removing etc.)
 		$scope.selectNode = function($event, node){
 			treeDataService.selectNode(node, $scope.treeModel);
 			$scope.selectedNode = node;
@@ -195,22 +213,52 @@ angular.module('app-tree.controller', ['ngRoute'])
 				$event.stopPropagation();
 			}
 		}
+
 		//BUG: when value of select is dropped by dependsOn value of scope.elementSubGroup is still assigned
 		$scope.updateSubGroups = function(){
 			if ($scope.elementOwner && $scope.elementGroup){
-				$scope.elementTypes = elementDataService.getSubGroups($scope.elementGroup.groupId, $scope.elementOwner.ownerId);
+				$scope.elementSubGroups = elementDataService.getSubGroups($scope.elementGroup.groupId, $scope.elementOwner.ownerId);
 			}
 			// else{
 			// 	// alert('specify group and owner')
 			// }
 		}
 
-		//useless stuff yet
-		$scope.deleteNode = function (node){
-			var nodeToDel = treeDataService.searchNode($scope.treeModel, node);
-			delete nodeToDel;
+		$scope.expandModule = function ($event, module){
+			module.expanded = !module.expanded;
+			//decomment it in case you put expand-button inside another clickable block
+			// if($event){
+			// 	$event.stopPropagation();
+			// }
 		}
 
+		//useless stuff yet
+		$scope.removeNode = function (nodeToDel){
+			// var nodeToDel = treeDataService.searchNode($scope.treeModel, node);
+			var result = treeDataService.searchNode($scope.treeModel, nodeToDel.localId);
+			console.log (result);
+			var index = -1;
+			for (var i = result.parent.children.length - 1; i >= 0; i--) {
+				if (result.parent.children[i].localId == result.node.localId){
+					index = i;
+					break;
+				}
+			};
+			if (result.node.children && result.node.children.length >= 0){
+				if (confirm('this node has children. are you sure that you want to remove it?') ){
+					delete result.parent.children.splice(index, 1);
+				}
+			}	
+			else{
+				if (confirm('are you sure?') ){
+					delete result.parent.children.splice(index, 1);
+				}
+			}
+			// result.children.splice(0,1)
+			// for (var i = result.children.length - 1; i >= 0; i--) {
+			// 	delete result.children[i];
+			// };
+		}
 	}]);	
 
 /**

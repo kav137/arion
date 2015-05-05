@@ -1,4 +1,23 @@
-{{item.name + " " + (item.subGroup | json)+ " (" + item.type + ")"}}
-<!-- <button ng-click="add(data)">Add node</button> -->
-<!-- <button ng-click="delete(data)" ng-show="data.nodes.length > 0">Delete nodes</button> -->
-    <p style="margin-left:10px; margin-bottom:0px" ng-repeat="item in item.children" style="background-color:red" ng-include="'templates/treeItem.html'" ng-click="selectNode($event, item)" ng-class="{'selectedItem': item.selected, 'deselectedItem': !item.selected}"></p>
+<!-- plus-minus expanding buttons -->
+<span ng-show="item.type == 'module'"
+	class="button icon button-small removeMargin"
+	ng-class="{'ion-android-remove': item.expanded, 'ion-android-add': !item.expanded}"
+	ng-click="expandModule($event, item)">
+</span>
+
+<!-- displaying item content -->
+<span class="button button-small" 
+		ng-class="{'boldText': item.type == 'module', 'button-positive': item.selected}"> 
+	{{item.name + " " + (item.subGroup | json)+ " (" + item.type + ")"}}
+</span>
+
+<!-- repeats children -->
+<span ng-show="item.expanded">
+	<div style="margin-left:31px" 
+		ng-repeat="item in item.children" 
+		style="background-color:red" 
+		ng-include="'templates/treeItem.html'" 
+		ng-click="selectNode($event, item)" 
+		ng-class="{'selectedItem': item.selected, 'deselectedItem': !item.selected}">
+	</div>
+</span>
