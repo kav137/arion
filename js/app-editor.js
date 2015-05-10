@@ -4,14 +4,9 @@
 * Description
 */
 angular.module('app-editor.controller', ['app-core'])
-	.controller('EditorCtrl', ['$scope', '$controller',
-		function ($scope, $controller){
+	.controller('EditorCtrl', ['$scope', '$controller', 'treeDataService',
+		function ($scope, $controller, treeDataService){
 			angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
-			$scope.temp = {
-				value : "ghja,sd",
-				data : ['une', 'deux', 'trois']
-			}
-			$scope.treeModel;
 	}])
 
 

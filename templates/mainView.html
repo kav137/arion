@@ -1,5 +1,5 @@
-<div class="contentContainer" ng-controller="RootCtrl as root">
+<div class="contentContainer" ng-controller="RootCtrl">
 	<div class="treePanel" ng-include="'templates/treePanel.html'"></div>
-	<div class="editPanel" ng-include="'templates/editPanel.html'" ng-controller="EditorCtrl"></div>
-	<div class="outputPanel">{{selectedNode | json}}</div>
+	<div class="editPanel" ng-include="'templates/editPanel.html'"></div>
+	<div class="outputPanel" ng-include="'templates/outputPanel.html'"></div>
 </div>	

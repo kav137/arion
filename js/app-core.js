@@ -4,7 +4,7 @@ angular.module('app-core.service', [])
 		var tree = {};
 		var localIdCounter = 0;
 
-		var selectedNode = {asd:'asd'};
+		var selectedNode;
 	
 		this.getTree = function(){
 			return tree;
@@ -123,12 +123,11 @@ angular.module('app-core.service', [])
 	}])
 
 angular.module('app-core.controller', ['ngRoute'])
-	.controller('RootCtrl', ['$scope', 'treeDataService', 'elementSelectionService',
-		function ($scope, treeDataService, elementSelectionService){
+	.controller('RootCtrl', ['$scope', 'treeDataService', 'elementSelectionService', '$rootScope',
+		function ($scope, treeDataService, elementSelectionService, $rootScope){
 		$scope.treeModel = treeDataService.getTree();
-		$scope.selectedNode = treeDataService.getSelectedNode();
-
-		$scope.$on('selectedNodeUpdated', function (event, args){
+		$scope.selectedNode;
+		$rootScope.$on('selectedNodeUpdated', function (event, args){
 			$scope.selectedNode = args;
 			console.log($scope.selectedNode)
 		})
