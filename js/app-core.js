@@ -1,14 +1,17 @@
-angular.module('app-tree.service', [])
+angular.module('app-core.service', [])
 	.service('treeDataService', function (){
-		//use tds var inside angularjs functions (like foreach), 'cause 
-		//angular creates it's own 'this' scope
-		//wtf??
-		var tds = this;
+		var TDS = this;
 		var tree = {};
 		var localIdCounter = 0;
+
+		var selectedNode = {asd:'asd'};
 	
 		this.getTree = function(){
 			return tree;
+		}
+
+		this.getSelectedNode = function (){
+			return selectedNode;
 		}
 
 		this.initTree = function (){
@@ -42,63 +45,46 @@ angular.module('app-tree.service', [])
 		} 
 		
 		this.searchNode = function (parentNode, arglocalId){
-			// var outValue = {};
-			// angular.forEach(parentNode.children, function (child){
-			// 	if (child.localId == arglocalId){
-			// 		outValue = child;
-			// 		return;
-			// 	}
-			// 	if (child.type == "module"){
-			// 		var retValue = tds.searchNode(child, arglocalId);
-			// 		if (retValue !== null){
-			// 			outValue = retValue;
-			// 		}
-			// 	}
-			// });
-			// if(outValue.localId == undefined){
-			// 	return null;
-			// }
-			// return outValue;
-
-			var outValue = {};
-			outValue.parent = null;
-			outValue.node = null;
+			var outNode = {};
+			outNode.parent = null;
+			outNode.node = null;
 			angular.forEach(parentNode.children, function (child){
 				if (child.localId == arglocalId){
-					outValue.parent = parentNode;
-					outValue.node = child;
+					outNode.parent = parentNode;
+					outNode.node = child;
 					return;
 				}
 				if (child.type == "module"){
-					var retValue = tds.searchNode(child, arglocalId);
+					var retValue = TDS.searchNode(child, arglocalId);
 					if (retValue && retValue.node !== null){
-						outValue = retValue;
+						outNode = retValue;
 					}
 				}
 			});
-			if(outValue.node == undefined){
+			if(outNode.node == undefined){
 				return null;
-				alert('tds.searchNode exception branch; shit happens:(')
+				alert('TDS.searchNode exception branch; shit happens:(')
 			}
-			return outValue;
+			return outNode;
 		}
 
 		this.selectNode = function (node, parentNode){
 			angular.forEach(parentNode.children, function (child){
 				if (child.localId == node.localId){
 					child.selected = true;
+					selectedNode = child;
 				}
 				else{
 					child.selected = false;
 				}
 				if (child.type == "module"){
-					tds.selectNode(node, child);
+					TDS.selectNode(node, child);
 				}
 			})
 		}
 	})
 
-	.service('elementDataService',['$http', function ($http){
+	.service('elementSelectionService',['$http', function ($http){
 		var eds = this;
 		var data = {};
 
@@ -113,21 +99,6 @@ angular.module('app-tree.service', [])
 			return eds.data;
 		}	
 
-		/**
-		 * maybe there is a sense to define subGroups in .json file
-		 * this way
-		 * 	[..{
-		 * 	'id': 'smth',
-		 * 	'subGroup': 'smth',
-		 * 	'group': 'smth',
-		 * 	'owner': 'smth'
-		 * 	}..]
-		 *
-		 * it allows to use $filter
-		 *
-		 * owners and groups would be stored separately (groups.json)
-		 * so, editors would be formed using groups.json
-		 */
 		this.getSubGroups = function (groupId, ownerId){
 			var outArray = [];
 			angular.forEach(eds.data.subGroups, function (item){
@@ -151,32 +122,28 @@ angular.module('app-tree.service', [])
 		}
 	}])
 
-/**
-*  Module
-*
-* Description
-*/
-// angular.module('app-core.controller', [])
-// 	.controller('MainCtrl', ['$scope, treeDataService', 'elementDataService',
-// 		function ()])
-angular.module('app-tree.controller', ['ngRoute'])
-	.controller('TreeCtrl', ['$scope', 'treeDataService', 'elementDataService',
-	function ($scope, treeDataService, elementDataService){
+angular.module('app-core.controller', ['ngRoute'])
+	.controller('RootCtrl', ['$scope', 'treeDataService', 'elementSelectionService',
+		function ($scope, treeDataService, elementSelectionService){
 		$scope.treeModel = treeDataService.getTree();
-		$scope.selectedNode;
-		$scope.typeTrigger = {value: "module"};
+		$scope.selectedNode = treeDataService.getSelectedNode();
 
-		$scope.elementData = elementDataService.getData();
+		$scope.$on('selectedNodeUpdated', function (event, args){
+			$scope.selectedNode = args;
+			console.log($scope.selectedNode)
+		})
+	}])
+
+	.controller('TreeCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService',
+	function ($scope, $controller, treeDataService, elementSelectionService){
+		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
+		$scope.typeTrigger = {value: "module"};
+		$scope.elementData = elementSelectionService.getData();
 		$scope.elementOwner;
 		$scope.elementGroup;
 		$scope.elementName;
 		$scope.elementSubGroups;
 		$scope.elementSubGroup;
-
-		$scope.temporaryVar = {};
-		$scope.temporaryVar.val = "i'm here"
-
-		
 
 		$scope.addNode = function (parentNode, newId){
 			if (!parentNode){
@@ -211,16 +178,21 @@ angular.module('app-tree.controller', ['ngRoute'])
 		//use it to select node in the tree (for further adding, removing etc.)
 		$scope.selectNode = function($event, node){
 			treeDataService.selectNode(node, $scope.treeModel);
-			$scope.selectedNode = node;
+			// $scope.selectedNode = treeDataService.getSelectedNode();
+			$scope.$emit('selectedNodeUpdated', node)
 			if($event){
 				$event.stopPropagation();
 			}
+			// console.log("selectedNode in service");
+			// console.log(treeDataService.getSelectedNode())
+			// console.log("tree in TDS")
+			// console.log(treeDataService.getTree())
 		}
 
 		//BUG: when value of select is dropped by dependsOn value of scope.elementSubGroup is still assigned
 		$scope.updateSubGroups = function(){
 			if ($scope.elementOwner && $scope.elementGroup){
-				$scope.elementSubGroups = elementDataService.getSubGroups($scope.elementGroup.groupId, $scope.elementOwner.ownerId);
+				$scope.elementSubGroups = elementSelectionService.getSubGroups($scope.elementGroup.groupId, $scope.elementOwner.ownerId);
 			}
 			// else{
 			// 	// alert('specify group and owner')
@@ -229,13 +201,8 @@ angular.module('app-tree.controller', ['ngRoute'])
 
 		$scope.expandModule = function ($event, module){
 			module.expanded = !module.expanded;
-			//decomment it in case you put expand-button inside another clickable block
-			// if($event){
-			// 	$event.stopPropagation();
-			// }
 		}
 
-		//useless stuff yet
 		$scope.removeNode = function (nodeToDel){
 			// var nodeToDel = treeDataService.searchNode($scope.treeModel, node);
 			if (nodeToDel.localId == '0'){
@@ -271,14 +238,14 @@ angular.module('app-tree.controller', ['ngRoute'])
 	}]);	
 
 /**
-* app-tree Module
+* app-core Module
 *
 * aggregator
 */
-angular.module('app-tree', ['ngRoute', 'app-tree.service', 'app-tree.controller'])
-	.run(['$log', 'treeDataService', 'elementDataService', 
-		function($log, treeDataService, elementDataService){
+angular.module('app-core', ['ngRoute', 'app-core.service', 'app-core.controller'])
+	.run(['$log', 'treeDataService', 'elementSelectionService', 
+		function($log, treeDataService, elementSelectionService){
 		treeDataService.initTree();
-		elementDataService.init();
-		$log.info('app-tree is initialized')
+		elementSelectionService.init();
+		$log.info('app-core is initialized')
 	}]);

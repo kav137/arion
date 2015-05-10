@@ -1,5 +1,24 @@
 bugs to fix. testcases to pass:
 
 1) run. press 'removeNode' -> exception
+
 2) choose group and owner properties for element - subGroups would be updated.
 choose subGroup from list. then change owner (and/or) group properties so as subGroup got updated and dropped. if you press add element button the subgroup of element would be declared as the last one that've been chosen
+
+3) 
+		/**
+		 * maybe there is a sense to define subGroups in .json file
+		 * this way
+		 * 	[..{
+		 * 	'id': 'smth',
+		 * 	'subGroup': 'smth',
+		 * 	'group': 'smth',
+		 * 	'owner': 'smth'
+		 * 	}..]
+		 *
+		 * it allows to use $filter
+		 *
+		 * owners and groups would be stored separately (groups.json)
+		 * so, editors would be formed using groups.json
+		 */
+		

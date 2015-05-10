@@ -1,6 +1,7 @@
 <div ng-controller="TreeCtrl">
 
 	<div>
+		{{selectedNode | json}}
 		<form>
 			<input type="radio" ng-model="typeTrigger.value" value="module">
 					Module

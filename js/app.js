@@ -3,9 +3,9 @@
 *
 * aggregator for all the modules
 */
-angular.module('app', ['ngRoute', 'app-tree'])
+angular.module('app', ['ngRoute', 'app-core', 'app-editor'])
 	.run(['$log', function ($log){
-		$log.info('app module is initialized')
+		$log.info('application initialized successfully')
 		
 	}])
 
