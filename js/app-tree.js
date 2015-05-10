@@ -175,10 +175,13 @@ angular.module('app-tree.controller', ['ngRoute'])
 
 		$scope.temporaryVar = {};
 		$scope.temporaryVar.val = "i'm here"
+
+		
+
 		$scope.addNode = function (parentNode, newId){
 			if (!parentNode){
 				parentNode = (treeDataService.searchNode($scope.treeModel, '0')).node;
-				$scope.selectedNode = parentNode; 
+				$scope.selectNode(null, parentNode); 
 			}
 			if (parentNode.type != "module"){
 				alert("you can't add nodes to element. select module please");
@@ -235,8 +238,11 @@ angular.module('app-tree.controller', ['ngRoute'])
 		//useless stuff yet
 		$scope.removeNode = function (nodeToDel){
 			// var nodeToDel = treeDataService.searchNode($scope.treeModel, node);
+			if (nodeToDel.localId == '0'){
+				alert("you can't remove device. choose antoher node")
+				return;
+			}
 			var result = treeDataService.searchNode($scope.treeModel, nodeToDel.localId);
-			console.log (result);
 			var index = -1;
 			for (var i = result.parent.children.length - 1; i >= 0; i--) {
 				if (result.parent.children[i].localId == result.node.localId){
@@ -245,19 +251,22 @@ angular.module('app-tree.controller', ['ngRoute'])
 				}
 			};
 			if (result.node.children && result.node.children.length >= 0){
-				if (confirm('this node has children. are you sure that you want to remove it?') ){
+				if (confirm('this node possibly has children. are you sure that you want to remove it?') ){
 					delete result.parent.children.splice(index, 1);
+					$scope.selectNode(null, result.parent);
 				}
-			}	
+			}
 			else{
 				if (confirm('are you sure?') ){
 					delete result.parent.children.splice(index, 1);
+					$scope.selectNode(null, result.parent);
 				}
 			}
-			// result.children.splice(0,1)
-			// for (var i = result.children.length - 1; i >= 0; i--) {
-			// 	delete result.children[i];
-			// };
+		}
+
+		function initCtrl (){
+				parentNode = (treeDataService.searchNode($scope.treeModel, '0')).node;
+				$scope.selectNode(null, parentNode); 
 		}
 	}]);	
 

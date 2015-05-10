@@ -1,0 +1,5 @@
+bugs to fix. testcases to pass:
+
+1) run. press 'removeNode' -> exception
+2) choose group and owner properties for element - subGroups would be updated.
+choose subGroup from list. then change owner (and/or) group properties so as subGroup got updated and dropped. if you press add element button the subgroup of element would be declared as the last one that've been chosen
