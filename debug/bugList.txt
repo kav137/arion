@@ -1,3 +1,15 @@
+just important points to be mentioned:
+1) there is a bug in answer.json 
+	{
+		"name": "Количество активных контактов, шт.",
+		"type": 4 <---------(!)
+	}
+2) types of editor:
+	4 ~ drop-down list
+	2 ~ number field (double)
+	1 ~ number field (integer)
+	3 ~ nothing mathes this value :(
+
 bugs to fix. testcases to pass:
 
 1) run. press 'removeNode' -> exception

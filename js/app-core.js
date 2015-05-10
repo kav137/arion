@@ -122,19 +122,33 @@ angular.module('app-core.service', [])
 		}
 	}])
 
+	.service('databaseService', ['$http', function ($http){
+		//place here elementSelection service afterwards
+		this.initProperties = function (element){
+			if (!element.group || !element.owner || !element.subGroup){
+				alert('invalid element. impossible to send request to db');
+				return;
+			}
+			$http.get('resources/answer.json').
+				success(function (response, status, headers, config){
+					element.properties = response.data.properties;
+					// console.log(response)
+				})
+		}
+	}])
+
 angular.module('app-core.controller', ['ngRoute'])
-	.controller('RootCtrl', ['$scope', 'treeDataService', 'elementSelectionService', '$rootScope',
+	.controller('RootCtrl', ['$scope', 'treeDataService', 'elementSelectionService', '$rootScope', 
 		function ($scope, treeDataService, elementSelectionService, $rootScope){
 		$scope.treeModel = treeDataService.getTree();
 		$scope.selectedNode;
 		$rootScope.$on('selectedNodeUpdated', function (event, args){
 			$scope.selectedNode = args;
-			console.log($scope.selectedNode)
 		})
 	}])
 
-	.controller('TreeCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService',
-	function ($scope, $controller, treeDataService, elementSelectionService){
+	.controller('TreeCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService',
+	function ($scope, $controller, treeDataService, elementSelectionService, databaseService){
 		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
 		$scope.typeTrigger = {value: "module"};
 		$scope.elementData = elementSelectionService.getData();
@@ -170,6 +184,7 @@ angular.module('app-core.controller', ['ngRoute'])
 				element.group = $scope.elementGroup.groupId;
 				element.owner = $scope.elementOwner.ownerId;
 				element.subGroup = $scope.elementSubGroup.subGroup;
+				databaseService.initProperties(element);
 			}
 			treeDataService.unshiftNode(parentNode, element);
 		}
@@ -178,14 +193,10 @@ angular.module('app-core.controller', ['ngRoute'])
 		$scope.selectNode = function($event, node){
 			treeDataService.selectNode(node, $scope.treeModel);
 			// $scope.selectedNode = treeDataService.getSelectedNode();
-			$scope.$emit('selectedNodeUpdated', node)
 			if($event){
 				$event.stopPropagation();
 			}
-			// console.log("selectedNode in service");
-			// console.log(treeDataService.getSelectedNode())
-			// console.log("tree in TDS")
-			// console.log(treeDataService.getTree())
+			$scope.$emit('selectedNodeUpdated', node)
 		}
 
 		//BUG: when value of select is dropped by dependsOn value of scope.elementSubGroup is still assigned
