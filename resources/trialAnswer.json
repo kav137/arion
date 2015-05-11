@@ -1,0 +1,69 @@
+{	
+	"data": {
+		"method": "(Lc*Kk*Kf+Lp*N*F)*Kp*Ke*Kq",
+		"coefficients": [
+			{
+				"name": "Коэф. А (равен свойству Аа)",
+				"formula": "Aa",
+				"key": "A"
+			},
+			{
+				"name": "Коэф. B (равен Аа + Bb)",
+				"formula": "Aa+Bb",
+				"key": "B"
+			},
+			{
+				"name": "Коэф. C (равен Aa + Cc^2)",
+				"formula": "Aa+(Cc^2)",
+				"key": "C"
+			}
+		],
+		"properties":[
+			{
+				"name": "Св-во Аа [0..45-8..1]",
+				"type": 2,
+				"key": "Aa",
+				"min":0,
+				"max":1,
+				"default": 0.000000045,
+				"visible": true
+			},
+			{
+				"name": "Св-во Bb [100..1000..1000000] hidden",
+				"type": 1,
+				"key": "Bb",
+				"min": 0,
+				"max": 1000000,
+				"default": 1000,
+				"visible":false
+			},
+			{
+				"name": "Св-во Сс [1,2,3,4]",
+				"type": 4,
+				"key": "Cc",
+				"min": 1,
+				"max": 5,
+				"default": 3,
+				"visible":true,
+				"answers":[
+					{
+						"name":"один",
+						"default": 1
+					},
+					{
+						"name":"два",
+						"default": 2
+					},
+					{
+						"name":"три",
+						"default": 3
+					},
+					{
+						"name":"четыре",
+						"default": 4
+					}
+				]
+			}
+		]
+	}
+}

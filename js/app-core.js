@@ -129,10 +129,16 @@ angular.module('app-core.service', [])
 				alert('invalid element. impossible to send request to db');
 				return;
 			}
-			$http.get('resources/answer.json').
+			$http.get('resources/jsonFull.json').
 				success(function (response, status, headers, config){
 					element.properties = response.data.properties;
-					// console.log(response)
+					
+					angular.forEach(element.properties, function (prop){
+						prop.value = null;
+						if (prop.default){
+							prop.value = prop.default;
+						}
+					})
 				})
 		}
 	}])

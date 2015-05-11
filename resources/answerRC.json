@@ -1,0 +1,38 @@
+<prop Id="0" Name="Базовая интенсивность отказов, 1/ч" Type="2" Key="L" Min="0" Text="" Default="0,0000000017" Visible="false" Max="1"/>
+        <prop Id="1" Name="Значение константы A" Type="2" Key="A" Min="0" Max="10" Default="0,2" Visible="false"/>
+        <prop Id="2" Name="Значение константы B" Type="2" Key="B" Min="0" Max="10" Default="0,54" Visible="false"/>
+        <prop Id="3" Name="Значение константы C" Type="2" Key="C" Min="0" Max="10" Default="2,04" Visible="false"/>
+        <prop Id="4" Name="Фактическая рабочая температура, C" Type="1" Key="T" Min="-100" Max="1000" Text="" Default="25" Visible="true"/>
+        <prop Id="5" Name="Мощность рассеяния, Вт" Type="2" Key="P" Min="0" Max="1000" Text="" Default="20" Visible="true"/>
+        <prop Id="6" Name="Коэффициент эл. нагрузки по мощности" Type="2" Key="S" Min="0" Text="" Default="0,6" Max="1" Visible="true"/>
+        <prop Id="7" Name="Уровень качества" Type="4" Text="" Default="0" Visible="true">
+          <ans Id="0" Name="Неизвестно">
+            <prop Id="0" Name="Коэффициент качества изготовления" Type="2" Key="Q" Min="0" Text="" Default="10" Visible="false" Max="100"/>
+          </ans>
+          <ans Id="1" Name="S">
+            <prop Id="0" Name="Коэффициент качества изготовления" Type="2" Key="Q" Min="0" Text="" Default="0,03" Visible="false" Max="100"/>
+          </ans>
+          <ans Id="2" Name="R">
+            <prop Id="0" Name="Коэффициент качества изготовления" Type="2" Key="Q" Min="0" Text="" Default="0,1" Visible="false" Max="100"/>
+          </ans>
+          <ans Id="3" Name="P">
+            <prop Id="0" Name="Коэффициент качества изготовления" Type="2" Key="Q" Min="0" Text="" Default="0,3" Visible="false" Max="100"/>
+          </ans>
+          <ans Id="4" Name="M">
+            <prop Id="0" Name="Коэффициент качества изготовления" Type="2" Key="Q" Min="0" Text="" Default="1" Visible="false" Max="100"/>
+          </ans>
+          <ans Id="5" Name="Не опубликована надёжность">
+            <prop Id="0" Name="Коэффициент качества изготовления" Type="2" Key="Q" Min="0" Text="" Default="3" Visible="false" Max="100"/>
+          </ans>
+          <ans Id="6" Name="Коммерческий">
+            <prop Id="0" Name="Коэффициент качества изготовления" Type="2" Key="Q" Min="0" Text="" Default="10" Visible="false" Max="100"/>
+          </ans>
+        </prop>
+        <model Name="Lb*Kt*Ks*Kh*Ke*Kq">
+          <koeff Name="Базовая интенсивность отказов" Key="Lb" Default="L"/>
+          <koeff Name="Коэффициент температурного режима" Key="Kt" Default="exp(-A/(8,617*(10^5))*(1/(T+273)-1/298))"/>
+          <koeff Name="Коэффициент, зависящий от жесткости эл. режима работы" Key="Ks" Default="B*(exp(C*S))"/>
+          <koeff Name="Коэффициент, зависящий от мощности рассеяния" Key="Kh" Default="P^0,39"/>
+          <koeff Name="Коэффициент эксплуатации" Key="Ke" Default="X"/>
+          <koeff Name="Коэффициент качества изготовления" Key="Kq" Default="Q"/>
+        </model>
