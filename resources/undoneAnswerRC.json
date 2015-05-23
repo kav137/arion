@@ -3,7 +3,7 @@
 		"method": "Lb*Kt*Ks*Kh*Ke*Kq",
 		"coefficients": [
 			{
-				"name": "Коэффициент приёмки",
+				"name": "Коэффициент приёмки",	
 				"formula": "Q",
 				"key": "Kq"
 			},
