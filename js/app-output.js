@@ -13,10 +13,13 @@ angular.module('app-REPLACE.service', ['app-core'])
 			checkSafety(expression);
 			checkBrackets(expression);
 			expression = replaceCommas(expression)
-			expression = replaceVariables(expression, data);
 			expression = replaceOperations(expression);
-			console.log('calculate finished, expression: %s', expression);
-			console.log('result: %f', eval(expression));
+			expression = replaceVariables(expression, data);
+			console.log("*****************")
+			initCalculation(expression, data);
+			// console.log('calculate finished, expression: %s', expression);
+			// console.log('result: %f', eval(expression));
+			replacePower(expression)
 		}
 
 		var checkBrackets = function (expression){
@@ -31,11 +34,11 @@ angular.module('app-REPLACE.service', ['app-core'])
 						break;
 				}
 				if (counter < 0){
-					throw "A01::mathService.checkBrackets: incorrect expression. excess closing bracket."
+					throw "A01::mathService.checkBrackets: incorrect expression. excess closing bracket"
 				}
 			}
 			if (counter != 0){
-				throw "A01::mathService.checkBrackets: incorrect expression. unbalanced brackets"
+				throw "A01::mathService.checkBrackets: incorrect expression. excess opening bracket"
 			}
 			console.log('checkBrackets success')
 		}
@@ -61,7 +64,7 @@ angular.module('app-REPLACE.service', ['app-core'])
 
 		var replaceVariables = function (expression, data){
 			angular.forEach(data, function (value, key){
-				var replaceThis = new RegExp('(?:\\+|\\-|\\/|\\*|\\(|\\^|^)('+ key +')(?:\\+|\\-|\\/|\\*|\\)|$)');
+				var replaceThis = new RegExp('(?:\\+|\\-|\\/|\\*|\\(|\\^|^)('+ key +')(?:\\+|\\-|\\/|\\*|\\)|\\^|$)');
 				var matchArray;
 				while (matchArray = replaceThis.exec(expression)){
 					var beginSubIndex;
@@ -104,6 +107,108 @@ angular.module('app-REPLACE.service', ['app-core'])
 			}
 			return expression;
 		}
+
+		var replacePower = function (expression){
+			var template = expression.match("((?:\\(?[0-9]+[\\.]{0,1}(?:[0-9]*)\\)?|\\(?[a-zA-Z\\.]+\\)?)(\\^)(?:\\(?[0-9]+[\\.]{0,1}(?:[0-9]*)\\)?|\\(?[a-zA-Z\\.]+\\)?))");
+			console.log('replacePower initial : %s; \nresult: ', expression, template)
+			try{
+				checkBrackets(template[0]);
+			}
+			catch(err){
+				if(err == "A01::mathService.checkBrackets: incorrect expression. excess opening bracket"){
+					var trimmed = removeOpenBracket(template[0]);
+					var replacement = trimmed.split('^');
+					expression = expression.substring(0, template.index) +
+						"(Math.pow(" + replacement[0] + "," + replacement[1] + ")" +
+						expression.substring(template.index + template[0].length);
+				}
+				if(err == "A01::mathService.checkBrackets: incorrect expression. excess closing bracket"){
+					var trimmed = removeCloseBracket(template[0]);
+					var replacement = trimmed.split('^');
+					expression = expression.substring(0, template.index) +
+						"Math.pow(" + replacement[0] + "," + replacement[1] + "))" +
+						expression.substring(template.index + template[0].length);
+				}
+			}
+			finally{
+				if (template[0].indexOf('(') == 0 && template[0].indexOf(')') == template[0].length-1){
+					var replacement = (template[0].substring(1, template[0].length-1)).split('^');
+					console.log(replacement)
+					expression = expression.substring(0, template.index) +
+						"(Math.pow(" + replacement[0] + "," + replacement[1] + "))" +
+						expression.substring(template.index + template[0].length);
+				}
+				console.log('after trim : %s', expression)
+			}
+		}
+
+		var removeOpenBracket = function (expression){
+			var openBracketPos = -1;
+			var isClosed = true;
+			for (var i = 0; i < expression.length; i++){
+				if (expression[i] == '('){
+					openBracketPos = i;
+					isClosed = false;
+				}
+				if (expression[i] == ')'){
+					isClosed = true;
+				}
+			}
+			if (isClosed == false){
+				expression = expression.substring(0, openBracketPos) + 
+					expression.substring(openBracketPos + 1, expression.length);
+				// console.log('trimmed (open removed): %s', expression)
+			}
+			return expression;
+		}
+
+		var removeCloseBracket = function (expression){
+			var closeBracketPos = -1;
+			var isOpen = false;
+			for (var i = 0; i < expression.length; i++){
+				if (expression[i] == '('){
+					isOpen = true;
+				}
+				if (expression[i] == ')'){
+					if (isOpen){
+						isOpen = false;
+					}
+					else {
+						closeBracketPos = i;
+					}
+				}
+			}
+			if (closeBracketPos != -1){
+				expression = expression.substring(0, closeBracketPos) + 
+					expression.substring(closeBracketPos + 1, expression.length);
+				console.log('trimmed (close removed): %s', expression)
+			}
+			return expression;
+		}
+
+		var initCalculation = function (expression, data){
+			var openBracketPos = 0;
+			var isClosed = true;
+			for (var i = 0; i < expression.length; i++){
+				if (expression[i] == '('){
+					openBracketPos = i;
+					isClosed = false;
+					continue;
+				}
+				if (expression[i] == ')' && !isClosed){
+					console.log("inner part : %s", expression.substring(openBracketPos, i+1));
+					var innerExpression = expression.substring(openBracketPos, i+1);
+					if (innerExpression.indexOf('^') > -1){
+						replacePower(innerExpression, data)
+					}
+					else{
+						console.log('result: %s', eval(innerExpression))
+					}
+					isClosed = true;
+					continue;
+				}
+			}
+		}
 	})
 
 angular.module('app-output.controller', ['app-core'])
@@ -111,7 +216,7 @@ angular.module('app-output.controller', ['app-core'])
 		function($scope, $controller, mathService){
 		angular.extend(this, $controller('RootCtrl', {$scope: $scope}))
 
-		$scope.trialModel = "ln(a+b*exp(c/d)+1/c-ln(c))";
+		$scope.trialModel = "ln(a^bcc*exp(c/d)+1/c-ln(c))";
 		$scope.result = 123;
 		$scope.ccc = 100;
 		$scope.calculate = function (){
@@ -119,7 +224,8 @@ angular.module('app-output.controller', ['app-core'])
 			var b = 17;
 			var c = 1;
 			var d = 2;
-			mathService.calculate( $scope.trialModel , {'a': a, 'b': b, 'c': c, 'd': d});
+			// mathService.calculate( $scope.trialModel , {'a': a, 'b': b, 'c': c, 'd': d});
+			mathService.calculate($scope.trialModel, {'a': a, 'bcc': b, 'c': c, 'd': d});
 		}
 	}]);
 
