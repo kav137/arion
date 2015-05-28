@@ -17,9 +17,6 @@ angular.module('app-REPLACE.service', ['app-core'])
 			expression = replaceVariables(expression, data);
 			console.log("*****************")
 			initCalculation(expression, data);
-			// console.log('calculate finished, expression: %s', expression);
-			// console.log('result: %f', eval(expression));
-			replacePower(expression)
 		}
 
 		var checkBrackets = function (expression){
@@ -108,8 +105,8 @@ angular.module('app-REPLACE.service', ['app-core'])
 			return expression;
 		}
 
-		var replacePower = function (expression){
-			var template = expression.match("((?:\\(?[0-9]+[\\.]{0,1}(?:[0-9]*)\\)?|\\(?[a-zA-Z\\.]+\\)?)(\\^)(?:\\(?[0-9]+[\\.]{0,1}(?:[0-9]*)\\)?|\\(?[a-zA-Z\\.]+\\)?))");
+		var replacePower = function (expression, data){
+			var template = expression.match("((?:\\(?-?[0-9]+[\\.]{0,1}(?:[0-9]*)\\)?|\\(?-?[a-zA-Z\\.]+\\)?)(\\^)(?:\\(?-?[0-9]+[\\.]{0,1}(?:[0-9]*)\\)?|\\(?-?[a-zA-Z\\.]+\\)?))");
 			console.log('replacePower initial : %s; \nresult: ', expression, template)
 			try{
 				checkBrackets(template[0]);
@@ -118,28 +115,47 @@ angular.module('app-REPLACE.service', ['app-core'])
 				if(err == "A01::mathService.checkBrackets: incorrect expression. excess opening bracket"){
 					var trimmed = removeOpenBracket(template[0]);
 					var replacement = trimmed.split('^');
+					var powerStr = "Math.pow(" + replacement[0] + "," + replacement[1] + ")";
+					var result = eval(powerStr);
 					expression = expression.substring(0, template.index) +
-						"(Math.pow(" + replacement[0] + "," + replacement[1] + ")" +
+						"(" + result +
 						expression.substring(template.index + template[0].length);
+					return expression;
 				}
 				if(err == "A01::mathService.checkBrackets: incorrect expression. excess closing bracket"){
 					var trimmed = removeCloseBracket(template[0]);
 					var replacement = trimmed.split('^');
+					var powerStr = "Math.pow(" + replacement[0] + "," + replacement[1] + ")";
+					var result = eval(powerStr);
 					expression = expression.substring(0, template.index) +
-						"Math.pow(" + replacement[0] + "," + replacement[1] + "))" +
+						result + ")" +
 						expression.substring(template.index + template[0].length);
+					return expression;
 				}
 			}
-			finally{
-				if (template[0].indexOf('(') == 0 && template[0].indexOf(')') == template[0].length-1){
+			// finally{
+			// alert()
+				if (template[0].indexOf('(') == 0 && template[0].indexOf(')') == template[0].length-1
+					&& template[0].indexOf('(', 1) == -1){
 					var replacement = (template[0].substring(1, template[0].length-1)).split('^');
-					console.log(replacement)
+					var powerStr = "Math.pow(" + replacement[0] + "," + replacement[1] + ")";
+					var result = eval(powerStr);
 					expression = expression.substring(0, template.index) +
-						"(Math.pow(" + replacement[0] + "," + replacement[1] + "))" +
+						"(" + result + ")" +
+						expression.substring(template.index + template[0].length);
+				}
+				else{
+					var replacement = template[0].split('^');
+					var powerStr = "Math.pow(" + replacement[0] + "," + replacement[1] + ")";
+					console.log('else: ', powerStr)
+					var result = eval(powerStr);
+					expression = expression.substring(0, template.index) +
+						"(" + result + ")" +
 						expression.substring(template.index + template[0].length);
 				}
 				console.log('after trim : %s', expression)
-			}
+				return expression;
+			// }
 		}
 
 		var removeOpenBracket = function (expression){
@@ -189,25 +205,108 @@ angular.module('app-REPLACE.service', ['app-core'])
 		var initCalculation = function (expression, data){
 			var openBracketPos = 0;
 			var isClosed = true;
+			var lnPre = false;
+			var expPre = false;
 			for (var i = 0; i < expression.length; i++){
-				if (expression[i] == '('){
-					openBracketPos = i;
-					isClosed = false;
-					continue;
+				if (expression.indexOf('(') > -1){
+					if (expression[i] == '('){
+						openBracketPos = i;
+						isClosed = false;
+						continue;
+					}
+					if (expression[i] == ')' && !isClosed){
+						console.log("####################")
+						console.log('init expression: %s', expression)
+						var innerExpression = expression.substring(openBracketPos, i+1);
+						console.log("inner part : %s", innerExpression);
+						if (i > 2 && expression.substring(0, openBracketPos).lastIndexOf('log') != -1 &&
+								expression.substring(0, openBracketPos).lastIndexOf('log') == 
+								expression.substring(0, openBracketPos).length-3 ){
+							lnPre = true;
+							// alert('ln')
+							// continue;
+						}
+						if (i > 2 && expression.substring(0, openBracketPos).lastIndexOf('exp') != -1 &&
+								expression.substring(0, openBracketPos).lastIndexOf('exp') == 
+								expression.substring(0, openBracketPos).length-3){
+							expPre = true;
+							// alert('exp')
+							// continue;
+						}
+						if (innerExpression.indexOf('^') > -1){
+							// expression = replacePower(innerExpression, data)
+							innerExpression = replacePower(innerExpression, data);
+							// alert('pow')
+						}
+						if(lnPre){
+							innerExpression = "Math.log(" + innerExpression + ")";
+							var replacement = eval(innerExpression);
+							var temp = expression.substring(0, openBracketPos-8) + replacement +
+										expression.substring(i+1);
+						}
+						if(expPre){
+							innerExpression = "Math.exp(" + innerExpression + ")";
+							var replacement = eval(innerExpression);
+							var temp = expression.substring(0, openBracketPos-8) + replacement +
+										expression.substring(i+1);
+						}
+						if(!expPre && !lnPre){
+							var replacement = eval(innerExpression);
+							var temp = expression.substring(0, openBracketPos) + replacement + 	
+										expression.substring(i+1);
+							// alert()
+						}
+						console.log('result: %s', temp)
+						expression = temp;
+						if (Number.parseFloat(expression) !== NaN)
+							i = -1;
+						isClosed = true;
+						lnPre = false
+						expPre = false;
+					}
 				}
-				if (expression[i] == ')' && !isClosed){
-					console.log("inner part : %s", expression.substring(openBracketPos, i+1));
-					var innerExpression = expression.substring(openBracketPos, i+1);
-					if (innerExpression.indexOf('^') > -1){
-						replacePower(innerExpression, data)
+				else{
+					if(expression.indexOf('^') > -1){
+						expression = replacePower(expression, data);
+						console.log("asdasd : %s", expression)
+						i = -1;
+						continue;
 					}
-					else{
-						console.log('result: %s', eval(innerExpression))
-					}
-					isClosed = true;
-					continue;
+					var res = eval(expression)
+					// if (Number.parseFloat(res) == NaN){
+					// 		i = -1;
+					// 		console.log('result: %s', temp)
+					// }
+					// else{
+						console.log('final result: %s', res)
+						break;
+					// }
 				}
 			}
+			
+			// var openBracketPos = -1;
+			// var closeBracketPos = -1;
+			// var isClosed = true;
+			// var lnPre = false;
+			// var expPre = false;
+			// //while (expression.indexOf('('))  ???
+			// for (var i = 0; i < expression.length; i++){
+			// 	if (expression[i] == '('){
+			// 		openBracketPos = i;
+			// 		isClosed = false;
+			// 		if (i > 1 && expression.substring(0, i).lastIndexOf('ln') == i-2){
+			// 			lnPre = true;
+			// 			continue;
+			// 		}
+			// 		if (i > 2 && expression.substring(0, i).lastIndexOf('exp') == i-3){
+			// 			expPre = true;
+			// 			continue;
+			// 		}
+			// 	}
+			// 	if (expression[i] == ')' && !isClosed){
+			// 		var innerExpression = expression.substring(openBracketPos, i+1);
+			// 	}
+			// }
 		}
 	})
 
@@ -220,12 +319,12 @@ angular.module('app-output.controller', ['app-core'])
 		$scope.result = 123;
 		$scope.ccc = 100;
 		$scope.calculate = function (){
-			var a = 14;
-			var b = 17;
-			var c = 1;
-			var d = 2;
+			var a = 1;
+			var b = 2;
+			var c = 3;
+			var d = 4;
 			// mathService.calculate( $scope.trialModel , {'a': a, 'b': b, 'c': c, 'd': d});
-			mathService.calculate($scope.trialModel, {'a': a, 'bcc': b, 'c': c, 'd': d});
+			mathService.calculate($scope.trialModel, {'a': a, 'b': b, 'c': c, 'd': d, 'bcc': 5});
 		}
 	}]);
 
