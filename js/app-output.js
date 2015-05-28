@@ -106,6 +106,7 @@ angular.module('app-REPLACE.service', ['app-core'])
 		}
 
 		var replacePower = function (expression, data){
+			while(expression.indexOf('^') != -1){
 			var template = expression.match("((?:\\(?-?[0-9]+[\\.]{0,1}(?:[0-9]*)\\)?|\\(?-?[a-zA-Z\\.]+\\)?)(\\^)(?:\\(?-?[0-9]+[\\.]{0,1}(?:[0-9]*)\\)?|\\(?-?[a-zA-Z\\.]+\\)?))");
 			console.log('replacePower initial : %s; \nresult: ', expression, template)
 			try{
@@ -133,8 +134,6 @@ angular.module('app-REPLACE.service', ['app-core'])
 					return expression;
 				}
 			}
-			// finally{
-			// alert()
 				if (template[0].indexOf('(') == 0 && template[0].indexOf(')') == template[0].length-1
 					&& template[0].indexOf('(', 1) == -1){
 					var replacement = (template[0].substring(1, template[0].length-1)).split('^');
@@ -154,8 +153,8 @@ angular.module('app-REPLACE.service', ['app-core'])
 						expression.substring(template.index + template[0].length);
 				}
 				console.log('after trim : %s', expression)
+			}
 				return expression;
-			// }
 		}
 
 		var removeOpenBracket = function (expression){
