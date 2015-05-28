@@ -207,12 +207,14 @@ angular.module('app-REPLACE.service', ['app-core'])
 			var lnPre = false;
 			var expPre = false;
 			for (var i = 0; i < expression.length; i++){
+				//if there are brackets to get in
 				if (expression.indexOf('(') > -1){
 					if (expression[i] == '('){
 						openBracketPos = i;
 						isClosed = false;
 						continue;
 					}
+					//handle the most nested expression
 					if (expression[i] == ')' && !isClosed){
 						console.log("####################")
 						console.log('init expression: %s', expression)
@@ -234,19 +236,22 @@ angular.module('app-REPLACE.service', ['app-core'])
 						if(lnPre){
 							innerExpression = "Math.log(" + innerExpression + ")";
 							var replacement = eval(innerExpression);
-							var temp = expression.substring(0, openBracketPos-8) + replacement +
-										expression.substring(i+1);
+							var temp = expression.substring(0, openBracketPos-8) 
+										+ replacement 
+										+ expression.substring(i+1);
 						}
 						if(expPre){
 							innerExpression = "Math.exp(" + innerExpression + ")";
 							var replacement = eval(innerExpression);
-							var temp = expression.substring(0, openBracketPos-8) + replacement +
-										expression.substring(i+1);
+							var temp = expression.substring(0, openBracketPos-8) 
+										+ replacement 
+										+ expression.substring(i+1);
 						}
 						if(!expPre && !lnPre){
 							var replacement = eval(innerExpression);
-							var temp = expression.substring(0, openBracketPos) + replacement + 	
-										expression.substring(i+1);
+							var temp = expression.substring(0, openBracketPos) 
+										+ replacement 
+										+ expression.substring(i+1);
 						}
 						console.log('result: %s', temp)
 						expression = temp;
