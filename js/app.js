@@ -4,9 +4,9 @@
 * aggregator for all the modules
 */
 angular.module('app', ['ngRoute', 'app-core', 'app-editor', 'app-output'])
-	.run(['$log', function ($log){
-		$log.info('application initialized successfully')
-		
+	.run(['$log', '$rootScope', function ($log, $rootScope){
+		$log.info('application initialized successfully');
+		$rootScope.$broadcast('appInitialized')
 	}])
 
 	.config(['$routeProvider', function($routeProvider) {

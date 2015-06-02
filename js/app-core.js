@@ -129,7 +129,13 @@ angular.module('app-core.service', [])
 				alert('invalid element. impossible to send request to db');
 				return;
 			}
-			$http.get('resources/jsonFull.json').
+			if (element.subGroup.length == 8){
+				var fileName = "resources/capacitors.json";
+			}
+			else{
+				var fileName = "resources/micro.json";
+			}
+			$http.get(fileName).
 				success(function (response, status, headers, config){
 					element.properties = response.data.properties;
 					element.coefficients = response.data.coefficients;
@@ -161,13 +167,13 @@ angular.module('app-core.controller', ['ngRoute'])
 		})
 	}])
 
-	.controller('TreeCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService',
-	function ($scope, $controller, treeDataService, elementSelectionService, databaseService){
+	.controller('TreeCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope',
+	function ($scope, $controller, treeDataService, elementSelectionService, databaseService, $rootScope){
 		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
 		$scope.typeTrigger = {value: "module"};
 		$scope.elementData = elementSelectionService.getData();
-		$scope.elementOwner;
-		$scope.elementGroup;
+		$scope.elementOwner = $scope.elementData.owners[0];
+		$scope.elementGroup = $scope.elementData.groups[0];
 		$scope.elementName;
 		$scope.elementSubGroups;
 		$scope.elementSubGroup;
@@ -219,6 +225,7 @@ angular.module('app-core.controller', ['ngRoute'])
 		$scope.updateSubGroups = function(){
 			if ($scope.elementOwner && $scope.elementGroup){
 				$scope.elementSubGroups = elementSelectionService.getSubGroups($scope.elementGroup.groupId, $scope.elementOwner.ownerId);
+				$scope.elementSubGroup = $scope.elementSubGroups[0];
 			}
 			// else{
 			// 	// alert('specify group and owner')
@@ -257,10 +264,11 @@ angular.module('app-core.controller', ['ngRoute'])
 			}
 		}
 
-		function initCtrl (){
-				parentNode = (treeDataService.searchNode($scope.treeModel, '0')).node;
-				$scope.selectNode(null, parentNode); 
+		$scope.initHandler = function (){
+			$scope.updateSubGroups();
 		}
+
+		$rootScope.$on("appInitialized", $scope.initHandler())
 	}]);	
 
 /**
