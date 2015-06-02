@@ -1,16 +1,17 @@
-<div ng-controller="EditorCtrl" ng-init="visibilityTrigger = false"  ng-show="selectedNode.type == 'element'">
+<div ng-controller="EditorCtrl" ng-init="visibilityTrigger = false"  ng-show="selectedNode.type == 'element'" class="propertyPane">
 
-    <div ng-repeat="property in selectedNode.properties" style="border: 1px solid black">
+    <div ng-repeat="property in selectedNode.properties" class="propertyItem">
       <span ng-show="property.visible == true || visibilityTrigger == true">
-        {{property.name}}
 
         <!-- Displaying simple number field -->
         <div  ng-show="property.type == 1 || property.type == 2" >
+          {{property.name}}
           <input style ="display:inline" type="text" ng-model="property.value" ng-change="setValue(property)" ng-change="setValue(property)" ng-blur="checkValue()"> cur: {{property.value}}  def:{{property.default}}
         </div>
 
         <!-- Displaying select list -->
         <div ng-show="property.type == 4">
+          {{property.name}}
           <select ng-model="property.value" ng-options="ans.name for ans in property.answers" ng-change="selectProperty(property.value, property.answers)">
             <option></option>     
           </select>
@@ -26,7 +27,10 @@
 
     <br>
     <div>
-      Show hidden properties :<input type="checkbox" ng-model="visibilityTrigger">
+      <input type="checkbox" ng-model="visibilityTrigger"> <b>Show hidden properties</b>
     </div>
-    <button ng-click="calcCoef()">CalcCoef</button>
+    <b>Model:</b> <input style="display: inline" type="text" ng-model="selectedNode.method">
+    <button ng-click="calcCoef()" class="button button-small button-positive">Calculate</button>
+    <div><b>RESULT :</b> {{selectedNode.modelValue}}</div>
+    <div><b>INTERMEDIATE VALUES :</b> {{coefficients | json }}</div>
 </div>

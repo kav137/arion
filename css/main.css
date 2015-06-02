@@ -62,3 +62,10 @@ html, body{
 .removeMargin{
 	margin: 0;
 }
+/*editPanel properties*/
+.propertyPane{
+}
+.propertyItem{
+	margin-left:5px;
+	border-bottom: 1px solid #888888;
+}

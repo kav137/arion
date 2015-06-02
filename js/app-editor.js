@@ -8,17 +8,17 @@ angular.module('app-editor.controller', ['app-core'])
 		function ($scope, $controller, treeDataService, mathService){
 			angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
 
-			$scope.setValue = function (prop){
+			/*$scope.setValue = function (prop){
 				// alert('asd');
 				console.clear();
 				console.log(prop)
-			}
+			}*/
 
-			$scope.checkValue = function(){
+			/*$scope.checkValue = function(){
 				// isNumber?
-			}
+			}*/
 
-			$scope.selectProperty = function (answer, answers){
+			/*$scope.selectProperty = function (answer, answers){
 				angular.forEach(answers, function (item) {
 					if (item != answer){
 						item.selected = false;
@@ -29,8 +29,8 @@ angular.module('app-editor.controller', ['app-core'])
 				})
 				console.clear();
 				console.log($scope.selectedNode)
-			}
-			
+			}*/
+			$scope.coefficients;
 			//rename the method afterwards for getKeys maybe
 			$scope.calcCoef = function(){
 				var keys = [];
@@ -113,6 +113,7 @@ angular.module('app-editor.controller', ['app-core'])
 					varObj[item.key] = item.value;
 				})
 				$scope.selectedNode.modelValue = mathService.calculate($scope.selectedNode.method, varObj);
+				$scope.coefficients = varObj;
 				console.clear();
 				console.log(varObj)
 				console.log($scope.selectedNode.modelValue)

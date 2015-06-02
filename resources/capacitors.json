@@ -52,9 +52,9 @@
         "min":"0.000001",
         "visible":"false",
         "max":"10",
-        "name":"Значение константы X",
+        "name":"Значение константы H",
         "type":"1",
-        "key":"X"
+        "key":"H"
       },
       {  
         "default":"0.4",
@@ -142,7 +142,7 @@
             "name":"Возимая аппаратура",
             "properties":[  
               {  
-                "default":"4",
+                "default":"5",
                 "min":"0",
                 "visible":"false",
                 "max":"100",
