@@ -132,6 +132,8 @@ angular.module('app-core.service', [])
 			$http.get('resources/jsonFull.json').
 				success(function (response, status, headers, config){
 					element.properties = response.data.properties;
+					element.coefficients = response.data.coefficients;
+					element.method = response.data.method;
 					
 					angular.forEach(element.properties, function (prop){
 						prop.value = null;
@@ -139,6 +141,12 @@ angular.module('app-core.service', [])
 							prop.value = prop.default;
 						}
 					})
+
+					angular.forEach(element.coefficients, function (coef){
+						coef.value = null;
+					})
+
+
 				})
 		}
 	}])
@@ -193,6 +201,8 @@ angular.module('app-core.controller', ['ngRoute'])
 				databaseService.initProperties(element);
 			}
 			treeDataService.unshiftNode(parentNode, element);
+			console.log("*****tree******");
+			console.log($scope.treeModel)
 		}
 
 		//use it to select node in the tree (for further adding, removing etc.)

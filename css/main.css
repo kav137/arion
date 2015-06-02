@@ -28,13 +28,13 @@ html, body{
 
 .editPanel{
 	background-color: #DDDDDD;
-	height:50%;
+	height:80%;
 	/*flex-direction: row;*/
 }
 
 .outputPanel{
 	background-color: #aaaaaa;
-	height:50%;
+	height:20%;
 	/*flex-direction: row;*/
 }
 
