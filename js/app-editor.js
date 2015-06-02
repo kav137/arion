@@ -31,6 +31,7 @@ angular.module('app-editor.controller', ['app-core'])
 				console.log($scope.selectedNode)
 			}
 			
+			//rename the method afterwards for getKeys maybe
 			$scope.calcCoef = function(){
 				var keys = [];
 				console.clear();
@@ -92,7 +93,29 @@ angular.module('app-editor.controller', ['app-core'])
 				});
 				console.clear();
 				console.log(keys)
+				$scope.calculateCoefficients(keys)
+			}
 
+			$scope.calculateCoefficients = function (keysArray){
+				var varObj = {};
+				angular.forEach($scope.selectedNode.coefficients, function (coef){
+					angular.forEach(keysArray, function (item){
+						varObj[item.key] = item.value;
+					})
+					coef.value = mathService.calculate(coef.formula, varObj)
+				})
+				// console.log($scope.selectedNode.coefficients)
+				$scope.calculateModel(varObj);
+			}
+
+			$scope.calculateModel = function (varObj){
+				angular.forEach($scope.selectedNode.coefficients, function (item){
+					varObj[item.key] = item.value;
+				})
+				$scope.selectedNode.modelValue = mathService.calculate($scope.selectedNode.method, varObj);
+				console.clear();
+				console.log(varObj)
+				console.log($scope.selectedNode.modelValue)
 			}
 	}])
 
