@@ -69,3 +69,13 @@ html, body{
 	margin-left:5px;
 	border-bottom: 1px solid #888888;
 }
+.authForm{
+	/*position: fixed;*/
+	width: 300px;
+	height: 200px;
+	margin: 220px auto 10px auto;
+	background-color: #CCCCCC;
+	border: 2px solid #AAAAAA;
+	border-radius: 10px;
+	padding: 30px;
+}
