@@ -291,6 +291,7 @@ angular.module('app-output.controller', ['app-core'])
 			$scope.result = mathService.calculate($scope.trialModel, {'a': a, 'b': b, 'c': c, 'd': d, 'bcc': 5});
 		}
 	}]);
+ 
 
 /**
 * app-output Module
