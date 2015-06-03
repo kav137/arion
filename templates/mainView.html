@@ -1,5 +1,14 @@
-<div class="contentContainer" ng-controller="RootCtrl">
-	<div class="treePanel" ng-include="'templates/treePanel.html'"></div>
-	<div class="editPanel" ng-include="'templates/editPanel.html'"></div>
-	<div class="outputPanel" ng-include="'templates/outputPanel.html'"></div>
+<div ng-controller="RootCtrl">
+	<div ng-show="!authorization.success" class="authForm">
+		<input type="text" ng-model="authorization.userName" placeholder="Login" style="width:240px" />
+		<br>
+		<input type="text" ng-model="authorization.password" placeholder="Password" style="width:240px" />
+		<br>
+		<button class="button button-positive"style="margin-left:auto; margin-right:auto" ng-click="login()">Login</button>
+	</div>
+	<div class="contentContainer" ng-show="authorization.success">
+		<div class="treePanel" ng-include="'templates/treePanel.html'"></div>
+		<div class="editPanel" ng-include="'templates/editPanel.html'"></div>
+		<div class="outputPanel" ng-include="'templates/outputPanel.html'"></div>
+	</div>
 </div>	
