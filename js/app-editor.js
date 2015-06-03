@@ -8,31 +8,15 @@ angular.module('app-editor.controller', ['app-core'])
 		function ($scope, $controller, treeDataService, mathService){
 			angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
 
-			/*$scope.setValue = function (prop){
-				// alert('asd');
-				console.clear();
-				console.log(prop)
-			}*/
+			$scope.coefficients; //this would be stored all the coef-s and prop-s with their values
+			
+			$scope.calculateReliability = function (){
+				var keysArray = initKeys();
+				var varObj = calculateCoefficients(keysArray);
+				calculateModel(varObj);
+			}
 
-			/*$scope.checkValue = function(){
-				// isNumber?
-			}*/
-
-			/*$scope.selectProperty = function (answer, answers){
-				angular.forEach(answers, function (item) {
-					if (item != answer){
-						item.selected = false;
-					}
-					else{
-						item.selected = true;
-					}
-				})
-				console.clear();
-				console.log($scope.selectedNode)
-			}*/
-			$scope.coefficients;
-			//rename the method afterwards for getKeys maybe
-			$scope.calcCoef = function(){
+			var initKeys = function(){
 				var keys = [];
 				console.clear();
 				angular.forEach($scope.selectedNode.properties, function (item){
@@ -91,12 +75,10 @@ angular.module('app-editor.controller', ['app-core'])
 						})
 					}
 				});
-				console.clear();
-				console.log(keys)
-				$scope.calculateCoefficients(keys)
+				return keys;
 			}
 
-			$scope.calculateCoefficients = function (keysArray){
+			var calculateCoefficients = function (keysArray){
 				var varObj = {};
 				angular.forEach($scope.selectedNode.coefficients, function (coef){
 					angular.forEach(keysArray, function (item){
@@ -104,19 +86,15 @@ angular.module('app-editor.controller', ['app-core'])
 					})
 					coef.value = mathService.calculate(coef.formula, varObj)
 				})
-				// console.log($scope.selectedNode.coefficients)
-				$scope.calculateModel(varObj);
+				return varObj;
 			}
 
-			$scope.calculateModel = function (varObj){
+			var calculateModel = function (varObj){
 				angular.forEach($scope.selectedNode.coefficients, function (item){
 					varObj[item.key] = item.value;
 				})
 				$scope.selectedNode.modelValue = mathService.calculate($scope.selectedNode.method, varObj);
 				$scope.coefficients = varObj;
-				console.clear();
-				console.log(varObj)
-				console.log($scope.selectedNode.modelValue)
 			}
 	}])
 

@@ -30,7 +30,7 @@
       <input type="checkbox" ng-model="visibilityTrigger"> <b>Show hidden properties</b>
     </div>
     <b>Model:</b> <input style="display: inline" type="text" ng-model="selectedNode.method">
-    <button ng-click="calcCoef()" class="button button-small button-positive">Calculate</button>
+    <button ng-click="calculateReliability()" class="button button-small button-positive">Calculate</button>
     <div><b>RESULT :</b> {{selectedNode.modelValue}}</div>
     <div><b>INTERMEDIATE VALUES :</b> {{coefficients | json }}</div>
 </div>
