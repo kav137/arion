@@ -10,7 +10,7 @@
 			</input>
 		</form>
 		<div>
-			<span>Group : </span>
+			<span>{{ "Class" | translate }}: </span>
  			<select ng-model="elementGroup" 
  					ng-options="group.groupId for group in elementData.groups" 
  					ng-change="updateSubGroups()">

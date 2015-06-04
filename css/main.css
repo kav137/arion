@@ -4,14 +4,18 @@ html, body{
 	background-image: url("../images/texture.png")
 }
 
+@font-face {
+    font-family: cuprum;
+    src: url("fonts/cuprum/Cuprum-Bold.ttf");
+}
 .contentContainer{
-	margin: 10px auto;
-	height: 910px;
-	width: 1200px;
+	position: fixed;
+	top: 42px;
+	z-index: 2000;
+	height: calc(100% - 42px); /*header*/
+	width: 100%;
 	background-color: #CCCCCC;
-	border-radius: 15px;
 	padding:30px;
-	box-shadow: 4px 4px 30px 0px rgba(50, 49, 50, 0.87);
 }
 
 .treePanel{
@@ -68,4 +72,56 @@ html, body{
 .propertyItem{
 	margin-left:5px;
 	border-bottom: 1px solid #888888;
+}
+.authForm{
+	/*position: fixed;*/
+	width: 300px;
+	height: 200px;
+	margin: 220px auto 10px auto;
+	background-color: #CCCCCC;
+	border: 2px solid #AAAAAA;
+	border-radius: 10px;
+	padding: 30px;
+}
+.headerPanel{
+	z-index:1000;
+	position: fixed;
+	padding: 0px 5px 2px 5px;
+	left: 0px;
+	top: 0px;
+	right: 0px;
+	height: 42px;
+	background-color: #1D4E89;
+	white-space: nowrap;
+
+}
+.arionLogo{
+	position: relative;
+	left: 10px;
+	padding-right: 40px;
+	top: 6px;
+	font-size: 30px;
+	color: white;
+	font-family: cuprum;
+}
+.buttonHeader{
+	height: 40px;
+	color: white;
+	background-color: #1D4E89;
+	border: 0px;
+	left: 0px;
+	right:0px;
+	margin: 0px;
+	font-size: 13px;
+	box-shadow: 0px -2px 15px #356095;
+}
+.buttonHeader:hover{
+	background-color: #6183AC;
+}
+.buttonHeader:active{
+	background-color: #173E6E;
+}
+.floatRight{
+	float: right;
+	margin: auto 3px;
 }

@@ -19,7 +19,7 @@
       },
       {  
         "name":"Коэффициент режима работы",
-        "formula":"A*(((I/S)^H)+1)*(exp(B*(((Tn+273)/N)^G)))",
+        "formula":"A*(((I/S)^X)+1)*(exp(B*(((Tn+273)/N)^G)))",
         "key":"Kp"
       },
       {  
@@ -32,7 +32,7 @@
       {  
         "default":"5",
         "min":"0",
-        "visible":"true",
+        "visible":true,
         "max":"1000000000000",
         "name":"Ёмкость конденсатора, пФ",
         "type":"2",
@@ -41,7 +41,7 @@
       {  
         "default":"0.4",
         "min":"0",
-        "visible":"true",
+        "visible":true,
         "max":"1",
         "name":"Коэффициент эл. нагрузки по напряжению",
         "type":"2",
@@ -94,7 +94,7 @@
       },
       {  
         "default":"0.00000009885",
-        "min":"1E-15",
+        "min":"1e-15",
         "visible":"false",
         "max":"50",
         "name":"Значение константы А",
@@ -104,7 +104,7 @@
       {  
         "default":"25",
         "min":"-100",
-        "visible":"true",
+        "visible":true,
         "max":"1000",
         "name":"Фактическая рабочая температура, C",
         "type":"1",
@@ -121,7 +121,7 @@
       },
       {  
         "default":"0",
-        "visible":"true",
+        "visible":true,
         "name":"Условия эксплуатации",
         "answers":[  
           {  
@@ -142,7 +142,7 @@
             "name":"Возимая аппаратура",
             "properties":[  
               {  
-                "default":"4",
+                "default":"5",
                 "min":"0",
                 "visible":"false",
                 "max":"100",
@@ -241,7 +241,7 @@
       },
       {  
         "default":"0",
-        "visible":"true",
+        "visible":true,
         "name":"Тип приёмки",
         "answers":[  
           {  

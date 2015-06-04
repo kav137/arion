@@ -95,7 +95,7 @@ angular.module('app-core.service', [])
 				})
 		}	
 
-		this.getData = function(){
+		this.getElements = function(){
 			return eds.data;
 		}	
 
@@ -158,10 +158,26 @@ angular.module('app-core.service', [])
 	}])
 
 angular.module('app-core.controller', ['ngRoute'])
-	.controller('RootCtrl', ['$scope', 'treeDataService', 'elementSelectionService', '$rootScope', 
-		function ($scope, treeDataService, elementSelectionService, $rootScope){
+	.controller('RootCtrl', ['$scope', 'treeDataService', 'elementSelectionService', '$rootScope', '$http',
+		function ($scope, treeDataService, elementSelectionService, $rootScope, $http){
 		$scope.treeModel = treeDataService.getTree();
 		$scope.selectedNode;
+		$scope.authorization ={};
+		$scope.authorization.success = true; //require compelete rewriting
+		$scope.authorization.userName = "";
+		$scope.authorization.password = "";
+		$scope.login = function(){
+				$http.get("\\login?ul="+$scope.authorization.userName + "&up=" + $scope.authorization.password).
+					success(function (response, status, headers, config){
+						console.log(response)
+						if(response.data.auth == "true"){
+							$scope.authorization.success = true;
+						}
+						else{
+							alert('wrong credentials!')
+						}
+					})
+		}
 		$rootScope.$on('selectedNodeUpdated', function (event, args){
 			$scope.selectedNode = args;
 		})
@@ -171,7 +187,7 @@ angular.module('app-core.controller', ['ngRoute'])
 	function ($scope, $controller, treeDataService, elementSelectionService, databaseService, $rootScope){
 		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
 		$scope.typeTrigger = {value: "module"};
-		$scope.elementData = elementSelectionService.getData();
+		$scope.elementData = elementSelectionService.getElements();
 		$scope.elementOwner = $scope.elementData.owners[0];
 		$scope.elementGroup = $scope.elementData.groups[0];
 		$scope.elementName;
