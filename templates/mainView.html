@@ -1,24 +1,11 @@
 <div ng-controller="RootCtrl">
-	<div class="headerPanel">
-		<span class="arionLogo">{{'Arion' | translate}}</span>
-		<button class="buttonHeader"><i class="ion-plus"></i> {{ 'Add' | translate }} </button>
-		<button class="buttonHeader"><i class="ion-play"></i> {{ 'Calculate device' | translate }} </button>
-		<button class="buttonHeader"><i class="ion-edit"></i> {{ 'Build report' | translate }} </button>
-		<button class="buttonHeader floatRight"><i class="ion-gear-a"></i> {{ 'Logout' | translate }} </button>
-		<button class="buttonHeader floatRight"><i class="ion-gear-a"></i> {{ 'Settings' | translate }} </button> 
-	</div>
-
-	<div ng-show="!authorization.success" class="authForm">
-		<input type="text" ng-model="authorization.userName" placeholder="Login" style="width:240px" />
-		<br>
-		<input type="text" ng-model="authorization.password" placeholder="Password" style="width:240px" />
-		<br>
-		<button class="button button-positive"style="margin-left:auto; margin-right:auto" ng-click="login()">Login</button>
-	</div>
-
+	<div class="headerPanel" ng-include="'templates/header.html'"></div>
 	<div class="contentContainer" ng-show="authorization.success">
 		<div class="treePanel" ng-include="'templates/treePanel.html'"></div>
 		<div class="editPanel" ng-include="'templates/editPanel.html'"></div>
 		<div class="outputPanel" ng-include="'templates/outputPanel.html'"></div>
 	</div>
+	<div ng-show="modal" ng-include="'templates/modal.html'"></div>
+
+
 </div>	

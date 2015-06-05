@@ -1,4 +1,8 @@
 angular.module('app-core.service', [])
+	.service('appStateService', function(){
+		this.isAuthorized = false;
+		this.isModalShown = false;
+	})
 	.service('treeDataService', function (){
 		var TDS = this;
 		var tree = {};
@@ -158,8 +162,9 @@ angular.module('app-core.service', [])
 	}])
 
 angular.module('app-core.controller', ['ngRoute'])
-	.controller('RootCtrl', ['$scope', 'treeDataService', 'elementSelectionService', '$rootScope', '$http',
-		function ($scope, treeDataService, elementSelectionService, $rootScope, $http){
+	.controller('RootCtrl', ['$scope', 'treeDataService', 'elementSelectionService', '$rootScope', '$http', 'appStateService',
+		function ($scope, treeDataService, elementSelectionService, $rootScope, $http, appStateService){
+		$scope.trial = "i'm Root"
 		$scope.treeModel = treeDataService.getTree();
 		$scope.selectedNode;
 		$scope.authorization ={};
@@ -178,11 +183,114 @@ angular.module('app-core.controller', ['ngRoute'])
 						}
 					})
 		}
+		$scope.modal = false;
 		$rootScope.$on('selectedNodeUpdated', function (event, args){
 			$scope.selectedNode = args;
 		})
 	}])
+	.controller('ModalCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope',
+	function($scope, $controller, treeDataService, elementSelectionService, databaseService, $rootScope){
+		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
+		$scope.typeTrigger = {value: "element"};
+		$scope.elementData = elementSelectionService.getElements();
+		$scope.elementOwner = $scope.elementData.owners[0];
+		$scope.elementGroup = $scope.elementData.groups[0];
+		$scope.elementName;
+		$scope.elementSubGroups;
+		$scope.elementSubGroup;
 
+		$scope.addNode = function (parentNode, newId){
+			if (!parentNode){
+				parentNode = (treeDataService.searchNode($scope.treeModel, '0')).node;
+				$scope.selectNode(null, parentNode); 
+			}
+			if (parentNode.type != "module"){
+				alert("you can't add nodes to element. select module please");
+				return;
+			}
+			else{
+				if (parentNode.expanded == false){
+					alert("warning. you're triyng to add node to module, which children are hidden. expnand it to see changes")
+				}
+			}
+			if ($scope.typeTrigger.value == "element" && 
+				(!$scope.elementOwner || !$scope.elementSubGroup || !$scope.elementGroup)){
+					alert('define group, owner, subGroup')
+					return;
+			}
+			var element = {};
+			element.name = $scope.elementName? $scope.elementName : "unnamed";
+			element.type = $scope.typeTrigger.value;
+			if ($scope.typeTrigger.value == "element"){
+				element.group = $scope.elementGroup.groupId;
+				element.owner = $scope.elementOwner.ownerId;
+				element.subGroup = $scope.elementSubGroup.subGroup;
+				databaseService.initProperties(element);
+			}
+			treeDataService.unshiftNode(parentNode, element);
+			console.log("*****tree******");
+			console.log($scope.treeModel)
+		}
+
+		//use it to select node in the tree (for further adding, removing etc.)
+		$scope.selectNode = function($event, node){
+			treeDataService.selectNode(node, $scope.treeModel);
+			// $scope.selectedNode = treeDataService.getSelectedNode();
+			if($event){
+				$event.stopPropagation();
+			}
+			$scope.$emit('selectedNodeUpdated', node)
+		}
+
+		//BUG: when value of select is dropped by dependsOn value of scope.elementSubGroup is still assigned
+		$scope.updateSubGroups = function(){
+			if ($scope.elementOwner && $scope.elementGroup){
+				$scope.elementSubGroups = elementSelectionService.getSubGroups($scope.elementGroup.groupId, $scope.elementOwner.ownerId);
+				$scope.elementSubGroup = $scope.elementSubGroups[0];
+			}
+			// else{
+			// 	// alert('specify group and owner')
+			// }
+		}
+
+		$scope.expandModule = function ($event, module){
+			module.expanded = !module.expanded;
+		}
+
+		$scope.removeNode = function (nodeToDel){
+			// var nodeToDel = treeDataService.searchNode($scope.treeModel, node);
+			if (nodeToDel.localId == '0'){
+				alert("you can't remove device. choose antoher node")
+				return;
+			}
+			var result = treeDataService.searchNode($scope.treeModel, nodeToDel.localId);
+			var index = -1;
+			for (var i = result.parent.children.length - 1; i >= 0; i--) {
+				if (result.parent.children[i].localId == result.node.localId){
+					index = i;
+					break;
+				}
+			};
+			if (result.node.children && result.node.children.length >= 0){
+				if (confirm('this node possibly has children. are you sure that you want to remove it?') ){
+					delete result.parent.children.splice(index, 1);
+					$scope.selectNode(null, result.parent);
+				}
+			}
+			else{
+				if (confirm('are you sure?') ){
+					delete result.parent.children.splice(index, 1);
+					$scope.selectNode(null, result.parent);
+				}
+			}
+		}
+
+		$scope.initHandler = function (){
+			$scope.updateSubGroups();
+		}
+
+		$rootScope.$on("appInitialized", $scope.initHandler())
+	}])
 	.controller('TreeCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope',
 	function ($scope, $controller, treeDataService, elementSelectionService, databaseService, $rootScope){
 		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
