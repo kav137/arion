@@ -183,12 +183,15 @@ angular.module('app-core.controller', ['ngRoute'])
 						}
 					})
 		}
-		$scope.modal = false;
+		$scope.modal = {
+			type: undefined,
+			visible: false,
+		};
 		$rootScope.$on('selectedNodeUpdated', function (event, args){
 			$scope.selectedNode = args;
 		})
 	}])
-	.controller('ModalCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope',
+	.controller('AddElementCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope',
 	function($scope, $controller, treeDataService, elementSelectionService, databaseService, $rootScope){
 		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
 		$scope.typeTrigger = {value: "element"};

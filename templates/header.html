@@ -1,9 +1,9 @@
 <div ng-controller="HeaderCtrl">
 	<span class="arionLogo">{{'Arion' | translate}}</span>
-	<button class="buttonHeader" ng-click="addElementHeader()">
+	<button class="buttonHeader" ng-click="addElement()">
 		<i class="ion-plus"></i> {{ 'Add element' | translate }}
 	</button> 
-	<button class="buttonHeader" ng-show="modal">
+	<button class="buttonHeader" ng-click="addModule()">
 		<i class="ion-plus"></i> {{ 'Add module' | translate }} 
 	</button>
 	<button class="buttonHeader">
@@ -19,4 +19,3 @@
 		<i class="ion-gear-a"></i> {{ 'Settings' | translate }} 
 	</button> 
 </div>
-	<!-- <div ng-show="!showModal" ng-include="'templates/modal.html'"></div> -->

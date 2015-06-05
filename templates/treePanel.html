@@ -1,44 +1,4 @@
 <div ng-controller="TreeCtrl">
-
-	<div>
-		<form>
-			<input type="radio" ng-model="typeTrigger.value" value="module">
-					Module
-			</input>	
-			<input type="radio" ng-model="typeTrigger.value" value="element">
-					Element
-			</input>
-		</form>
-		<div>
-			<span>{{ "Class" | translate }}: </span>
- 			<select ng-model="elementGroup" 
- 					ng-options="group.groupId for group in elementData.groups" 
- 					ng-change="updateSubGroups()">
- 			</select>
- 		</div>
- 		<div>
- 			<span>Owner : </span>
-			<select	ng-model="elementOwner" 
-					ng-options="owner.ownerId for owner in elementData.owners"
-					ng-change="updateSubGroups()">
-			</select>
-		</div>
-		<div>
-			<span>SubGroup : </span>
-			<select ng-model="elementSubGroup" 
-					ng-options="type.subGroup for type in elementSubGroups">
-			</select>
-		</div>
-
-
-		<input type="text" ng-model="elementName" placeholder="name" style="margin:auto">
-		<div style="margin: auto">
-			<button ng-click="addNode(selectedNode, elemName)">Add node</button>
-			<button ng-click="removeNode(selectedNode)">Remove node</button>
-		</div>
-
-	</div>
-
 	<div class="treeArea">
 		<div ng-repeat="item in treeModel.children"
 		 	ng-include="'templates/treeItem.html'" 

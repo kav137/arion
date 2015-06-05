@@ -14,7 +14,12 @@ angular.module('app-i18n', ['pascalprecht.translate'])
 			'Calculate device': "Рассчитать устройство",
 			'Build report': "Составить отчет",
 			'Logout': "Выйти",
-			'Class': "Класс"
+			'Element class': "Класс компонентов",
+			'Element group': "Группа компонентов",
+			'Assessment method': "Методика расчета",
+			'Element position': "Позиционное обозначение",
+
+			'addElementModal' : 'Добавить элемент'
 		})
 		$translateProvider.preferredLanguage('ru');
 		$translateProvider.useSanitizeValueStrategy('escape');

@@ -1,9 +1,10 @@
-<div class="alphaOverlay" ng-controller="ModalCtrl">
-	<div ng-click="" class="modal">
-	<button ng-click="addNode(null, 'myAwaeasdasd')">fghjk</button>
-
-		{{trial}}
-	</div>	
+<div class="alphaOverlay" ng-click="modal.visible = false">
+	<div  ng-class="[modal.type]" class="modal" ng-click="$event.stopPropagation()">
+		<div class="modalHeader"> 
+			{{modal.type | translate}} 
+			<i class="ion-close closeModal" ng-click="modal.visible = false"></i>
+		</div>
+		<div ng-show="$parent.$parent.modal.type == 'addElementModal'" ng-include="'templates/addElementModal.html'" ng-controller="AddElementCtrl"></div>	
+	<div>
+<!-- 		{{trial}} -->
 </div>
-
-<!-- <div style="position: absolute; width: 100px; height:300px; background-color: red; z-index:999999"></div> -->

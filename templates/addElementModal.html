@@ -1,0 +1,27 @@
+<div>
+	<span>{{ "Element class" | translate }} : </span>
+		<select ng-model="elementGroup" 
+				ng-options="group.groupId for group in elementData.groups" 
+				ng-change="updateSubGroups()">
+		</select>
+	</div>
+	<div>
+		<span>{{"Assessment method" | translate}} : </span>
+	<select	ng-model="elementOwner" 
+			ng-options="owner.ownerId for owner in elementData.owners"
+			ng-change="updateSubGroups()">
+	</select>
+</div>
+<div>
+	<span>{{'Element group' | translate}} : </span>
+	<select ng-model="elementSubGroup" 
+			ng-options="type.subGroup for type in elementSubGroups">
+	</select>
+</div>
+
+
+<input type="text" ng-model="elementName" placeholder="{{'Element position' | translate}}" style="margin:auto">
+<div style="margin: auto">
+	<button ng-click="addNode(selectedNode, elemName)">Add node</button>
+	<button ng-click="removeNode(selectedNode)">Remove node</button>
+</div>

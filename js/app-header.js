@@ -7,10 +7,15 @@ angular.module('app-header.controller', ['app-core'])
 	.controller('HeaderCtrl', ['$scope', '$rootScope', '$controller', 'appStateService',
 		function($scope, $rootScope, $controller, appStateService){
 			angular.extend(this, $controller('RootCtrl', {$scope: $scope}))
-			$scope.addElementHeader = function (){
-				// alert($scope.showModal)
-				$scope.$parent.$parent.modal = true;
-				appStateService.isModalShown = true;
+
+			$scope.addElement = function (){
+				var modalConfig = {};
+				modalConfig.visible = true;
+				modalConfig.type = "addElementModal";
+				$scope.$parent.$parent.modal = modalConfig;
+			}
+			$scope.stopBubbling = function($event){
+				$event.stopPropagation();
 			}
 	}])
 
