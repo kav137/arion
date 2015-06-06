@@ -1,23 +1,20 @@
 <!-- plus-minus expanding buttons -->
 <span ng-show="item.type == 'module'"
-	class="button icon button-small removeMargin"
-	ng-class="{'ion-android-remove': item.expanded, 'ion-android-add': !item.expanded}"
+	ng-class="{'ion-chevron-down': item.expanded, 'ion-chevron-right': !item.expanded}"
 	ng-click="expandModule($event, item)">
 </span>
 
 <!-- displaying item content -->
-<span class="button button-small" 
-		ng-class="{'boldText': item.type == 'module', 'button-positive': item.selected}"> 
-	{{item.name + " " + (item.subGroup)}}
+<span 	class="treeItem"
+		ng-class="{'boldText': item.type == 'module', 'selectedItem': item.selected}"> 
+	<span style="margin:5px">{{item.name}}</span>
 </span>
 
 <!-- repeats children -->
 <span ng-show="item.expanded">
 	<div style="margin-left:31px" 
 		ng-repeat="item in item.children" 
-		style="background-color:red" 
 		ng-include="'templates/treeItem.html'" 
-		ng-click="selectNode($event, item)" 
-		ng-class="{'selectedItem': item.selected, 'deselectedItem': !item.selected}">
+		ng-click="selectNode($event, item)" >
 	</div>
 </span>

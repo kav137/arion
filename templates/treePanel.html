@@ -4,6 +4,7 @@
 	</div>	
 	<div class="treeArea" >
 		<div ng-repeat="item in treeModel.children"
+			class="treeRow"
 		 	ng-include="'templates/treeItem.html'" 
 		 	ng-click="selectNode($event, item)"
 		 	ng-show="!isShownAsList">
@@ -11,8 +12,10 @@
 		<!-- <div>{{$parent.treeAsList}}</div> -->
 		<div ng-repeat="item in $parent.treeAsList"
 			ng-click="selectNode($event, item)"
-			ng-show="isShownAsList">
-			{{item.name + " " + item.subGroup}}
+			ng-show="isShownAsList"
+			class="treeItem"
+			ng-class="{'boldText': item.type == 'module', 'selectedItem': item.selected}"> 
+			{{item.name + " [" + item.subGroup + "] "}}
 		</div>
 	</div>
 </div>

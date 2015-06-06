@@ -1,0 +1,14 @@
+<div ng-controller="AddElementCtrl" class="addElementModalContent">
+	<div class="modalContentInput">
+		{{'Element position' | translate}} : 
+		<input type="text" 
+				ng-model="elementName" 
+				placeholder="{{'Element position' | translate}}"
+				class="inputFullWidth">
+	</div>
+	<div class="centralAlign">
+		<button ng-click="addNode(selectedNode, elemName, true)" class="centralModalButton"> 
+			{{"Add" | translate}}
+		</button>
+	</div>
+</div>

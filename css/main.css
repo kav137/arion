@@ -40,26 +40,32 @@ a:-webkit-any-link {
 }
 
 .editPanel{
-	background-color: #DDDDDD;
+	background-color: #bbbbbb;
 	float:right;
 	width: calc(70% - 20px);
 	height:60%;
 }
 
 .outputPanel{
-	background-color: #aaaaaa;
-	height:40%;
+	background-color: red;
+	/*position: absolute;*/
+	width:300px;
+	/*height: 300px;*/
+	/*float:right;*/
+	/*bottom: 10px;*/
+	height:300px;
 }
 
 .selectedItem{
-	color: red;
+	background-color: #1D4E89;
+	color: white;
 }
 .deselectedItem{
 	color: black;
 }
 .treeArea{
 	background-color: #EEEEEE;
-	padding: 15px 15px 20px 25px;
+	padding: 15px 15px 20px 15px;
 	margin: 0px;
 	bottom: 30px;
 	position: absolute;
@@ -69,7 +75,7 @@ a:-webkit-any-link {
 }
 .treeSettingsArea{
 	background-color: #EEEEEE;
-	padding: 20px;
+	padding: 15px 15px 20px 15px;
 	margin: 0px;
 	top: 10px;
 	font-size: 14px;
@@ -89,7 +95,15 @@ a:-webkit-any-link {
 	margin: 0;
 }
 /*editPanel properties*/
-.propertyPane{
+.propertyPanel{
+	background-color: #EEEEEE;
+	padding: 15px 15px 20px 25px;
+	margin: 0px;
+	top: 10px;
+	position: absolute;
+	width: calc(70% - 75px);
+	height: calc(100% - 55px);
+	overflow: scroll;
 }
 .propertyItem{
 	margin-left:5px;
@@ -188,8 +202,16 @@ a:-webkit-any-link {
 	font-size: 14px; 
 	font-weight: bold;
 }
+.addModuleModal{
+	height:170px;
+	width: 500px;
+	background-color: white;
+}
 .modalContentInput{
 	padding: 4px;
+}
+.editorContentInput{
+	padding: 2px;
 }
 .inputFullWidth{
 	width: 100%;
@@ -206,4 +228,17 @@ a:-webkit-any-link {
 }
 .centralAlign{
 	text-align: center;
+}
+.treeRow{
+	height:15px;
+	margin:5px;
+}
+.treeItem{
+	padding:0px 5px;
+	border: 1px solid #CCCCCC;
+	border-radius: 5px;
+	box-shadow: 0px 0px 5px #BBBBBB;
+	/*margin-top: 10px;*/
+	outline: none;
+	/*background-color: #C2CFDF;*/
 }

@@ -20,9 +20,17 @@ angular.module('app-i18n', ['pascalprecht.translate'])
 			'Assessment method': "Методика расчета",
 			'Element position': "Позиционное обозначение",
 			'Show as list': "Отображать в виде списка элементов",
+			'Optional': "Заполнение необязательно",
+			'Model': "Модель расчета",
+			"Calculate": "Рассчитать",
+			"Show hidden properties": "Отображать скрытые свойства",
+			"Reliability": "Результат расчета: ",
+			"Coefficients": "Значение коэффициентов, учитывающихся при расчете: ",
+			"Coefficient": "Коэффициент",
 
 
-			'addElementModal' : 'Добавить элемент'
+			'addElementModal' : 'Добавить элемент',
+			'addModuleModal': 'Добавить модуль'
 		})
 		$translateProvider.preferredLanguage('ru');
 		$translateProvider.useSanitizeValueStrategy('escape');

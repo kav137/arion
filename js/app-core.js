@@ -27,7 +27,7 @@ angular.module('app-core.service', [])
 				'children': [
 					{
 						'localId': localIdCounter++,
-						'name': 'myDevice',
+						'name': 'Мое устройство',
 						'type': "module",
 						'expanded': true,
 						'selected': true,
@@ -206,7 +206,7 @@ angular.module('app-core.controller', ['ngRoute'])
 		$scope.elementSubGroups;
 		$scope.elementSubGroup;
 
-		$scope.addNode = function (parentNode, newId){
+		$scope.addNode = function (parentNode, newId, isModule){
 			if (!parentNode){
 				parentNode = (treeDataService.searchNode($scope.treeModel, '0')).node;
 				$scope.selectNode(null, parentNode); 
@@ -226,9 +226,12 @@ angular.module('app-core.controller', ['ngRoute'])
 					return;
 			}
 			var element = {};
-			element.name = $scope.elementName? $scope.elementName : "unnamed";
+			element.name = $scope.elementName? $scope.elementName : "Безымянный";
 			element.type = $scope.typeTrigger.value;
-			if ($scope.typeTrigger.value == "element"){
+			if(isModule != undefined){
+				element.type = "module"
+			}
+			if (isModule == undefined){
 				element.group = $scope.elementGroup.groupId;
 				element.owner = $scope.elementOwner.ownerId;
 				element.subGroup = $scope.elementSubGroup.subGroup;

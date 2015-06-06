@@ -14,6 +14,14 @@ angular.module('app-header.controller', ['app-core'])
 				modalConfig.type = "addElementModal";
 				$scope.$parent.$parent.modal = modalConfig;
 			}
+
+			$scope.addModule = function (){
+				var modalConfig = {};
+				modalConfig.visible = true;
+				modalConfig.type = "addModuleModal";
+				$scope.$parent.$parent.modal = modalConfig;
+			}
+			
 			$scope.stopBubbling = function($event){
 				$event.stopPropagation();
 			}
