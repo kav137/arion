@@ -19,6 +19,7 @@ angular.module('app-i18n', ['pascalprecht.translate'])
 			'Element group': "Группа компонентов",
 			'Assessment method': "Методика расчета",
 			'Element position': "Позиционное обозначение",
+			'Show as list': "Отображать в виде списка элементов",
 
 
 			'addElementModal' : 'Добавить элемент'

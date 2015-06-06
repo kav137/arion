@@ -1,8 +1,18 @@
 <div ng-controller="TreeCtrl">
-	<div class="treeArea">
+	<div class="treeSettingsArea">
+		<input type="checkbox" ng-model="isShownAsList"> {{"Show as list" | translate}}
+	</div>	
+	<div class="treeArea" >
 		<div ng-repeat="item in treeModel.children"
 		 	ng-include="'templates/treeItem.html'" 
-		 	ng-click="selectNode($event, item)">
+		 	ng-click="selectNode($event, item)"
+		 	ng-show="!isShownAsList">
 		</div>
-	</div>	
+		<!-- <div>{{$parent.treeAsList}}</div> -->
+		<div ng-repeat="item in $parent.treeAsList"
+			ng-click="selectNode($event, item)"
+			ng-show="isShownAsList">
+			{{item.name + " " + item.subGroup}}
+		</div>
+	</div>
 </div>

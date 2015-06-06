@@ -166,6 +166,8 @@ angular.module('app-core.controller', ['ngRoute'])
 		function ($scope, treeDataService, elementSelectionService, $rootScope, $http, appStateService){
 		$scope.trial = "i'm Root"
 		$scope.treeModel = treeDataService.getTree();
+		$scope.treeAsList = [];
+		
 		$scope.selectedNode;
 		$scope.authorization ={};
 		$scope.authorization.success = true; //require compelete rewriting
@@ -195,8 +197,8 @@ angular.module('app-core.controller', ['ngRoute'])
 	.controller('AddElementCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope',
 		function($scope, $controller, treeDataService, elementSelectionService, databaseService, $rootScope){
 		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
-		
-		$scope.typeTrigger = {value: "element"};
+		$scope.isShownAsList = false;
+		$scope.typeTrigger = {value: "element"}; //to be depricated
 		$scope.elementData = elementSelectionService.getElements();
 		$scope.elementOwner = $scope.elementData.owners[0];
 		$scope.elementGroup = $scope.elementData.groups[0];
@@ -231,10 +233,9 @@ angular.module('app-core.controller', ['ngRoute'])
 				element.owner = $scope.elementOwner.ownerId;
 				element.subGroup = $scope.elementSubGroup.subGroup;
 				databaseService.initProperties(element);
+				$scope.$parent.treeAsList.push(element);
 			}
 			treeDataService.unshiftNode(parentNode, element);
-			console.log("*****tree******");
-			console.log($scope.treeModel)
 		}
 
 		//use it to select node in the tree (for further adding, removing etc.)

@@ -25,33 +25,30 @@ a:-webkit-any-link {
 	position: fixed;
 	top: 42px;
 	z-index: 1;
-	height: calc(100% - 42px); /*header*/
+	height: calc(100% - 45px); /*header*/
 	width: 100%;
 	background-color: #CCCCCC;
 }
 
 .treePanel{
 	background-color: #bbbbbb;
+	position: absolute;
 	height:100%;
 	width: 30%;
-	/*margin-right:10px;*/
 	float:left;
 	padding: 10px;
-	/*margin-top: 10px;*/
-
-	/*flex-direction: row;*/
 }
 
 .editPanel{
 	background-color: #DDDDDD;
-	height:80%;
-	/*flex-direction: row;*/
+	float:right;
+	width: calc(70% - 20px);
+	height:60%;
 }
 
 .outputPanel{
 	background-color: #aaaaaa;
-	height:20%;
-	/*flex-direction: row;*/
+	height:40%;
 }
 
 .selectedItem{
@@ -62,10 +59,23 @@ a:-webkit-any-link {
 }
 .treeArea{
 	background-color: #EEEEEE;
-	padding: 15px;
-	margin: 0px 10px;
-	height:650px;
+	padding: 15px 15px 20px 25px;
+	margin: 0px;
+	bottom: 30px;
+	position: absolute;
+	width: calc(100% - 60px);
+	height: calc(100% - 170px);
 	overflow: scroll;
+}
+.treeSettingsArea{
+	background-color: #EEEEEE;
+	padding: 20px;
+	margin: 0px;
+	top: 10px;
+	font-size: 14px;
+	position: absolute;
+	width: calc(100% - 60px);
+	height: 50px;
 }
 .selectArea{
 	width:150px;
