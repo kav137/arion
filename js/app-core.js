@@ -133,6 +133,33 @@ angular.module('app-core.service', [])
 				alert('invalid element. impossible to send request to db');
 				return;
 			}
+
+			//server version
+			// /arion?cn=INDIFFERENT&gn=Слюдяные&mt=Отечественная методика
+			/*var str = "\\arion?cn=" + element.group +
+					'&gn=' + element.subGroup + "&mt=" + element.owner;
+			$http.get(encodeURI(str)).
+				success(function (response, status, headers, config){
+					element.properties = response.data.properties;
+					element.coefficients = response.data.coefficients;
+					element.method = response.data.method;
+					
+					angular.forEach(element.properties, function (prop){
+						prop.value = null;
+						if (prop.default){
+							prop.value = prop.default;
+						}
+					})
+
+					angular.forEach(element.coefficients, function (coef){
+						coef.value = null;
+					})
+				}).
+				error(function (response, status, headers, config){
+					alert("http-request error. app-core: 141")
+				})*/
+
+
 			if (element.subGroup.length == 8){
 				var fileName = "resources/capacitors.json";
 			}
@@ -174,7 +201,7 @@ angular.module('app-core.controller', ['ngRoute'])
 		$scope.authorization.userName = "";
 		$scope.authorization.password = "";
 		$scope.login = function(){
-				$http.get("\\login?ul="+$scope.authorization.userName + "&up=" + $scope.authorization.password).
+				$http.get("\\arion\\login?ul="+$scope.authorization.userName + "&up=" + $scope.authorization.password).
 					success(function (response, status, headers, config){
 						console.log(response)
 						if(response.data.auth == "true"){

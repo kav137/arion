@@ -114,10 +114,11 @@ a:-webkit-any-link {
 	width: 300px;
 	height: 200px;
 	margin: 220px auto 10px auto;
-	background-color: #CCCCCC;
-	border: 2px solid #AAAAAA;
-	border-radius: 10px;
-	padding: 30px;
+	background-color: #FFFFFF;
+	/*border: 2px solid #AAAAAA;*/
+	box-shadow: 0px 0px 100px;
+	border-radius: 0px;
+	/*padding: 30px;*/
 }
 .headerPanel{
 	z-index:1;
@@ -225,6 +226,9 @@ a:-webkit-any-link {
 	color: white;
 	border: 0px;
 	outline: none;
+}
+.centralModalButton:active{
+	background-color: #173E6E;
 }
 .centralAlign{
 	text-align: center;

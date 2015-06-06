@@ -11,9 +11,14 @@ angular.module('app-editor.controller', ['app-core'])
 			$scope.coefficients; //this would be stored all the coef-s and prop-s with their values
 			
 			$scope.calculateReliability = function (){
-				var keysArray = initKeys();
-				var varObj = calculateCoefficients(keysArray);
-				calculateModel(varObj);
+				try{
+					var keysArray = initKeys();
+					var varObj = calculateCoefficients(keysArray);
+					calculateModel(varObj);
+				}
+				catch (error){
+					alert("Необходимо заполнить все требуемые поля")
+				}
 			}
 
 			var initKeys = function(){

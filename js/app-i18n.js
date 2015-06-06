@@ -27,6 +27,10 @@ angular.module('app-i18n', ['pascalprecht.translate'])
 			"Reliability": "Результат расчета: ",
 			"Coefficients": "Значение коэффициентов, учитывающихся при расчете: ",
 			"Coefficient": "Коэффициент",
+			"Welcome": "Добро пожаловать",
+			"Log in": "Войти",
+			"Username": "Имя пользователя",
+			"Password": "Пароль",
 
 
 			'addElementModal' : 'Добавить элемент',

@@ -1,5 +1,5 @@
 <div ng-controller="RootCtrl">
-	<div class="headerPanel" ng-include="'templates/header.html'"></div>
+	<div class="headerPanel" ng-include="'templates/header.html'" ng-show="authorization.success"></div>
 	<div class="contentContainer" ng-show="authorization.success">
 		<div class="treePanel" ng-include="'templates/treePanel.html'"></div>
 		<div class="editPanel" ng-include="'templates/editPanel.html'"></div>
@@ -7,5 +7,18 @@
 	</div>
 	<div ng-show="modal.visible" ng-include="'templates/modal.html'"></div>
 
+	<div ng-show="!authorization.success" class="authForm" style="text-align:center">
+		<div class="modalHeader"> 
+			{{"Welcome" | translate}} 
+			<!-- <i class="ion-close closeModal" ng-click="modal.visible = false"></i> -->
+		</div>
+		<br>
+		<input type="text" ng-model="authorization.userName" placeholder="{{'Username' | translate }}" style="width:240px; margin:auto" />
+		<br>
+		<br>
+		<input type="text" ng-model="authorization.password" placeholder='{{"Password" |translate}}' style="width:240px; margin:auto" />
+		<br><br>
+		<button class="centralModalButton" ng-click="login()">{{"Log in" | translate}}</button>
+	</div>
 
 </div>	

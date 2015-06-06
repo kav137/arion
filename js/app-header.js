@@ -21,7 +21,13 @@ angular.module('app-header.controller', ['app-core'])
 				modalConfig.type = "addModuleModal";
 				$scope.$parent.$parent.modal = modalConfig;
 			}
-			
+			$scope.later = function (){
+				alert("Работа данной функции находится на последнем этапе тестирования. Все тестируемые функции настолько хороши, что обязательно войдут в следующий релиз")
+			}
+			$scope.logout = function(){
+				if (confirm("Вы уверены, что хотите выйти из своего аккаунта?"))
+					$scope.$parent.$parent.authorization.success = false;
+			}
 			$scope.stopBubbling = function($event){
 				$event.stopPropagation();
 			}
