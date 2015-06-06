@@ -136,9 +136,10 @@ angular.module('app-core.service', [])
 
 			//server version
 			// /arion?cn=INDIFFERENT&gn=Слюдяные&mt=Отечественная методика
-			/*var str = "\\arion?cn=" + element.group +
+			var str = "\\arion\\arion?cn=" + element.group +
 					'&gn=' + element.subGroup + "&mt=" + element.owner;
-			$http.get(encodeURI(str)).
+					console.log(str)
+			$http.get(str).
 				success(function (response, status, headers, config){
 					element.properties = response.data.properties;
 					element.coefficients = response.data.coefficients;
@@ -157,34 +158,8 @@ angular.module('app-core.service', [])
 				}).
 				error(function (response, status, headers, config){
 					alert("http-request error. app-core: 141")
-				})*/
-
-
-			if (element.subGroup.length == 8){
-				var fileName = "resources/capacitors.json";
-			}
-			else{
-				var fileName = "resources/micro.json";
-			}
-			$http.get(fileName).
-				success(function (response, status, headers, config){
-					element.properties = response.data.properties;
-					element.coefficients = response.data.coefficients;
-					element.method = response.data.method;
-					
-					angular.forEach(element.properties, function (prop){
-						prop.value = null;
-						if (prop.default){
-							prop.value = prop.default;
-						}
-					})
-
-					angular.forEach(element.coefficients, function (coef){
-						coef.value = null;
-					})
-
-
 				})
+
 		}
 	}])
 
@@ -197,7 +172,7 @@ angular.module('app-core.controller', ['ngRoute'])
 		
 		$scope.selectedNode;
 		$scope.authorization ={};
-		$scope.authorization.success = true; //require compelete rewriting
+		$scope.authorization.success = false; //require compelete rewriting
 		$scope.authorization.userName = "";
 		$scope.authorization.password = "";
 		$scope.login = function(){
