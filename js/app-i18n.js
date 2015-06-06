@@ -9,6 +9,7 @@ angular.module('app-i18n', ['pascalprecht.translate'])
 			'Arion': "АРИОН",
 			'Add element': "Добавить элемент",
 			'Add module': "Добавить модуль",
+			'Add': "Добавить",
 			'Save': "Сохранить",
 			'Settings': "Настройки",
 			'Calculate device': "Рассчитать устройство",
@@ -18,6 +19,7 @@ angular.module('app-i18n', ['pascalprecht.translate'])
 			'Element group': "Группа компонентов",
 			'Assessment method': "Методика расчета",
 			'Element position': "Позиционное обозначение",
+
 
 			'addElementModal' : 'Добавить элемент'
 		})

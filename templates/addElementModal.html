@@ -1,27 +1,44 @@
-<div>
-	<span>{{ "Element class" | translate }} : </span>
+<div ng-controller="AddElementCtrl" class="addElementModalContent">
+	<div class="modalContentInput">
+		<span>
+			{{ "Element class" | translate }} : 
+		</span>
 		<select ng-model="elementGroup" 
 				ng-options="group.groupId for group in elementData.groups" 
-				ng-change="updateSubGroups()">
+				ng-change="updateSubGroups()"
+				class="inputFullWidth">
 		</select>
 	</div>
-	<div>
-		<span>{{"Assessment method" | translate}} : </span>
-	<select	ng-model="elementOwner" 
-			ng-options="owner.ownerId for owner in elementData.owners"
-			ng-change="updateSubGroups()">
-	</select>
-</div>
-<div>
-	<span>{{'Element group' | translate}} : </span>
-	<select ng-model="elementSubGroup" 
-			ng-options="type.subGroup for type in elementSubGroups">
-	</select>
-</div>
-
-
-<input type="text" ng-model="elementName" placeholder="{{'Element position' | translate}}" style="margin:auto">
-<div style="margin: auto">
-	<button ng-click="addNode(selectedNode, elemName)">Add node</button>
-	<button ng-click="removeNode(selectedNode)">Remove node</button>
+	<div class="modalContentInput">
+		<span>
+			{{"Assessment method" | translate}} : 
+		</span>
+		<select	ng-model="elementOwner" 
+				ng-options="owner.ownerId for owner in elementData.owners"
+				ng-change="updateSubGroups()"
+				class="inputFullWidth">
+		</select>
+	</div>
+	<div class="modalContentInput">
+		<span>
+			{{'Element group' | translate}} : 
+		</span>
+		<select ng-model="elementSubGroup" 
+				ng-options="type.subGroup for type in elementSubGroups"
+				class="inputFullWidth">
+		</select>
+	</div>
+	<div class="modalContentInput">
+		{{'Element position' | translate}} : 
+		<input type="text" 
+				ng-model="elementName" 
+				placeholder="{{'Element position' | translate}}"
+				class="inputFullWidth">
+	</div>
+	<div class="centralAlign">
+		<button ng-click="addNode(selectedNode, elemName)" class="centralModalButton"> 
+			{{"Add" | translate}}
+		</button>
+		<!-- <button ng-click="removeNode(selectedNode)">Remove node</button> -->
+	</div>
 </div>

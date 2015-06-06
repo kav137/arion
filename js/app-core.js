@@ -191,9 +191,11 @@ angular.module('app-core.controller', ['ngRoute'])
 			$scope.selectedNode = args;
 		})
 	}])
+
 	.controller('AddElementCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope',
-	function($scope, $controller, treeDataService, elementSelectionService, databaseService, $rootScope){
+		function($scope, $controller, treeDataService, elementSelectionService, databaseService, $rootScope){
 		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
+		
 		$scope.typeTrigger = {value: "element"};
 		$scope.elementData = elementSelectionService.getElements();
 		$scope.elementOwner = $scope.elementData.owners[0];
@@ -297,7 +299,7 @@ angular.module('app-core.controller', ['ngRoute'])
 	.controller('TreeCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope',
 	function ($scope, $controller, treeDataService, elementSelectionService, databaseService, $rootScope){
 		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
-		$scope.typeTrigger = {value: "module"};
+		/*$scope.typeTrigger = {value: "module"};
 		$scope.elementData = elementSelectionService.getElements();
 		$scope.elementOwner = $scope.elementData.owners[0];
 		$scope.elementGroup = $scope.elementData.groups[0];
@@ -336,7 +338,7 @@ angular.module('app-core.controller', ['ngRoute'])
 			treeDataService.unshiftNode(parentNode, element);
 			console.log("*****tree******");
 			console.log($scope.treeModel)
-		}
+		}*/
 
 		//use it to select node in the tree (for further adding, removing etc.)
 		$scope.selectNode = function($event, node){
@@ -349,15 +351,12 @@ angular.module('app-core.controller', ['ngRoute'])
 		}
 
 		//BUG: when value of select is dropped by dependsOn value of scope.elementSubGroup is still assigned
-		$scope.updateSubGroups = function(){
+		/*$scope.updateSubGroups = function(){
 			if ($scope.elementOwner && $scope.elementGroup){
 				$scope.elementSubGroups = elementSelectionService.getSubGroups($scope.elementGroup.groupId, $scope.elementOwner.ownerId);
 				$scope.elementSubGroup = $scope.elementSubGroups[0];
 			}
-			// else{
-			// 	// alert('specify group and owner')
-			// }
-		}
+		}*/
 
 		$scope.expandModule = function ($event, module){
 			module.expanded = !module.expanded;
@@ -391,11 +390,11 @@ angular.module('app-core.controller', ['ngRoute'])
 			}
 		}
 
-		$scope.initHandler = function (){
+		/*$scope.initHandler = function (){
 			$scope.updateSubGroups();
 		}
 
-		$rootScope.$on("appInitialized", $scope.initHandler())
+		$rootScope.$on("appInitialized", $scope.initHandler())*/
 	}]);	
 
 /**

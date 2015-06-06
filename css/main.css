@@ -151,11 +151,7 @@ a:-webkit-any-link {
 .modal{
 	margin: 80px auto;	
 	box-shadow: 0px 0px 100px;
-}
-.addElementModal{
-	height: 400px;
-	width: 700px;
-	background-color: white
+	/*padding: 30px;*/
 }
 .modalHeader{
 	height: 30px;
@@ -171,4 +167,33 @@ a:-webkit-any-link {
 .closeModal{
 	margin-right: 10px;
 	float: right;
+}
+.addElementModal{
+	height: 300px;
+	width: 500px;
+	background-color: white
+}
+.addElementModalContent{
+	padding: 10px 30px 30px 30px;
+	font-size: 14px; 
+	font-weight: bold;
+}
+.modalContentInput{
+	padding: 4px;
+}
+.inputFullWidth{
+	width: 100%;
+}
+.centralModalButton{
+	height: 35px;
+	padding: 2px 9px;
+	font-size: 15px;
+	margin: 6px auto 3px auto;
+	background-color: #1D4E89;
+	color: white;
+	border: 0px;
+	outline: none;
+}
+.centralAlign{
+	text-align: center;
 }
