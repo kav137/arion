@@ -134,9 +134,42 @@ angular.module('app-core.service', [])
 				return;
 			}
 
+			//client version
+			if (element.subGroup.length == 8){
+				var fileName = "resources/capacitors.json";
+			}
+			else{
+				var fileName = "resources/micro.json";
+			}
+			$http.get(fileName).
+				success(function (response, status, headers, config){
+					element.properties = response.data.properties;
+					element.coefficients = response.data.coefficients;
+					element.method = response.data.method;
+					
+					//initializing default values
+					angular.forEach(element.properties, function (prop){
+						prop.value = null;
+						if (prop.default){
+							if (prop.type == "1" || prop.type == "2"){
+								prop.value = prop.default;
+							}
+							if (prop.type == "4"){
+								prop.value = prop.answers[parseInt(prop.default)];
+							}
+						}
+					})
+
+					angular.forEach(element.coefficients, function (coef){
+						coef.value = null;
+					})
+				})
+
 			//server version
 			// /arion?cn=INDIFFERENT&gn=Слюдяные&mt=Отечественная методика
-			var str = "\\arion\\arion?cn=" + element.group +
+			// do not escape characters
+			
+			/*var str = "\\arion\\arion?cn=" + element.group +
 					'&gn=' + element.subGroup + "&mt=" + element.owner;
 					console.log(str)
 			$http.get(str).
@@ -158,7 +191,7 @@ angular.module('app-core.service', [])
 				}).
 				error(function (response, status, headers, config){
 					alert("http-request error. app-core: 141")
-				})
+				})*/
 
 		}
 	}])
@@ -172,7 +205,7 @@ angular.module('app-core.controller', ['ngRoute'])
 		
 		$scope.selectedNode;
 		$scope.authorization ={};
-		$scope.authorization.success = false; //require compelete rewriting
+		$scope.authorization.success = true; //require compelete rewriting
 		$scope.authorization.userName = "";
 		$scope.authorization.password = "";
 		$scope.login = function(){
@@ -305,46 +338,6 @@ angular.module('app-core.controller', ['ngRoute'])
 	.controller('TreeCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope',
 	function ($scope, $controller, treeDataService, elementSelectionService, databaseService, $rootScope){
 		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
-		/*$scope.typeTrigger = {value: "module"};
-		$scope.elementData = elementSelectionService.getElements();
-		$scope.elementOwner = $scope.elementData.owners[0];
-		$scope.elementGroup = $scope.elementData.groups[0];
-		$scope.elementName;
-		$scope.elementSubGroups;
-		$scope.elementSubGroup;
-
-		$scope.addNode = function (parentNode, newId){
-			if (!parentNode){
-				parentNode = (treeDataService.searchNode($scope.treeModel, '0')).node;
-				$scope.selectNode(null, parentNode); 
-			}
-			if (parentNode.type != "module"){
-				alert("you can't add nodes to element. select module please");
-				return;
-			}
-			else{
-				if (parentNode.expanded == false){
-					alert("warning. you're triyng to add node to module, which children are hidden. expnand it to see changes")
-				}
-			}
-			if ($scope.typeTrigger.value == "element" && 
-				(!$scope.elementOwner || !$scope.elementSubGroup || !$scope.elementGroup)){
-					alert('define group, owner, subGroup')
-					return;
-			}
-			var element = {};
-			element.name = $scope.elementName? $scope.elementName : "unnamed";
-			element.type = $scope.typeTrigger.value;
-			if ($scope.typeTrigger.value == "element"){
-				element.group = $scope.elementGroup.groupId;
-				element.owner = $scope.elementOwner.ownerId;
-				element.subGroup = $scope.elementSubGroup.subGroup;
-				databaseService.initProperties(element);
-			}
-			treeDataService.unshiftNode(parentNode, element);
-			console.log("*****tree******");
-			console.log($scope.treeModel)
-		}*/
 
 		//use it to select node in the tree (for further adding, removing etc.)
 		$scope.selectNode = function($event, node){
@@ -355,14 +348,6 @@ angular.module('app-core.controller', ['ngRoute'])
 			}
 			$scope.$emit('selectedNodeUpdated', node)
 		}
-
-		//BUG: when value of select is dropped by dependsOn value of scope.elementSubGroup is still assigned
-		/*$scope.updateSubGroups = function(){
-			if ($scope.elementOwner && $scope.elementGroup){
-				$scope.elementSubGroups = elementSelectionService.getSubGroups($scope.elementGroup.groupId, $scope.elementOwner.ownerId);
-				$scope.elementSubGroup = $scope.elementSubGroups[0];
-			}
-		}*/
 
 		$scope.expandModule = function ($event, module){
 			module.expanded = !module.expanded;
@@ -395,12 +380,6 @@ angular.module('app-core.controller', ['ngRoute'])
 				}
 			}
 		}
-
-		/*$scope.initHandler = function (){
-			$scope.updateSubGroups();
-		}
-
-		$rootScope.$on("appInitialized", $scope.initHandler())*/
 	}]);	
 
 /**

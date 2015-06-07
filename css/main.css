@@ -246,3 +246,6 @@ a:-webkit-any-link {
 	outline: none;
 	/*background-color: #C2CFDF;*/
 }
+.italicText{
+	font-style: italic;
+}

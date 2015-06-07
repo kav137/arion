@@ -2,7 +2,7 @@
   <div ng-controller="EditorCtrl" ng-init="visibilityTrigger = false"  ng-show="selectedNode.type == 'element'" class="propertyPanelContent">
 
       <div ng-repeat="property in selectedNode.properties" >
-        <span ng-show="property.visible == 'true' || visibilityTrigger == true" >
+        <span ng-show="property.visible == 'true' || visibilityTrigger == true" ng-class="{'italicText' : property.visible == 'false'}">
 
           <!-- Displaying simple number field -->
           <div  ng-show="property.type == 1 || property.type == 2" class="editorContentInput">
