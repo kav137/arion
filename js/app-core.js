@@ -47,6 +47,19 @@ angular.module('app-core.service', [])
 			// parentNode.children.push(element);
 			parentNode.children.unshift(element);
 		} 
+
+		this.getChildrenArray = function(parentNode){
+			var outArray = [];
+			angular.forEach(parentNode.children, function(child){
+				if(child.type == 'element'){
+					outArray.push(child);
+				}
+				if(child.type == 'module'){
+					outArray = outArray.concat(TDS.getChildrenArray(child))
+				}
+			});
+			return outArray;
+		}
 		
 		this.searchNode = function (parentNode, arglocalId){
 			var outNode = {};
@@ -171,7 +184,7 @@ angular.module('app-core.service', [])
 			
 			/*var str = "\\arion\\arion?cn=" + element.group +
 					'&gn=' + element.subGroup + "&mt=" + element.owner;
-					console.log(str)
+					// console.log(str)
 			$http.get(str).
 				success(function (response, status, headers, config){
 					element.properties = response.data.properties;
@@ -220,7 +233,7 @@ angular.module('app-core.controller', ['ngRoute'])
 		$scope.login = function(){
 				$http.get("\\arion\\login?ul="+$scope.authorization.userName + "&up=" + $scope.authorization.password).
 					success(function (response, status, headers, config){
-						console.log(response)
+						// console.log(response)
 						if(response.data.auth == "true"){
 							$scope.authorization.success = true;
 						}

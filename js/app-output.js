@@ -8,14 +8,14 @@ angular.module('app-REPLACE.service', ['app-core'])
 		var MS = this;
 
 		this.calculate = function (expression, data){
-			console.clear();
-			console.log('calculate starts, input expression : %s', expression);
+			// // console.clear();
+			// // console.log('calculate starts, input expression : %s', expression);
 			checkSafety(expression);
 			checkBrackets(expression);
 			expression = replaceCommas(expression)
 			expression = replaceOperations(expression);
 			expression = replaceVariables(expression, data);
-			console.log("START CALCULATION")
+			// // console.log("START CALCULATION")
 			var result = initCalculation(expression, data);
 			return result;
 		}
@@ -38,7 +38,7 @@ angular.module('app-REPLACE.service', ['app-core'])
 			if (counter != 0){
 				throw "A01::mathService.checkBrackets: incorrect expression. excess opening bracket"
 			}
-			console.log('checkBrackets success')
+			// // console.log('checkBrackets success')
 		}
 
 		var checkSafety = function (expression){
@@ -49,14 +49,14 @@ angular.module('app-REPLACE.service', ['app-core'])
 					throw "A01::mathService.checkSafety: unsafe expression to be evaluated"
 				}
 			})
-			console.log('checkSafety success')
+			// // console.log('checkSafety success')
 		}
 
 		var replaceCommas = function (expression){
 			while (expression.indexOf(',') > -1){
 				expression = expression.replace(',', '.');
 			}
-			console.log('replaceCommas success. out expression: %s', expression);
+			// // console.log('replaceCommas success. out expression: %s', expression);
 			return expression;
 		}
 
@@ -77,14 +77,14 @@ angular.module('app-REPLACE.service', ['app-core'])
 					expression = begin + "data." + end;
 				}
 			})
-			console.log('replaceVariables success. out expression: %s', expression);
+			// // console.log('replaceVariables success. out expression: %s', expression);
 			return expression;
 		}
 
 		var replaceOperations = function (expression) {
 			expression = replaceLn(expression);
 			expression = replaceExp(expression);
-			console.log('replaceOperations success. out expression: %s', expression);
+			// // console.log('replaceOperations success. out expression: %s', expression);
 			return expression;
 		}
 
@@ -107,10 +107,10 @@ angular.module('app-REPLACE.service', ['app-core'])
 		}
 
 		var replacePower = function (expression, data){
-			console.log("innerExpression : %s", expression)
+			// // console.log("innerExpression : %s", expression)
 			while(expression.indexOf('^') != -1){
 				var template = expression.match("((?:\\(?-?([0-9]+([\.][0-9]+)?e\-?[0-9]+)\\)?|\\(?-?[0-9]+[\\.]{0,1}(?:[0-9]*)\\)?|\\(?-?[a-zA-Z\\.]+\\)?)(\\^)(?:\\(?-?([0-9]+([\.][0-9]+)?e\-?[0-9]+)\\)?|\\(?-?[0-9]+[\\.]{0,1}(?:[0-9]*)\\)?|\\(?-?[a-zA-Z\\.]+\\)?))");
-				console.log('replacePower match result : ', template)
+				// // console.log('replacePower match result : ', template)
 				try{   
 					checkBrackets(template[0]);
 				}
@@ -124,7 +124,7 @@ angular.module('app-REPLACE.service', ['app-core'])
 						expression = expression.substring(0, template.index) +
 							"(" + result +
 							expression.substring(template.index + template[0].length);
-						console.log('power execution result: %s', expression);
+						// // console.log('power execution result: %s', expression);
 						continue;
 					}
 					//handling 'xxx^xxx)' case
@@ -136,7 +136,7 @@ angular.module('app-REPLACE.service', ['app-core'])
 						expression = expression.substring(0, template.index) +
 							result + ")" +
 							expression.substring(template.index + template[0].length);
-						console.log('power execution result: %s', expression);
+						// // console.log('power execution result: %s', expression);
 						continue;
 					}
 				}
@@ -154,7 +154,7 @@ angular.module('app-REPLACE.service', ['app-core'])
 				expression = expression.substring(0, template.index) +
 					"(" + result + ")" +
 					expression.substring(template.index + template[0].length);
-				console.log('power execution result: %s', expression)
+				// // console.log('power execution result: %s', expression)
 			}
 			return expression;
 		}
@@ -197,7 +197,7 @@ angular.module('app-REPLACE.service', ['app-core'])
 			if (closeBracketPos != -1){
 				expression = expression.substring(0, closeBracketPos) + 
 					expression.substring(closeBracketPos + 1, expression.length);
-				console.log('trimmed (close removed): %s', expression)
+				// // console.log('trimmed (close removed): %s', expression)
 			}
 			return expression;
 		}
@@ -217,10 +217,10 @@ angular.module('app-REPLACE.service', ['app-core'])
 					}
 					//handle the most nested expression
 					if (expression[i] == ')' && !isClosed){
-						console.log("####################")
-						console.log('init expression: %s', expression)
+						// // console.log("####################")
+						// // console.log('init expression: %s', expression)
 						var innerExpression = expression.substring(openBracketPos, i+1);
-						console.log("inner part : %s", innerExpression);
+						// // console.log("inner part : %s", innerExpression);
 						if (i > 2 && expression.substring(0, openBracketPos).lastIndexOf('log') != -1 &&
 								expression.substring(0, openBracketPos).lastIndexOf('log') == 
 								expression.substring(0, openBracketPos).length-3 ){
@@ -254,7 +254,7 @@ angular.module('app-REPLACE.service', ['app-core'])
 										+ replacement 
 										+ expression.substring(i+1);
 						}
-						console.log('result: %s', temp)
+						// // console.log('result: %s', temp)
 						expression = temp;
 						if (Number.parseFloat(expression) !== NaN)
 							i = -1;
@@ -268,7 +268,7 @@ angular.module('app-REPLACE.service', ['app-core'])
 						expression = replacePower(expression, data);
 					}
 					var res = eval(expression)
-					console.log('final result: %f', res)
+					// // console.log('final result: %f', res)
 					return res;
 				}
 			}

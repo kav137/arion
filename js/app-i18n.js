@@ -28,6 +28,8 @@ angular.module('app-i18n', ['pascalprecht.translate'])
 			"Calculate": "Рассчитать",
 			"Show hidden properties": "Отображать скрытые свойства",
 			"Reliability": "Результат расчета: ",
+			'Module reliability': "Результат расчета по выбранному модулю : ",
+			"Nested elements quantity": "Количество элементов, входящих в модуль : ",
 			"Coefficients": "Значение коэффициентов, учитывающихся при расчете: ",
 			"Coefficient": "Коэффициент",
 			"Welcome": "Добро пожаловать",

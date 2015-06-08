@@ -4,8 +4,8 @@
 * Description
 */
 angular.module('app-header.controller', ['app-core'])
-	.controller('HeaderCtrl', ['$scope', '$rootScope', '$controller', 'appStateService',
-		function($scope, $rootScope, $controller, appStateService){
+	.controller('HeaderCtrl', ['$scope', '$rootScope', '$controller', 'appStateService', 'treeDataService',
+		function($scope, $rootScope, $controller, appStateService, treeDataService){
 			angular.extend(this, $controller('RootCtrl', {$scope: $scope}))
 
 			$scope.addElement = function (){
@@ -22,6 +22,9 @@ angular.module('app-header.controller', ['app-core'])
 				$scope.$parent.$parent.modal = modalConfig;
 			}
 			$scope.later = function (){
+				var test = treeDataService.getChildrenArray($scope.$parent.$parent.selectedNode);
+				// console.clear();
+				// console.log(test)
 				alert("Работа данной функции находится на последнем этапе тестирования. Все тестируемые функции настолько хороши, что обязательно войдут в следующий релиз")
 			}
 			$scope.logout = function(){

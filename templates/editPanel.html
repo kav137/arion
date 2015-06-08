@@ -27,8 +27,8 @@
       </tr>      
     </table>
 
-    <br>
     <div ng-show="selectedNode.type == 'element'">
+      <br>
       <table class="editTable">
         <caption>
           <b>{{"Element properties" | translate}}</b>
@@ -97,6 +97,28 @@
           </i>
         </div>
       </div>
+    </div>
+
+    <div ng-show="selectedNode.type == 'module'">
+      <button ng-click="calculateReliability()" class="centralModalButton">
+        {{"Calculate"| translate}}
+      </button>
+      <button ng-click="removeNode(selectedNode)" class="centralModalButton">
+        {{"Remove"| translate}}
+      </button>
+      <span ng-show="selectedNode.summaryModelValue != undefined">
+        <hr>
+        <div>
+          <b>
+            {{('Module reliability'| translate) + selectedNode.summaryModelValue}}
+          </b>
+        </div>
+        <div>
+          <b>
+            {{("Nested elements quantity"| translate) + selectedNode.summaryModelQuantity}}
+            </b>
+        </div>
+      </span>
     </div>
   </div>
 </div>

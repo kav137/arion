@@ -9,8 +9,30 @@ angular.module('app-editor.controller', ['app-core'])
 			angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
 
 			$scope.coefficients; //this would be stored all the coef-s and prop-s with their values
-			
-			$scope.calculateReliability = function (){
+			$scope.calculateReliability = function(){
+				var backupSelected = $scope.selectedNode;
+
+				if($scope.selectedNode.type == "element"){
+					$scope.calculateElementReliability();
+				}
+				if($scope.selectedNode.type == "module"){
+					var summary = 0;
+					var children = treeDataService.getChildrenArray($scope.selectedNode);
+					angular.forEach(children, function(child){
+						$scope.selectNode(null, child);
+						if(child.modelValue == undefined){
+							$scope.calculateElementReliability();
+						}
+						console.log($scope.selectedNode.modelValue)
+						summary = summary + $scope.selectedNode.modelValue;	
+					})
+					$scope.selectNode(null, backupSelected)
+					$scope.selectedNode.summaryModelValue = summary;
+					$scope.selectedNode.summaryModelQuantity = children.length;
+				}
+				// console.clear()
+			}
+			$scope.calculateElementReliability = function (){
 				try{
 					var keysArray = initKeys();
 					var varObj = calculateCoefficients(keysArray);
@@ -23,7 +45,7 @@ angular.module('app-editor.controller', ['app-core'])
 
 			var initKeys = function(){
 				var keys = [];
-				console.clear();
+				// // console.clear();
 				angular.forEach($scope.selectedNode.properties, function (item){
 					//handling number inputs
 					if (item.type == 2 || item.type == 1){
