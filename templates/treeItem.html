@@ -7,7 +7,10 @@
 <!-- displaying item content -->
 <span 	class="treeItem"
 		ng-class="{'boldText': item.type == 'module', 'selectedItem': item.selected}"> 
-	<span style="margin:5px">{{item.name}}</span>
+	<span style="margin:5px">
+		{{item.name}} 
+		{{item.position? "(" + item.position + ")" : ""}}
+	</span>
 </span>
 
 <!-- repeats children -->

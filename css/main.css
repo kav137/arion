@@ -102,7 +102,7 @@ a:-webkit-any-link {
 	top: 10px;
 	position: absolute;
 	width: calc(70% - 75px);
-	height: calc(100% - 55px);
+	height: calc(60% - 55px);
 	overflow: scroll;
 }
 .propertyItem{
@@ -194,7 +194,7 @@ a:-webkit-any-link {
 	float: right;
 }
 .addElementModal{
-	height: 300px;
+	height: 330px;
 	width: 500px;
 	background-color: white
 }
@@ -204,7 +204,7 @@ a:-webkit-any-link {
 	font-weight: bold;
 }
 .addModuleModal{
-	height:170px;
+	height:200px;
 	width: 500px;
 	background-color: white;
 }
@@ -242,10 +242,18 @@ a:-webkit-any-link {
 	border: 1px solid #CCCCCC;
 	border-radius: 5px;
 	box-shadow: 0px 0px 5px #BBBBBB;
+	white-space: nowrap;
 	/*margin-top: 10px;*/
 	outline: none;
 	/*background-color: #C2CFDF;*/
 }
 .italicText{
 	font-style: italic;
+}
+.editTable{
+	/*border: 1px solid black;*/
+}
+table{
+    /*border: 1px solid black;*/
+    padding:2px;
 }

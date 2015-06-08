@@ -4,8 +4,8 @@
 * Description
 */
 angular.module('app-editor.controller', ['app-core'])
-	.controller('EditorCtrl', ['$scope', '$controller', 'treeDataService', 'mathService',
-		function ($scope, $controller, treeDataService, mathService){
+	.controller('EditorCtrl', ['$scope', '$controller', 'treeDataService', 'mathService', "$filter",
+		function ($scope, $controller, treeDataService, mathService, $filter){
 			angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
 
 			$scope.coefficients; //this would be stored all the coef-s and prop-s with their values
@@ -100,6 +100,36 @@ angular.module('app-editor.controller', ['app-core'])
 				})
 				$scope.selectedNode.modelValue = mathService.calculate($scope.selectedNode.method, varObj);
 				$scope.coefficients = varObj;
+			}
+
+			$scope.removeNode = function (nodeToDel){
+				// var nodeToDel = treeDataService.searchNode($scope.treeModel, node);
+				if (nodeToDel.localId == '0'){
+					alert("you can't remove device. choose antoher node")
+					return;
+				}
+				var result = treeDataService.searchNode($scope.treeModel, nodeToDel.localId);
+				var resultFromArray = $filter('filter')($scope.$parent.$parent.treeAsList, {localId: '!' + nodeToDel.localId})
+				$scope.$parent.$parent.treeAsList = resultFromArray; //removing form list
+				var index = -1;
+				for (var i = result.parent.children.length - 1; i >= 0; i--) {
+					if (result.parent.children[i].localId == result.node.localId){
+						index = i;
+						break;
+					}
+				};
+				if (result.node.children && result.node.children.length >= 0){
+					if (confirm('this node possibly has children. are you sure that you want to remove it?') ){
+						delete result.parent.children.splice(index, 1);
+						$scope.selectNode(null, result.parent);
+					}
+				}
+				else{
+					if (confirm('are you sure?') ){
+						delete result.parent.children.splice(index, 1);
+						$scope.selectNode(null, result.parent);
+					}
+				}
 			}
 	}])
 
