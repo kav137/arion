@@ -208,6 +208,16 @@ a:-webkit-any-link {
 	width: 500px;
 	background-color: white;
 }
+.searchElementModal{
+	height: 200px;
+	width: 500px;
+	background-color: white;	
+}
+.searchElementModalContent{
+	padding: 10px 30px 30px 30px;
+	font-size: 14px; 
+	font-weight: bold;
+}
 .modalContentInput{
 	padding: 4px;
 }

@@ -1,0 +1,50 @@
+<div  class="searchElementModalContent" ng-controller="TreeCtrl">
+	<!-- <div class="modalContentInput">
+		<span>
+			{{ "Element class" | translate }} : 
+		</span>
+		<select ng-model="$parent.$parent.$parent.elementGroup" 
+				ng-options="group.groupId for group in elementData.groups" 
+				ng-change="updateSubGroups()"
+				class="inputFullWidth">
+		</select>
+	</div>
+	<div class="modalContentInput">
+		<span>
+			{{"Assessment method" | translate}} : 
+		</span>
+		<select	ng-model="elementOwner" 
+				ng-options="owner.ownerId for owner in elementData.owners"
+				ng-change="updateSubGroups()"
+				class="inputFullWidth">
+		</select>
+	</div>
+	<div class="modalContentInput">
+		<span>
+			{{'Element group' | translate}} : 
+		</span>
+		<select ng-model="elementSubGroup" 
+				ng-options="type.subGroup for type in elementSubGroups"
+				class="inputFullWidth">
+		</select>
+	</div> -->
+	<div class="modalContentInput">
+		{{'Element name' | translate}} : 
+		<input type="text" 
+				ng-model="searchName" 
+				placeholder="{{'Element name' | translate}}"
+				class="inputFullWidth">
+	</div>
+	<div class="modalContentInput">
+		{{'Element position' | translate}} : 
+		<input type="text" 
+				ng-model="searchPosition" 
+				placeholder="{{'Element position' | translate}}"
+				class="inputFullWidth">
+	</div>
+	<div class="centralAlign">
+		<button ng-click="search()" class="centralModalButton"> 
+			{{"Search" | translate}}
+		</button>
+	</div>
+</div>

@@ -230,6 +230,9 @@ angular.module('app-core.controller', ['ngRoute'])
 			visible: false,
 		};
 
+		//settings data
+		
+
 		$scope.login = function(){
 				$http.get("\\arion\\login?ul="+$scope.authorization.userName + "&up=" + $scope.authorization.password).
 					success(function (response, status, headers, config){
@@ -328,9 +331,45 @@ angular.module('app-core.controller', ['ngRoute'])
 
 		$rootScope.$on("appInitialized", $scope.initHandler())
 	}])
-	.controller('TreeCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope',
-	function ($scope, $controller, treeDataService, elementSelectionService, databaseService, $rootScope){
+	.controller('TreeCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope', '$filter',
+	function ($scope, $controller, treeDataService, elementSelectionService, databaseService, $rootScope, $filter){
 		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
+
+		$scope.searchName;
+		$scope.searchPosition;
+
+		$scope.filterSettings ={};
+		$scope.filterSettings.displayName;
+		$scope.filterSettings.displayPosition;
+		$scope.filterSettings.displayClass;
+		$scope.filterSettings.displayType;
+		$scope.filterSettings.displayReliability;
+
+		$scope.initFiltering = function(){
+			$scope.$parent.modal.visible = true;
+			$scope.$parent.modal.type = "filterTreeModal";
+		}
+		$scope.initSearch = function(){
+			$scope.$parent.modal.visible = true;
+			$scope.$parent.modal.type = "searchElementModal";
+		}
+
+		$scope.search = function(){
+			var result = $filter('filter')($scope.$parent.treeAsList, {'name': $scope.searchName, 'position': $scope.searchPosition});
+			if(result.length == 1){
+				$scope.selectNode(null, result[0]);
+				$scope.$parent.modal.visible = false;
+			}
+			else{
+				if (result.length == 0){
+					alert($filter('translate')('Nothing found'))
+				}
+				else{
+					alert($filter('translate')('Too much elements found'))
+				}
+				return;
+			}
+		}
 
 		$scope.expandModule = function ($event, module){
 			module.expanded = !module.expanded;

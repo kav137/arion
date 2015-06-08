@@ -12,6 +12,7 @@ angular.module('app-i18n', ['pascalprecht.translate'])
 			'Add': "Добавить",
 			'Save': "Сохранить",
 			'Remove': "Удалить",
+			'Search': "Поиск",
 			'Settings': "Настройки",
 			'Calculate device': "Рассчитать устройство",
 			'Build report': "Составить отчет",
@@ -36,8 +37,13 @@ angular.module('app-i18n', ['pascalprecht.translate'])
 			"Log in": "Войти",
 			"Username": "Имя пользователя",
 			"Password": "Пароль",
+			"Search element": "Поиск элемента",
+			"Sorting and filtering": "Cортировка и фильтрация",
+			'Nothing found': "По вашему запросу не найдено ни одного элемента",
+			'Too much elements found': "По вашему запросу найдено более одного элемента. Уточните, пожалуйста, данные поиска",
 
 
+			"searchElementModal": "Поиск элемента",
 			'addElementModal' : 'Добавить элемент',
 			'addModuleModal': 'Добавить модуль'
 		})
