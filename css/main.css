@@ -47,10 +47,10 @@ a:-webkit-any-link {
 }
 
 .outputPanel{
-	/*background-color: red;*/
+	background-color: #bbbbbb;
 	float:right;
-	/*width: calc(70% - 100px);*/
-	/*height:60%;*/
+	width: calc(70% - 20px);
+	height:40%;/
 }
 
 .selectedItem{
@@ -103,7 +103,7 @@ a:-webkit-any-link {
 	overflow: scroll;
 }
 .chartsPanel{
-	background-color: yellow;
+	background-color: #EEEEEE;
 	padding: 15px 15px 20px 25px;
 	margin: 0px;
 	top: 10px;
@@ -112,7 +112,7 @@ a:-webkit-any-link {
 	bottom: 0px;
 	top: 60%;
 	width: calc(70% - 75px);
-	height: calc(60% - 55px);
+	height: calc(40% - 45px);
 	overflow: scroll;
 }
 .propertyItem{

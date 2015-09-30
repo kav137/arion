@@ -27,6 +27,64 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1077,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app-core.js",
+			"settings":
+			{
+				"buffer_size": 11261,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/outputPanel.html",
+			"settings":
+			{
+				"buffer_size": 174,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/editPanel.html",
+			"settings":
+			{
+				"buffer_size": 4458,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 6672 files for \"propertyPanelContent\"\n\nD:\\Projects\\A01\\templates\\editPanel.html:\n    1  <div class=\"propertyPanel\">\n    2:   <div ng-controller=\"EditorCtrl\" ng-init=\"visibilityTrigger = false\" class=\"propertyPanelContent\">\n    3  \n    4      <!-- table for name and position editing -->\n\n1 match in 1 file\n",
+			"settings":
+			{
+				"buffer_size": 316,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "templates/mainView.html",
+			"settings":
+			{
+				"buffer_size": 1134,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "css/main.css",
+			"settings":
+			{
+				"buffer_size": 4607,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -35,10 +93,14 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 150.0,
-		"last_filter": "jsh",
+		"height": 392.0,
+		"last_filter": "js",
 		"selected_items":
 		[
+			[
+				"js",
+				"JSHint"
+			],
 			[
 				"jsh",
 				"JSHint"
@@ -77,7 +139,7 @@
 	"distraction_free":
 	{
 		"menu_visible": false,
-		"show_minimap": false,
+		"show_minimap": true,
 		"show_open_files": false,
 		"show_tabs": true,
 		"side_bar_visible": false,
@@ -85,7 +147,9 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Projects/A01"
+		"/D/Projects/A01",
+		"/D/Projects/A01/css",
+		"/D/Projects/A01/templates"
 	],
 	"file_history":
 	[
@@ -107,13 +171,14 @@
 	],
 	"find":
 	{
-		"height": 28.0
+		"height": 36.0
 	},
 	"find_in_files":
 	{
 		"height": 96.0,
 		"where_history":
 		[
+			""
 		]
 	},
 	"find_state":
@@ -121,6 +186,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"edit",
+			"yellow",
+			"charts",
+			"propertyPanelContent",
 			"response",
 			"tab",
 			"tabs"
@@ -141,8 +210,229 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1077,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/app-core.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11261,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								317,
+								317
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 32.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "templates/outputPanel.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 174,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								163,
+								70
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "templates/editPanel.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4458,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								12,
+								25
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 316,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										210,
+										230
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "templates/mainView.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1134,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								359,
+								359
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "css/main.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4607,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								772,
+								772
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 11.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -198,6 +488,26 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"edit",
+				"templates\\editPanel.html"
+			],
+			[
+				"out",
+				"templates\\outputPanel.html"
+			],
+			[
+				"inde",
+				"index.html"
+			],
+			[
+				"app-core",
+				"js\\app-core.js"
+			],
+			[
+				"index",
+				"index.html"
+			]
 		],
 		"width": 0.0
 	},
@@ -227,7 +537,7 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 211.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
