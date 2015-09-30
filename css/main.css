@@ -50,7 +50,7 @@ a:-webkit-any-link {
 	background-color: #bbbbbb;
 	float:right;
 	width: calc(70% - 20px);
-	height:40%;/
+	height: 41%;
 }
 
 .selectedItem{
