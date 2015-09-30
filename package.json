@@ -1,0 +1,24 @@
+{
+  "name": "a01",
+  "version": "0.0.1",
+  "description": "browser client for arion project",
+  "main": "index.html",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://kav137@bitbucket.org/kav137/a01.git"
+  },
+  "author": "kav137",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/kav137/a01#readme",
+  "devDependencies": {
+    "browser-sync": "^2.9.7",
+    "browserify": "^11.2.0",
+    "gulp": "^3.9.0"
+  }
+}

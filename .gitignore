@@ -1,1 +1,2 @@
-temporary
+#ignoring node files
+/node_modules/*
