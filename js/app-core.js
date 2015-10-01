@@ -212,7 +212,7 @@ angular.module('app-core.service', [])
 angular.module('app-core.controller', ['ngRoute'])
 	.controller('RootCtrl', ['$scope', 'treeDataService', 'elementSelectionService', '$rootScope', '$http', 'appStateService',
 		function ($scope, treeDataService, elementSelectionService, $rootScope, $http, appStateService){
-		
+
 		//device data
 		$scope.treeModel = treeDataService.getTree();
 		$scope.treeAsList = [];

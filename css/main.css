@@ -43,14 +43,14 @@ a:-webkit-any-link {
 	background-color: #bbbbbb;
 	float:right;
 	width: calc(70% - 20px);
-	height:60%;
+	height:50%;
 }
 
 .outputPanel{
 	background-color: #bbbbbb;
 	float:right;
 	width: calc(70% - 20px);
-	height: 41%;
+	height: 51%;
 }
 
 .selectedItem{
@@ -99,7 +99,7 @@ a:-webkit-any-link {
 	top: 10px;
 	position: absolute;
 	width: calc(70% - 75px);
-	height: calc(60% - 55px);
+	height: calc(50% - 55px);
 	overflow: scroll;
 }
 .chartsPanel{
@@ -110,9 +110,9 @@ a:-webkit-any-link {
 	/*clear: both;*/
 	position: absolute;
 	bottom: 0px;
-	top: 60%;
+	top: 50%;
 	width: calc(70% - 75px);
-	height: calc(40% - 45px);
+	height: calc(50% - 45px);
 	overflow: scroll;
 }
 .propertyItem{
