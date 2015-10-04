@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"getE",
+				"getElementById"
+			],
+			[
 				"borw",
 				"browser-sync"
 			],
@@ -31,7 +35,7 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 1077,
+				"buffer_size": 1081,
 				"line_ending": "Windows"
 			}
 		},
@@ -39,7 +43,31 @@
 			"file": "js/app-core.js",
 			"settings":
 			{
-				"buffer_size": 11261,
+				"buffer_size": 11259,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app-editor.js",
+			"settings":
+			{
+				"buffer_size": 5347,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app-header.js",
+			"settings":
+			{
+				"buffer_size": 2005,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/F/Install/matlab_r2015a/Mathworks Matlab R2015a/setup.cmd",
+			"settings":
+			{
+				"buffer_size": 40,
 				"line_ending": "Windows"
 			}
 		},
@@ -47,7 +75,58 @@
 			"file": "templates/outputPanel.html",
 			"settings":
 			{
-				"buffer_size": 174,
+				"buffer_size": 175,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/mainView.html",
+			"settings":
+			{
+				"buffer_size": 1134,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/header.html",
+			"settings":
+			{
+				"buffer_size": 869,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app-i18n.js",
+			"settings":
+			{
+				"buffer_size": 1981,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Package Control Messages\n========================\n\nSublimeLinter-jsxhint\n---------------------\n\n  SublimeLinter-jsxhint\n  -------------------------------\n  This linter plugin for SublimeLinter provides an interface to jsxhint.\n  \n  INSTALLATION\n  ------------\n  Before this plugin will activate, you *must* follow the installation\n  instructions here:\n  \n  https://github.com/SublimeLinter/SublimeLinter-jsxhint\n\n\njshintify\n---------\n\n  Thank you for installing jshintify !\n  If You like this project - hit it with a star or something ツ\n  \n  ---\n  \n  Go to http://afterdesign.github.io/jshintify and read about what you need to get this plugin get working.\n  This plugin needs nodejs !\n  I'll update README when this package will be available through Package Control.\n  \n  Found a bug ? Enable debug in config and post an issue on: https://github.com/afterdesign/jshintify/issues\n  \n  ---\n  \n  You can find me:\n  \n  @afterdesign on twitter.com\n  https://coderwall.com/afterdesign\n  or (https://plus.google.com/+Rafa%C5%82Malinowski/posts)\n",
+			"settings":
+			{
+				"buffer_size": 1039,
+				"line_ending": "Windows",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			}
+		},
+		{
+			"file": "css/main.css",
+			"settings":
+			{
+				"buffer_size": 4600,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app.js",
+			"settings":
+			{
+				"buffer_size": 1358,
 				"line_ending": "Windows"
 			}
 		},
@@ -60,29 +139,40 @@
 			}
 		},
 		{
-			"contents": "Searching 6672 files for \"propertyPanelContent\"\n\nD:\\Projects\\A01\\templates\\editPanel.html:\n    1  <div class=\"propertyPanel\">\n    2:   <div ng-controller=\"EditorCtrl\" ng-init=\"visibilityTrigger = false\" class=\"propertyPanelContent\">\n    3  \n    4      <!-- table for name and position editing -->\n\n1 match in 1 file\n",
+			"contents": "Добрый вечер, уважаемые студенты!\nТеория.\nВ прилагаемых документах представлена теоретическая информация по практическому занятию №3 по теме \"ER-диаграммы и UML-диаграммы: принципы разработки и анализа для проектирования баз данных\".\nЗадание.\nРазработать 3 (как минимум) модели (диаграммы) по теме своего курсового проекта:\n1. бизнес-модель процессов (должна быть обязательно);\n2. диаграмма потока данных (на выбор);\n3. диаграмма жизненного цикла (на выбор);\n4. UML-диаграмма (должна быть обязательно).\nМодели (диаграммы) должны быть выполнены (на усмотрение студента) либо с помощью специализированных пакетов (Ramus, Business Studio, IDEF0 \\ Doctor, BPWIN и др.), либо используя любой графический редактор (Adobe Photoshop, CorelDRAW и др.).\n\nРезультаты представляются преподавателю на следующем практическом занятии.\n\n-- \nС уважением,\nБОГАТКО Иван Николаевич\nассистент\nКафедра проектирования информационно-компьютерных систем\n",
+			"file": "/J/Сибд_02_10_2015/TASK.txt",
+			"file_size": 1632,
+			"file_write_time": 130882550847343773,
 			"settings":
 			{
-				"buffer_size": 316,
+				"buffer_size": 929,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "При подготовке к следующей лекции необходимо изучить самостоятельно и записать в конспект следующие вопросы:\n1. Механизмы хранения данных. Подходы к физической организации данных в различной памяти ЭВМ, адресация записей БД. Фрагментация, индексирование, буферизация, хеширование и кластеризация данных в СУБД. Характеристики рассмотренных подходов и их реализация в современных базах данных.\n1.1. В рамках данного вопроса необходимо разобраться с построением B-дерева. Будет задание на контрольной работе.\n2. Параллельная работа пользователей с базой данных, сессии и подключения. Механизм транзакций: назначение, основные функции и практическая реализация его в СУБД. Особенности работы транзакций (при подготовке к этому вопросу можно смотреть приложенную презентацию).",
+			"settings":
+			{
+				"buffer_size": 772,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "9. 10 9.10pcsx Кнопочные переключатели\n17. 1 шт. двухосевой джойстик\n21. 1 шт. X RGB светодиод\n23. 10 шт. X DuPont линии мама-мама\n24. 1 шт. x 2.54 мм контактный коннектор\n25. 2 шт. X транзисторы (ball switches)",
+			"settings":
+			{
+				"buffer_size": 211,
 				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
+				"name": "9. 10 9.10pcsx Кнопочные переключатели"
 			}
 		},
 		{
-			"file": "templates/mainView.html",
+			"contents": "6. 8х8 точек экран-матрица\n21. Желтые тактовые кнопки (4 шт)\n24. Установочный диск\n27. Гребенка на 40 штырьков\n31. Бокс для SMD компонентов\n32. Бокс для данного набора",
 			"settings":
 			{
-				"buffer_size": 1134,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "css/main.css",
-			"settings":
-			{
-				"buffer_size": 4607,
-				"line_ending": "Windows"
+				"buffer_size": 167,
+				"line_ending": "Windows",
+				"name": "6. 8х8 точек экран-матрица"
 			}
 		}
 	],
@@ -93,12 +183,32 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
-		"last_filter": "js",
+		"height": 150.0,
+		"last_filter": "jshin",
 		"selected_items":
 		[
 			[
+				"jshin",
+				"JSHint"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"",
+				"42 : Add a header"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
 				"js",
+				"JSHint"
+			],
+			[
+				"jshi",
 				"JSHint"
 			],
 			[
@@ -115,10 +225,6 @@
 			],
 			[
 				"install",
-				"Package Control: Install Package"
-			],
-			[
-				"instal",
 				"Package Control: Install Package"
 			],
 			[
@@ -149,10 +255,13 @@
 	[
 		"/D/Projects/A01",
 		"/D/Projects/A01/css",
+		"/D/Projects/A01/js",
 		"/D/Projects/A01/templates"
 	],
 	"file_history":
 	[
+		"/D/Projects/tempo.js",
+		"/D/Projects/A01/node_modules/browser-sync/node_modules/browser-sync-ui/node_modules/weinre/web/client/heapProfiler.css",
 		"/D/Projects/N01/index.js",
 		"/D/Projects/N01/requestHandlers.js",
 		"/D/Projects/N01/router.js",
@@ -186,6 +295,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"editPanel",
 			"edit",
 			"yellow",
 			"charts",
@@ -210,7 +320,7 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -219,7 +329,125 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1077,
+						"buffer_size": 1081,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								796,
+								796
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 200.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/app-core.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11259,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5564,
+								5564
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4674.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "js/app-editor.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5347,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								57,
+								57
+							]
+						],
+						"settings":
+						{
+							"hasHeader": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/app-header.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2005,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1201,
+								1201
+							]
+						],
+						"settings":
+						{
+							"hasHeader": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/F/Install/matlab_r2015a/Mathworks Matlab R2015a/setup.cmd",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 40,
 						"regions":
 						{
 						},
@@ -232,60 +460,30 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "js/app-core.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11261,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								317,
-								317
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 32.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
+					"buffer": 5,
 					"file": "templates/outputPanel.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 174,
+						"buffer_size": 175,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								163,
-								70
+								64,
+								64
 							]
 						],
 						"settings":
@@ -296,87 +494,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "templates/editPanel.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4458,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								12,
-								25
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 316,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										210,
-										230
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "templates/mainView.html",
 					"semi_transient": false,
 					"settings":
@@ -401,16 +523,222 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
+					"file": "templates/header.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 869,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								571,
+								571
+							]
+						],
+						"settings":
+						{
+							"hasHeader": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "js/app-i18n.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1981,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								341,
+								341
+							]
+						],
+						"settings":
+						{
+							"hasHeader": false,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1039,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								411,
+								357
+							]
+						],
+						"settings":
+						{
+							"auto_indent": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 475.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
 					"file": "css/main.css",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4607,
+						"buffer_size": 4600,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1691,
+								1691
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1066.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "js/app.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1358,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								570,
+								570
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 256.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 14,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "templates/editPanel.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4458,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3472,
+								3472
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "/J/Сибд_02_10_2015/TASK.txt",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 929,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								929,
+								929
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 772,
 						"regions":
 						{
 						},
@@ -423,14 +751,75 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 11.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 211,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								68,
+								48
+							]
+						],
+						"settings":
+						{
+							"auto_name": "9. 10 9.10pcsx Кнопочные переключатели",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 16,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 167,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								82,
+								61
+							]
+						],
+						"settings":
+						{
+							"auto_name": "6. 8х8 точек экран-матрица",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
 					"type": "text"
 				}
 			]
@@ -453,11 +842,18 @@
 				0,
 				1,
 				1
+			],
+			[
+				1,
+				0,
+				2,
+				1
 			]
 		],
 		"cols":
 		[
 			0.0,
+			0.5,
 			1.0
 		],
 		"rows":
@@ -469,7 +865,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 130.0
+		"height": 219.0
 	},
 	"output.find_results":
 	{
@@ -488,6 +884,42 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"app-header",
+				"js\\app-header.js"
+			],
+			[
+				"app-",
+				"js\\app-i18n.js"
+			],
+			[
+				"header",
+				"templates\\header.html"
+			],
+			[
+				"app-de",
+				"js\\app-editor.js"
+			],
+			[
+				"main",
+				"css\\main.css"
+			],
+			[
+				"app.css",
+				"node_modules\\browser-sync\\node_modules\\browser-sync-ui\\node_modules\\weinre\\web\\client\\heapProfiler.css"
+			],
+			[
+				"app.js",
+				"js\\app.js"
+			],
+			[
+				"app",
+				"js\\app.js"
+			],
+			[
+				"editp",
+				"templates\\editPanel.html"
+			],
 			[
 				"edit",
 				"templates\\editPanel.html"
@@ -536,7 +968,7 @@
 	"show_minimap": true,
 	"show_open_files": true,
 	"show_tabs": true,
-	"side_bar_visible": true,
+	"side_bar_visible": false,
 	"side_bar_width": 211.0,
 	"status_bar_visible": true,
 	"template_settings":

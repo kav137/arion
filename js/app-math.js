@@ -3,7 +3,10 @@
 *
 * Description
 */
-angular.module('app-REPLACE.service', ['app-core'])
+angular.module('app-math', ['app-core'])
+	.run(['$log' , function($log){
+		$log.info('app-math is initialized');
+	}])
 	.service('mathService', function(){
 		var MS = this;
 
@@ -274,31 +277,5 @@ angular.module('app-REPLACE.service', ['app-core'])
 			}
 		}
 	})
-
-angular.module('app-output.controller', ['app-core'])
-	.controller('ChartCtrl', ['$scope', '$controller', 'mathService', 
-		function($scope, $controller, mathService){
-		angular.extend(this, $controller('RootCtrl', {$scope: $scope}))
-
-		$scope.trialModel = "ln(a^bcc*exp(c/d)+1/c-ln(c))";
-		$scope.result;
-		$scope.ccc = 100;
-		$scope.calculate = function (){
-			var a = 1;
-			var b = 2;
-			var c = 3;
-			var d = 4;
-			$scope.result = mathService.calculate($scope.trialModel, {'a': a, 'b': b, 'c': c, 'd': d, 'bcc': 5});
-		}
-	}]);
  
 
-/**
-* app-output Module
-*
-* Aggregator for all app-output submodules
-*/
-angular.module('app-output', ['app-output.controller', 'app-REPLACE.service'])
-	.run(['$log' , function($log){
-		$log.info('app-output is initialized');
-	}]);

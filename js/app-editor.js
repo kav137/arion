@@ -4,8 +4,8 @@
 * Description
 */
 angular.module('app-editor.controller', ['app-core'])
-	.controller('EditorCtrl', ['$scope', '$controller', 'treeDataService', 'mathService', "$filter",
-		function ($scope, $controller, treeDataService, mathService, $filter){
+	.controller('EditorCtrl', ['$scope', '$controller', '$rootScope', 'treeDataService', 'mathService', "$filter",
+		function ($scope, $controller, $rootScope, treeDataService, mathService, $filter){
 			angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
 
 			$scope.coefficients; //this would be stored all the coef-s and prop-s with their values
@@ -33,10 +33,38 @@ angular.module('app-editor.controller', ['app-core'])
 				// console.clear()
 			}
 			$scope.calculateElementReliability = function (){
+
+				// if (varObj['Tn'] !== undefined){
+				// 	var chartDataArray = [];
+				// 	for(var t = -270; t < 1000; t+=10){
+				// 		varObj['Tn'] = t;
+				// 		var valueInter = mathService.calculate($scope.selectedNode.method, varObj)
+				// 		chartDataArray.push(valueInter);
+				// 	}
+				// 	console.log(chartDataArray)
+				// }
+
 				try{
 					var keysArray = initKeys();
 					var varObj = calculateCoefficients(keysArray);
 					calculateModel(varObj);
+
+					//creating charts data array
+					var outArray = [];
+					outArray[0] = ['temperature', 'lambda'];
+					for(var t = -270; t < 200; t+=10){
+						keysArray.forEach(function (item){
+							if (item.key == "Tn"){
+								item.value = t;
+							}
+						})
+						tempVarObj = calculateCoefficients(keysArray);
+						calculateModel(tempVarObj);
+						outArray.push([t.toString() , $scope.selectedNode.modelValue])
+					}
+					// var chartArray = [];
+					// chartArray[0] = ['temperature', 'lambda']
+					$rootScope.chartArray = outArray;
 				}
 				catch (error){
 					alert("Необходимо заполнить все требуемые поля")
