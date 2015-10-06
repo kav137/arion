@@ -50,19 +50,21 @@ angular.module('app-editor.controller', ['app-core'])
 					calculateModel(varObj);
 
 					//creating charts data array
-					// var outArray = [];
-					// outArray[0] = ['temperature', 'lambda'];
-					// for(var t = -270; t < 200; t+=10){
-					// 	keysArray.forEach(function (item){
-					// 		if (item.key == "Tn"){
-					// 			item.value = t;
-					// 		}
-					// 	})
-					// 	tempVarObj = calculateCoefficients(keysArray);
-					// 	calculateModel(tempVarObj);
-					// 	outArray.push([t.toString() , $scope.selectedNode.modelValue])
-					// }
-					// $rootScope.chartArray = outArray;
+					var outArray = [];
+					outArray[0] = ['temperature', 'lambda'];
+					for(var t = -270; t < 200; t+=10){
+						keysArray.forEach(function (item){
+							if (item.key == "Tn"){
+								item.value = t;
+							}
+						})
+						tempVarObj = calculateCoefficients(keysArray);
+						calculateModel(tempVarObj);
+						outArray.push([t.toString() , $scope.selectedNode.modelValue])
+					}
+					// var chartArray = [];
+					// chartArray[0] = ['temperature', 'lambda']
+					$rootScope.chartArray = outArray;
 				}
 				catch (error){
 					alert("Необходимо заполнить все требуемые поля")
