@@ -35,6 +35,7 @@ angular.module('app-i18n', ['pascalprecht.translate'])
 			"Coefficients": "Значение коэффициентов, учитывающихся при расчете: ",
 			"Coefficient": "Коэффициент",
 			"Welcome": "Добро пожаловать",
+			"Unnamed": "Безымянный",
 			"Log in": "Войти",
 			"Username": "Имя пользователя",
 			"Password": "Пароль",
@@ -46,7 +47,11 @@ angular.module('app-i18n', ['pascalprecht.translate'])
 
 			"searchElementModal": "Поиск элемента",
 			'addElementModal' : 'Добавить элемент',
-			'addModuleModal': 'Добавить модуль'
+			'addModuleModal': 'Добавить модуль',
+
+			//e ~ errors
+			//e.whereHappened.reason
+			"e.Node.abstractMethodCall": "Abstract method not implemented"
 		})
 		$translateProvider.preferredLanguage('ru');
 		$translateProvider.useSanitizeValueStrategy('escape');

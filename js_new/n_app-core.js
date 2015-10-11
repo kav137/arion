@@ -1,4 +1,91 @@
-angular.module('app-core.service', [])
+angular.module('app-core.service', []) 
+	.factory('elementFactory', ['$filter' 'appSettingsService', 
+	function ($filter, appSettingsService){
+		var localCounter = 0;
+
+		function extend (Child, Parent) {
+		    var F = function() { };
+		    F.prototype = Parent.prototype;
+		    Child.prototype = new F();
+		    Child.prototype.constructor = Child;
+		    Child.superclass = Parent.prototype;
+		}
+
+		//abstract class
+		function Node (options){
+			this.id = localCounter++; //use it for search
+			this.type; //module or element
+			this.name;
+			this.position; //position on the board
+			this.selected;
+			this.lambda; //failure rate
+			this.calculated; //bool value
+
+			this.calculate 	= function () { abstractCall(); }
+			this.update 	= function () { abstractCall(); }
+			this.init 		= init(options);
+			this.select 	= select();
+			this.unselect   = unselect();
+
+			function abstractCall () {
+				throw new Error($filter("translate")("e.Node.abstractMethodCall"));
+			}
+
+			function init (options){
+				this.name = options.name? options.name : $filter("translate")("Unnamed");
+				this.type = options.type? options.type : "module";
+				this.position = options.position? options.position : "";
+				this.lamdba = 0;
+				appSettingsService.selectNew? this.select();
+			}
+
+			function select (){
+				this.selected = true;
+			}
+
+			function unselect (){
+				this.selected = false;
+			}
+		}
+
+		//real class
+		function Module (options){
+			Module.superclass.constructor.call(this, options); //parent constructor call
+
+			//properties
+			this.children = [];
+
+			//methods
+			this.calculate = calculate();
+
+			//service functions
+			function calculate (){
+				var summary = 0;
+				var allNestedElements = getNestedElements(this.children);
+				allNestedElements.forEach(function (element){
+					if (!element.calculated){
+						element.calculate();
+					}
+					summary += element.lamdba;
+				})
+			}
+
+			//gets elements recursively. returns an array with elements
+			function getNestedElements (chilrenArray) {
+				var outArray = [];
+				childrenArray.forEach(function (child){
+					if (child.type === "element"){
+						outArray.push(child);
+					}
+					if (child.type === "module"){
+						outArray = outArray.concat(getNestedElements(child.children));
+					}
+				});
+				return outArray;
+			}
+		}
+		extend(Module, Node); //inheritance
+	}])
 	.service('appStateService', function(){
 		this.isAuthorized = false;
 		this.isModalShown = false;
