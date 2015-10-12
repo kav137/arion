@@ -50,8 +50,9 @@ angular.module('app-editor.controller', ['app-core'])
 					calculateModel(varObj);
 
 					//creating charts data array
-					var outArray = [];
-					outArray[0] = ['temperature', 'lambda'];
+					var chartArray = [];
+					var keysArrayBackup = angular.copy(keysArray);
+					chartArray[0] = ['temperature', 'lambda'];
 					for(var t = -270; t < 200; t+=10){
 						keysArray.forEach(function (item){
 							if (item.key == "Tn"){
@@ -60,11 +61,13 @@ angular.module('app-editor.controller', ['app-core'])
 						})
 						tempVarObj = calculateCoefficients(keysArray);
 						calculateModel(tempVarObj);
-						outArray.push([t.toString() , $scope.selectedNode.modelValue])
+						chartArray.push([t.toString() , $scope.selectedNode.modelValue])
 					}
-					// var chartArray = [];
-					// chartArray[0] = ['temperature', 'lambda']
-					$rootScope.chartArray = outArray;
+					updateLambdaChart(chartArray);
+
+					//restoring initial values
+					varObj = calculateCoefficients(keysArrayBackup);
+					calculateModel(varObj);
 				}
 				catch (error){
 					alert("Необходимо заполнить все требуемые поля")
@@ -180,6 +183,24 @@ angular.module('app-editor.controller', ['app-core'])
 						$scope.selectNode(null, result.parent);
 					}
 				}
+			}
+
+			var updateLambdaChart = function(chartArray){
+				var data = google.visualization.arrayToDataTable(chartArray);
+		      	var options = {
+			        title: 'Lambda(t)',
+			        pointsSize: "2",
+			        vAxis: {
+			        	title: 'lambda',
+			        	format: 'scientific'
+			        },
+			        hAxis: {
+			        	title: 'temperature (Celcius)'
+			        }
+		      	};
+		      	var chart = new google.visualization.LineChart(document.getElementById('charts'));
+
+		      	chart.draw(data, options);
 			}
 	}])
 

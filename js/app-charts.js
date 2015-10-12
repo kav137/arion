@@ -13,7 +13,7 @@ angular.module('app-charts', ['app-core'])
 		
 	}])
 
-	.directive('lambdaChart', function(){
+	.directive('lambdaChart', ['$rootScope', function($rootScope){
 		// Runs during compile
 		return {
 			// name: '',
@@ -44,7 +44,11 @@ angular.module('app-charts', ['app-core'])
 		      	};
 		      	// iElm.text("hhhhh")
 		      	chart.draw(data, options);
+
+		      	$rootScope.$on('ttt',function(event, args){
+		      	  alert('yeap')
+		      	});
 			}
 		};
-	});
+	}]);
 
