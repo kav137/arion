@@ -1,5 +1,6 @@
 angular.module('app-core.service', []) 
-	.factory('elementFactory', ['$filter' 'appSettingsService', 
+
+.factory('elementFactory', ['$filter' 'appSettingsService', 'calculationService',
 	function ($filter, appSettingsService){
 		var localCounter = 0;
 
@@ -13,6 +14,7 @@ angular.module('app-core.service', [])
 
 		//abstract class
 		function Node (options){
+			//properties
 			this.id = localCounter++; //use it for search
 			this.type; //module or element
 			this.name;
@@ -21,21 +23,23 @@ angular.module('app-core.service', [])
 			this.lambda; //failure rate
 			this.calculated; //bool value
 
-			this.calculate 	= function () { abstractCall(); }
+			//methods
 			this.update 	= function () { abstractCall(); }
-			this.init 		= init(options);
-			this.select 	= select();
-			this.unselect   = unselect();
+			this.init 		= init;
+			this.select 	= select;
+			this.unselect   = unselect;
+			this.calculate 	= calculate;
 
 			function abstractCall () {
 				throw new Error($filter("translate")("e.Node.abstractMethodCall"));
 			}
 
 			function init (options){
-				this.name = options.name? options.name : $filter("translate")("Unnamed");
-				this.type = options.type? options.type : "module";
-				this.position = options.position? options.position : "";
+				this.name = (options && options.name)? options.name : $filter("translate")("Unnamed");
+				this.type = (options && options.type)? options.type : "module";
+				this.position = (options && options.position)? options.position : "";
 				this.lamdba = 0;
+				this.calculated = false;
 				appSettingsService.selectNew? this.select();
 			}
 
@@ -46,6 +50,10 @@ angular.module('app-core.service', [])
 			function unselect (){
 				this.selected = false;
 			}
+
+			function calculate (){
+				calculationService.calculateReliability(this);
+			}
 		}
 
 		//real class
@@ -54,37 +62,55 @@ angular.module('app-core.service', [])
 
 			//properties
 			this.children = [];
+			this.nestedElementsQuantity = 0;
 
 			//methods
-			this.calculate = calculate();
+			this.addChild = addChild;
+			this.removeChild = removeChild; //TODO
 
-			//service functions
-			function calculate (){
-				var summary = 0;
-				var allNestedElements = getNestedElements(this.children);
-				allNestedElements.forEach(function (element){
-					if (!element.calculated){
-						element.calculate();
-					}
-					summary += element.lamdba;
-				})
+			function addChild (node){
+				this.children.unshift(node);
+				this.nestedElementsQuantity++;
+				this.calculated = false; //'cause you have to recalculate lambda for n+1 children
 			}
 
-			//gets elements recursively. returns an array with elements
-			function getNestedElements (chilrenArray) {
-				var outArray = [];
-				childrenArray.forEach(function (child){
-					if (child.type === "element"){
-						outArray.push(child);
-					}
-					if (child.type === "module"){
-						outArray = outArray.concat(getNestedElements(child.children));
-					}
-				});
-				return outArray;
+			function removeChild (node){
+				throw new Error($filter("translate")("e.Node.abstractMethodCall")); 
+				this.nestedElementsQuantity--;
 			}
+
 		}
 		extend(Module, Node); //inheritance
+
+		//real class
+		function Element (options){
+			Module.superclass.constructor.call(this, options); //parent constructor call
+
+			//properties
+			this.owner;
+			this.group;
+			this.subGroup;
+			this.properties;
+			this.coefficients;
+			this.method;
+
+			//methods
+			this.init = init;
+			this.calculate = calculate;
+
+			function init (options){
+				if ( !(options.group && options.owner && options.subGroup) ){
+					throw new Error($filter('translate')(e.Element.undefinedGroup))
+				}
+				Module.superclass.constructor.call(this, options);
+				this.owner = options.owner;
+				this.group = options.group;
+				this.subGroup = options.subGroup;
+
+				databaseService.initProperties(this);
+			}
+		}
+		extend(Element, Node); //inheritance
 	}])
 	.service('appStateService', function(){
 		this.isAuthorized = false;

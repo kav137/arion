@@ -184,6 +184,137 @@ angular.module('app-editor.controller', ['app-core'])
 	}])
 
 
+.service('calculationService', ['$filter', 'mathService', function($filter, mathService){
+	//public methods
+	this.calculateReliability = calculateReliability;
+
+	//private methods
+	function calculateReliability (node){
+		if (node.type === "element"){
+			calculateElementReliability(node);
+		}
+		if (node.type === "module"){
+			var allNestedElements = getNestedElements(node.children);
+			node.lambda = 0;
+			node.nestedElementsQuantity = allNestedElements.length;
+			allNestedElements.forEach(function (element){
+				if (!element.calculated){
+					element.calculate();
+				}
+				node.lamdba += element.lamdba;
+			})
+		}
+	}
+
+	//gets elements recursively. returns an array with elements
+	function getNestedElements (chilrenArray) {
+		var outArray = [];
+		childrenArray.forEach(function (child){
+			if (child.type === "element"){
+				outArray.push(child);
+			}
+			if (child.type === "module"){
+				outArray = outArray.concat(getNestedElements(child.children));
+			}
+		});
+		return outArray;
+	}
+
+	function calculateElementReliability (element){
+		try{
+			var keysArray = initKeys(element);
+			var varObj = calculateCoefficients(element.coefficients, keysArray);
+			calculateModel(element, varObj);
+		}
+		catch (error){
+			alert($filter('translate')('Fill the inputs'));
+		}
+	}
+
+	function initKeys (element){
+		var keys = [];
+		angular.forEach(element.properties, function (item){
+			//handling number inputs
+			if (item.type == 2 || item.type == 1){
+				var obj = {};
+				obj.key = item.key;
+				obj.value = parseFloat(item.value.replace(',', '.'))
+				keys.push(obj)
+			}
+			//handling drop down lists
+			if (item.type == 4){
+				//handling nested dependent properties
+				angular.forEach(item.value.properties, function (innerProperty){
+					var obj = {};
+					obj.key = innerProperty.key;
+					if(innerProperty.value != undefined){
+						if ((typeof innerProperty.value) == "string"){
+							obj.value = parseFloat((innerProperty.value).replace(',', '.'));
+						}
+						else{
+							obj.value = parseFloat(innerProperty.value);
+						}
+					}
+					else{
+						if ((typeof innerProperty.default) == "string"){
+							obj.value = parseFloat((innerProperty.default).replace(',', '.'));
+						}
+						else{
+							obj.value = parseFloat(innerProperty.default);
+						}
+					}
+					keys.push(obj)
+				});
+				//handling nested non-editable keys
+				angular.forEach(item.value.keys, function (innerKey){
+					var obj = {};
+					obj.key = innerKey.key;
+					if(innerKey.value != undefined){
+						if ((typeof innerKey.value) == "string"){
+							obj.value = parseFloat((innerKey.value).replace(',', '.'))
+						}
+						else{
+							obj.value = parseFloat((innerKey.value))
+						}
+					}
+					else{
+						if ((typeof innerKey.default) == "string"){
+							obj.value = parseFloat((innerKey.default).replace(',', '.'))
+						}
+						else{
+							obj.value = parseFloat((innerKey.default))
+						}
+					}
+					keys.push(obj)
+				})
+			}
+		});
+		return keys;
+	}
+
+	function calculateCoefficients (coefficients, keysArray){
+		var varObj = {};
+		angular.forEach(coefficients, function (coef){
+			angular.forEach(keysArray, function (item){
+				varObj[item.key] = item.value;
+			})
+			coef.value = mathService.calculate(coef.formula, varObj)
+		})
+		return varObj;
+	}
+
+	function calculateModel (element, varObj){
+		angular.forEach(element.coefficients, function (item){
+			varObj[item.key] = item.value;
+		})
+		element.lambda = mathService.calculate(element.method, varObj);
+		// $scope.coefficients = varObj; //maybe it is useful??
+	}
+}])
+
+
+
+
 
 /**
 * app-editor Module
