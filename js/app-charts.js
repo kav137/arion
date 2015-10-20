@@ -29,25 +29,6 @@ angular.module('app-charts', ['app-core'])
 			// transclude: true,
 			// compile: function(tElement, tAttrs, function transclude(function(scope, cloneLinkingFn){ return function linking(scope, elm, attrs){}})),
 			link: function($scope, iElm, iAttrs, controller) {
-				var chart = new google.visualization.LineChart(iElm[0]);
-				// console.log(iElm);
-				// console.log(document.getElementByI('asdasd'))
-				var data = google.visualization.arrayToDataTable([
-			        ['Year', 'Sales', 'Expenses'],
-			        ['2009', 1000, 400],
-			        ['2010', 1170, 460],
-			        ['2011', 660, 1120],
-			        ['2012', 1030, 5400]
-		      	]);
-		      	var options = {
-			        title: 'ASDASDad'
-		      	};
-		      	// iElm.text("hhhhh")
-		      	chart.draw(data, options);
-
-		      	$rootScope.$on('ttt',function(event, args){
-		      	  alert('yeap')
-		      	});
 			}
 		};
 	}]);

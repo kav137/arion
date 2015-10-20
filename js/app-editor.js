@@ -13,7 +13,7 @@ angular.module('app-editor.controller', ['app-core'])
 				var backupSelected = $scope.selectedNode;
 
 				if($scope.selectedNode.type == "element"){
-					$scope.calculateElementReliability();
+					$scope.calculateElementReliability({forSingle:true});
 				}
 				if($scope.selectedNode.type == "module"){
 					var summary = 0;
@@ -32,42 +32,33 @@ angular.module('app-editor.controller', ['app-core'])
 				}
 				// console.clear()
 			}
-			$scope.calculateElementReliability = function (){
-
-				// if (varObj['Tn'] !== undefined){
-				// 	var chartDataArray = [];
-				// 	for(var t = -270; t < 1000; t+=10){
-				// 		varObj['Tn'] = t;
-				// 		var valueInter = mathService.calculate($scope.selectedNode.method, varObj)
-				// 		chartDataArray.push(valueInter);
-				// 	}
-				// 	console.log(chartDataArray)
-				// }
-
+			$scope.calculateElementReliability = function (options){
 				try{
 					var keysArray = initKeys();
 					var varObj = calculateCoefficients(keysArray);
 					calculateModel(varObj);
 
-					//creating charts data array
-					var chartArray = [];
-					var keysArrayBackup = angular.copy(keysArray);
-					chartArray[0] = ['temperature', 'lambda'];
-					for(var t = -270; t < 200; t+=10){
-						keysArray.forEach(function (item){
-							if (item.key == "Tn"){
-								item.value = t;
-							}
-						})
-						tempVarObj = calculateCoefficients(keysArray);
-						calculateModel(tempVarObj);
-						chartArray.push([t.toString() , $scope.selectedNode.modelValue])
-					}
-					updateLambdaChart(chartArray);
+					if (options && options.forSingle) {
+						//creating charts data array
+						var chartArray = [];
+						var keysArrayBackup = angular.copy(keysArray);
+						chartArray[0] = ['temperature', 'lambda'];
+						for(var t = -270; t < 200; t+=10){
+							keysArray.forEach(function (item){
+								if (item.key == "Tn"){
+									item.value = t;
+								}
+							})
+							tempVarObj = calculateCoefficients(keysArray);
+							calculateModel(tempVarObj);
+							chartArray.push([t.toString() , $scope.selectedNode.modelValue])
+						}
+						updateLambdaChart(chartArray);
 
-					//restoring initial values
-					varObj = calculateCoefficients(keysArrayBackup);
-					calculateModel(varObj);
+						//restoring initial values
+						varObj = calculateCoefficients(keysArrayBackup);
+						calculateModel(varObj);
+					}
 				}
 				catch (error){
 					alert("Необходимо заполнить все требуемые поля")
