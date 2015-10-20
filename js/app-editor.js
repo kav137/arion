@@ -13,7 +13,8 @@ angular.module('app-editor.controller', ['app-core'])
 				var backupSelected = $scope.selectedNode;
 
 				if($scope.selectedNode.type == "element"){
-					$scope.calculateElementReliability({forSingle:true});
+					$scope.calculateElementReliability();
+					
 				}
 				if($scope.selectedNode.type == "module"){
 					var summary = 0;
@@ -32,13 +33,15 @@ angular.module('app-editor.controller', ['app-core'])
 				}
 				// console.clear()
 			}
-			$scope.calculateElementReliability = function (options){
+			$scope.calculateElementReliability = function (){
 				try{
-					var keysArray = initKeys();
-					var varObj = calculateCoefficients(keysArray);
-					calculateModel(varObj);
+					var keysArray = initKeys($scope.selectedNode);
+					var varObj = calculateCoefficients($scope.selectedNode, keysArray);
+					var coefficientsOut = extendVarObjWithCoefs($scope.selectedNode, varObj);
+					calculateModel($scope.selectedNode, coefficientsOut);
+					$scope.coefficients = coefficientsOut;
 
-					if (options && options.forSingle) {
+					/*if (options && options.forSingle) {
 						//creating charts data array
 						var chartArray = [];
 						var keysArrayBackup = angular.copy(keysArray);
@@ -58,17 +61,17 @@ angular.module('app-editor.controller', ['app-core'])
 						//restoring initial values
 						varObj = calculateCoefficients(keysArrayBackup);
 						calculateModel(varObj);
-					}
+					}*/
 				}
 				catch (error){
 					alert("Необходимо заполнить все требуемые поля")
 				}
 			}
 
-			var initKeys = function(){
+			var initKeys = function(element){
 				var keys = [];
 				// // console.clear();
-				angular.forEach($scope.selectedNode.properties, function (item){
+				angular.forEach(element.properties, function (item){
 					//handling number inputs
 					if (item.type == 2 || item.type == 1){
 						var obj = {};
@@ -127,9 +130,9 @@ angular.module('app-editor.controller', ['app-core'])
 				return keys;
 			}
 
-			var calculateCoefficients = function (keysArray){
+			var calculateCoefficients = function (element, keysArray){
 				var varObj = {};
-				angular.forEach($scope.selectedNode.coefficients, function (coef){
+				angular.forEach(element.coefficients, function (coef){
 					angular.forEach(keysArray, function (item){
 						varObj[item.key] = item.value;
 					})
@@ -138,12 +141,16 @@ angular.module('app-editor.controller', ['app-core'])
 				return varObj;
 			}
 
-			var calculateModel = function (varObj){
-				angular.forEach($scope.selectedNode.coefficients, function (item){
+			var extendVarObjWithCoefs = function (element, varObj){
+				angular.forEach(element.coefficients, function (item){
 					varObj[item.key] = item.value;
 				})
-				$scope.selectedNode.modelValue = mathService.calculate($scope.selectedNode.method, varObj);
-				$scope.coefficients = varObj;
+				return varObj;
+			}
+
+			var calculateModel = function (element, varObj){
+				element.modelValue = mathService.calculate(element.method, varObj);
+				// $scope.coefficients = varObj;
 			}
 
 			$scope.removeNode = function (nodeToDel){
