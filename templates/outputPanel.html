@@ -1,3 +1,5 @@
 <div class="chartsPanel"> 
-	<div id="charts" style="height: 100%; width: 100%"></div>
+	<button ng-init="test = true" ng-click="test = !test">Switch charts</button>
+	<div id="chartsLambda" style="height: 100%; width: 100%" ng-show="test"></div>
+	<div id="chartsColumn" style="height: 100%; width: 100%" ng-show="!test"></div>
 </div>

@@ -18,19 +18,44 @@ angular.module('app-editor.controller', ['app-core'])
 					updateLambdaChart(lambdaChartArray);
 				}
 				if($scope.selectedNode.type == "module"){
+					var summaryLambdaChartArray = [];
+					var summaryPercentChartArray = [];
+					summaryPercentChartArray[0] = ['asdasd', 'xddddd']
 					var summary = 0;
 					var children = treeDataService.getChildrenArray($scope.selectedNode);
 					angular.forEach(children, function(child){
-						$scope.selectNode(null, child);
-						if(child.modelValue == undefined){
-							$scope.calculateElementReliability($scope.selectedNode);
+						$scope.calculateElementReliability(child);
+						summary = summary + child.modelValue;	
+						var lambdaChartArray = generateLambdaData(angular.copy(child));
+						// console.log("single :", lambdaChartArray);
+						if (summaryLambdaChartArray.length === 0){
+							alert('should be shown once')
+							summaryLambdaChartArray = lambdaChartArray;
 						}
-						console.log($scope.selectedNode.modelValue)
-						summary = summary + $scope.selectedNode.modelValue;	
-					})
-					$scope.selectNode(null, backupSelected)
+						else{
+							summaryLambdaChartArray.forEach(function (sumItem, index){
+								if (index === 0) return; //cause it is used for axis labels
+								alert(sumItem[1].toString())
+								sumItem[1] += lambdaChartArray[index][1];
+							})
+						}
+					});
+
+					updateLambdaChart(summaryLambdaChartArray);
 					$scope.selectedNode.summaryModelValue = summary;
 					$scope.selectedNode.summaryModelQuantity = children.length;
+
+					//know when we know total lambda we can calculate percent per item;
+					angular.forEach(children, function (child){
+						var item = [];
+						item.push(child.name);
+						item.push(child.modelValue / $scope.selectedNode.summaryModelValue * 100);
+						summaryPercentChartArray.push(item);
+					})
+					console.log("PERCENT SUM", summaryPercentChartArray);
+					console.log("summary :", summaryLambdaChartArray);
+					updateBarChart(summaryPercentChartArray);
+
 				}
 				// console.clear()
 			}
@@ -225,7 +250,25 @@ angular.module('app-editor.controller', ['app-core'])
 			        	title: 'temperature (Celcius)'
 			        }
 		      	};
-		      	var chart = new google.visualization.LineChart(document.getElementById('charts'));
+		      	var chart = new google.visualization.LineChart(document.getElementById('chartsLambda'));
+
+		      	chart.draw(data, options);
+			}
+
+			var updateBarChart = function(chartArray){
+				var data = google.visualization.arrayToDataTable(chartArray);
+		      	var options = {
+			        title: 'Failure %',
+			        pointsSize: "2",
+			        vAxis: {
+			        	title: '%'
+			        },
+			        hAxis: {
+			        	title: 'elements'
+			        },
+			        bars: "horizontal"
+		      	};
+		      	var chart = new google.visualization.ColumnChart(document.getElementById('chartsColumn'));
 
 		      	chart.draw(data, options);
 			}
