@@ -13,8 +13,9 @@ angular.module('app-editor.controller', ['app-core'])
 				var backupSelected = $scope.selectedNode;
 
 				if($scope.selectedNode.type == "element"){
-					$scope.calculateElementReliability();
-					
+					$scope.calculateElementReliability($scope.selectedNode);
+					var lambdaChartArray = generateLambdaData(angular.copy($scope.selectedNode));
+					updateLambdaChart(lambdaChartArray);
 				}
 				if($scope.selectedNode.type == "module"){
 					var summary = 0;
@@ -22,7 +23,7 @@ angular.module('app-editor.controller', ['app-core'])
 					angular.forEach(children, function(child){
 						$scope.selectNode(null, child);
 						if(child.modelValue == undefined){
-							$scope.calculateElementReliability();
+							$scope.calculateElementReliability($scope.selectedNode);
 						}
 						console.log($scope.selectedNode.modelValue)
 						summary = summary + $scope.selectedNode.modelValue;	
@@ -33,12 +34,12 @@ angular.module('app-editor.controller', ['app-core'])
 				}
 				// console.clear()
 			}
-			$scope.calculateElementReliability = function (){
+			$scope.calculateElementReliability = function (element){
 				try{
-					var keysArray = initKeys($scope.selectedNode);
-					var varObj = calculateCoefficients($scope.selectedNode, keysArray);
-					var coefficientsOut = extendVarObjWithCoefs($scope.selectedNode, varObj);
-					calculateModel($scope.selectedNode, coefficientsOut);
+					var keysArray = initKeys(element);
+					var varObj = calculateCoefficients(element, keysArray);
+					var coefficientsOut = extendVarObjWithCoefs(element, varObj);
+					calculateModel(element, coefficientsOut);
 					$scope.coefficients = coefficientsOut;
 
 					/*if (options && options.forSingle) {
@@ -151,6 +152,34 @@ angular.module('app-editor.controller', ['app-core'])
 			var calculateModel = function (element, varObj){
 				element.modelValue = mathService.calculate(element.method, varObj);
 				// $scope.coefficients = varObj;
+			}
+
+			var generateLambdaData = function (element){
+				//creating charts data array
+				var chartArray = [];
+				chartArray[0] = ['temperature', 'lambda'];
+				var keysArray = initKeys(element);
+				for(var t = -100; t <= 200; t+=10){
+					keysArray.forEach(function (item){
+						if (item.key == "Tn"){
+							item.value = t;
+						}
+					})
+					var varObj = calculateCoefficients(element, keysArray);
+					var coefficientsOut = extendVarObjWithCoefs(element, varObj);
+					calculateModel(element, varObj);
+					chartArray.push([t.toString() , element.modelValue])
+				}
+				return chartArray;
+
+				//restoring initial values
+				// varObj = calculateCoefficients(keysArrayBackup);
+				// calculateModel(varObj);
+
+				// 	var varObj = calculateCoefficients(element, keysArray);
+				// 	var coefficientsOut = extendVarObjWithCoefs(element, varObj);
+				// 	calculateModel(element, coefficientsOut);
+				// 	$scope.coefficients = coefficientsOut;
 			}
 
 			$scope.removeNode = function (nodeToDel){

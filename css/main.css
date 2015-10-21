@@ -111,7 +111,7 @@ a:-webkit-any-link {
 	position: absolute;
 	bottom: 0px;
 	top: 50%;
-	width: calc(70% - 50px);
+	width: calc(70% - 60px);
 	height: calc(50% - 45px);
 	overflow: auto;
 }
