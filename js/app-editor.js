@@ -9,6 +9,10 @@ angular.module('app-editor.controller', ['app-core'])
 			angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
 
 			$scope.coefficients; //this would be stored all the coef-s and prop-s with their values
+
+			$scope.$watch("selectedNode", function (){
+				$scope.calculateReliability();
+			})
 			$scope.calculateReliability = function(){
 				var backupSelected = $scope.selectedNode;
 
@@ -29,19 +33,20 @@ angular.module('app-editor.controller', ['app-core'])
 						var lambdaChartArray = generateLambdaData(angular.copy(child));
 						// console.log("single :", lambdaChartArray);
 						if (summaryLambdaChartArray.length === 0){
-							alert('should be shown once')
+							// alert('should be shown once')
 							summaryLambdaChartArray = lambdaChartArray;
 						}
 						else{
 							summaryLambdaChartArray.forEach(function (sumItem, index){
 								if (index === 0) return; //cause it is used for axis labels
-								alert(sumItem[1].toString())
+								// alert(sumItem[1].toString())
 								sumItem[1] += lambdaChartArray[index][1];
 							})
 						}
 					});
-
-					updateLambdaChart(summaryLambdaChartArray);
+					if (summaryLambdaChartArray.length > 1){
+						updateLambdaChart(summaryLambdaChartArray);
+					}
 					$scope.selectedNode.summaryModelValue = summary;
 					$scope.selectedNode.summaryModelQuantity = children.length;
 
@@ -54,7 +59,9 @@ angular.module('app-editor.controller', ['app-core'])
 					})
 					console.log("PERCENT SUM", summaryPercentChartArray);
 					console.log("summary :", summaryLambdaChartArray);
-					updateBarChart(summaryPercentChartArray);
+					if (summaryPercentChartArray.length > 1){
+						updateBarChart(summaryPercentChartArray);
+					}
 
 				}
 				// console.clear()
