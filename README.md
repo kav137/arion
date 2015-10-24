@@ -1,2 +1,2 @@
 # A01
-client for A01 project.
+Client for Arion project.
