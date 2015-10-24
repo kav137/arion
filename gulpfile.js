@@ -1,6 +1,6 @@
 var gulp        = require('gulp');
 var browserSync = require('browser-sync').create();
-var browserify  = require('browserify');
+// var browserify  = require('browserify');
 
 // Static server
 gulp.task('browser-sync', function() {
