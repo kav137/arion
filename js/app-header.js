@@ -28,8 +28,6 @@ angular.module('app-header.controller', ['app-core'])
 				alert("Работа данной функции находится на последнем этапе тестирования. Все тестируемые функции настолько хороши, что обязательно войдут в следующий релиз")
 			}
 			$scope.testCharts = function (){
-				if (typeof $rootScope.chartArray !== "array")
-					return;
 				var data = google.visualization.arrayToDataTable($rootScope.chartArray);
 		      	var options = {
 			        title: 'Company Performance'

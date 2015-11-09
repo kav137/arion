@@ -9,70 +9,102 @@ angular.module('app-editor.controller', ['app-core'])
 			angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
 
 			$scope.coefficients; //this would be stored all the coef-s and prop-s with their values
+
+			$scope.$watch("selectedNode", function (){
+				$scope.calculateReliability();
+			})
 			$scope.calculateReliability = function(){
 				var backupSelected = $scope.selectedNode;
 
 				if($scope.selectedNode.type == "element"){
-					$scope.calculateElementReliability();
+					$scope.calculateElementReliability($scope.selectedNode);
+					var lambdaChartArray = generateLambdaData(angular.copy($scope.selectedNode));
+					updateLambdaChart(lambdaChartArray);
 				}
 				if($scope.selectedNode.type == "module"){
+					var summaryLambdaChartArray = [];
+					var summaryPercentChartArray = [];
+					summaryPercentChartArray[0] = ['asdasd', 'xddddd']
 					var summary = 0;
 					var children = treeDataService.getChildrenArray($scope.selectedNode);
 					angular.forEach(children, function(child){
-						$scope.selectNode(null, child);
-						if(child.modelValue == undefined){
-							$scope.calculateElementReliability();
+						$scope.calculateElementReliability(child);
+						summary = summary + child.modelValue;	
+						var lambdaChartArray = generateLambdaData(angular.copy(child));
+						// console.log("single :", lambdaChartArray);
+						if (summaryLambdaChartArray.length === 0){
+							// alert('should be shown once')
+							summaryLambdaChartArray = lambdaChartArray;
 						}
-						console.log($scope.selectedNode.modelValue)
-						summary = summary + $scope.selectedNode.modelValue;	
-					})
-					$scope.selectNode(null, backupSelected)
+						else{
+							summaryLambdaChartArray.forEach(function (sumItem, index){
+								if (index === 0) return; //cause it is used for axis labels
+								// alert(sumItem[1].toString())
+								sumItem[1] += lambdaChartArray[index][1];
+							})
+						}
+					});
+					if (summaryLambdaChartArray.length > 1){
+						updateLambdaChart(summaryLambdaChartArray);
+					}
 					$scope.selectedNode.summaryModelValue = summary;
 					$scope.selectedNode.summaryModelQuantity = children.length;
+
+					//know when we know total lambda we can calculate percent per item;
+					angular.forEach(children, function (child){
+						var item = [];
+						item.push(child.name);
+						item.push(child.modelValue / $scope.selectedNode.summaryModelValue * 100);
+						summaryPercentChartArray.push(item);
+					})
+					console.log("PERCENT SUM", summaryPercentChartArray);
+					console.log("summary :", summaryLambdaChartArray);
+					if (summaryPercentChartArray.length > 1){
+						updateBarChart(summaryPercentChartArray);
+					}
+
 				}
 				// console.clear()
 			}
-			$scope.calculateElementReliability = function (){
-
-				// if (varObj['Tn'] !== undefined){
-				// 	var chartDataArray = [];
-				// 	for(var t = -270; t < 1000; t+=10){
-				// 		varObj['Tn'] = t;
-				// 		var valueInter = mathService.calculate($scope.selectedNode.method, varObj)
-				// 		chartDataArray.push(valueInter);
-				// 	}
-				// 	console.log(chartDataArray)
-				// }
-
+			$scope.calculateElementReliability = function (element){
 				try{
-					var keysArray = initKeys();
-					var varObj = calculateCoefficients(keysArray);
-					calculateModel(varObj);
+					var keysArray = initKeys(element);
+					var varObj = calculateCoefficients(element, keysArray);
+					var coefficientsOut = extendVarObjWithCoefs(element, varObj);
+					calculateModel(element, coefficientsOut);
+					$scope.coefficients = coefficientsOut;
 
-					//creating charts data array
-					// var outArray = [];
-					// outArray[0] = ['temperature', 'lambda'];
-					// for(var t = -270; t < 200; t+=10){
-					// 	keysArray.forEach(function (item){
-					// 		if (item.key == "Tn"){
-					// 			item.value = t;
-					// 		}
-					// 	})
-					// 	tempVarObj = calculateCoefficients(keysArray);
-					// 	calculateModel(tempVarObj);
-					// 	outArray.push([t.toString() , $scope.selectedNode.modelValue])
-					// }
-					// $rootScope.chartArray = outArray;
+					/*if (options && options.forSingle) {
+						//creating charts data array
+						var chartArray = [];
+						var keysArrayBackup = angular.copy(keysArray);
+						chartArray[0] = ['temperature', 'lambda'];
+						for(var t = -270; t < 200; t+=10){
+							keysArray.forEach(function (item){
+								if (item.key == "Tn"){
+									item.value = t;
+								}
+							})
+							tempVarObj = calculateCoefficients(keysArray);
+							calculateModel(tempVarObj);
+							chartArray.push([t.toString() , $scope.selectedNode.modelValue])
+						}
+						updateLambdaChart(chartArray);
+
+						//restoring initial values
+						varObj = calculateCoefficients(keysArrayBackup);
+						calculateModel(varObj);
+					}*/
 				}
 				catch (error){
 					alert("Необходимо заполнить все требуемые поля")
 				}
 			}
 
-			var initKeys = function(){
+			var initKeys = function(element){
 				var keys = [];
 				// // console.clear();
-				angular.forEach($scope.selectedNode.properties, function (item){
+				angular.forEach(element.properties, function (item){
 					//handling number inputs
 					if (item.type == 2 || item.type == 1){
 						var obj = {};
@@ -131,9 +163,9 @@ angular.module('app-editor.controller', ['app-core'])
 				return keys;
 			}
 
-			var calculateCoefficients = function (keysArray){
+			var calculateCoefficients = function (element, keysArray){
 				var varObj = {};
-				angular.forEach($scope.selectedNode.coefficients, function (coef){
+				angular.forEach(element.coefficients, function (coef){
 					angular.forEach(keysArray, function (item){
 						varObj[item.key] = item.value;
 					})
@@ -142,12 +174,44 @@ angular.module('app-editor.controller', ['app-core'])
 				return varObj;
 			}
 
-			var calculateModel = function (varObj){
-				angular.forEach($scope.selectedNode.coefficients, function (item){
+			var extendVarObjWithCoefs = function (element, varObj){
+				angular.forEach(element.coefficients, function (item){
 					varObj[item.key] = item.value;
 				})
-				$scope.selectedNode.modelValue = mathService.calculate($scope.selectedNode.method, varObj);
-				$scope.coefficients = varObj;
+				return varObj;
+			}
+
+			var calculateModel = function (element, varObj){
+				element.modelValue = mathService.calculate(element.method, varObj);
+				// $scope.coefficients = varObj;
+			}
+
+			var generateLambdaData = function (element){
+				//creating charts data array
+				var chartArray = [];
+				chartArray[0] = ['temperature', 'lambda'];
+				var keysArray = initKeys(element);
+				for(var t = -100; t <= 200; t+=10){
+					keysArray.forEach(function (item){
+						if (item.key == "Tn"){
+							item.value = t;
+						}
+					})
+					var varObj = calculateCoefficients(element, keysArray);
+					var coefficientsOut = extendVarObjWithCoefs(element, varObj);
+					calculateModel(element, varObj);
+					chartArray.push([t.toString() , element.modelValue])
+				}
+				return chartArray;
+
+				//restoring initial values
+				// varObj = calculateCoefficients(keysArrayBackup);
+				// calculateModel(varObj);
+
+				// 	var varObj = calculateCoefficients(element, keysArray);
+				// 	var coefficientsOut = extendVarObjWithCoefs(element, varObj);
+				// 	calculateModel(element, coefficientsOut);
+				// 	$scope.coefficients = coefficientsOut;
 			}
 
 			$scope.removeNode = function (nodeToDel){
@@ -178,6 +242,42 @@ angular.module('app-editor.controller', ['app-core'])
 						$scope.selectNode(null, result.parent);
 					}
 				}
+			}
+
+			var updateLambdaChart = function(chartArray){
+				var data = google.visualization.arrayToDataTable(chartArray);
+		      	var options = {
+			        title: 'Lambda(t)',
+			        pointsSize: "2",
+			        vAxis: {
+			        	title: 'lambda',
+			        	format: 'scientific'
+			        },
+			        hAxis: {
+			        	title: 'temperature (Celcius)'
+			        }
+		      	};
+		      	var chart = new google.visualization.LineChart(document.getElementById('chartsLambda'));
+
+		      	chart.draw(data, options);
+			}
+
+			var updateBarChart = function(chartArray){
+				var data = google.visualization.arrayToDataTable(chartArray);
+		      	var options = {
+			        title: 'Failure %',
+			        pointsSize: "2",
+			        vAxis: {
+			        	title: '%'
+			        },
+			        hAxis: {
+			        	title: 'elements'
+			        },
+			        bars: "horizontal"
+		      	};
+		      	var chart = new google.visualization.ColumnChart(document.getElementById('chartsColumn'));
+
+		      	chart.draw(data, options);
 			}
 	}])
 

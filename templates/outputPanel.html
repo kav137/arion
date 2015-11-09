@@ -1,6 +1,5 @@
-<div class="chartsPanel" id="charts"> 
-	<!-- <div class="chartsPanel" >
-		{{('Reliability'| translate) + selectedNode.modelValue}}
-	</div> -->
-	<div lambda-chart></div>
+<div class="chartsPanel"> 
+	<button ng-init="test = true" ng-click="test = !test" ng-show="selectedNode.type=='module'">Switch charts</button>
+	<div id="chartsLambda" style="height: 100%; width: 100%" ng-show="test || selectedNode.type === 'element'" ></div>
+	<div id="chartsColumn" style="height: 100%; width: 100%" ng-show="!test && selectedNode.type === 'module'"></div>
 </div>
