@@ -57,9 +57,11 @@ a:-webkit-any-link {
 	background-color: #1D4E89;
 	color: white;
 }
+
 .deselectedItem{
 	color: black;
 }
+
 .treeArea{
 	background-color: #EEEEEE;
 	padding: 15px 15px 20px 15px;
@@ -115,6 +117,7 @@ a:-webkit-any-link {
 	height: calc(50% - 45px);
 	overflow: auto;
 }
+
 .propertyItem{
 	margin-left:5px;
 	border-bottom: 1px solid #888888;
@@ -265,6 +268,7 @@ a:-webkit-any-link {
 	white-space: nowrap;
 	/*margin-top: 10px;*/
 	outline: none;
+	cursor: pointer;
 	/*background-color: #C2CFDF;*/
 }
 .italicText{
