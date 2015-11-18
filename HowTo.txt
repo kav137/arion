@@ -1,0 +1,23 @@
+How to run:
+
+Preparing environment:
+	1) install node.js and npm
+		 https://nodejs.org/en/
+
+	2) install plugins globally (run cmd.exe as admin):
+		>npm install -g gulp
+		>npm install -g browser-sync
+
+	3) run from the root of the project:
+		>npm install gulp --save-dev
+		>npm install browser-sync --save-dev
+
+Starting the server:
+	Simply run from the root of the project:
+		>gulp
+
+	After several seconds your default browser will start with tab:
+		http://localhost:3000/#/
+
+
+
