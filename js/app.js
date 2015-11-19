@@ -19,8 +19,9 @@ angular.module('app', [
 		'app-core', 
 		'app-editor', 
 		'app-math', 
-		'app-i18n', 
 		'app-header',
+		'app-i18n',
+		'app-utils', 
 		'app-charts'])
 	.run(['$log', '$rootScope', function ($log, $rootScope){
 		$log.info('application initialized successfully');

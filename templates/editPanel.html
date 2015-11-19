@@ -83,7 +83,7 @@
       <div ng-show="selectedNode.modelValue != undefined">
         <div>
           <b>
-            {{('Reliability'| translate) + selectedNode.modelValue}}
+            {{('Reliability'| translate) + (selectedNode.modelValue | exponential) }}
           </b>
         </div>
         <div>
@@ -110,7 +110,7 @@
         <hr>
         <div>
           <b>
-            {{('Module reliability'| translate) + selectedNode.summaryModelValue}}
+            {{('Module reliability'| translate) + (selectedNode.summaryModelValue | exponential)}}
           </b>
         </div>
         <div>

@@ -13,6 +13,7 @@ angular.module('app-editor.controller', ['app-core'])
 			$scope.$watch("selectedNode", function (){
 				$scope.calculateReliability();
 			})
+
 			$scope.calculateReliability = function(){
 				var backupSelected = $scope.selectedNode;
 
@@ -66,6 +67,7 @@ angular.module('app-editor.controller', ['app-core'])
 				}
 				// console.clear()
 			}
+			
 			$scope.calculateElementReliability = function (element){
 				try{
 					var keysArray = initKeys(element);
