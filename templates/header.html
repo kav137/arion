@@ -1,21 +1,32 @@
-<div ng-controller="HeaderCtrl">
-	<span class="arionLogo">{{'Arion' | translate}}</span>
-	<button class="buttonHeader" ng-click="addElement()">
-		<i class="ion-plus"></i> {{ 'Add element' | translate }}
-	</button> 
-	<button class="buttonHeader" ng-click="addModule()">
-		<i class="ion-plus"></i> {{ 'Add module' | translate }} 
-	</button>
-	<!-- <button class="buttonHeader" ng-click="later()">
-		<i class="ion-play"></i> {{ 'Calculate device' | translate }} 
-	</button> -->
-	<!-- <button class="buttonHeader" ng-click="testCharts()">
-		<i class="ion-edit"></i> {{ 'Test charts' | translate }} 
-	</button> -->
-	<button class="buttonHeader floatRight" ng-click="logout()">
-		<i class="ion-log-out"></i> {{ 'Logout' | translate }} 
-	</button>
-	<button class="buttonHeader floatRight" ng-click="later()">
-		<i class="ion-gear-a"></i> {{ 'Settings' | translate }} 
-	</button> 
+<div ng-controller="HeaderCtrl" class="headerPanel">
+	<div class="headerLogo">
+		<p class="arionLogo">
+			{{'Arion' | translate}}
+		</p>
+	</div>
+	<div class="headerButtons">
+		<ul class="left">
+			<li>
+				<button class="buttonHeader" ng-click="addElement()">
+					<i class="ion-plus"></i> {{ 'Add element' | translate }}
+				</button> 
+			</li>
+			<li>
+				<button class="buttonHeader" ng-click="addModule()">
+					<i class="ion-plus"></i> {{ 'Add module' | translate }} 
+				</button>
+			</li>
+		</ul>
+		<ul class="right">
+			<li>
+				<button class="uttonHeader" ng-click="logout()">
+					<i class="ion-log-out"></i> {{ 'Logout' | translate }} 
+				</button>
+			</li>
+			<!-- maybe later -->
+			<!-- <button class="buttonHeader floatRight" ng-click="later()">
+				<i class="ion-gear-a"></i> {{ 'Settings' | translate }} 
+			</button>  -->
+		</ul>
+	</div>
 </div>

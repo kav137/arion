@@ -1,0 +1,68 @@
+@font-face {
+    font-family: cuprum;
+    src: url("fonts/cuprum/Cuprum-Bold.ttf");
+}
+.headerPanel{
+	z-index: 1;
+	position: static;
+	height: 45px;
+	border: 0px;
+	background-color: #1D4E89;
+	white-space: nowrap;
+}
+.headerLogo{
+	width: 100px;
+	float: left;
+	padding: 0px 30px 0px 20px;
+	font-size: 30px;
+	color: white;
+	font-family: cuprum;
+}
+.arionLogo{
+	display: block;
+	line-height: 45px;
+	height: 45px;
+}
+.headerButtons{
+	height: 44px;
+}
+ul{
+	list-style: none;
+}
+.left{
+	float: left;
+}
+.right{
+	float: right;
+}
+.headerButtons li{
+	float: left;
+	position: relative;
+	margin-left: 5px;
+}
+.buttonHeader{
+	height: 45px;
+	color: white;
+	font-size: 13px;
+	padding: 0px 10px;
+	background-color: #2460a8;
+	border: 0px;
+}
+.buttonHeader i{
+	margin-right: 5px;
+	font-size: 14px
+}
+.buttonHeader:hover{
+	background-color: #6183AC;
+}
+.buttonHeader:active{
+	background-color: #173E6E;
+}
+.buttonHeader:focus{
+	border: 0px;
+	outline: none;
+}
+.floatRight{
+	/*float: right;*/
+	margin: 2px 3px;
+}

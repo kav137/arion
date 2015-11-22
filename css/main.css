@@ -1,3 +1,7 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th, td{
+	padding:0px;
+	margin:0px;
+}
 html, body{
 	height: 100%;
 	padding:0px;
@@ -7,13 +11,12 @@ html, body{
 	font-weight: normal;
 	font-style: normal;
 	/*background-color: #888888;*/
-	background-image: url("../images/texture.png")
+	background-image: url("/images/texture.png")
 }
+/*div{
+	border: 1px solid red !important;
+}*/
 
-@font-face {
-    font-family: cuprum;
-    src: url("fonts/cuprum/Cuprum-Bold.ttf");
-}
 
 a:-webkit-any-link {
   color: auto;
@@ -21,6 +24,7 @@ a:-webkit-any-link {
   cursor: auto;
   font: normal normal normal  Arial;
 }
+
 .contentContainer{
 	position: fixed;
 	top: 42px;
@@ -133,52 +137,7 @@ a:-webkit-any-link {
 	border-radius: 0px;
 	/*padding: 30px;*/
 }
-.headerPanel{
-	z-index:1;
-	position: fixed;
-	padding: 0px 5px 2px 5px;
-	left: 0px;
-	top: 0px;
-	right: 0px;
-	height: 42px;
-	background-color: #1D4E89;
-	white-space: nowrap;
 
-}
-.arionLogo{
-	position: relative;
-	left: 10px;
-	padding-right: 40px;
-	top: 6px;
-	font-size: 30px;
-	color: white;
-	font-family: cuprum;
-}
-.buttonHeader{
-	height: 40px;
-	color: white;
-	background-color: #1D4E89;
-	border: 0px;
-	left: 0px;
-	right:0px;
-	margin: 0px;
-	font-size: 13px;
-	box-shadow: 0px -2px 15px #356095;
-}
-.buttonHeader:hover{
-	background-color: #6183AC;
-}
-.buttonHeader:active{
-	background-color: #173E6E;
-}
-.buttonHeader:focus{
-	border: 0px;
-	outline: none;
-}
-.floatRight{
-	float: right;
-	margin: 2px 3px;
-}
 .alphaOverlay{
 	position: fixed;
 	width: 100%;
@@ -261,10 +220,10 @@ a:-webkit-any-link {
 	margin:5px;
 }
 .treeItem{
-	padding:0px 5px;
+	padding:5px 5px;
 	border: 1px solid #CCCCCC;
-	border-radius: 5px;
-	box-shadow: 0px 0px 5px #BBBBBB;
+	/*border-radius: 5px;*/
+	box-shadow: 0px 0px 3px #BBBBBB;
 	white-space: nowrap;
 	/*margin-top: 10px;*/
 	outline: none;
