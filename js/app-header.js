@@ -4,8 +4,8 @@
 * Description
 */
 angular.module('app-header.controller', ['app-core'])
-	.controller('HeaderCtrl', ['$scope', '$rootScope', '$controller', 'appStateService', 'treeDataService',
-		function($scope, $rootScope, $controller, appStateService, treeDataService){
+	.controller('HeaderCtrl', ['$scope', '$rootScope', '$controller', 'treeDataService',
+		function($scope, $rootScope, $controller, treeDataService){
 			angular.extend(this, $controller('RootCtrl', {$scope: $scope}))
 
 			$scope.addElement = function (){

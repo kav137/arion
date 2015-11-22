@@ -1,8 +1,4 @@
 angular.module('app-core.service', [])
-	.service('appStateService', function(){
-		this.isAuthorized = false;
-		this.isModalShown = false;
-	})
 	.service('treeDataService', function (){
 		var TDS = this;
 		var tree = {};
@@ -100,7 +96,7 @@ angular.module('app-core.service', [])
 			})
 		}
 	})
-
+	
 	.service('elementSelectionService',['$http', function ($http){
 		var eds = this;
 		var data = {};
@@ -210,8 +206,8 @@ angular.module('app-core.service', [])
 	}])
 
 angular.module('app-core.controller', ['ngRoute'])
-	.controller('RootCtrl', ['$scope', 'treeDataService', 'elementSelectionService', '$rootScope', '$http', 'appStateService',
-		function ($scope, treeDataService, elementSelectionService, $rootScope, $http, appStateService){
+	.controller('RootCtrl', ['$scope', 'treeDataService', 'elementSelectionService', '$rootScope', '$http',
+		function ($scope, treeDataService, elementSelectionService, $rootScope, $http){
 
 		//device data
 		$scope.treeModel = treeDataService.getTree();

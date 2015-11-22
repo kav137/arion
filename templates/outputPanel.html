@@ -1,5 +1,7 @@
-<div class="chartsPanel"> 
-	<button ng-init="test = true" ng-click="test = !test" ng-show="selectedNode.type=='module'">Switch charts</button>
-	<div id="chartsLambda" style="height: 100%; width: 100%" ng-show="test || selectedNode.type === 'element'" ></div>
-	<div id="chartsColumn" style="height: 100%; width: 100%" ng-show="!test && selectedNode.type === 'module'"></div>
+<div class="chartsPanel" ng-controller="OutputCTRL"> 
+{{chartState}}
+	<button ng-click="switchCharts()" ng-show="selectedNode.type=='module'">Switch</button>
+	<div id="charts" style="height: 100%; width: 100%"></div>
+	<!-- <div id="lambdaChart" style="height: 50%; width: 100%"></div> -->
+	<!-- <div id="barChart" style="height: 50%; width: 100%"></div> -->
 </div>

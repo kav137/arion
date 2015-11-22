@@ -4,8 +4,8 @@
 * Description
 */
 angular.module('app-editor.controller', ['app-core'])
-	.controller('EditorCtrl', ['$scope', '$controller', '$rootScope', 'treeDataService', 'mathService', "$filter",
-		function ($scope, $controller, $rootScope, treeDataService, mathService, $filter){
+	.controller('EditorCtrl', ['$scope', '$controller', '$rootScope', 'treeDataService', 'mathService', "$filter", 'chartService', 'calculateService',
+		function ($scope, $controller, $rootScope, treeDataService, mathService, $filter, chartService, calculateService){
 			angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
 
 			$scope.coefficients; //this would be stored all the coef-s and prop-s with their values
@@ -15,209 +15,36 @@ angular.module('app-editor.controller', ['app-core'])
 			})
 
 			$scope.calculateReliability = function(){
-				var backupSelected = $scope.selectedNode;
-
 				if($scope.selectedNode.type == "element"){
 					$scope.calculateElementReliability($scope.selectedNode);
-					var lambdaChartArray = generateLambdaData(angular.copy($scope.selectedNode));
-					updateLambdaChart(lambdaChartArray);
 				}
 				if($scope.selectedNode.type == "module"){
-					var summaryLambdaChartArray = [];
-					var summaryPercentChartArray = [];
-					summaryPercentChartArray[0] = ['asdasd', 'xddddd']
 					var summary = 0;
 					var children = treeDataService.getChildrenArray($scope.selectedNode);
 					angular.forEach(children, function(child){
 						$scope.calculateElementReliability(child);
-						summary = summary + child.modelValue;	
-						var lambdaChartArray = generateLambdaData(angular.copy(child));
-						// console.log("single :", lambdaChartArray);
-						if (summaryLambdaChartArray.length === 0){
-							// alert('should be shown once')
-							summaryLambdaChartArray = lambdaChartArray;
-						}
-						else{
-							summaryLambdaChartArray.forEach(function (sumItem, index){
-								if (index === 0) return; //cause it is used for axis labels
-								// alert(sumItem[1].toString())
-								sumItem[1] += lambdaChartArray[index][1];
-							})
-						}
+						summary = summary + child.modelValue;
 					});
-					if (summaryLambdaChartArray.length > 1){
-						updateLambdaChart(summaryLambdaChartArray);
-					}
 					$scope.selectedNode.summaryModelValue = summary;
 					$scope.selectedNode.summaryModelQuantity = children.length;
-
-					//know when we know total lambda we can calculate percent per item;
-					angular.forEach(children, function (child){
-						var item = [];
-						item.push(child.name);
-						item.push(child.modelValue / $scope.selectedNode.summaryModelValue * 100);
-						summaryPercentChartArray.push(item);
-					})
-					console.log("PERCENT SUM", summaryPercentChartArray);
-					console.log("summary :", summaryLambdaChartArray);
-					if (summaryPercentChartArray.length > 1){
-						updateBarChart(summaryPercentChartArray);
-					}
-
 				}
-				// console.clear()
+				chartService.updateCharts($scope.selectedNode);
 			}
 			
 			$scope.calculateElementReliability = function (element){
 				try{
-					var keysArray = initKeys(element);
-					var varObj = calculateCoefficients(element, keysArray);
-					var coefficientsOut = extendVarObjWithCoefs(element, varObj);
-					calculateModel(element, coefficientsOut);
+					var keysArray = calculateService.initKeys(element);
+					var varObj = calculateService.calculateCoefficients(element, keysArray);
+					var coefficientsOut = calculateService.extendVarObjWithCoefs(element, varObj);
+					calculateService.calculateModel(element, coefficientsOut);
 					$scope.coefficients = coefficientsOut;
-
-					/*if (options && options.forSingle) {
-						//creating charts data array
-						var chartArray = [];
-						var keysArrayBackup = angular.copy(keysArray);
-						chartArray[0] = ['temperature', 'lambda'];
-						for(var t = -270; t < 200; t+=10){
-							keysArray.forEach(function (item){
-								if (item.key == "Tn"){
-									item.value = t;
-								}
-							})
-							tempVarObj = calculateCoefficients(keysArray);
-							calculateModel(tempVarObj);
-							chartArray.push([t.toString() , $scope.selectedNode.modelValue])
-						}
-						updateLambdaChart(chartArray);
-
-						//restoring initial values
-						varObj = calculateCoefficients(keysArrayBackup);
-						calculateModel(varObj);
-					}*/
 				}
 				catch (error){
 					alert("Необходимо заполнить все требуемые поля")
 				}
 			}
 
-			var initKeys = function(element){
-				var keys = [];
-				// // console.clear();
-				angular.forEach(element.properties, function (item){
-					//handling number inputs
-					if (item.type == 2 || item.type == 1){
-						var obj = {};
-						obj.key = item.key;
-						obj.value = parseFloat(item.value.replace(',', '.'))
-						keys.push(obj)
-					}
-					//handling drop down lists
-					if (item.type == 4){
-						//handling nested dependent properties
-						angular.forEach(item.value.properties, function (innerProperty){
-							var obj = {};
-							obj.key = innerProperty.key;
-							if(innerProperty.value != undefined){
-								if ((typeof innerProperty.value) == "string"){
-									obj.value = parseFloat((innerProperty.value).replace(',', '.'));
-								}
-								else{
-									obj.value = parseFloat(innerProperty.value);
-								}
-							}
-							else{
-								if ((typeof innerProperty.default) == "string"){
-									obj.value = parseFloat((innerProperty.default).replace(',', '.'));
-								}
-								else{
-									obj.value = parseFloat(innerProperty.default);
-								}
-							}
-							keys.push(obj)
-						});
-						//handling nested non-editable keys
-						angular.forEach(item.value.keys, function (innerKey){
-							var obj = {};
-							obj.key = innerKey.key;
-							if(innerKey.value != undefined){
-								if ((typeof innerKey.value) == "string"){
-									obj.value = parseFloat((innerKey.value).replace(',', '.'))
-								}
-								else{
-									obj.value = parseFloat((innerKey.value))
-								}
-							}
-							else{
-								if ((typeof innerKey.default) == "string"){
-									obj.value = parseFloat((innerKey.default).replace(',', '.'))
-								}
-								else{
-									obj.value = parseFloat((innerKey.default))
-								}
-							}
-							keys.push(obj)
-						})
-					}
-				});
-				return keys;
-			}
-
-			var calculateCoefficients = function (element, keysArray){
-				var varObj = {};
-				angular.forEach(element.coefficients, function (coef){
-					angular.forEach(keysArray, function (item){
-						varObj[item.key] = item.value;
-					})
-					coef.value = mathService.calculate(coef.formula, varObj)
-				})
-				return varObj;
-			}
-
-			var extendVarObjWithCoefs = function (element, varObj){
-				angular.forEach(element.coefficients, function (item){
-					varObj[item.key] = item.value;
-				})
-				return varObj;
-			}
-
-			var calculateModel = function (element, varObj){
-				element.modelValue = mathService.calculate(element.method, varObj);
-				// $scope.coefficients = varObj;
-			}
-
-			var generateLambdaData = function (element){
-				//creating charts data array
-				var chartArray = [];
-				chartArray[0] = ['temperature', 'lambda'];
-				var keysArray = initKeys(element);
-				for(var t = -100; t <= 200; t+=10){
-					keysArray.forEach(function (item){
-						if (item.key == "Tn"){
-							item.value = t;
-						}
-					})
-					var varObj = calculateCoefficients(element, keysArray);
-					var coefficientsOut = extendVarObjWithCoefs(element, varObj);
-					calculateModel(element, varObj);
-					chartArray.push([t.toString() , element.modelValue])
-				}
-				return chartArray;
-
-				//restoring initial values
-				// varObj = calculateCoefficients(keysArrayBackup);
-				// calculateModel(varObj);
-
-				// 	var varObj = calculateCoefficients(element, keysArray);
-				// 	var coefficientsOut = extendVarObjWithCoefs(element, varObj);
-				// 	calculateModel(element, coefficientsOut);
-				// 	$scope.coefficients = coefficientsOut;
-			}
-
 			$scope.removeNode = function (nodeToDel){
-				// var nodeToDel = treeDataService.searchNode($scope.treeModel, node);
 				if (nodeToDel.localId == '0'){
 					alert("you can't remove device. choose antoher node")
 					return;
@@ -245,45 +72,94 @@ angular.module('app-editor.controller', ['app-core'])
 					}
 				}
 			}
-
-			var updateLambdaChart = function(chartArray){
-				var data = google.visualization.arrayToDataTable(chartArray);
-		      	var options = {
-			        title: 'Lambda(t)',
-			        pointsSize: "2",
-			        vAxis: {
-			        	title: 'lambda',
-			        	format: 'scientific'
-			        },
-			        hAxis: {
-			        	title: 'temperature (Celcius)'
-			        }
-		      	};
-		      	var chart = new google.visualization.LineChart(document.getElementById('chartsLambda'));
-
-		      	chart.draw(data, options);
-			}
-
-			var updateBarChart = function(chartArray){
-				var data = google.visualization.arrayToDataTable(chartArray);
-		      	var options = {
-			        title: 'Failure %',
-			        pointsSize: "2",
-			        vAxis: {
-			        	title: '%'
-			        },
-			        hAxis: {
-			        	title: 'elements'
-			        },
-			        bars: "horizontal"
-		      	};
-		      	var chart = new google.visualization.ColumnChart(document.getElementById('chartsColumn'));
-
-		      	chart.draw(data, options);
-			}
 	}])
 
+	.service('calculateService', ['mathService', function (mathService){
+		this.initKeys = function(element){
+			var keys = [];
+			// // console.clear();
+			angular.forEach(element.properties, function (item){
+				//handling number inputs
+				if (item.type == 2 || item.type == 1){
+					var obj = {};
+					obj.key = item.key;
+					obj.value = parseFloat(item.value.replace(',', '.'))
+					keys.push(obj)
+				}
+				//handling drop down lists
+				if (item.type == 4){
+					//handling nested dependent properties
+					angular.forEach(item.value.properties, function (innerProperty){
+						var obj = {};
+						obj.key = innerProperty.key;
+						if(innerProperty.value != undefined){
+							if ((typeof innerProperty.value) == "string"){
+								obj.value = parseFloat((innerProperty.value).replace(',', '.'));
+							}
+							else{
+								obj.value = parseFloat(innerProperty.value);
+							}
+						}
+						else{
+							if ((typeof innerProperty.default) == "string"){
+								obj.value = parseFloat((innerProperty.default).replace(',', '.'));
+							}
+							else{
+								obj.value = parseFloat(innerProperty.default);
+							}
+						}
+						keys.push(obj)
+					});
+					//handling nested non-editable keys
+					angular.forEach(item.value.keys, function (innerKey){
+						var obj = {};
+						obj.key = innerKey.key;
+						if(innerKey.value != undefined){
+							if ((typeof innerKey.value) == "string"){
+								obj.value = parseFloat((innerKey.value).replace(',', '.'))
+							}
+							else{
+								obj.value = parseFloat((innerKey.value))
+							}
+						}
+						else{
+							if ((typeof innerKey.default) == "string"){
+								obj.value = parseFloat((innerKey.default).replace(',', '.'))
+							}
+							else{
+								obj.value = parseFloat((innerKey.default))
+							}
+						}
+						keys.push(obj)
+					})
+				}
+			});
+			return keys;
+		}
 
+		this.calculateCoefficients = function (element, keysArray){
+			var varObj = {};
+			angular.forEach(element.coefficients, function (coef){
+				angular.forEach(keysArray, function (item){
+					varObj[item.key] = item.value;
+				})
+				coef.value = mathService.calculate(coef.formula, varObj)
+			})
+			return varObj;
+		}
+		
+		this.extendVarObjWithCoefs = function (element, varObj){
+			angular.forEach(element.coefficients, function (item){
+				varObj[item.key] = item.value;
+			})
+			return varObj;
+		}	
+
+		this.calculateModel = function (element, varObj){
+			element.modelValue = mathService.calculate(element.method, varObj);
+			// $scope.coefficients = varObj;
+		}
+	}])
 
 /**
 * app-editor Module
