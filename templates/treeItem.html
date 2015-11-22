@@ -5,7 +5,7 @@
 </span>
 
 <!-- displaying item content -->
-<span 	class="treeItem"
+<span class="treeItem"
 		ng-class="{'boldText': item.type == 'module', 'selectedItem': item.selected}"> 
 	<span style="margin:5px">
 		{{item.name}} 
@@ -15,7 +15,7 @@
 
 <!-- repeats children -->
 <span ng-show="item.expanded">
-	<div style="margin-left:31px" 
+	<div style="margin-left:31px; margin-top:11px" 
 		ng-repeat="item in item.children" 
 		ng-include="'templates/treeItem.html'" 
 		ng-click="selectNode($event, item)" >

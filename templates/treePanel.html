@@ -23,7 +23,6 @@
 		<div ng-repeat="item in $parent.treeAsList"
 			ng-click="selectNode($event, item)"
 			ng-show="isShownAsList"
-			class="treeItem"
 			ng-class="{'boldText': item.type == 'module', 'selectedItem': item.selected}"> 
 			{{item.name + " (" + item.position + "); [" + item.modelValue + ']'}}
 		</div>
