@@ -1,12 +1,5 @@
-/**
-* app-output.controller Module
-*
-* Description
-*/
+
 angular.module('app-math', ['app-core'])
-	.run(['$log' , function($log){
-		$log.info('app-math is initialized');
-	}])
 	.service('mathService', function(){
 		var MS = this;
 
@@ -277,5 +270,94 @@ angular.module('app-math', ['app-core'])
 			}
 		}
 	})
+	.service('calculateService', ['mathService', function (mathService){
+		this.initKeys = function(element){
+			var keys = [];
+			// // console.clear();
+			angular.forEach(element.properties, function (item){
+				//handling number inputs
+				if (item.type == 2 || item.type == 1){
+					var obj = {};
+					obj.key = item.key;
+					obj.value = parseFloat(item.value.replace(',', '.'))
+					keys.push(obj)
+				}
+				//handling drop down lists
+				if (item.type == 4){
+					//handling nested dependent properties
+					angular.forEach(item.value.properties, function (innerProperty){
+						var obj = {};
+						obj.key = innerProperty.key;
+						if(innerProperty.value != undefined){
+							if ((typeof innerProperty.value) == "string"){
+								obj.value = parseFloat((innerProperty.value).replace(',', '.'));
+							}
+							else{
+								obj.value = parseFloat(innerProperty.value);
+							}
+						}
+						else{
+							if ((typeof innerProperty.default) == "string"){
+								obj.value = parseFloat((innerProperty.default).replace(',', '.'));
+							}
+							else{
+								obj.value = parseFloat(innerProperty.default);
+							}
+						}
+						keys.push(obj)
+					});
+					//handling nested non-editable keys
+					angular.forEach(item.value.keys, function (innerKey){
+						var obj = {};
+						obj.key = innerKey.key;
+						if(innerKey.value != undefined){
+							if ((typeof innerKey.value) == "string"){
+								obj.value = parseFloat((innerKey.value).replace(',', '.'))
+							}
+							else{
+								obj.value = parseFloat((innerKey.value))
+							}
+						}
+						else{
+							if ((typeof innerKey.default) == "string"){
+								obj.value = parseFloat((innerKey.default).replace(',', '.'))
+							}
+							else{
+								obj.value = parseFloat((innerKey.default))
+							}
+						}
+						keys.push(obj)
+					})
+				}
+			});
+			return keys;
+		}
+
+		this.calculateCoefficients = function (element, keysArray){
+			var varObj = {};
+			angular.forEach(element.coefficients, function (coef){
+				angular.forEach(keysArray, function (item){
+					varObj[item.key] = item.value;
+				})
+				coef.value = mathService.calculate(coef.formula, varObj)
+			})
+			return varObj;
+		}
+		
+		this.extendVarObjWithCoefs = function (element, varObj){
+			angular.forEach(element.coefficients, function (item){
+				varObj[item.key] = item.value;
+			})
+			return varObj;
+		}	
+
+		this.calculateModel = function (element, varObj){
+			element.modelValue = mathService.calculate(element.method, varObj);
+			// $scope.coefficients = varObj;
+		}
+	}])
+	.run(['$log' , function($log){
+		$log.info('app-math is initialized');
+	}])
  
 

@@ -1,0 +1,61 @@
+.treePanel{
+	position: absolute;
+	height: 100%;
+	width: 370px;
+	top: 45px;
+	left: 0px;
+	background-color: white;
+}
+.treePanel > div{
+	background-color: white;
+	border: 3px solid white;
+	border-radius: 5px;
+	box-shadow: -2px 0px 35px -10px rgba(0,0,0,0.75);
+	padding: 10px 15px 15px 15px;
+	margin: 8px auto;
+	width: 320px;
+}
+.treeSettingsArea{
+	height: 70px;
+}
+.treeAreaItem{
+	margin-top: 5px;
+	margin-bottom: 12px;
+}
+.treeArea{
+	height: calc(100% - 180px);
+	overflow-x: auto; 
+	overflow-y: auto; 
+}
+#searchInput{
+	height: 24px;
+	padding: 2px 3px;
+	width: 180px;
+	border: 1px solid #CCCCCC;
+}
+.searchButton{
+	height: 30px;
+	padding: 2px 9px;
+	font-size: 13px;
+	float: right;
+	/*margin: 6px auto 3px auto;*/
+	background-color: #1D4E89;
+	color: white;
+	border: 0px;
+	outline: none;
+}
+.selectedItem{
+	background-color: #1D4E89;
+	color: white;
+}
+.deselectedItem{
+	color: black;
+}
+/*module higlighting in tree*/
+.boldText{
+	font-weight: bold
+}
+/*plus-minus buttons in tree view*/
+.removeMargin{
+	margin: 0;
+}

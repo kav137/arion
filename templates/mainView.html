@@ -1,10 +1,14 @@
 <div ng-controller="RootCtrl">
 	<div ng-include="'templates/header.html'" ng-show="authorization.success"></div>
-	<div class="contentContainer" ng-show="authorization.success">
-		<div class="treePanel" ng-include="'templates/treePanel.html'"></div>
-		<div class="editPanel" ng-include="'templates/editPanel.html'"></div>
-		<div class="outputPanel" ng-include="'templates/outputPanel.html'"></div>
-	</div>
+	<!-- <div class="contentContainer" ng-show="authorization.success"> -->
+
+
+	<div ng-include="'templates/treePanel.html'"></div>
+	<!-- <div class="editPanel" ng-include="'templates/editPanel.html'"></div>
+	<div class="outputPanel" ng-include="'templates/outputPanel.html'"></div> -->
+
+	
+	<!-- </div> -->
 	<div ng-show="modal.visible" ng-include="'templates/modal.html'"></div>
 
 	<div ng-show="!authorization.success" class="authForm" style="text-align:center">

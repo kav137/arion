@@ -6,9 +6,9 @@
 angular.module('app-i18n', ['pascalprecht.translate'])
 	.config(['$translateProvider', function($translateProvider) {
 		$translateProvider.translations('ru', {
-			'Arion': "Арион",
-			'Add element': "Добавить элемент",
-			'Add module': "Добавить модуль",
+			'Arion': "АРИОН",
+			'Add element': "Элемент",
+			'Add module': "Модуль",
 			'Add': "Добавить",
 			'Save': "Сохранить",
 			'Remove': "Удалить",

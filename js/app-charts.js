@@ -3,7 +3,7 @@
 *
 * Description
 */
-angular.module('app-output', ['app-core']).	
+angular.module('app-charts', ['app-core']).	
 	service('chartService', ['$log', 'calculateService', 'treeDataService', function ($log, calculateService, treeDataService){
 		//KAV: check later whether angular.copy required. it seems that it's absent brake nothing
 		//but who knows exactly..
@@ -31,7 +31,8 @@ angular.module('app-output', ['app-core']).
 				return activeChart;
 			}
 		};
-		this.getCgartState = function (){
+		
+		this.getChartState = function (){
 			return chartState.activeCharts;
 		}
 
@@ -180,7 +181,7 @@ angular.module('app-output', ['app-core']).
 	controller('OutputCTRL', ['$scope', 'chartService', function ($scope, chartService){
 		// $scope.activeChart = {};
 		// $scope.activeChart.value = 'lambdaChart';
-		$scope.chartState = chartService.getCgartState();
+		$scope.activeChart = chartService.getChartState();
 		$scope.switchCharts = function (){
 			chartService.switchCharts($scope.selectedNode);
 		}

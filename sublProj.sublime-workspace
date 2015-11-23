@@ -4,6 +4,138 @@
 		"selected_items":
 		[
 			[
+				"pare",
+				"parentNode"
+			],
+			[
+				"getEle",
+				"getElementParent"
+			],
+			[
+				"tree",
+				"treeDataService"
+			],
+			[
+				"sele",
+				"selectedNode"
+			],
+			[
+				"chartS",
+				"chartState"
+			],
+			[
+				"getc",
+				"getCgartState"
+			],
+			[
+				"ac",
+				"activeCharts"
+			],
+			[
+				"ch",
+				"chartState"
+			],
+			[
+				"get",
+				"getActiveChart"
+			],
+			[
+				"act",
+				"activeCharts"
+			],
+			[
+				"chec",
+				"checkChartType"
+			],
+			[
+				"update",
+				"updateBarChart"
+			],
+			[
+				"upda",
+				"updateCharts"
+			],
+			[
+				"swi",
+				"switchTo"
+			],
+			[
+				"up",
+				"updateLambdaChart"
+			],
+			[
+				"gene",
+				"generateBarChartData"
+			],
+			[
+				"ger",
+				"generateModuleLambdaData"
+			],
+			[
+				"summ",
+				"summaryLambdaChartArray"
+			],
+			[
+				"gen",
+				"generateBarChartData"
+			],
+			[
+				"lam",
+				"lambdaChart"
+			],
+			[
+				"chart",
+				"chartName"
+			],
+			[
+				"cha",
+				"chartName"
+			],
+			[
+				"ge",
+				"getActiveChart"
+			],
+			[
+				"genera",
+				"generateLambdaData"
+			],
+			[
+				"cah",
+				"chartService"
+			],
+			[
+				"se",
+				"selectedNode"
+			],
+			[
+				"cal",
+				"calculateService"
+			],
+			[
+				"ca",
+				"calculateService"
+			],
+			[
+				"bar",
+				"barChart"
+			],
+			[
+				"la",
+				"lamdaChart"
+			],
+			[
+				"$sc",
+				"$scope	AngularJS(DI)"
+			],
+			[
+				"cor",
+				"controller	AngularJS"
+			],
+			[
+				"br",
+				"browserSync"
+			],
+			[
 				"undef",
 				"undefined"
 			],
@@ -40,10 +172,6 @@
 				"summaryPercentChartArray"
 			],
 			[
-				"summ",
-				"summaryLambdaChartArray"
-			],
-			[
 				"calcul",
 				"calculateReliability"
 			],
@@ -54,18 +182,6 @@
 			[
 				"summa",
 				"summaryModelValue"
-			],
-			[
-				"lam",
-				"lambdaChartArray"
-			],
-			[
-				"la",
-				"lambdaChartArray"
-			],
-			[
-				"chart",
-				"chartArray"
 			],
 			[
 				"coef",
@@ -88,14 +204,6 @@
 				"varObj"
 			],
 			[
-				"cal",
-				"calculateModel"
-			],
-			[
-				"ca",
-				"calculated"
-			],
-			[
 				"calcu",
 				"calculated"
 			],
@@ -112,20 +220,8 @@
 				"databaseService"
 			],
 			[
-				"ch",
-				"children"
-			],
-			[
-				"get",
-				"getNestedElements"
-			],
-			[
 				"re",
 				"return"
-			],
-			[
-				"ge",
-				"getNestedElements"
 			],
 			[
 				"const",
@@ -164,10 +260,6 @@
 				"browser-sync"
 			],
 			[
-				"br",
-				"browserify"
-			],
-			[
 				"tas",
 				"task"
 			],
@@ -184,50 +276,87 @@
 	"buffers":
 	[
 		{
+			"file": "js/app-editor.js",
+			"settings":
+			{
+				"buffer_size": 5539,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1216,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app-core.js",
+			"settings":
+			{
+				"buffer_size": 11617,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 22 files for \"addNode\"\n\nD:\\Projects\\A01\\js\\app-core.js:\n  270  		$scope.elementSubGroup;\n  271  \n  272: 		$scope.addNode = function (parentNode, newId, isModule){\n  273  			if (!parentNode){\n  274  				parentNode = (treeDataService.searchNode($scope.treeModel, '0')).node;\n\nD:\\Projects\\A01\\templates\\addElementModal.html:\n   44  	</div>\n   45  	<div class=\"centralAlign\">\n   46: 		<button ng-click=\"addNode(selectedNode, elemName)\" class=\"centralModalButton\"> \n   47  			{{\"Add\" | translate}}\n   48  		</button>\n\nD:\\Projects\\A01\\templates\\addModuleModal.html:\n   15  	</div>\n   16  	<div class=\"centralAlign\">\n   17: 		<button ng-click=\"addNode(selectedNode, elemName, true)\" class=\"centralModalButton\"> \n   18  			{{\"Add\" | translate}}\n   19  		</button>\n\n3 matches across 3 files\n",
+			"settings":
+			{
+				"buffer_size": 792,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "gulpfile.js",
+			"settings":
+			{
+				"buffer_size": 538,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app-output.js",
+			"settings":
+			{
+				"buffer_size": 5526,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app-utils.js",
+			"settings":
+			{
+				"buffer_size": 218,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app-i18n.js",
+			"settings":
+			{
+				"buffer_size": 2023,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "/**\n* app-header.controller Module\n*\n* Description\n*/\nangular.module('app-header.controller', ['app-core'])\n	.controller('HeaderCtrl', ['$scope', '$rootScope', '$controller', 'treeDataService',\n		function($scope, $rootScope, $controller, treeDataService){\n			angular.extend(this, $controller('RootCtrl', {$scope: $scope}))\n\n			$scope.addElement = function (){\n				var modalConfig = {};\n				modalConfig.visible = true;\n				modalConfig.type = \"addElementModal\";\n				$scope.$parent.$parent.modal = modalConfig; //bullshit\n			}\n\n			$scope.addModule = function (){\n				var modalConfig = {};\n				modalConfig.visible = true;\n				modalConfig.type = \"addModuleModal\";\n				$scope.$parent.$parent.modal = modalConfig;\n			}\n			$scope.later = function (){\n				var test = treeDataService.getChildrenArray($scope.$parent.$parent.selectedNode);\n				// console.clear();\n				// console.log(test)\n				alert(\"Работа данной функции находится на последнем этапе тестирования. Все тестируемые функции настолько хороши, что обязательно войдут в следующий релиз\")\n			}\n			$scope.testCharts = function (){\n				var data = google.visualization.arrayToDataTable($rootScope.chartArray);\n		      	var options = {\n			        title: 'Company Performance'\n		      	};\n		      	var chart = new google.visualization.LineChart(document.getElementById('charts'));\n\n		      	chart.draw(data, options);\n			}\n			$scope.logout = function(){\n				if (confirm(\"Вы уверены, что хотите выйти из своего аккаунта?\"))\n					$scope.$parent.$parent.authorization.success = false;\n			}\n			$scope.stopBubbling = function($event){\n				$event.stopPropagation();\n			}\n	}])\n\n/**\n* app-header Module\n*\n* Aggregator for all submodules\n*/\nangular.module('app-header', ['app-header.controller'])\n	.run(['$log', function($log){\n		$log.info('app-header initialized successfully');\n	}])",
+			"file": "js/app-header.js",
+			"file_size": 2030,
+			"file_write_time": 130925335711538516,
+			"settings":
+			{
+				"buffer_size": 1820,
+				"line_ending": "Windows"
+			}
+		},
+		{
 			"file": "templates/addElementModal.html",
 			"settings":
 			{
 				"buffer_size": 1508,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/addModuleModal.html",
-			"settings":
-			{
-				"buffer_size": 655,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/authorizationForm.html",
-			"settings":
-			{
-				"buffer_size": 389,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/editPanel.html",
-			"settings":
-			{
-				"buffer_size": 4491,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/header.html",
-			"settings":
-			{
-				"buffer_size": 869,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/mainView.html",
-			"settings":
-			{
-				"buffer_size": 1134,
 				"line_ending": "Windows"
 			}
 		},
@@ -240,10 +369,10 @@
 			}
 		},
 		{
-			"file": "templates/nodeEditor.html",
+			"file": "js/app-ui.js",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 489,
 				"line_ending": "Windows"
 			}
 		},
@@ -251,15 +380,15 @@
 			"file": "templates/outputPanel.html",
 			"settings":
 			{
-				"buffer_size": 380,
+				"buffer_size": 393,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "templates/searchElementModal.html",
+			"file": "css/main.css",
 			"settings":
 			{
-				"buffer_size": 1441,
+				"buffer_size": 4624,
 				"line_ending": "Windows"
 			}
 		},
@@ -267,15 +396,15 @@
 			"file": "templates/treeItem.html",
 			"settings":
 			{
-				"buffer_size": 686,
+				"buffer_size": 702,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "index.html",
+			"file": "templates/header.html",
 			"settings":
 			{
-				"buffer_size": 1162,
+				"buffer_size": 878,
 				"line_ending": "Windows"
 			}
 		},
@@ -283,31 +412,7 @@
 			"file": "templates/treePanel.html",
 			"settings":
 			{
-				"buffer_size": 1107,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/app-core.js",
-			"settings":
-			{
-				"buffer_size": 11121,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/app-header.js",
-			"settings":
-			{
-				"buffer_size": 1809,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/app-ui.js",
-			"settings":
-			{
-				"buffer_size": 489,
+				"buffer_size": 1087,
 				"line_ending": "Windows"
 			}
 		}
@@ -399,28 +504,39 @@
 	[
 		"/D/Projects/A01",
 		"/D/Projects/A01/css",
+		"/D/Projects/A01/js",
 		"/D/Projects/A01/resources",
 		"/D/Projects/A01/templates"
 	],
 	"file_history":
 	[
+		"/D/Projects/A01/js/app-charts.js",
+		"/D/Projects/A01/js/app.js",
+		"/D/Projects/A01/templates/treePanel.html",
+		"/D/Projects/A01/index.html",
+		"/D/Projects/A01/templates/treeItem.html",
+		"/D/Projects/A01/templates/searchElementModal.html",
+		"/D/Projects/A01/templates/outputPanel.html",
+		"/D/Projects/A01/templates/nodeEditor.html",
+		"/D/Projects/A01/templates/modal.html",
+		"/D/Projects/A01/templates/mainView.html",
+		"/D/Projects/A01/templates/header.html",
+		"/D/Projects/A01/templates/editPanel.html",
+		"/D/Projects/A01/templates/authorizationForm.html",
+		"/D/Projects/A01/templates/addModuleModal.html",
+		"/D/Projects/A01/templates/addElementModal.html",
+		"/D/Projects/A01/css/main.css",
+		"/D/Projects/A01/gulpfile.js",
 		"/D/Projects/A01/js/app-header.js",
 		"/D/Projects/A01/js/app-editor.js",
-		"/D/Projects/A01/templates/editPanel.html",
 		"/D/Projects/A01/js/app-utils.js",
-		"/D/Projects/A01/index.html",
-		"/D/Projects/A01/templates/header.html",
 		"/D/Projects/A01/js/app-core.js",
-		"/D/Projects/A01/js/app.js",
-		"/D/Projects/A01/templates/modal.html",
 		"/D/ArtyomDocs/BSUIR/ЯП/asm_labs/labs_by_Artyom_Derevnyuk/Laboratornye (1)/lab1/LAB1.LST",
 		"/I/app-cache-manager.js",
 		"/D/ArtyomDocs/BSUIR/ЯП/asm_labs/labs_by_Artyom_Derevnyuk/Laboratornye (1)/lab2/lab2.ASM",
 		"/D/Projects/A01/js/app-modal.js",
 		"/D/Projects/HR_db/dumps/13nov1.sql",
 		"/C/autoexec.bat",
-		"/D/Projects/A01/gulpfile.js",
-		"/D/Projects/A01/css/main.css",
 		"/C/Users/Artyom/Documents/dumps/Dump20151113.sql",
 		"/D/Temporary_kav/labs_asm/1.LST",
 		"/D/ArtyomDocs/BSUIR/ЯП/asm_labs/df/DF.LST",
@@ -457,8 +573,6 @@
 		"/I/лекции ОРЭ 2015-1.doc",
 		"/D/Projects/A01/package.json",
 		"/D/Projects/A01/.gitignore",
-		"/D/Projects/A01/templates/outputPanel.html",
-		"/D/Projects/A01/js/app-charts.js",
 		"/D/ArtyomDocs/ЯП/html_css_js/lab2/index.html",
 		"/C/kav_custom_cmd/ctxt.bat",
 		"/C/kav_custom_cmd/ckav.bat",
@@ -476,7 +590,6 @@
 		"/D/Projects/Useful/howToLoadGoogleCharts",
 		"/D/Projects/A01/resources/capacitorsWorkable.json",
 		"/D/Projects/CA/Data/Report.html",
-		"/D/Projects/A01/templates/nodeEditor.html",
 		"/D/Projects/A01/resources/elements.json",
 		"/D/Projects/proto-test/script.js",
 		"/D/Projects/rootScopeTest/index.html",
@@ -496,7 +609,6 @@
 		"/D/Projects/A01/js_new/app-core.js",
 		"/D/Projects/A01/js/app-charts",
 		"/D/Projects/A01/js/app-i18n.js",
-		"/D/Projects/A01/templates/mainView.html",
 		"/J/Сибд_02_10_2015/TASK.txt",
 		"/F/Install/matlab_r2015a/Mathworks Matlab R2015a/setup.cmd",
 		"/D/Projects/A01/node_modules/browser-sync/node_modules/browser-sync-ui/node_modules/weinre/web/client/heapProfiler.css",
@@ -521,6 +633,11 @@
 		"height": 96.0,
 		"where_history":
 		[
+			"D:\\Projects\\A01\\js, D:\\Projects\\A01\\templates, D:\\Projects\\A01\\css\\main.css ",
+			"D:\\Projects\\A01\\,-node_modules\\**",
+			"D:\\Projects\\A01\\,-\\node_modules\\**",
+			"D:\\Projects\\A01\\,-\\node_modules",
+			"D:\\Projects\\A01\\",
 			"D:\\Projects\\A01\\js",
 			"<open folders>",
 			""
@@ -531,6 +648,46 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"addNode",
+			"getChartState",
+			"ChartState",
+			"getActiveChart",
+			"getCgartState",
+			"switchCharts",
+			"generateLambdaData",
+			"type",
+			"lamdaChart",
+			"generateBarChartData",
+			"generateLambdaData",
+			"updateBarChart",
+			"updateLambdaChart",
+			"chartArray",
+			"backupSelected",
+			"generateLambdaData",
+			"summaryPercentChartArray",
+			"initKeys",
+			"calcualteService",
+			"charts",
+			"chart",
+			"charts",
+			"chartsLambda",
+			"chartService",
+			"generateLambdaData",
+			"console.log",
+			"lamdaChart",
+			"active",
+			"updateBarChart",
+			"update",
+			"updateLambdaChart",
+			"lambda-chart",
+			"lambdaChart",
+			"chartsContentManager",
+			"chartsPanel",
+			"charts",
+			"test",
+			"400",
+			"400px",
+			"400",
 			"appStateService",
 			"appState",
 			"appStateService",
@@ -592,6 +749,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"getChartState",
+			"lambdaChart",
 			"Candidates_info",
 			"updateLambdaChart"
 		],
@@ -604,45 +763,45 @@
 	"groups":
 	[
 		{
-			"selected": 10,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "templates/addElementModal.html",
+					"file": "js/app-editor.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1508,
+						"buffer_size": 5539,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								1218,
+								1234
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 195.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 15,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "templates/addModuleModal.html",
+					"file": "index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 655,
+						"buffer_size": 1216,
 						"regions":
 						{
 						},
@@ -667,106 +826,244 @@
 				},
 				{
 					"buffer": 2,
-					"file": "templates/authorizationForm.html",
+					"file": "js/app-core.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 389,
+						"buffer_size": 11617,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								8144,
+								8144
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 5472.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 13,
+					"stack_index": 0,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "templates/editPanel.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4491,
+						"buffer_size": 792,
 						"regions":
 						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										123,
+										130
+									],
+									[
+										409,
+										416
+									],
+									[
+										647,
+										654
+									]
+								],
+								"scope": ""
+							}
 						},
 						"selection":
 						[
 							[
-								5,
-								5
+								128,
+								128
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
-					"file": "templates/header.html",
+					"file": "gulpfile.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 869,
+						"buffer_size": 538,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								490,
+								386
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 15,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "js/app-output.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5526,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5412,
+								5412
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 3332.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "templates/mainView.html",
+					"buffer": 6,
+					"file": "js/app-utils.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1134,
+						"buffer_size": 218,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								639,
-								639
+								210,
+								210
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 16,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "js/app-i18n.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2023,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1592,
+								1592
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 675.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 11,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "js/app-header.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1820,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								559,
+								559
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "templates/addElementModal.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1508,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								382,
+								382
 							]
 						],
 						"settings":
@@ -778,11 +1075,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 10,
 					"file": "templates/modal.html",
 					"semi_transient": false,
 					"settings":
@@ -806,247 +1103,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "templates/nodeEditor.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 10,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "templates/outputPanel.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 380,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "templates/searchElementModal.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1441,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "templates/treeItem.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 686,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 2,
 					"type": "text"
 				},
 				{
 					"buffer": 11,
-					"file": "index.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1162,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1079,
-								1079
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 405.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 3,
-					"type": "text"
-				}
-			]
-		},
-		{
-			"selected": 1,
-			"sheets":
-			[
-				{
-					"buffer": 12,
-					"file": "templates/treePanel.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1107,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 13,
-					"file": "js/app-core.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11121,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5423,
-								5423
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1306.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "js/app-header.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1809,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								107,
-								107
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 99.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
 					"file": "js/app-ui.js",
 					"semi_transient": false,
 					"settings":
@@ -1070,7 +1131,182 @@
 						"translation.y": 40.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 17,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "templates/outputPanel.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 393,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								149,
+								149
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "css/main.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4624,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								427,
+								427
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1308.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 14,
+					"file": "templates/treeItem.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 702,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								563,
+								563
+							]
+						],
+						"settings":
+						{
+							"history_list_is_closing": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "templates/header.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 878,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								739,
+								739
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
+					"type": "text"
+				},
+				{
+					"buffer": 16,
+					"file": "templates/treePanel.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1087,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								907,
+								907
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 367.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
+					"file": "css/main.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4624,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4364,
+								4364
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 4932.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
 					"type": "text"
 				}
 			]
@@ -1093,18 +1329,11 @@
 				0,
 				1,
 				1
-			],
-			[
-				1,
-				0,
-				2,
-				1
 			]
 		],
 		"cols":
 		[
 			0.0,
-			0.226939970717,
 			1.0
 		],
 		"rows":
@@ -1136,56 +1365,148 @@
 		"selected_items":
 		[
 			[
-				"",
+				"app-core",
 				"js\\app-core.js"
+			],
+			[
+				"moda",
+				"templates\\modal.html"
+			],
+			[
+				"added",
+				"templates\\addElementModal.html"
 			],
 			[
 				"app-header",
 				"js\\app-header.js"
 			],
 			[
-				"inde",
-				"index.html"
+				"app-edi",
+				"js\\app-editor.js"
 			],
 			[
-				"app-core",
-				"js\\app-core.js"
-			],
-			[
-				"edit",
-				"templates\\editPanel.html"
+				"main",
+				"css\\main.css"
 			],
 			[
 				"tree",
 				"templates\\treePanel.html"
 			],
 			[
-				"index",
+				"",
+				"templates\\outputPanel.html"
+			],
+			[
+				"i18",
+				"js\\app-i18n.js"
+			],
+			[
+				"out",
+				"js\\app-output.js"
+			],
+			[
+				"o",
+				"templates\\outputPanel.html"
+			],
+			[
+				"heaedr",
+				"templates\\header.html"
+			],
+			[
+				"app-i18",
+				"js\\app-i18n.js"
+			],
+			[
+				"header",
+				"templates\\header.html"
+			],
+			[
+				"app-out",
+				"js\\app-output.js"
+			],
+			[
+				"in",
 				"index.html"
-			],
-			[
-				"app",
-				"js\\app.js"
-			],
-			[
-				"app-ut",
-				"js\\app-utils.js"
 			],
 			[
 				"app.js",
 				"js\\app.js"
 			],
 			[
-				"ind",
+				"app-cha",
+				"js\\app-charts.js"
+			],
+			[
+				"app-editor",
+				"js\\app-editor.js"
+			],
+			[
+				"app-ou",
+				"js\\app-output.js"
+			],
+			[
+				"ou",
+				"templates\\outputPanel.html"
+			],
+			[
+				"main.css",
+				"css\\main.css"
+			],
+			[
+				"app-ed",
+				"js\\app-editor.js"
+			],
+			[
+				"inde",
 				"index.html"
 			],
 			[
+				"app",
+				"js\\app-charts.js"
+			],
+			[
+				"g",
+				"gulpfile.js"
+			],
+			[
+				"mai",
+				"css\\main.css"
+			],
+			[
+				"app-",
+				"js\\app-editor.js"
+			],
+			[
+				"app-uti",
+				"js\\app-utils.js"
+			],
+			[
 				".html",
+				"templates\\outputPanel.html"
+			],
+			[
+				"gulp",
+				"gulpfile.js"
+			],
+			[
+				"app-i1",
+				"js\\app-i18n.js"
+			],
+			[
+				"edit",
 				"templates\\editPanel.html"
 			],
 			[
-				"app-edi",
-				"js\\app-editor.js"
+				"index",
+				"index.html"
+			],
+			[
+				"app-ut",
+				"js\\app-utils.js"
+			],
+			[
+				"ind",
+				"index.html"
 			],
 			[
 				"app-heda",
@@ -1196,24 +1517,12 @@
 				"templates\\modal.html"
 			],
 			[
-				"main",
-				"css\\main.css"
-			],
-			[
 				"editor",
 				"templates\\nodeEditor.html"
 			],
 			[
-				"app-editor",
-				"js\\app-editor.js"
-			],
-			[
 				"app-math",
 				"js\\app-math.js"
-			],
-			[
-				"app-ed",
-				"js\\app-editor.js"
 			],
 			[
 				"elem",
@@ -1224,20 +1533,8 @@
 				"js\\app-output.js"
 			],
 			[
-				"app-cha",
-				"js\\app-charts.js"
-			],
-			[
 				"app-output",
 				"js\\app-output.js"
-			],
-			[
-				"app-",
-				"js\\app-i18n.js"
-			],
-			[
-				"header",
-				"templates\\header.html"
 			],
 			[
 				"app-de",
@@ -1250,10 +1547,6 @@
 			[
 				"editp",
 				"templates\\editPanel.html"
-			],
-			[
-				"out",
-				"templates\\outputPanel.html"
 			]
 		],
 		"width": 0.0
@@ -1276,7 +1569,7 @@
 		],
 		"width": 0.0
 	},
-	"selected_group": 1,
+	"selected_group": 0,
 	"settings":
 	{
 	},

@@ -22,8 +22,7 @@ angular.module('app', [
 		'app-header',
 		'app-i18n',
 		'app-utils', 
-		// 'app-charts',
-		'app-output'])
+		'app-charts'])
 	.run(['$log', '$rootScope', function ($log, $rootScope){
 		$log.info('application initialized successfully');
 		$rootScope.$broadcast('appInitialized')

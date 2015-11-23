@@ -2,21 +2,21 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 	padding:0px;
 	margin:0px;
 }
+
 html, body{
 	height: 100%;
 	padding:0px;
 	margin:0px;
+	position: relative;
+	overflow: hidden;
 	font-family: arial;
 	font-variant: normal;
 	font-weight: normal;
 	font-style: normal;
 	/*background-color: #888888;*/
-	background-image: url("/images/texture.png")
+	/*background-image: url("/images/texture.png")*/
+	background-color: #eeeeee
 }
-/*div{
-	border: 1px solid red !important;
-}*/
-
 
 a:-webkit-any-link {
   color: auto;
@@ -25,23 +25,14 @@ a:-webkit-any-link {
   font: normal normal normal  Arial;
 }
 
-.contentContainer{
-	position: fixed;
-	top: 42px;
+/*.contentContainer{
+	position: absolute;
+	top: 45px;
 	z-index: 1;
-	height: calc(100% - 45px); /*header*/
+	height: calc(100% - 45px); 
 	width: 100%;
 	background-color: #CCCCCC;
-}
-
-.treePanel{
-	background-color: #bbbbbb;
-	position: absolute;
-	height:100%;
-	width: 30%;
-	float:left;
-	padding: 10px;
-}
+}*/
 
 .editPanel{
 	background-color: #bbbbbb;
@@ -57,46 +48,6 @@ a:-webkit-any-link {
 	height: 51%;
 }
 
-.selectedItem{
-	background-color: #1D4E89;
-	color: white;
-}
-
-.deselectedItem{
-	color: black;
-}
-
-.treeArea{
-	background-color: #EEEEEE;
-	padding: 15px 15px 20px 15px;
-	margin: 0px;
-	bottom: 30px;
-	position: absolute;
-	width: calc(100% - 60px);
-	height: calc(100% - 170px);
-	overflow: scroll;
-}
-.treeSettingsArea{
-	background-color: #EEEEEE;
-	padding: 15px 15px 20px 15px;
-	margin: 0px;
-	top: 10px;
-	font-size: 14px;
-	position: absolute;
-	width: calc(100% - 60px);
-	height: 50px;
-}
-.selectArea{
-	width:150px;
-}
-/*module higlighting in tree*/
-.boldText{
-	font-weight: bold
-}
-/*plus-minus buttons in tree view*/
-.removeMargin{
-	margin: 0;
-}
 /*editPanel properties*/
 .propertyPanel{
 	background-color: #EEEEEE;

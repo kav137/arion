@@ -1,15 +1,14 @@
-<div ng-controller="TreeCtrl">
+<div ng-controller="TreeCtrl" class="treePanel">
 	<div class="treeSettingsArea">
-		<input type="checkbox" ng-model="isShownAsList"> {{"Show as list" | translate}}
-		<div>
-			<button class="centralModalButton" style="height: 28px; padding: 2px 4px"  ng-click="initSearch()">
+		<div class="treeAreaItem">
+			<input type="text" id="searchInput" placeholder="Позиционное обозначение">
+			<button class="searchButton" ng-click="initSearch()">
 				<i class="ion-android-search"></i>
 				{{"Search element" | translate}}
 			</button>
-			<!-- <button class="centralModalButton" style="height: 28px; padding: 2px 4px">
-				<i class="ion-gear-a"></i>
-				{{"Sorting and filtering" | translate}}
-			</button> -->
+		</div>
+		<div class="treeAreaItem">
+			<input type="checkbox" ng-model="isShownAsList"> {{"Show as list" | translate}}
 		</div>
 	</div>	
 	<div class="treeArea" >
@@ -19,7 +18,6 @@
 		 	ng-click="selectNode($event, item)"
 		 	ng-show="!isShownAsList">
 		</div>
-		<!-- <div>{{$parent.treeAsList}}</div> -->
 		<div ng-repeat="item in $parent.treeAsList"
 			ng-click="selectNode($event, item)"
 			ng-show="isShownAsList"

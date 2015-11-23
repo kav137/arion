@@ -12,7 +12,7 @@ angular.module('app-header.controller', ['app-core'])
 				var modalConfig = {};
 				modalConfig.visible = true;
 				modalConfig.type = "addElementModal";
-				$scope.$parent.$parent.modal = modalConfig;
+				$scope.$parent.$parent.modal = modalConfig; //bullshit
 			}
 
 			$scope.addModule = function (){
@@ -25,7 +25,7 @@ angular.module('app-header.controller', ['app-core'])
 				var test = treeDataService.getChildrenArray($scope.$parent.$parent.selectedNode);
 				// console.clear();
 				// console.log(test)
-				alert("Работа данной функции находится на последнем этапе тестирования. Все тестируемые функции настолько хороши, что обязательно войдут в следующий релиз")
+				alertify.success("Работа данной функции находится на последнем этапе тестирования. Все тестируемые функции настолько хороши, что обязательно войдут в следующий релиз")
 			}
 			$scope.testCharts = function (){
 				var data = google.visualization.arrayToDataTable($rootScope.chartArray);

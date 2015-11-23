@@ -56,6 +56,24 @@ angular.module('app-core.service', [])
 			});
 			return outArray;
 		}
+
+		this.getElementParent = function (element, parent){
+			var out;
+			if (parent === undefined){
+				parent = tree;
+			}
+			angular.forEach(parent.children, function (child){
+				if(child.type == 'element' && child.localId === element.localId){
+					out =  parent;
+					return;
+				}
+				if(child.type == 'module'){
+					// outArray = outArray.concat(TDS.getChildrenArray(child))
+					
+				}
+			});
+			return out;
+		}
 		
 		this.searchNode = function (parentNode, arglocalId){
 			var outNode = {};
@@ -275,13 +293,14 @@ angular.module('app-core.controller', ['ngRoute'])
 				$scope.selectNode(null, parentNode); 
 			}
 			if (parentNode.type != "module"){
-				alert("you can't add nodes to element. select module please");
-				return;
+				// alert("you can't add nodes to element. select module please");
+				// return;
+				parentNode = treeDataService.getElementParent(parentNode);
 			}
 			else{
-				if (parentNode.expanded == false){
-					alert("warning. you're triyng to add node to module, which children are hidden. expnand it to see changes")
-				}
+				// if (parentNode.expanded == false){
+				// 	alert("warning. you're triyng to add node to module, which children are hidden. expnand it to see changes")
+				// }
 			}
 			if ($scope.typeTrigger.value == "element" && 
 				(!$scope.elementOwner || !$scope.elementSubGroup || !$scope.elementGroup)){
@@ -327,6 +346,7 @@ angular.module('app-core.controller', ['ngRoute'])
 
 		$rootScope.$on("appInitialized", $scope.initHandler())
 	}])
+
 	.controller('TreeCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope', '$filter',
 	function ($scope, $controller, treeDataService, elementSelectionService, databaseService, $rootScope, $filter){
 		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
