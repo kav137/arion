@@ -1,13 +1,13 @@
 <!-- plus-minus expanding buttons -->
 <span ng-show="item.type == 'module'"
-	ng-class="{'ion-chevron-down': item.expanded, 'ion-chevron-right': !item.expanded}"
+	ng-class="{'ion-chevron-down': item.expanded, 'ion-chevron-right symbolMargin': !item.expanded}"
 	ng-click="expandModule($event, item)">
 </span>
 
 <!-- displaying item content -->
 <span class="treeItem"
-		ng-class="{'boldText': item.type == 'module', 'selectedItem': item.selected}"> 
-	<span style="margin:5px">
+		ng-class="{'treeModule': item.type == 'module', 'selectedItem': item.selected}"> 
+	<span class="marginFive">
 		{{item.name}} 
 		{{item.position? "(" + item.position + ")" : ""}}
 	</span>
@@ -15,7 +15,7 @@
 
 <!-- repeats children -->
 <span ng-show="item.expanded">
-	<div style="margin-left:31px; margin-top:11px" 
+	<div class="treeChild"
 		ng-repeat="item in item.children" 
 		ng-include="'templates/treeItem.html'" 
 		ng-click="selectNode($event, item)" >

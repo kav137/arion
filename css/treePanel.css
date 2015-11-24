@@ -1,36 +1,39 @@
 .treePanel{
 	position: absolute;
-	height: 100%;
+	height: calc(100% - 50px);
 	width: 370px;
 	top: 45px;
 	left: 0px;
 	background-color: white;
+	min-height: 500px;
 }
 .treePanel > div{
 	background-color: white;
 	border: 3px solid white;
 	border-radius: 5px;
-	box-shadow: -2px 0px 35px -10px rgba(0,0,0,0.75);
+	box-shadow: -2px 0px 35px -10px rgba(0,0,0,0.9);
 	padding: 10px 15px 15px 15px;
-	margin: 8px auto;
+	margin: 10px auto;
 	width: 320px;
+	white-space: nowrap;
 }
 .treeSettingsArea{
 	height: 70px;
 }
 .treeAreaItem{
+	font-size: 14px;
 	margin-top: 5px;
 	margin-bottom: 12px;
 }
 .treeArea{
-	height: calc(100% - 180px);
+	height: calc(100% - 160px);
 	overflow-x: auto; 
 	overflow-y: auto; 
 }
 #searchInput{
 	height: 24px;
 	padding: 2px 3px;
-	width: 180px;
+	width: 18	0px;
 	border: 1px solid #CCCCCC;
 }
 .searchButton{
@@ -38,11 +41,33 @@
 	padding: 2px 9px;
 	font-size: 13px;
 	float: right;
-	/*margin: 6px auto 3px auto;*/
 	background-color: #1D4E89;
 	color: white;
 	border: 0px;
 	outline: none;
+}
+.treeRow{
+	height:15px;
+	margin:5px;
+}
+.treeItem{
+	padding:5px 5px;
+	border: 1px solid #CCCCCC;
+	box-shadow: 0px 0px 3px #BBBBBB;
+	white-space: nowrap;
+	outline: none;
+	cursor: pointer;
+}
+.symbolMargin{
+	margin-right: 3px;
+	margin-left: 3px;
+}
+.marginFive {
+	margin: 5px;
+}
+.treeChild{
+	margin-left: 18px;
+	margin-top: 11px;
 }
 .selectedItem{
 	background-color: #1D4E89;
@@ -52,10 +77,6 @@
 	color: black;
 }
 /*module higlighting in tree*/
-.boldText{
-	font-weight: bold
-}
-/*plus-minus buttons in tree view*/
-.removeMargin{
-	margin: 0;
+.treeModule{
+	font-weight: bold;
 }

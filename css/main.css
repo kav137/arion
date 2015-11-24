@@ -2,13 +2,16 @@ body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, 
 	padding:0px;
 	margin:0px;
 }
-
+html{
+	min-width: 650px;
+	min-height: 500px;
+	/*overflow: auto;*/
+}
 html, body{
 	height: 100%;
 	padding:0px;
 	margin:0px;
 	position: relative;
-	overflow: hidden;
 	font-family: arial;
 	font-variant: normal;
 	font-weight: normal;
@@ -25,20 +28,10 @@ a:-webkit-any-link {
   font: normal normal normal  Arial;
 }
 
-/*.contentContainer{
-	position: absolute;
-	top: 45px;
-	z-index: 1;
-	height: calc(100% - 45px); 
-	width: 100%;
-	background-color: #CCCCCC;
-}*/
-
-.editPanel{
-	background-color: #bbbbbb;
-	float:right;
-	width: calc(70% - 20px);
-	height:50%;
+.content{
+	position: relative;
+	margin: 10px 10px 0px 378px;
+	height: 100%;
 }
 
 .outputPanel{
@@ -49,16 +42,7 @@ a:-webkit-any-link {
 }
 
 /*editPanel properties*/
-.propertyPanel{
-	background-color: #EEEEEE;
-	padding: 15px 15px 20px 25px;
-	margin: 0px;
-	top: 10px;
-	position: absolute;
-	width: calc(70% - 75px);
-	height: calc(50% - 55px);
-	overflow: scroll;
-}
+
 .chartsPanel{
 	background-color: #EEEEEE;
 	padding: 15px 15px 20px 10px;
@@ -73,10 +57,6 @@ a:-webkit-any-link {
 	overflow: auto;
 }
 
-.propertyItem{
-	margin-left:5px;
-	border-bottom: 1px solid #888888;
-}
 .authForm{
 	/*position: fixed;*/
 	width: 300px;
@@ -166,21 +146,7 @@ a:-webkit-any-link {
 .centralAlign{
 	text-align: center;
 }
-.treeRow{
-	height:15px;
-	margin:5px;
-}
-.treeItem{
-	padding:5px 5px;
-	border: 1px solid #CCCCCC;
-	/*border-radius: 5px;*/
-	box-shadow: 0px 0px 3px #BBBBBB;
-	white-space: nowrap;
-	/*margin-top: 10px;*/
-	outline: none;
-	cursor: pointer;
-	/*background-color: #C2CFDF;*/
-}
+
 .italicText{
 	font-style: italic;
 }

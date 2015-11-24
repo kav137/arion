@@ -1,11 +1,11 @@
 <div ng-controller="RootCtrl">
+
 	<div ng-include="'templates/header.html'" ng-show="authorization.success"></div>
-	<!-- <div class="contentContainer" ng-show="authorization.success"> -->
-
-
 	<div ng-include="'templates/treePanel.html'"></div>
-	<!-- <div class="editPanel" ng-include="'templates/editPanel.html'"></div>
-	<div class="outputPanel" ng-include="'templates/outputPanel.html'"></div> -->
+	<div class="content">
+		<div ng-include="'templates/editPanel.html'"></div>
+		<!-- <div class="outputPanel" ng-include="'templates/outputPanel.html'" ng-hide="true"></div> -->
+	</div>
 
 	
 	<!-- </div> -->

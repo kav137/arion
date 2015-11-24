@@ -1,0 +1,20 @@
+.editPanel{
+	background-color: #bbbbbb;
+	height:50%;
+	left: -20px;
+}
+/*editPanel properties*/
+.propertyPanel{
+	background-color: #EEEEEE;
+	padding: 15px 15px 20px 25px;
+	margin: 0px;
+	top: 10px;
+	position: absolute;
+	/*width: calc(70% - 75px);*/
+	/*height: calc(50% - 55px);*/
+	overflow: scroll;
+}
+.propertyItem{
+	margin-left:5px;
+	border-bottom: 1px solid #888888;
+}
