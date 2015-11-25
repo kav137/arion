@@ -1,8 +1,11 @@
 <div ng-controller="TreeCtrl" class="treePanel">
 	<div class="treeSettingsArea">
 		<div class="treeAreaItem">
-			<input type="text" id="searchInput" placeholder="Позиционное обозначение">
-			<button class="searchButton" ng-click="initSearch()">
+			<input type="text" 
+				id="searchInput" 
+				ng-model="searchPosition" 
+				placeholder="{{'Element position' | translate}}">
+			<button class="searchButton" ng-click="search()">
 				<i class="ion-android-search"></i>
 				{{"Search element" | translate}}
 			</button>
