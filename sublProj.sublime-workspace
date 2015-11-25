@@ -4,6 +4,34 @@
 		"selected_items":
 		[
 			[
+				"tet",
+				"text-align"
+			],
+			[
+				"chra",
+				"chartsLambda"
+			],
+			[
+				"cons",
+				"console"
+			],
+			[
+				"res",
+				"resizerTop"
+			],
+			[
+				"ui",
+				"uiResizeService"
+			],
+			[
+				"r",
+				"sw-resize"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
 				"min",
 				"min-height"
 			],
@@ -26,10 +54,6 @@
 			[
 				"ma",
 				"margin"
-			],
-			[
-				"ba",
-				"background-color"
 			],
 			[
 				"fon",
@@ -312,103 +336,10 @@
 	"buffers":
 	[
 		{
-			"file": "js/app-header.js",
-			"settings":
-			{
-				"buffer_size": 1831,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/app-math.js",
-			"settings":
-			{
-				"buffer_size": 11903,
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 1549,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "css/header.css",
-			"settings":
-			{
-				"buffer_size": 978,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/mainView.html",
-			"settings":
-			{
-				"buffer_size": 999,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/editPanel.html",
-			"settings":
-			{
-				"buffer_size": 34,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "<html xmlns:msxsl=\"urn:schemas-microsoft-com:xslt\" xmlns:eew=\"http://schemas.microsoft.com/energy/2007\">\n\n<head>\n\n<META http-equiv=\"Content-Type\" content=\"text/html\">\n\n<style>\n\n                    \n\n                    body {\n\n                        font-family: Verdana, Arial, Helvetica, sans-serif; \n\n                        font-size: x-small; \n\n                        margin-right:1.5em}\n\n\n\n                    .log-entry {margin-bottom:1em;}\n\n\n\n                    \n\n                    .error-log-entry {background-color:#ffcccc; padding:4pt;}\n\n\n\n                    \n\n                    .warning-log-entry {background-color:#ffffc6; padding:4pt;}\n\n\n\n                    \n\n                    .info-log-entry {background-color:#ffffff; padding:4pt;}\n\n\n\n                    \n\n                    .log-entry-header {font-weight:bold;}\n\n\n\n                    .log-entry-content {margin: 2pt; }\n\n\n\n                    \n\n                    .expander  {\n\n                        display: block; \n\n                        left: 0em; \n\n                        width: 1em; \n\n                        float: left; \n\n                        color:red; \n\n                        font-family:'Courier New'; \n\n                        font-weight:bold; \n\n                        text-decoration:none;\n\n                        padding-top:6pt;}\n\n\n\n                    td {\n\n                        font-size:x-small;\n\n                        font-weight: bold;\n\n                    }\n\n\n\n                    .log-entry-content table {\n\n;\n\n                    }\n\n\n\n                    .log-entry-content td {\n\n                        padding: 3pt;\n\n                    }\n\n\n\n                    .detail-name {\n\n                        font-weight:normal;\n\n                    }\n\n\n\n                </style>\n\n</head>\n\n<body class=\"st\">\n\n<h2>Power Efficiency Diagnostics Report</h2>\n\n<table>\n\n<tr>\n\n<td class=\"detail-name\">Computer Name</td>\n\n<td>ARTYOM_PC</td>\n\n</tr>\n\n<tr>\n\n<td class=\"detail-name\">Scan Time</td>\n\n<td>2015-11-24T09:53:43Z</td>\n\n</tr>\n\n<tr>\n\n<td class=\"detail-name\">Scan Duration</td>\n\n<td>60 seconds\n\n               </td>\n\n</tr>\n\n<tr>\n\n<td class=\"detail-name\">System Manufacturer</td>\n\n<td>LENOVO</td>\n\n</tr>\n\n<tr>\n\n<td class=\"detail-name\">System Product Name</td>\n\n<td>20157</td>\n\n</tr>\n\n<tr>\n\n<td class=\"detail-name\">BIOS Date</td>\n\n<td>09/10/2012</td>\n\n</tr>\n\n<tr>\n\n<td class=\"detail-name\">BIOS Version</td>\n\n<td>62CN41WW</td>\n\n</tr>\n\n<tr>\n\n<td class=\"detail-name\">OS Build</td>\n\n<td>7600</td>\n\n</tr>\n\n<tr>\n\n<td class=\"detail-name\">Platform Role</td>\n\n<td>PlatformRoleMobile</td>\n\n</tr>\n\n<tr>\n\n<td class=\"detail-name\">Plugged In</td>\n\n<td>false</td>\n\n</tr>\n\n<tr>\n\n<td class=\"detail-name\">Process Count</td>\n\n<td>71</td>\n\n</tr>\n\n<tr>\n\n<td class=\"detail-name\">Thread Count</td>\n\n<td>1032</td>\n\n</tr>\n\n<tr>\n\n<td class=\"detail-name\">Report GUID</td>\n\n<td>\n\n                   {abaf0312-4792-46be-af6c-3ee0feb11e83}\n\n               </td>\n\n</tr>\n\n</table>\n\n<h3>Analysis Results</h3>\n\n<h4>Errors</h4>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            error-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Power Policy:Display timeout disabled (On Battery)</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The display is not configured to turn off after a period of inactivity.</div><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            error-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Power Policy:Dim timeout is disabled (On Battery)</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The display is not configured to automatically dim after a period of inactivity.</div><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            error-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Power Policy:Sleep timeout is disabled (On Battery)</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The computer is not configured to automatically sleep after a period of inactivity.</div><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            error-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Power Policy:Display timeout disabled (Plugged In)</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The display is not configured to turn off after a period of inactivity.</div><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            error-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Power Policy:Dim timeout is disabled (Plugged In)</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The display is not configured to automatically dim after a period of inactivity.</div><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            error-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Power Policy:Sleep timeout is disabled (Plugged In)</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The computer is not configured to automatically sleep after a period of inactivity.</div><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            error-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">USB Suspend:USB Device not Entering Suspend</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The USB device did not enter the Suspend state.  Processor power management may be prevented if a USB device does not enter the Suspend state when not in use.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Device Name</span></td>\n\n<td>USB Root Hub</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Host Controller ID</span></td>\n\n<td>PCI\\VEN_8086&amp;DEV_1E2D</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Host Controller Location</span></td>\n\n<td>PCI bus 0, device 26, function 0</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Device ID</span></td>\n\n<td>USB\\VID_8086&amp;PID_1E2D</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Port Path</span></td>\n\n<td></td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            error-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">USB Suspend:USB Device not Entering Suspend</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The USB device did not enter the Suspend state.  Processor power management may be prevented if a USB device does not enter the Suspend state when not in use.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Device Name</span></td>\n\n<td>Generic USB Hub</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Host Controller ID</span></td>\n\n<td>PCI\\VEN_8086&amp;DEV_1E2D</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Host Controller Location</span></td>\n\n<td>PCI bus 0, device 26, function 0</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Device ID</span></td>\n\n<td>USB\\VID_8087&amp;PID_0024</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Port Path</span></td>\n\n<td>1</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            error-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">USB Suspend:USB Device not Entering Suspend</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The USB device did not enter the Suspend state.  Processor power management may be prevented if a USB device does not enter the Suspend state when not in use.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Device Name</span></td>\n\n<td>USB Mass Storage Device</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Host Controller ID</span></td>\n\n<td>PCI\\VEN_8086&amp;DEV_1E2D</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Host Controller Location</span></td>\n\n<td>PCI bus 0, device 26, function 0</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Device ID</span></td>\n\n<td>USB\\VID_058F&amp;PID_6366</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Port Path</span></td>\n\n<td>1,3</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            error-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Processor utilization is high</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The average processor utilization during the trace was high.  The system will consume less power when the average processor utilization is very low.  Review processor utilization for individual processes to determine which applications and services contribute the most to total processor utilization.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>27.39</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<h4>Warnings</h4>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Platform Timer Resolution:Platform Timer Resolution</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The default platform timer resolution is 15.6ms (15625000ns) and should be used whenever the system is idle.  If the timer resolution is increased, processor power management technologies may not be effective.  The timer resolution may be increased due to multimedia playback or graphical animations.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Current Timer Resolution (100ns units)</span></td>\n\n<td>10000</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Maximum Timer Period (100ns units)</span></td>\n\n<td>156001</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Platform Timer Resolution:Outstanding Timer Request</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">A program or service has requested a timer resolution smaller than the platform maximum timer resolution.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Requested Period</span></td>\n\n<td>10000</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Requesting Process ID</span></td>\n\n<td>4512</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Requesting Process Path</span></td>\n\n<td>\\Device\\HarddiskVolume1\\Program Files\\Telegram Desktop\\Telegram.exe</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Platform Timer Resolution:Outstanding Timer Request</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">A program or service has requested a timer resolution smaller than the platform maximum timer resolution.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Requested Period</span></td>\n\n<td>100000</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Requesting Process ID</span></td>\n\n<td>1124</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Requesting Process Path</span></td>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\svchost.exe</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Power Policy:802.11 Radio Power Policy is Maximum Performance (Plugged In)</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The current power policy for 802.11-compatible wireless network adapters is not configured to use low-power modes.</div><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>services.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>728</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>7.56</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>4.05</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\ntdll.dll</td>\n\n<td>1.13</td>\n\n</tr>\n\n<tr>\n\n<td></td>\n\n<td>0.36</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>WmiPrvSE.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>2408</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>2.12</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.72</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\wbem\\fastprox.dll</td>\n\n<td>0.36</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\rpcrt4.dll</td>\n\n<td>0.28</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>svchost.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>5876</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>2.06</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\ProgramData\\Microsoft\\Windows Defender\\Definition Updates\\{5FB47519-49D8-413B-989D-BB51A89237E1}\\mpengine.dll</td>\n\n<td>1.34</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.22</td>\n\n</tr>\n\n<tr>\n\n<td>\\Windows\\System32\\bcryptprimitives.dll</td>\n\n<td>0.22</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>svchost.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>1124</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>1.85</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.55</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\ntdll.dll</td>\n\n<td>0.25</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\wbem\\fastprox.dll</td>\n\n<td>0.20</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>explorer.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>2832</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.84</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.21</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\System32\\win32k.sys</td>\n\n<td>0.20</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\ntdll.dll</td>\n\n<td>0.06</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>dwm.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>2808</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.78</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\igd10umd32.dll</td>\n\n<td>0.25</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\dwmcore.dll</td>\n\n<td>0.23</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\DRIVERS\\igdkmd32.sys</td>\n\n<td>0.07</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>Telegram.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>4512</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.74</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.28</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Program Files\\Telegram Desktop\\Telegram.exe</td>\n\n<td>0.12</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\ntdll.dll</td>\n\n<td>0.11</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>TOTALCMD.EXE</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>2600</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.72</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\System32\\win32k.sys</td>\n\n<td>0.24</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.18</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\halmacpi.dll</td>\n\n<td>0.04</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>wmpnetwk.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>5932</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.64</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.16</td>\n\n</tr>\n\n<tr>\n\n<td>\\Windows\\System32\\drmv2clt.dll</td>\n\n<td>0.10</td>\n\n</tr>\n\n<tr>\n\n<td>\\Windows\\System32\\blackbox.dll</td>\n\n<td>0.05</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>lsass.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>744</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.61</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.35</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\rpcrt4.dll</td>\n\n<td>0.11</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\ntdll.dll</td>\n\n<td>0.08</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>Skype.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>3684</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.60</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.19</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Program Files\\Skype\\Phone\\Skype.exe</td>\n\n<td>0.10</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\System32\\win32k.sys</td>\n\n<td>0.08</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>IAStorDataMgrSvc.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>1224</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.58</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\Windows\\Microsoft.NET\\Framework\\v2.0.50727\\mscorwks.dll</td>\n\n<td>0.30</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.07</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\ntdll.dll</td>\n\n<td>0.06</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>Evernote.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>4152</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.56</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.20</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\System32\\Drivers\\Ntfs.sys</td>\n\n<td>0.05</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\drivers\\fltmgr.sys</td>\n\n<td>0.03</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>svchost.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>892</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.48</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.25</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\rpcrt4.dll</td>\n\n<td>0.07</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\ntdll.dll</td>\n\n<td>0.05</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>svchost.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>1096</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.38</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\sysmain.dll</td>\n\n<td>0.19</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.12</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\halmacpi.dll</td>\n\n<td>0.02</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>System</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>4</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.37</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.23</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\System32\\drivers\\dxgmms1.sys</td>\n\n<td>0.02</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\System32\\Drivers\\cng.sys</td>\n\n<td>0.02</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>ekrn.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>1816</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.31</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td></td>\n\n<td>0.15</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.04</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\winsxs\\x86_microsoft.vc80.crt_1fc8b3b9a1e18e3b_8.0.50727.6195_none_d09154e044272b9a\\msvcr80.dll</td>\n\n<td>0.02</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>RescueTime.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>2628</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.29</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.07</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\ntdll.dll</td>\n\n<td>0.05</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\ole32.dll</td>\n\n<td>0.03</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>UNS.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>5308</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.28</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Program Files\\Intel\\Intel(R) Management Engine Components\\UNS\\UNS.exe</td>\n\n<td>0.09</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.06</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\System32\\ntdll.dll</td>\n\n<td>0.01</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>svchost.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>1056</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.27</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.13</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\ntdll.dll</td>\n\n<td>0.03</td>\n\n</tr>\n\n<tr>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\rpcrt4.dll</td>\n\n<td>0.01</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            warning-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">CPU Utilization:Individual process with significant processor utilization.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This process is responsible for a significant portion of the total processor utilization recorded during the trace.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Process Name</span></td>\n\n<td>csrss.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">PID</span></td>\n\n<td>680</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Average Utilization (%)</span></td>\n\n<td>0.22</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Module\n\n                </span></td>\n\n<td><span class=\"detail-name\">\n\n                    Average Module Utilization (%)\n\n                </span></td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\ntkrnlpa.exe</td>\n\n<td>0.08</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\system32\\DRIVERS\\igdkmd32.sys</td>\n\n<td>0.04</td>\n\n</tr>\n\n<tr>\n\n<td>\\SystemRoot\\System32\\win32k.sys</td>\n\n<td>0.03</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<h4>Information</h4>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            info-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Platform Timer Resolution:Timer Request Stack</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The stack of modules responsible for the lowest platform timer setting in this process.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Requested Period</span></td>\n\n<td>10000</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Requesting Process ID</span></td>\n\n<td>4512</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Requesting Process Path</span></td>\n\n<td>\\Device\\HarddiskVolume1\\Program Files\\Telegram Desktop\\Telegram.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                        Calling Module Stack\n\n                    </span></td>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\ntdll.dll</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\"></span></td>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\winmm.dll</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\"></span></td>\n\n<td>\\Device\\HarddiskVolume1\\Program Files\\Telegram Desktop\\Telegram.exe</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            info-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Platform Timer Resolution:Timer Request Stack</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The stack of modules responsible for the lowest platform timer setting in this process.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Requested Period</span></td>\n\n<td>10000</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Requesting Process ID</span></td>\n\n<td>1124</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Requesting Process Path</span></td>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\svchost.exe</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                        Calling Module Stack\n\n                    </span></td>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\ntdll.dll</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\"></span></td>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\mmcss.dll</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\"></span></td>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\ntdll.dll</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\"></span></td>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\mmcss.dll</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\"></span></td>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\sechost.dll</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\"></span></td>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\kernel32.dll</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\"></span></td>\n\n<td>\\Device\\HarddiskVolume1\\Windows\\System32\\ntdll.dll</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            info-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Power Policy:Active Power Plan</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The current power plan in use</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">\n\n                    Plan Name\n\n                </span></td>\n\n<td>\n\n                        OEM Balanced\n\n                    </td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Plan GUID</span></td>\n\n<td>{381b4222-f694-41f0-9685-ff5bb260df2e}</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            info-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Power Policy:Power Plan Personality (On Battery)</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The personality of the current power plan when the system is on battery power.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Personality</span></td>\n\n<td>\n\n                        Balanced\n\n                    </td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            info-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Power Policy:Video Quality (On Battery)</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">Enables Windows Media Player to optimize for quality or power savings when playing video.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Quality Mode</span></td>\n\n<td>\n\n                        Balance Video Quality and Power Savings\n\n                    </td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            info-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Power Policy:Power Plan Personality (Plugged In)</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">The personality of the current power plan when the system is plugged in.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Personality</span></td>\n\n<td>\n\n                        Balanced\n\n                    </td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            info-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Power Policy:Video quality (Plugged In)</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">Enables Windows Media Player to optimize for quality or power savings when playing video.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Quality Mode</span></td>\n\n<td>\n\n                        Optimize for Video Quality\n\n                    </td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            info-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">System Availability Requests:Analysis Success</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">Analysis was successful. No energy efficiency problems were found.  No information was returned.</div><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            info-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Battery:Battery Information</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\"></div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Battery ID</span></td>\n\n<td>29876SANYOL11S6Y01</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Manufacturer</span></td>\n\n<td>SANYO</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Serial Number</span></td>\n\n<td>29876</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Chemistry</span></td>\n\n<td>LION</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Long Term</span></td>\n\n<td>1</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Design Capacity</span></td>\n\n<td>38880</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Last Full Charge</span></td>\n\n<td>33220</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            info-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Platform Power Management Capabilities:Supported Sleep States</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">Sleep states allow the computer to enter low-power modes after a period of inactivity.  The S3 sleep state is the default sleep state for Windows platforms.  The S3 sleep state consumes only enough power to preserve memory contents and allow the computer to resume working quickly.  Very few platforms support the S1 or S2 Sleep states.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">S1 Sleep Supported</span></td>\n\n<td>true</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">S2 Sleep Supported</span></td>\n\n<td>false</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">S3 Sleep Supported</span></td>\n\n<td>true</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">S4 Sleep Supported</span></td>\n\n<td>true</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            info-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Platform Power Management Capabilities:Adaptive Display Brightness is supported.</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">This computer enables Windows to automatically control the brightness of the integrated display.</div><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            info-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Platform Power Management Capabilities:Processor Power Management Capabilities</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">Effective processor power management enables the computer to automatically balance performance and energy consumption.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Group</span></td>\n\n<td>0</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Index</span></td>\n\n<td>0</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Idle (C) State Count</span></td>\n\n<td>3</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Performance (P) State Count</span></td>\n\n<td>15</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Throttle (T) State Count</span></td>\n\n<td>8</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n<div class=\"log-entry\">\n\n<div class=\"\n\n                            info-log-entry\n\n                        \">\n\n<div class=\"log-entry-header\">Platform Power Management Capabilities:Processor Power Management Capabilities</div>\n\n<div class=\"log-entry-content\">\n\n<div class=\"log-entry-description\">Effective processor power management enables the computer to automatically balance performance and energy consumption.</div>\n\n<table>\n\n<tr>\n\n<td><span class=\"detail-name\">Group</span></td>\n\n<td>0</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Index</span></td>\n\n<td>1</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Idle (C) State Count</span></td>\n\n<td>3</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Performance (P) State Count</span></td>\n\n<td>15</td>\n\n</tr>\n\n<tr>\n\n<td><span class=\"detail-name\">Throttle (T) State Count</span></td>\n\n<td>8</td>\n\n</tr>\n\n</table><span></span></div>\n\n</div>\n\n</div>\n\n</body>\n\n</html>\n\n",
-			"file": "/C/Users/Artyom/energy-report.html",
-			"file_size": 48861,
-			"file_write_time": 130928324897930827,
-			"settings":
-			{
-				"buffer_size": 47270,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"contents": "Searching 22 files for \"editPanel\"\n\nD:\\Projects\\A01\\templates\\editPanel.html:\n    1: <div class=\"editPanel\">\n    2  \n    3    <div ng-controller=\"EditorCtrl\" ng-init=\"visibilityTrigger = false\" class=\"propertyPanelContent\">\n\nD:\\Projects\\A01\\templates\\mainView.html:\n    4  	<div ng-include=\"'templates/treePanel.html'\"></div>\n    5  	<div class=\"content\">\n    6: 		<div ng-include=\"'templates/editPanel.html'\"></div>\n    7  		<!-- <div class=\"outputPanel\" ng-include=\"'templates/outputPanel.html'\" ng-hide=\"true\"></div> -->\n    8  	</div>\n\nD:\\Projects\\A01\\css\\main.css:\n   35  }\n   36  \n   37: .editPanel{\n   38  	background-color: #bbbbbb;\n   39  	float:right;\n   ..\n   49  }\n   50  \n   51: /*editPanel properties*/\n   52  .propertyPanel{\n   53  	background-color: #EEEEEE;\n\n4 matches across 3 files\n",
-			"settings":
-			{
-				"buffer_size": 801,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
-			}
-		},
-		{
-			"file": "css/main.css",
-			"settings":
-			{
-				"buffer_size": 2657,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/treePanel.html",
-			"settings":
-			{
-				"buffer_size": 977,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "templates/treeItem.html",
-			"settings":
-			{
-				"buffer_size": 692,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "js/app-charts.js",
-			"settings":
-			{
-				"buffer_size": 5526,
+				"buffer_size": 1587,
 				"line_ending": "Windows"
 			}
 		},
@@ -416,7 +347,89 @@
 			"file": "js/app-ui.js",
 			"settings":
 			{
-				"buffer_size": 489,
+				"buffer_size": 2439,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/mainView.html",
+			"settings":
+			{
+				"buffer_size": 1261,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/outputPanel.html",
+			"settings":
+			{
+				"buffer_size": 1443,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app-i18n.js",
+			"settings":
+			{
+				"buffer_size": 2005,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/editPanel.html",
+			"settings":
+			{
+				"buffer_size": 3289,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "css/propertyPanel.css",
+			"settings":
+			{
+				"buffer_size": 245,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "css/main.css",
+			"settings":
+			{
+				"buffer_size": 3147,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 35 files for \"propertyPanelContent\"\n\nD:\\Projects\\A01\\templates\\editPanel.html:\n    1: <div ng-controller=\"EditorCtrl\" ng-init=\"visibilityTrigger = false\" class=\"propertyPanelContent\">\n    2  \n    3      <!-- table for name and position editing -->\n\n1 match in 1 file\n\n\nSearching 35 files for \"outputPanel\"\n\nD:\\Projects\\A01\\templates\\mainView.html:\n   10  	  			resizer-height=\"8\" \n   11  	  			resizer-top=\"#propertyPanel\" \n   12: 	  			resizer-bottom=\"#outputPanel\">\n   13    			</div>\n   14: 			<div id=\"outputPanel\" class=\"contentPanel\" ng-include=\"'templates/outputPanel.html'\"></div>\n   15  		</div>\n   16  	</div>\n\nD:\\Projects\\A01\\css\\main.css:\n   65  	background: url(../images/divider.png) 50% 3px no-repeat; \n   66  }\n   67: .outputPanel{\n   68  	background-color: #bbbbbb;\n   69  	float:right;\n\n4 matches across 2 files\n\n\nSearching 35 files for \"chartsPanel\"\n\nD:\\Projects\\A01\\templates\\outputPanel.html:\n    1  <div ng-controller=\"OutputCTRL\" class=\"fullHeight\"> \n    2  \n    3: 	<div id=\"chartsPanel\" class=\"halfWidth fullHeight\">\n    4  		<button ng-click=\"switchCharts()\" ng-show=\"selectedNode.type == 'module'\">{{ 'Switch charts' | translate }}</button>\n    5  		<div id=\"charts\" style=\"height:90%\"></div>\n\nD:\\Projects\\A01\\css\\main.css:\n   69  /*editPanel properties*/\n   70  \n   71: .chartsPanel{\n   72  	background-color: #EEEEEE;\n   73  	padding: 15px 15px 20px 10px;\n\n2 matches across 2 files\n\n\nSearching 35 files for \"coefficientsPanel\"\n\nD:\\Projects\\A01\\templates\\outputPanel.html:\n    6  	</div>\n    7  \n    8: 	<div id=\"coefficientsPanel\" class=\"halfWidth fullHeight\">\n    9  		\n   10  	</div>\n\n1 match in 1 file\n",
+			"settings":
+			{
+				"buffer_size": 1644,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "js/app-editor.js",
+			"settings":
+			{
+				"buffer_size": 3049,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "js/app-core.js",
+			"settings":
+			{
+				"buffer_size": 11628,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/header.html",
+			"settings":
+			{
+				"buffer_size": 864,
 				"line_ending": "Windows"
 			}
 		},
@@ -429,18 +442,26 @@
 			}
 		},
 		{
-			"file": "js/app-core.js",
+			"file": "js/app.js",
 			"settings":
 			{
-				"buffer_size": 11618,
+				"buffer_size": 949,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "js/app-editor.js",
+			"file": "js/app-charts.js",
 			"settings":
 			{
-				"buffer_size": 3025,
+				"buffer_size": 5577,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "templates/treePanel.html",
+			"settings":
+			{
+				"buffer_size": 977,
 				"line_ending": "Windows"
 			}
 		},
@@ -449,14 +470,6 @@
 			"settings":
 			{
 				"buffer_size": 1309,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "css/propertyPanel.css",
-			"settings":
-			{
-				"buffer_size": 367,
 				"line_ending": "Windows"
 			}
 		}
@@ -469,9 +482,13 @@
 	"command_palette":
 	{
 		"height": 392.0,
-		"last_filter": "list",
+		"last_filter": "ht",
 		"selected_items":
 		[
+			[
+				"ht",
+				"HTMLPrettify"
+			],
 			[
 				"list",
 				"Package Control: List Packages"
@@ -525,7 +542,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 472.0
+		"width": 512.0
 	},
 	"console":
 	{
@@ -554,6 +571,23 @@
 	],
 	"file_history":
 	[
+		"/D/Projects/A01/js/app-editor.js",
+		"/D/Projects/A01/package.json",
+		"/D/Projects/A01/js/app-core.js",
+		"/D/Projects/A01/js/app-ui.js",
+		"/D/Projects/A01/js/app-utils.js",
+		"/D/Projects/A01/templates/treeItem.html",
+		"/D/Projects/A01/js/app-math.js",
+		"/D/Projects/A01/js/app.js",
+		"/D/Projects/A01/js/app-header.js",
+		"/C/Users/Artyom/AppData/Local/Temp/tmpFBC0.tmp.html",
+		"/C/Users/Artyom/AppData/Local/Temp/tmp94A5.tmp.html",
+		"/D/Projects/A01/.gitignore",
+		"/C/Users/Artyom/energy-report.html",
+		"/D/Projects/A01/css/propertyPanel.css",
+		"/D/Projects/A01/css/treePanel.css",
+		"/D/Projects/A01/js/app-charts.js",
+		"/D/Projects/A01/css/header.css",
 		"/I/app-cache-manager.js",
 		"/D/Projects/A01/js/app-i18n.js",
 		"/D/Projects/A01/templates/header.html",
@@ -562,26 +596,18 @@
 		"/D/Projects/A01/css/main.css",
 		"/D/Projects/A01/templates/modal.html",
 		"/D/Projects/A01/libs/alertify/alertify.min.js",
-		"/D/Projects/A01/js/app.js",
-		"/D/Projects/A01/js/app-utils.js",
 		"/D/Projects/A01/js/app-output.js",
 		"/D/Projects/A01/gulpfile.js",
-		"/D/Projects/A01/js/app-core.js",
-		"/D/Projects/A01/js/app-editor.js",
 		"/D/Projects/A01/templates/addElementModal.html",
-		"/D/Projects/A01/js/app-ui.js",
 		"/D/Projects/A01/templates/outputPanel.html",
-		"/D/Projects/A01/templates/treeItem.html",
 		"/D/Projects/A01/templates/treePanel.html",
 		"/D/Projects/A01/index.html",
-		"/D/Projects/A01/js/app-charts.js",
 		"/D/Projects/A01/templates/searchElementModal.html",
 		"/D/Projects/A01/templates/nodeEditor.html",
 		"/D/Projects/A01/templates/mainView.html",
 		"/D/Projects/A01/templates/editPanel.html",
 		"/D/Projects/A01/templates/authorizationForm.html",
 		"/D/Projects/A01/templates/addModuleModal.html",
-		"/D/Projects/A01/js/app-header.js",
 		"/D/ArtyomDocs/BSUIR/ЯП/asm_labs/labs_by_Artyom_Derevnyuk/Laboratornye (1)/lab1/LAB1.LST",
 		"/D/ArtyomDocs/BSUIR/ЯП/asm_labs/labs_by_Artyom_Derevnyuk/Laboratornye (1)/lab2/lab2.ASM",
 		"/D/Projects/A01/js/app-modal.js",
@@ -621,8 +647,6 @@
 		"/D/ArtyomDocs/BSUIR/ЯП/html_css_js/ЯП_лабы_js/triangleArea/js/app.js",
 		"/C/Users/Artyom/Downloads/IM1101es.svb",
 		"/I/лекции ОРЭ 2015-1.doc",
-		"/D/Projects/A01/package.json",
-		"/D/Projects/A01/.gitignore",
 		"/D/ArtyomDocs/ЯП/html_css_js/lab2/index.html",
 		"/C/kav_custom_cmd/ctxt.bat",
 		"/C/kav_custom_cmd/ckav.bat",
@@ -655,7 +679,6 @@
 		"/D/Projects/A01/js_new/n_app-editor.js",
 		"/D/Projects/A01/js_new/n_app-i18n.js",
 		"/D/Projects/A01/js_new/n_app-core.js",
-		"/D/Projects/A01/js/app-math.js",
 		"/D/Projects/A01/js_new/app-core.js",
 		"/D/Projects/A01/js/app-charts",
 		"/J/Сибд_02_10_2015/TASK.txt",
@@ -682,6 +705,7 @@
 		"height": 96.0,
 		"where_history":
 		[
+			"D:\\Projects\\A01\\js, D:\\Projects\\A01\\templates, D:\\Projects\\A01\\css",
 			"D:\\Projects\\A01\\js, D:\\Projects\\A01\\templates, D:\\Projects\\A01\\css\\main.css ",
 			"D:\\Projects\\A01\\,-node_modules\\**",
 			"D:\\Projects\\A01\\,-\\node_modules\\**",
@@ -697,6 +721,18 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"searchButton",
+			"coefficientsPanel",
+			"chartsPanel",
+			"xdd",
+			"outputPanel",
+			"visibilityTrigger",
+			"propertyPanelContent",
+			"aaclass",
+			"alert",
+			"asdasd",
+			"editPanel",
+			"class",
 			"propertyPanelContent",
 			"editPanel",
 			"class",
@@ -823,82 +859,24 @@
 	"groups":
 	[
 		{
-			"selected": 6,
+			"selected": 7,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "js/app-header.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1831,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								898,
-								898
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 215.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 13,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "js/app-math.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11903,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9443,
-								9443
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 18,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1549,
+						"buffer_size": 1587,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								83,
-								83
+								1162,
+								1162
 							]
 						],
 						"settings":
@@ -911,317 +889,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 17,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "css/header.css",
+					"buffer": 1,
+					"file": "js/app-ui.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 978,
+						"buffer_size": 2439,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								579,
-								579
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 11,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "templates/mainView.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 999,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								341,
-								341
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 8,
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "templates/editPanel.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 34,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								27,
-								27
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"file": "/C/Users/Artyom/energy-report.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 47270,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 801,
-						"regions":
-						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										97,
-										106
-									],
-									[
-										393,
-										402
-									],
-									[
-										595,
-										604
-									],
-									[
-										694,
-										703
-									]
-								],
-								"scope": ""
-							}
-						},
-						"selection":
-						[
-							[
-								101,
-								101
-							]
-						],
-						"settings":
-						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 1,
-							"result_base_dir": "",
-							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 8,
-					"file": "css/main.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2657,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								683,
-								683
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 712.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 9,
-					"file": "templates/treePanel.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 977,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								30,
-								30
-							],
-							[
-								55,
-								55
-							],
-							[
-								88,
-								88
-							],
-							[
-								199,
-								199
-							],
-							[
-								252,
-								252
-							],
-							[
-								350,
-								350
-							],
-							[
-								479,
-								479
-							],
-							[
-								547,
-								547
-							],
-							[
-								804,
-								804
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 9,
-					"type": "text"
-				},
-				{
-					"buffer": 10,
-					"file": "templates/treeItem.html",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 692,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								442,
-								442
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 12,
-					"type": "text"
-				},
-				{
-					"buffer": 11,
-					"file": "js/app-charts.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5526,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								69,
-								69
+								396,
+								396
 							]
 						],
 						"settings":
@@ -1237,12 +922,128 @@
 					"type": "text"
 				},
 				{
-					"buffer": 12,
-					"file": "js/app-ui.js",
+					"buffer": 2,
+					"file": "templates/mainView.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 489,
+						"buffer_size": 1261,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								526,
+								526
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "templates/outputPanel.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1443,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								186,
+								186
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/app-i18n.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2005,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1594,
+								1594
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 9,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "templates/editPanel.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3289,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2850,
+								2850
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1160.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "css/propertyPanel.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 245,
 						"regions":
 						{
 						},
@@ -1255,6 +1056,138 @@
 						],
 						"settings":
 						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "css/main.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3147,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								133,
+								133
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1644,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										171,
+										191
+									],
+									[
+										464,
+										475
+									],
+									[
+										516,
+										527
+									],
+									[
+										573,
+										584
+									],
+									[
+										745,
+										756
+									],
+									[
+										1009,
+										1020
+									],
+									[
+										1309,
+										1320
+									],
+									[
+										1551,
+										1568
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								1423,
+								1423
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 4,
+							"result_base_dir": "",
+							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 980.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "js/app-editor.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3049,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1524,
+								1525
+							]
+						],
+						"settings":
+						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -1262,11 +1195,69 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 17,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 13,
+					"buffer": 10,
+					"file": "js/app-core.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11628,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1946,
+								1951
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 395.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 12,
+					"type": "text"
+				},
+				{
+					"buffer": 11,
+					"file": "templates/header.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 864,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								864,
+								746
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
 					"file": "js/app-utils.js",
 					"semi_transient": false,
 					"settings":
@@ -1278,8 +1269,8 @@
 						"selection":
 						[
 							[
-								0,
-								0
+								218,
+								218
 							]
 						],
 						"settings":
@@ -1290,88 +1281,29 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 20,
-					"type": "text"
-				},
-				{
-					"buffer": 14,
-					"file": "js/app-core.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 11618,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9841,
-								9841
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 19,
-					"type": "text"
-				},
-				{
-					"buffer": 15,
-					"file": "js/app-editor.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3025,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2826,
-								2826
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
 					"stack_index": 14,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "index.html",
+					"buffer": 13,
+					"file": "js/app.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1549,
+						"buffer_size": 949,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1323,
-								1323
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"history_list_is_closing": true,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -1382,54 +1314,54 @@
 					"type": "text"
 				},
 				{
-					"buffer": 8,
-					"file": "css/main.css",
+					"buffer": 14,
+					"file": "js/app-charts.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2657,
+						"buffer_size": 5577,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								665,
-								665
+								393,
+								393
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 11,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "css/header.css",
+					"buffer": 15,
+					"file": "templates/treePanel.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 978,
+						"buffer_size": 977,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								352,
-								352
+								206,
+								218
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -1452,48 +1384,79 @@
 						"selection":
 						[
 							[
-								140,
-								140
+								822,
+								666
 							]
 						],
 						"settings":
 						{
-							"history_list_is_closing": true,
-							"syntax": "Packages/CSS/CSS.tmLanguage"
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 432.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
-					"buffer": 17,
-					"file": "css/propertyPanel.css",
+					"buffer": 0,
+					"file": "index.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 367,
+						"buffer_size": 1587,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								66,
-								66
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
+							"history_list_is_closing": true,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 18,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "css/main.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3147,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1129,
+								1129
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 13,
 					"type": "text"
 				}
 			]
@@ -1552,24 +1515,100 @@
 		"selected_items":
 		[
 			[
+				"treepa",
+				"css\\treePanel.css"
+			],
+			[
+				"ed",
+				"templates\\editPanel.html"
+			],
+			[
 				"",
+				"templates\\outputPanel.html"
+			],
+			[
+				"app-ch",
+				"js\\app-charts.js"
+			],
+			[
+				"app-ed",
+				"js\\app-editor.js"
+			],
+			[
+				"header",
+				"templates\\header.html"
+			],
+			[
+				"app-cor",
+				"js\\app-core.js"
+			],
+			[
+				"tree",
+				"templates\\treePanel.html"
+			],
+			[
+				"i18",
+				"js\\app-i18n.js"
+			],
+			[
+				"mainv",
+				"templates\\mainView.html"
+			],
+			[
+				"app-uti",
+				"js\\app-utils.js"
+			],
+			[
+				"out",
+				"templates\\outputPanel.html"
+			],
+			[
+				"app-c",
+				"js\\app-charts.js"
+			],
+			[
+				"app-editro",
+				"js\\app-editor.js"
+			],
+			[
+				"app-ui",
+				"js\\app-ui.js"
+			],
+			[
+				"edit",
+				"templates\\editPanel.html"
+			],
+			[
+				"main.",
+				"css\\main.css"
+			],
+			[
+				"app-math",
+				"js\\app-math.js"
+			],
+			[
+				"app-edi",
+				"js\\app-editor.js"
+			],
+			[
+				"index",
 				"index.html"
+			],
+			[
+				"app.js",
+				"js\\app.js"
+			],
+			[
+				"app-core",
+				"js\\app-core.js"
 			],
 			[
 				"edi",
 				"templates\\editPanel.html"
 			],
 			[
-				"tree",
-				"templates\\treeItem.html"
-			],
-			[
 				"mai",
 				"css\\main.css"
-			],
-			[
-				"i18",
-				"js\\app-i18n.js"
 			],
 			[
 				"idne",
@@ -1592,20 +1631,12 @@
 				"css\\main.css"
 			],
 			[
-				"header",
-				"css\\header.css"
-			],
-			[
 				"inde",
 				"index.html"
 			],
 			[
 				"main.css",
 				"css\\custom\\main.css"
-			],
-			[
-				"index",
-				"index.html"
 			],
 			[
 				"app-header",
@@ -1620,24 +1651,12 @@
 				"js\\app-core.js"
 			],
 			[
-				"app-core",
-				"js\\app-core.js"
-			],
-			[
 				"moda",
 				"templates\\modal.html"
 			],
 			[
 				"added",
 				"templates\\addElementModal.html"
-			],
-			[
-				"app-edi",
-				"js\\app-editor.js"
-			],
-			[
-				"out",
-				"js\\app-output.js"
 			],
 			[
 				"o",
@@ -1660,10 +1679,6 @@
 				"index.html"
 			],
 			[
-				"app.js",
-				"js\\app.js"
-			],
-			[
 				"app-cha",
 				"js\\app-charts.js"
 			],
@@ -1680,16 +1695,8 @@
 				"templates\\outputPanel.html"
 			],
 			[
-				"app-ed",
-				"js\\app-editor.js"
-			],
-			[
 				"g",
 				"gulpfile.js"
-			],
-			[
-				"app-uti",
-				"js\\app-utils.js"
 			],
 			[
 				".html",
@@ -1702,10 +1709,6 @@
 			[
 				"app-i1",
 				"js\\app-i18n.js"
-			],
-			[
-				"edit",
-				"templates\\editPanel.html"
 			],
 			[
 				"app-ut",
@@ -1726,10 +1729,6 @@
 			[
 				"editor",
 				"templates\\nodeEditor.html"
-			],
-			[
-				"app-math",
-				"js\\app-math.js"
 			],
 			[
 				"elem",

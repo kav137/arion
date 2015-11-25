@@ -94,7 +94,7 @@ angular.module('app-core.service', [])
 			});
 			if(outNode.node == undefined){
 				return null;
-				alert('TDS.searchNode exception branch; shit happens:(')
+				alertify.error('TDS.searchNode exception branch; shit happens:(')
 			}
 			return outNode;
 		}
@@ -157,7 +157,7 @@ angular.module('app-core.service', [])
 		//place here elementSelection service afterwards
 		this.initProperties = function (element){
 			if (!element.group || !element.owner || !element.subGroup){
-				alert('invalid element. impossible to send request to db');
+				alertify.error('invalid element. impossible to send request to db');
 				return;
 			}
 
@@ -217,7 +217,7 @@ angular.module('app-core.service', [])
 					})
 				}).
 				error(function (response, status, headers, config){
-					alert("http-request error. app-core: 141")
+					alertify.error("http-request error. app-core: 141")
 				})*/
 
 		}
@@ -255,7 +255,7 @@ angular.module('app-core.controller', ['ngRoute'])
 							$scope.authorization.success = true;
 						}
 						else{
-							alert('wrong credentials!')
+							alertify.error('wrong credentials!')
 						}
 					})
 		}
@@ -274,8 +274,8 @@ angular.module('app-core.controller', ['ngRoute'])
 		}
 	}])
 
-	.controller('AddElementCtrl', ['$scope', '$controller', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope',
-		function($scope, $controller, treeDataService, elementSelectionService, databaseService, $rootScope){
+	.controller('AddElementCtrl', ['$scope', '$controller', '$filter', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope',
+		function($scope, $controller, $filter, treeDataService, elementSelectionService, databaseService, $rootScope){
 		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
 		$scope.isShownAsList = false;
 		$scope.typeTrigger = {value: "element"}; //to be depricated
@@ -293,18 +293,18 @@ angular.module('app-core.controller', ['ngRoute'])
 				$scope.selectNode(null, parentNode); 
 			}
 			if (parentNode.type != "module"){
-				// alert("you can't add nodes to element. select module please");
-				// return;
-				parentNode = treeDataService.getElementParent(parentNode);
+				alertify.error($filter('translate')('Add to element'));
+				return;
+				// parentNode = treeDataService.getElementParent(parentNode);
 			}
 			else{
-				// if (parentNode.expanded == false){
-				// 	alert("warning. you're triyng to add node to module, which children are hidden. expnand it to see changes")
-				// }
+				if (parentNode.expanded == false){
+					alertify.log($filter('translate')('Add to close module'));
+				}
 			}
 			if ($scope.typeTrigger.value == "element" && 
 				(!$scope.elementOwner || !$scope.elementSubGroup || !$scope.elementGroup)){
-					alert('define group, owner, subGroup')
+					alertify.error($filter('translate')('Define initial parameters'))
 					return;
 			}
 			var element = {};
@@ -378,10 +378,10 @@ angular.module('app-core.controller', ['ngRoute'])
 			}
 			else{
 				if (result.length == 0){
-					alert($filter('translate')('Nothing found'))
+					alertify.error($filter('translate')('Nothing found'))
 				}
 				else{
-					alert($filter('translate')('Too much elements found'))
+					alertify.log($filter('translate')('Too much elements found'))
 				}
 				return;
 			}

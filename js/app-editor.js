@@ -40,13 +40,13 @@ angular.module('app-editor.controller', ['app-core'])
 					$scope.coefficients = coefficientsOut;
 				}
 				catch (error){
-					alert("Необходимо заполнить все требуемые поля")
+					alertify.error($filter('translate')("Parameters required"));
 				}
 			}
 
 			$scope.removeNode = function (nodeToDel){
 				if (nodeToDel.localId == '0'){
-					alert("you can't remove device. choose antoher node")
+					alertify.error($filter('translate')('Remove device'));
 					return;
 				}
 				var result = treeDataService.searchNode($scope.treeModel, nodeToDel.localId);
@@ -60,13 +60,13 @@ angular.module('app-editor.controller', ['app-core'])
 					}
 				};
 				if (result.node.children && result.node.children.length >= 0){
-					if (confirm('this node possibly has children. are you sure that you want to remove it?') ){
+					if (confirm($filter('translate')('Remove module?')) ){
 						delete result.parent.children.splice(index, 1);
 						$scope.selectNode(null, result.parent);
 					}
 				}
 				else{
-					if (confirm('are you sure?') ){
+					if (confirm($filter('translate')('Remove element?')) ){
 						delete result.parent.children.splice(index, 1);
 						$scope.selectNode(null, result.parent);
 					}
