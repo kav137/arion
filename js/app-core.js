@@ -80,7 +80,7 @@ angular.module('app-core.service', [])
 			});
 			if(outNode.node == undefined){
 				return null;
-				alert('TDS.searchNode exception branch; shit happens:(')
+				alert('TDS.searchNode exception branch;')
 			}
 			return outNode;
 		}
@@ -279,17 +279,17 @@ angular.module('app-core.controller', ['ngRoute'])
 				$scope.selectNode(null, parentNode); 
 			}
 			if (parentNode.type != "module"){
-				alert("you can't add nodes to element. select module please");
+				alert("Невозможно добавить узел к элементу. Для добавления элементов, пожалуйста, выберите модуль");
 				return;
 			}
 			else{
 				if (parentNode.expanded == false){
-					alert("warning. you're triyng to add node to module, which children are hidden. expnand it to see changes")
+					// alert("warning. you're triyng to add node to module, which children are hidden. expnand it to see changes")
 				}
 			}
 			if ($scope.typeTrigger.value == "element" && 
 				(!$scope.elementOwner || !$scope.elementSubGroup || !$scope.elementGroup)){
-					alert('define group, owner, subGroup')
+					alert('Необходимо определить класс, группу и методику расчета для элемента')
 					return;
 			}
 			var element = {};

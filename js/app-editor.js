@@ -25,7 +25,7 @@ angular.module('app-editor.controller', ['app-core'])
 				if($scope.selectedNode.type == "module"){
 					var summaryLambdaChartArray = [];
 					var summaryPercentChartArray = [];
-					summaryPercentChartArray[0] = ['asdasd', 'xddddd']
+					summaryPercentChartArray[0] = ['asdasd', 'Вклад, %']
 					var summary = 0;
 					var children = treeDataService.getChildrenArray($scope.selectedNode);
 					angular.forEach(children, function(child){
@@ -219,7 +219,7 @@ angular.module('app-editor.controller', ['app-core'])
 			$scope.removeNode = function (nodeToDel){
 				// var nodeToDel = treeDataService.searchNode($scope.treeModel, node);
 				if (nodeToDel.localId == '0'){
-					alert("you can't remove device. choose antoher node")
+					alert("Нельзя удалить все устройство. Пожалуйста, выберите другой элемент")
 					return;
 				}
 				var result = treeDataService.searchNode($scope.treeModel, nodeToDel.localId);
@@ -250,6 +250,8 @@ angular.module('app-editor.controller', ['app-core'])
 				var data = google.visualization.arrayToDataTable(chartArray);
 		      	var options = {
 			        title: 'Lambda(t)',
+			        width: 570,
+			        height: 230,
 			        pointsSize: "2",
 			        vAxis: {
 			        	title: 'lambda',
@@ -267,13 +269,16 @@ angular.module('app-editor.controller', ['app-core'])
 			var updateBarChart = function(chartArray){
 				var data = google.visualization.arrayToDataTable(chartArray);
 		      	var options = {
-			        title: 'Failure %',
+			        title: 'Вероятность отказа %',
+			        width: 570,
+			        height: 230,
 			        pointsSize: "2",
+			        legend: 'left',
 			        vAxis: {
 			        	title: '%'
 			        },
 			        hAxis: {
-			        	title: 'elements'
+			        	title: 'Элементы'
 			        },
 			        bars: "horizontal"
 		      	};
