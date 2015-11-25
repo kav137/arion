@@ -1,5 +1,39 @@
-<!-- <div class="chartsPanel" ng-controller="OutputCTRL"> 
-{{chartState}}
-	<button ng-click="switchCharts()" ng-show="selectedNode.type == 'module'">{{ 'Switch charts' | translate }}</button>
-	<div id="charts" style="height: 100%; width: 100%"></div>
-</div> -->
+<div id="outputPanel" class="fullHeight" ng-controller="OutputCTRL">
+
+    <div id="chartsPanel" class="halfWidth fullHeight" style="overflow: hidden">
+        <button class="toggleButton" ng-click="switchCharts()" ng-show="selectedNode.type == 'module'">{{ 'Switch charts' | translate }}</button>
+        <div id="charts" style="height:90%"></div>
+    </div>
+
+    <div id="coefficientsPanel" class="halfWidth fullHeight" ng-controller="EditorCtrl">
+        <div ng-show="selectedNode.modelValue != undefined && selectedNode.type == 'element'">
+            <div>
+                <b>
+	            {{('Reliability'| translate) + (selectedNode.modelValue | exponential) }}
+	          </b>
+            </div>
+            <hr>
+            <div ng-repeat="(key, value) in coefficients">
+                <i>
+	            {{("Coefficient"| translate) + " " + key + " = " + value}}
+	          </i>
+            </div>
+        </div>
+
+        <div ng-show="selectedNode.type == 'module'">
+            <span ng-show="selectedNode.summaryModelValue != undefined">
+		        <div>
+		          <b>
+		            {{('Module reliability'| translate) + (selectedNode.summaryModelValue | exponential)}}
+		          </b>
+		        </div>
+		        <hr>
+		        <div>
+		          <b>
+		            {{("Nested elements quantity"| translate) + selectedNode.summaryModelQuantity}}
+		            </b>
+		        </div>
+      		</span>
+        </div>
+    </div>
+</div>

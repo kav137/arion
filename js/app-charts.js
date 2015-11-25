@@ -59,6 +59,7 @@ angular.module('app-charts', ['app-core']).
 	      	var options = {
 		        title: 'Lambda(t)',
 		        pointsSize: "2",
+		        legend: 'left',
 		        vAxis: {
 		        	title: 'lambda',
 		        	format: 'scientific'
@@ -78,6 +79,7 @@ angular.module('app-charts', ['app-core']).
 			var data = google.visualization.arrayToDataTable(chartArray);
 	      	var options = {
 		        title: 'Failure %',
+		        legend: 'left',
 		        pointsSize: "2",
 		        vAxis: {
 		        	title: '%'
@@ -151,7 +153,7 @@ angular.module('app-charts', ['app-core']).
 			}
 			var summaryPercentChartArray = [];
 			var children = treeDataService.getChildrenArray(element);
-			summaryPercentChartArray[0] = ['asdasd', 'xddddd'];
+			summaryPercentChartArray[0] = ['asdasd', 'Вклад'];
 			//know when we know total lambda we can calculate percent per item;
 			angular.forEach(children, function (child){
 				var item = [];

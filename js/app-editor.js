@@ -28,7 +28,7 @@ angular.module('app-editor.controller', ['app-core'])
 					$scope.selectedNode.summaryModelValue = summary;
 					$scope.selectedNode.summaryModelQuantity = children.length;
 				}
-				chartService.updateCharts($scope.selectedNode);
+				chartService.updateCharts(angular.copy($scope.selectedNode));
 			}
 			
 			$scope.calculateElementReliability = function (element){
