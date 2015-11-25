@@ -1,10 +1,18 @@
-<div ng-controller="RootCtrl">
+<div ng-controller="RootCtrl" class="fullHeight">
 
 	<div ng-include="'templates/header.html'" ng-show="authorization.success"></div>
 	<div ng-include="'templates/treePanel.html'"></div>
-	<div class="content">
-		<div ng-include="'templates/editPanel.html'"></div>
-		<!-- <div class="outputPanel" ng-include="'templates/outputPanel.html'" ng-hide="true"></div> -->
+	<div id="content" class="content">
+		<div class="contentColumn">
+			<div id="propertyPanel" class="contentPanel" ng-include="'templates/editPanel.html'" ></div>
+			<div id="contentPanelDivider" 
+				resizer="horizontal" 
+	  			resizer-height="8" 
+	  			resizer-top="#propertyPanel" 
+	  			resizer-bottom="#outputPanel">
+  			</div>
+			<div id="outputPanel" class="contentPanel" ng-include="'templates/outputPanel.html'"></div>
+		</div>
 	</div>
 
 	

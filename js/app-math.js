@@ -357,7 +357,7 @@ angular.module('app-math', ['app-core'])
 		}
 	}])
 	.run(['$log' , function($log){
-		$log.info('app-math is initialized');
+		$log.info('app-math initialized successfully');
 	}])
  
 

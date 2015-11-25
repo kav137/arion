@@ -1,4 +1,4 @@
 #ignoring node files
 /node_modules/*
 *.sublime-project
-*.sublime-workspace
+sublProject.sublime-workspace

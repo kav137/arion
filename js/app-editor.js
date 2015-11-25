@@ -81,5 +81,5 @@ angular.module('app-editor.controller', ['app-core'])
 */
 angular.module('app-editor', ['app-editor.controller'])
 	.run(['$log', function ($log){
-		$log.info('app-editor is initialized')		
+		$log.info('app-editor initialized successfully')		
 	}])

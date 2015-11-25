@@ -402,5 +402,5 @@ angular.module('app-core', ['ngRoute', 'app-core.service', 'app-core.controller'
 		function($log, treeDataService, elementSelectionService){
 		treeDataService.initTree();
 		elementSelectionService.init();
-		$log.info('app-core is initialized')
+		$log.info('app-core initialized successfully')
 	}]);

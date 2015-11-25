@@ -1,4 +1,5 @@
 //init charts and then bootstrap the app
+//TODO: offline mode
 google.load('visualization', '1', {
 	packages: ['corechart']
 });
@@ -21,6 +22,7 @@ angular.module('app', [
 		'app-math', 
 		'app-header',
 		'app-i18n',
+		'app-ui', 
 		'app-utils', 
 		'app-charts'])
 	.run(['$log', '$rootScope', function ($log, $rootScope){
