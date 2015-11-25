@@ -15,6 +15,9 @@ angular.module('app-editor.controller', ['app-core'])
 			})
 
 			$scope.calculateReliability = function(){
+				if(!$scope.selectedNode){
+					return;
+				}
 				if($scope.selectedNode.type == "element"){
 					$scope.calculateElementReliability($scope.selectedNode);
 				}

@@ -78,7 +78,7 @@ angular.module('app-charts', ['app-core']).
 			// chartState.switchTo("barChart");
 			var data = google.visualization.arrayToDataTable(chartArray);
 	      	var options = {
-		        title: 'Failure %',
+		        title: 'Вклад в общую ненадежность %',
 		        legend: 'left',
 		        pointsSize: "2",
 		        vAxis: {
