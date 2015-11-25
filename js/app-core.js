@@ -162,7 +162,7 @@ angular.module('app-core.service', [])
 			}
 
 			//client version
-			if (element.subGroup.length == 8){
+			/*if (element.subGroup.length == 8){
 				var fileName = "resources/capacitors.json";
 			}
 			else{
@@ -190,13 +190,13 @@ angular.module('app-core.service', [])
 					angular.forEach(element.coefficients, function (coef){
 						coef.value = null;
 					})
-				})
+				})*/
 
 			//server version
 			// /arion?cn=INDIFFERENT&gn=Слюдяные&mt=Отечественная методика
 			// do not escape characters
 			
-			/*var str = "\\arion\\arion?cn=" + element.group +
+			var str = "\\arion\\arion?cn=" + element.group +
 					'&gn=' + element.subGroup + "&mt=" + element.owner;
 					// console.log(str)
 			$http.get(str).
@@ -217,8 +217,8 @@ angular.module('app-core.service', [])
 					})
 				}).
 				error(function (response, status, headers, config){
-					alertify.error("http-request error. app-core: 141")
-				})*/
+					alertify.error("Ошибка взаимодействия с сервером. app-core: 220")
+				})
 
 		}
 	}])
