@@ -33,7 +33,7 @@
     <div ng-show="selectedNode.type == 'element'">
       <hr>
       <table class="editTable">
-        <caption>
+        <caption class="editTableCaption">
           <b>{{"Element properties" | translate}}</b>
         </caption>
         <tr ng-repeat="property in selectedNode.properties" 
@@ -66,12 +66,12 @@
             </td>
         </tr>
         <tr> 
-          <td>
+          <!-- <td>
             <b>{{'Model' | translate}}</b>
           </td>
           <td>
             <input type="text" class="inputFullWidth" ng-model="selectedNode.method">
-          </td>
+          </td> -->
       </table>
     </div>
     
