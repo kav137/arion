@@ -307,7 +307,7 @@ angular.module('app-math', ['app-core'])
 						keys.push(obj)
 					});
 					//handling nested non-editable keys
-					angular.forEach(item.value.Keys, function (innerKey){
+					angular.forEach(item.value.Key, function (innerKey){
 						var obj = {};
 						obj.key = innerKey.Key;
 						if(innerKey.value != undefined){

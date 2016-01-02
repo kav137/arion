@@ -115,19 +115,21 @@ angular.module('app-core.service', [])
 		}
 	})
 	
-	.service('elementSelectionService',['$http', function ($http){
+	.service('elementSelectionService',['$http', '$rootScope', function ($http, $rootScope){
 		var eds = this;
 		var data = {};
 
 		this.init = function(){
-			$http.get('resources/elements.json').
+			$http.get('\\arion\\getInfo').
 				success(function (data, status, headers, config){
 					eds.data = data;
+					console.log("successfully initialized : ", data);
+					$rootScope.$broadcast('gotElementsInfo');
 				})
 		}	
 
 		this.getElements = function(){
-			return eds.data;
+			return eds.data.data;
 		}	
 
 		this.getSubGroups = function (groupId, ownerId){
@@ -162,7 +164,7 @@ angular.module('app-core.service', [])
 			}
 
 			//client version
-			if (element.subGroup.length == 8){
+			/*if (element.subGroup.length == 8){
 				var fileName = "resources/capacitors.json";
 			}
 			else{
@@ -190,41 +192,43 @@ angular.module('app-core.service', [])
 					angular.forEach(element.coefficients, function (coef){
 						coef.value = null;
 					})
-				})
+				})*/
 
 			//server version
 			// /arion?cn=INDIFFERENT&gn=Слюдяные&mt=Отечественная методика
 			// do not escape characters
 			
-			// var str = "\\arion\\arion?cn=" + element.group +
-			// 		'&gn=' + element.subGroup + "&mt=" + element.owner;
-			// 		// console.log(str)
-			// $http.get(str).
-			// 	success(function (response, status, headers, config){
-			// 		element.properties = response.data.properties;
-			// 		element.coefficients = response.data.coefficients;
-			// 		element.method = response.data.method;
+			var str = "\\arion\\arion?cn=" + element.group +
+					'&gn=' + element.subGroup + "&mt=" + element.owner;
+					// console.log(str)
+			alertify.log("loading")
+			$http.get(str).
+				success(function (response, status, headers, config){
+					element.properties = response.data.properties;
+					element.coefficients = response.data.coefficients;
+					element.method = response.data.method;
 					
-			// 		//initializing default values
-			// 		angular.forEach(element.properties, function (prop){
-			// 			prop.value = null;
-			// 			if (prop.Default){
-			// 				if (prop.Type == "1" || prop.Type == "2"){
-			// 					prop.value = prop.Default;
-			// 				}
-			// 				if (prop.Type == "4"){
-			// 					prop.value = prop.Answer[parseInt(prop.Default)];
-			// 				}
-			// 			}
-			// 		})
+					//initializing default values
+					angular.forEach(element.properties, function (prop){
+						prop.value = null;
+						if (prop.Default){
+							if (prop.Type == "1" || prop.Type == "2"){
+								prop.value = prop.Default;
+							}
+							if (prop.Type == "4"){
+								prop.value = prop.Answer[parseInt(prop.Default)];
+							}
+						}
+					})
 
-			// 		angular.forEach(element.coefficients, function (coef){
-			// 			coef.value = null;
-			// 		})
-			// 	}).
-			// 	error(function (response, status, headers, config){
-			// 		alertify.error("Ошибка взаимодействия с сервером. app-core: 220")
-			// 	})
+					angular.forEach(element.coefficients, function (coef){
+						coef.value = null;
+					})
+					alertify.success("initialized")
+				}).
+				error(function (response, status, headers, config){
+					alertify.error("Ошибка взаимодействия с сервером. app-core: 220")
+				})
 
 		}
 	}])
@@ -240,7 +244,7 @@ angular.module('app-core.controller', ['ngRoute'])
 
 		//authorization data
 		$scope.authorization ={};
-		$scope.authorization.success = true; //require compelete rewriting
+		$scope.authorization.success = false; //require compelete rewriting
 		$scope.authorization.userName = "";
 		$scope.authorization.password = "";
 
@@ -259,6 +263,7 @@ angular.module('app-core.controller', ['ngRoute'])
 						// console.log(response)
 						if(response.data.auth == "true"){
 							$scope.authorization.success = true;
+							elementSelectionService.init();
 						}
 						else{
 							alertify.error('wrong credentials!')
@@ -285,9 +290,29 @@ angular.module('app-core.controller', ['ngRoute'])
 		angular.extend(this, $controller('RootCtrl', {$scope: $scope}));
 		$scope.isShownAsList = false;
 		$scope.typeTrigger = {value: "element"}; //to be depricated
-		$scope.elementData = elementSelectionService.getElements();
-		$scope.elementOwner = $scope.elementData.owners[0];
-		$scope.elementGroup = $scope.elementData.groups[0];
+
+		$scope.$on('gotElementsInfo', function (){
+			$scope.elementData = elementSelectionService.getElements();
+			$scope.elementGroup = $scope.elementData[0];
+			console.log('added modal values : ', $scope.elementData)
+		})
+		$scope.elementOwners = [
+			{
+				name : 'Отечественная',
+				value : 'native'
+			},
+			{
+				name: "Зарубежная",
+			 	value : 'foreign'
+			}
+	 	];
+		$scope.elementOwner = $scope.elementOwners[0];
+		$scope.$watch('elementGroup', function (newValue){
+			updateSubGroups();
+		});
+		$scope.$watch('elementOwner', function (newValue){
+			updateSubGroups();
+		})
 		$scope.elementName;
 		$scope.elementPosition;
 		$scope.elementSubGroups;
@@ -321,9 +346,9 @@ angular.module('app-core.controller', ['ngRoute'])
 				element.type = "module"
 			}
 			if (isModule == undefined){
-				element.group = $scope.elementGroup.groupId;
-				element.owner = $scope.elementOwner.ownerId;
-				element.subGroup = $scope.elementSubGroup.subGroup;
+				element.group = $scope.elementGroup.className[0];
+				element.owner = $scope.elementOwner.name;
+				element.subGroup = $scope.elementSubGroup;
 				databaseService.initProperties(element);
 				$scope.$parent.treeAsList.push(element);
 			}
@@ -335,18 +360,23 @@ angular.module('app-core.controller', ['ngRoute'])
 		
 
 		//BUG: when value of select is dropped by dependsOn value of scope.elementSubGroup is still assigned
-		$scope.updateSubGroups = function(){
-			if ($scope.elementOwner && $scope.elementGroup){
-				$scope.elementSubGroups = elementSelectionService.getSubGroups($scope.elementGroup.groupId, $scope.elementOwner.ownerId);
-				$scope.elementSubGroup = $scope.elementSubGroups[0];
+		var updateSubGroups = function(){
+			if ($scope.elementData){
+				var subGroupsArray = $scope.elementGroup.groups[0][$scope.elementOwner.value][0].groupName;
+				if (subGroupsArray && subGroupsArray.length){
+					$scope.elementSubGroups = $scope.elementGroup.groups[0][$scope.elementOwner.value][0].groupName;
+					$scope.elementSubGroup = $scope.elementSubGroups[0];
+				}
+				else{
+					// $scope.elementSubGroups.length = 0;
+					$scope.elementSubGroup = "";
+					alertify.error($filter("translate")("Subgroups unavailable"));
+				}
 			}
-			// else{
-			// 	// alert('specify group and owner')
-			// }
 		}
 
 		$scope.initHandler = function (){
-			$scope.updateSubGroups();
+			updateSubGroups();
 			$scope.selectNode(null, (treeDataService.searchNode($scope.treeModel, '0')).node);
 		}
 
@@ -407,6 +437,6 @@ angular.module('app-core', ['ngRoute', 'app-core.service', 'app-core.controller'
 	.run(['$log', 'treeDataService', 'elementSelectionService', 
 		function($log, treeDataService, elementSelectionService){
 		treeDataService.initTree();
-		elementSelectionService.init();
+		// elementSelectionService.init();
 		$log.info('app-core initialized successfully')
 	}]);

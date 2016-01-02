@@ -48,6 +48,7 @@ angular.module('app-i18n', ['pascalprecht.translate'])
 			"Search element": "Поиск элемента",
 			"Sorting and filtering": "Cортировка и фильтрация",
 			"Switch charts": "Переключить график",
+			"Subgroups unavailable": "Для выбранных параметров отстутсвуют группы компонентов",
 			'Nothing found': "По вашему запросу не найдено ни одного элемента",
 			'Too much elements found': "По вашему запросу найдено более одного элемента. Уточните, пожалуйста, данные поиска",
 
