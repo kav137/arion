@@ -22,7 +22,7 @@ angular.module('app-header.controller', ['app-core'])
 				$scope.$parent.$parent.modal = modalConfig;
 			}
 			$scope.later = function (){
-				var test = treeDataService.getChildrenArray($scope.$parent.$parent.selectedNode);
+				// var test = treeDataService.getChildrenArray($scope.$parent.$parent.selectedNode);
 				// console.clear();
 				// console.log(test)
 				alertify.success("Работа данной функции находится на последнем этапе тестирования. Все тестируемые функции настолько хороши, что обязательно войдут в следующий релиз")

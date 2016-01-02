@@ -162,44 +162,13 @@ angular.module('app-core.service', [])
 			}
 
 			//client version
-			// if (element.subGroup.length == 8){
-			// 	var fileName = "resources/capacitors.json";
-			// }
-			// else{
-			// 	var fileName = "resources/micro.json";
-			// }
-			// $http.get(fileName).
-			// 	success(function (response, status, headers, config){
-			// 		element.properties = response.data.properties;
-			// 		element.coefficients = response.data.coefficients;
-			// 		element.method = response.data.method;
-					
-			// 		//initializing default values
-			// 		angular.forEach(element.properties, function (prop){
-			// 			prop.value = null;
-			// 			if (prop.default){
-			// 				if (prop.type == "1" || prop.type == "2"){
-			// 					prop.value = prop.default;
-			// 				}
-			// 				if (prop.type == "4"){
-			// 					prop.value = prop.answers[parseInt(prop.default)];
-			// 				}
-			// 			}
-			// 		})
-
-			// 		angular.forEach(element.coefficients, function (coef){
-			// 			coef.value = null;
-			// 		})
-			// 	})
-
-			//server version
-			// /arion?cn=INDIFFERENT&gn=Слюдяные&mt=Отечественная методика
-			// do not escape characters
-			
-			var str = "\\arion\\arion?cn=" + element.group +
-					'&gn=' + element.subGroup + "&mt=" + element.owner;
-					// console.log(str)
-			$http.get(str).
+			if (element.subGroup.length == 8){
+				var fileName = "resources/capacitors.json";
+			}
+			else{
+				var fileName = "resources/micro.json";
+			}
+			$http.get(fileName).
 				success(function (response, status, headers, config){
 					element.properties = response.data.properties;
 					element.coefficients = response.data.coefficients;
@@ -208,12 +177,12 @@ angular.module('app-core.service', [])
 					//initializing default values
 					angular.forEach(element.properties, function (prop){
 						prop.value = null;
-						if (prop.default){
-							if (prop.type == "1" || prop.type == "2"){
-								prop.value = prop.default;
+						if (prop.Default){
+							if (prop.Type == "1" || prop.Type == "2"){
+								prop.value = prop.Default;
 							}
-							if (prop.type == "4"){
-								prop.value = prop.answers[parseInt(prop.default)];
+							if (prop.Type == "4"){
+								prop.value = prop.Answer[parseInt(prop.Default)];
 							}
 						}
 					})
@@ -221,10 +190,41 @@ angular.module('app-core.service', [])
 					angular.forEach(element.coefficients, function (coef){
 						coef.value = null;
 					})
-				}).
-				error(function (response, status, headers, config){
-					alertify.error("Ошибка взаимодействия с сервером. app-core: 220")
 				})
+
+			//server version
+			// /arion?cn=INDIFFERENT&gn=Слюдяные&mt=Отечественная методика
+			// do not escape characters
+			
+			// var str = "\\arion\\arion?cn=" + element.group +
+			// 		'&gn=' + element.subGroup + "&mt=" + element.owner;
+			// 		// console.log(str)
+			// $http.get(str).
+			// 	success(function (response, status, headers, config){
+			// 		element.properties = response.data.properties;
+			// 		element.coefficients = response.data.coefficients;
+			// 		element.method = response.data.method;
+					
+			// 		//initializing default values
+			// 		angular.forEach(element.properties, function (prop){
+			// 			prop.value = null;
+			// 			if (prop.Default){
+			// 				if (prop.Type == "1" || prop.Type == "2"){
+			// 					prop.value = prop.Default;
+			// 				}
+			// 				if (prop.Type == "4"){
+			// 					prop.value = prop.Answer[parseInt(prop.Default)];
+			// 				}
+			// 			}
+			// 		})
+
+			// 		angular.forEach(element.coefficients, function (coef){
+			// 			coef.value = null;
+			// 		})
+			// 	}).
+			// 	error(function (response, status, headers, config){
+			// 		alertify.error("Ошибка взаимодействия с сервером. app-core: 220")
+			// 	})
 
 		}
 	}])
@@ -240,7 +240,7 @@ angular.module('app-core.controller', ['ngRoute'])
 
 		//authorization data
 		$scope.authorization ={};
-		$scope.authorization.success = false; //require compelete rewriting
+		$scope.authorization.success = true; //require compelete rewriting
 		$scope.authorization.userName = "";
 		$scope.authorization.password = "";
 

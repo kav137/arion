@@ -29,7 +29,7 @@
       {{"Remove node"| translate}}
     </button>
 
-
+    <!-- properties table -->
     <div ng-show="selectedNode.type == 'element'">
       <hr>
       <table class="editTable">
@@ -37,30 +37,30 @@
           <b>{{"Element properties" | translate}}</b>
         </caption>
         <tr ng-repeat="property in selectedNode.properties" 
-            ng-show="property.visible == 'true' || visibilityTrigger == true" 
-            ng-class="{'italicText' : property.visible == 'false'}">
+            ng-show="property.Visible == 'true' || visibilityTrigger == true" 
+            ng-class="{'italicText' : property.Visible == 'false'}">
 
             <!-- Displaying simple number field -->
-            <td  ng-show="property.type == '1' || property.type == '2'" class="editorContentInput">
-              {{property.name}}
+            <td  ng-show="property.Type == '1' || property.Type == '2'" class="editorContentInput">
+              {{property.Name}}
             </td>
-            <td ng-show="property.type == '1' || property.type == '2'">
+            <td ng-show="property.Type == '1' || property.Type == '2'">
               <input type="text" class="inputFullWidth" ng-model="property.value" ng-change="setValue(property); calculateReliability()">
             </td>
 
             <!-- Displaying select list -->
-            <td ng-show="property.type == '4'" class="editorContentInput">
-              {{property.name}}
-              <div ng-repeat="subProp in property.value.properties" ng-class="{'italicText' : subProp.visible == 'false'}" ng-show="visibilityTrigger == true">
-                {{subProp.name}}
+            <td ng-show="property.Type == '4'" class="editorContentInput">
+              {{property.Name}}
+              <div ng-repeat="subProp in property.value.Property" ng-class="{'italicText' : subProp.Visible == 'false'}" ng-show="visibilityTrigger == true">
+                {{subProp.Name}}
               </div>
             </td>
-            <td ng-show="property.type == '4'">
-              <select ng-model="property.value" class="inputFullWidth" ng-options="ans.name for ans in property.answers" ng-change="selectProperty(property.value, property.answers); calculateReliability()">
+            <td ng-show="property.Type == '4'">
+              <select ng-model="property.value" class="inputFullWidth" ng-options="ans.Name for ans in property.Answer" ng-change="selectProperty(property.value, property.Answer); calculateReliability()">
                 <option value="" ng-if="false"></option>     
               </select>
 
-              <div ng-repeat="subProp in property.value.properties">
+              <div ng-repeat="subProp in property.value.Property">
                 <input type="text" ng-show="visibilityTrigger == true" class="inputFullWidth" ng-model="subProp.value" placeholder="{{'Optional' | translate}}" ng-change="calculateReliability()"> 
               </div>
             </td>
