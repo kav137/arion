@@ -1,8 +1,8 @@
 <div ng-controller="RootCtrl" class="fullHeight">
 
 	<div ng-include="'templates/header.html'" ng-show="authorization.success"></div>
-	<div ng-include="'templates/treePanel.html'"></div>
-	<div id="content" class="content">
+	<div ng-include="'templates/treePanel.html'" ng-show="authorization.success"></div>
+	<div id="content" class="content" ng-show="authorization.success">
 		<div class="contentColumn">
 			<div id="propertyPanel" class="contentPanel" ng-include="'templates/editPanel.html'" ></div>
 			<div id="contentPanelDivider" 
@@ -17,7 +17,7 @@
 
 	
 	<!-- </div> -->
-	<div ng-show="modal.visible" ng-include="'templates/modal.html'"></div>
+	<div ng-show="modal.visible && authorization.success" ng-include="'templates/modal.html'"></div>
 
 	<div ng-show="!authorization.success" class="authForm" style="text-align:center">
 		<div class="modalHeader"> 

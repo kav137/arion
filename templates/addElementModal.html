@@ -4,8 +4,7 @@
 			{{ "Element class" | translate }} : 
 		</span>
 		<select ng-model="elementGroup" 
-				ng-options="group.groupId for group in elementData.groups" 
-				ng-change="updateSubGroups()"
+				ng-options="group.className[0] for group in elementData" 
 				class="inputFullWidth">
 		</select>
 	</div>
@@ -14,7 +13,7 @@
 			{{"Assessment method" | translate}} : 
 		</span>
 		<select	ng-model="elementOwner" 
-				ng-options="owner.ownerId for owner in elementData.owners"
+				ng-options="owner.name for owner in elementOwners"
 				ng-change="updateSubGroups()"
 				class="inputFullWidth">
 		</select>
@@ -24,7 +23,7 @@
 			{{'Element group' | translate}} : 
 		</span>
 		<select ng-model="elementSubGroup" 
-				ng-options="type.subGroup for type in elementSubGroups"
+				ng-options="type for type in elementSubGroups"
 				class="inputFullWidth">
 		</select>
 	</div>

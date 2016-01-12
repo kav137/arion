@@ -7,5 +7,18 @@
 		<div ng-show="modal.type == 'addElementModal'" ng-include="'templates/addElementModal.html'"></div>	
 		<div ng-show="modal.type == 'addModuleModal'" ng-include="'templates/addModuleModal.html'"></div>	
 		<div ng-show="modal.type == 'searchElementModal'" ng-include="'templates/searchElementModal.html'"></div>
-<!-- 		{{trial}} -->
+	</div>
+	<div class="alphaOverlay" style="z-index:999" ng-show="loading" ng-click="angular.noop(); $event.stopPropagation()">
+		<div class="sk-cube-grid" style="bottom: 10px; right:10px; position: fixed">
+		 	<div class="sk-cube sk-cube1"></div>
+			<div class="sk-cube sk-cube2"></div>
+			<div class="sk-cube sk-cube3"></div>
+			<div class="sk-cube sk-cube4"></div>
+			<div class="sk-cube sk-cube5"></div>
+			<div class="sk-cube sk-cube6"></div>
+			<div class="sk-cube sk-cube7"></div>
+			<div class="sk-cube sk-cube8"></div>
+			<div class="sk-cube sk-cube9"></div>
+		</div>
+	</div>
 </div>

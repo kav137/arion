@@ -37,6 +37,11 @@ angular.module('app-editor.controller', ['app-core'])
 			$scope.calculateElementReliability = function (element){
 				try{
 					var keysArray = calculateService.initKeys(element);
+					if (keysArray.some(function (item){
+						return isNaN(item.value);
+					})){
+						throw "empty field"
+					}
 					var varObj = calculateService.calculateCoefficients(element, keysArray);
 					var coefficientsOut = calculateService.extendVarObjWithCoefs(element, varObj);
 					calculateService.calculateModel(element, coefficientsOut);

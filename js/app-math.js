@@ -272,22 +272,26 @@ angular.module('app-math', ['app-core'])
 	})
 	.service('calculateService', ['mathService', function (mathService){
 		this.initKeys = function(element){
+			var array = element.properties;
+			return getValues(array);
+		}
+
+		var getValues = function (array){
 			var keys = [];
-			// // console.clear();
-			angular.forEach(element.properties, function (item){
+			angular.forEach(array, function (item){
 				//handling number inputs
-				if (item.type == 2 || item.type == 1){
+				if (item.Type == 2 || item.Type == 1){
 					var obj = {};
-					obj.key = item.key;
+					obj.key = item.Key;
 					obj.value = parseFloat(item.value.replace(',', '.'))
 					keys.push(obj)
 				}
 				//handling drop down lists
-				if (item.type == 4){
+				if (item.Type == 4){
 					//handling nested dependent properties
-					angular.forEach(item.value.properties, function (innerProperty){
+					angular.forEach(item.value.Property, function (innerProperty){
 						var obj = {};
-						obj.key = innerProperty.key;
+						obj.key = innerProperty.Key;
 						if(innerProperty.value != undefined){
 							if ((typeof innerProperty.value) == "string"){
 								obj.value = parseFloat((innerProperty.value).replace(',', '.'));
@@ -297,36 +301,44 @@ angular.module('app-math', ['app-core'])
 							}
 						}
 						else{
-							if ((typeof innerProperty.default) == "string"){
-								obj.value = parseFloat((innerProperty.default).replace(',', '.'));
+							if ((typeof innerProperty.Default) == "string"){
+								obj.value = parseFloat((innerProperty.Default).replace(',', '.'));
 							}
 							else{
-								obj.value = parseFloat(innerProperty.default);
+								obj.value = parseFloat(innerProperty.Default);
 							}
 						}
 						keys.push(obj)
 					});
 					//handling nested non-editable keys
-					angular.forEach(item.value.keys, function (innerKey){
-						var obj = {};
-						obj.key = innerKey.key;
-						if(innerKey.value != undefined){
-							if ((typeof innerKey.value) == "string"){
-								obj.value = parseFloat((innerKey.value).replace(',', '.'))
+					angular.forEach(item.value.Key, function (innerKey){
+						//handling case when there are no more nested levels
+						if (innerKey.Key){
+							var obj = {};
+							obj.key = innerKey.Key;
+							if(innerKey.value != undefined){
+								if ((typeof innerKey.value) == "string"){
+									obj.value = parseFloat((innerKey.value).replace(',', '.'))
+								}
+								else{
+									obj.value = parseFloat((innerKey.value))
+								}
 							}
 							else{
-								obj.value = parseFloat((innerKey.value))
+								if ((typeof innerKey.Default) == "string"){
+									obj.value = parseFloat((innerKey.Default).replace(',', '.'))
+								}
+								else{
+									obj.value = parseFloat((innerKey.Default))
+								}
 							}
+							keys.push(obj);
+							return;
 						}
 						else{
-							if ((typeof innerKey.default) == "string"){
-								obj.value = parseFloat((innerKey.default).replace(',', '.'))
-							}
-							else{
-								obj.value = parseFloat((innerKey.default))
-							}
+							console.log("inside");
+							// console.log(getValues(innerKeykey));
 						}
-						keys.push(obj)
 					})
 				}
 			});
@@ -339,14 +351,14 @@ angular.module('app-math', ['app-core'])
 				angular.forEach(keysArray, function (item){
 					varObj[item.key] = item.value;
 				})
-				coef.value = mathService.calculate(coef.formula, varObj)
+				coef.value = mathService.calculate(coef.Default, varObj)
 			})
 			return varObj;
 		}
 		
 		this.extendVarObjWithCoefs = function (element, varObj){
 			angular.forEach(element.coefficients, function (item){
-				varObj[item.key] = item.value;
+				varObj[item.Key] = item.value;
 			})
 			return varObj;
 		}	

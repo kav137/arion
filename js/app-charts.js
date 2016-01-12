@@ -115,9 +115,10 @@ angular.module('app-charts', ['app-core']).
 			var keysArray = calculateService.initKeys(element);
 			for(var t = -100; t <= 200; t+=10){
 				keysArray.forEach(function (item){
-					if (item.key == "Tn"){
+					if (item.key == "Tn" || item.key == "T"){
 						item.value = t;
 					}
+
 				})
 				var varObj = calculateService.calculateCoefficients(element, keysArray);
 				var coefficientsOut = calculateService.extendVarObjWithCoefs(element, varObj);
