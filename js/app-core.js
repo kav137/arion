@@ -205,6 +205,10 @@ angular.module('app-core.service', [])
 			$rootScope.loading = true;
 			$http.get(str).
 				success(function (response, status, headers, config){
+					if (response.data === "Вы не авторизованы"){
+						alert('your session has expired. please logout and login again');
+						return;
+					}
 					element.properties = response.data.properties;
 					element.coefficients = response.data.coefficients;
 					element.method = response.data.method;
