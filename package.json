@@ -20,5 +20,8 @@
     "browser-sync": "^2.9.7",
     "browserify": "^11.2.0",
     "gulp": "^3.9.0"
+  },
+  "dependencies": {
+    "lodash": "^4.11.1"
   }
 }

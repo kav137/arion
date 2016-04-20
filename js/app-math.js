@@ -276,74 +276,119 @@ angular.module('app-math', ['app-core'])
 			return getValues(array);
 		}
 
-		var getValues = function (array){
-			var keys = [];
-			angular.forEach(array, function (item){
-				//handling number inputs
-				if (item.Type == 2 || item.Type == 1){
-					var obj = {};
-					obj.key = item.Key;
-					obj.value = parseFloat(item.value.replace(',', '.'))
-					keys.push(obj)
-				}
-				//handling drop down lists
-				if (item.Type == 4){
-					//handling nested dependent properties
-					angular.forEach(item.value.Property, function (innerProperty){
-						var obj = {};
-						obj.key = innerProperty.Key;
-						if(innerProperty.value != undefined){
-							if ((typeof innerProperty.value) == "string"){
-								obj.value = parseFloat((innerProperty.value).replace(',', '.'));
-							}
-							else{
-								obj.value = parseFloat(innerProperty.value);
-							}
-						}
-						else{
-							if ((typeof innerProperty.Default) == "string"){
-								obj.value = parseFloat((innerProperty.Default).replace(',', '.'));
-							}
-							else{
-								obj.value = parseFloat(innerProperty.Default);
-							}
-						}
-						keys.push(obj)
-					});
-					//handling nested non-editable keys
-					angular.forEach(item.value.Key, function (innerKey){
-						//handling case when there are no more nested levels
-						if (innerKey.Key){
-							var obj = {};
-							obj.key = innerKey.Key;
-							if(innerKey.value != undefined){
-								if ((typeof innerKey.value) == "string"){
-									obj.value = parseFloat((innerKey.value).replace(',', '.'))
-								}
-								else{
-									obj.value = parseFloat((innerKey.value))
-								}
-							}
-							else{
-								if ((typeof innerKey.Default) == "string"){
-									obj.value = parseFloat((innerKey.Default).replace(',', '.'))
-								}
-								else{
-									obj.value = parseFloat((innerKey.Default))
-								}
-							}
-							keys.push(obj);
-							return;
-						}
-						else{
-							// debugger;
-							// console.log(getValues(innerKeykey));
-						}
-					})
-				}
-			});
-			return keys;
+		//output [{"key" : "A", value: 123}, ...]
+		var getValues = (array) => {
+			return _.flattenDeep(array.reduce((acc, p) => {
+				return acc.concat(getPropertyValue(p));
+			}, []));
 		}
+
+		var getPropertyValue = (p) => {
+			if (p.Type === undefined || p.Type == 1 || p.Type == 2){ //non-strict equality caused by type differences
+				/*debug*/ if (!p.Key || p.value === undefined) throw `getPropertyValue error : ${p}`;
+				return getSimplePropertyValue(p);
+			}
+			if (p.Type == 4){
+				return getComplexPropertyValue(p);
+			}
+		}
+
+		var getSimplePropertyValue = (p) => {
+			return {
+				"key" : p.Key,
+				"value" : stringToNumber(p.value)
+			};
+		}
+
+		var getComplexPropertyValue = (p) => {
+			if (p.value.Property && angular.isArray(p.value.Property)){
+				if(p.value.Property.length === 1){
+					return getPropertyValue(p.value.Property[0]);	
+				}
+				else {
+					throw `initComplexProperty :: property.value.Property.length !== 1. Name : ${p.value.Name}`;
+				}
+			}
+			if (p.value.Key && angular.isArray(p.value.Key)){
+				console.log(p.Name);
+				return p.value.Key.map(getPropertyValue);
+			}
+		}
+
+		var stringToNumber = (str) => {
+			var ret = parseFloat(str.replace(',', '.'));
+			/*debug*/ Number.isFinite(ret)? 0 : console.error(`stringToNumber :: wrong result : ${ret}`);
+			return ret;
+		}
+
+		// var getValues = function (array){
+		// 	var keys = [];
+		// 	angular.forEach(array, function (item){
+		// 		//handling number inputs
+		// 		if (item.Type == 2 || item.Type == 1){
+		// 			var obj = {};
+		// 			obj.key = item.Key;
+		// 			obj.value = parseFloat(item.value.replace(',', '.'))
+		// 			keys.push(obj)
+		// 		}
+		// 		//handling drop down lists
+		// 		if (item.Type == 4){
+		// 			//handling nested dependent properties
+		// 			angular.forEach(item.value.Property, function (innerProperty){
+		// 				var obj = {};
+		// 				obj.key = innerProperty.Key;
+		// 				if(innerProperty.value != undefined){
+		// 					if ((typeof innerProperty.value) == "string"){
+		// 						obj.value = parseFloat((innerProperty.value).replace(',', '.'));
+		// 					}
+		// 					else{
+		// 						obj.value = parseFloat(innerProperty.value);
+		// 					}
+		// 				}
+		// 				else{
+		// 					if ((typeof innerProperty.Default) == "string"){
+		// 						obj.value = parseFloat((innerProperty.Default).replace(',', '.'));
+		// 					}
+		// 					else{
+		// 						obj.value = parseFloat(innerProperty.Default);
+		// 					}
+		// 				}
+		// 				keys.push(obj)
+		// 			});
+		// 			//handling nested non-editable keys
+		// 			angular.forEach(item.value.Key, function (innerKey){
+		// 				//handling case when there are no more nested levels
+		// 				if (innerKey.Key){
+		// 					var obj = {};
+		// 					obj.key = innerKey.Key;
+		// 					if(innerKey.value != undefined){
+		// 						if ((typeof innerKey.value) == "string"){
+		// 							obj.value = parseFloat((innerKey.value).replace(',', '.'))
+		// 						}
+		// 						else{
+		// 							obj.value = parseFloat((innerKey.value))
+		// 						}
+		// 					}
+		// 					else{
+		// 						if ((typeof innerKey.Default) == "string"){
+		// 							obj.value = parseFloat((innerKey.Default).replace(',', '.'))
+		// 						}
+		// 						else{
+		// 							obj.value = parseFloat((innerKey.Default))
+		// 						}
+		// 					}
+		// 					keys.push(obj);
+		// 					return;
+		// 				}
+		// 				else{
+		// 					// debugger;
+		// 					// console.log(getValues(innerKeykey));
+		// 				}
+		// 			})
+		// 		}
+		// 	});
+		// 	return keys;
+		// }
 
 		this.calculateCoefficients = function (element, keysArray){
 			var varObj = {};

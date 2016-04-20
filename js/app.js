@@ -10,6 +10,11 @@ google.setOnLoadCallback(function() {
 	angular.bootstrap(document.body, ['app']);
 })*/
 
+/*polyfill (required??)*/
+Number.isFinite = Number.isFinite || function(value) {
+    return typeof value === "number" && isFinite(value);
+}
+
 /**
 * app Module
 *
