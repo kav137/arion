@@ -158,7 +158,7 @@ angular.module('app-core.service', [])
 
 	.service('databaseService', ['$http', '$rootScope', function ($http, $rootScope){
 		//place here elementSelection service afterwards
-		this.initProperties = function (element){
+		this.loadElement = function (element){
 			if (!element.group || !element.owner || !element.subGroup){
 				alertify.error('invalid element. impossible to send request to db');
 				return;
@@ -213,7 +213,7 @@ angular.module('app-core.service', [])
 					element.properties = response.data.properties;
 					element.coefficients = response.data.coefficients;
 					element.method = response.data.method;
-					setDefaultProperties(element);
+					initProperties(element);
 					
 
 					angular.forEach(element.coefficients, function (coef){
@@ -228,53 +228,77 @@ angular.module('app-core.service', [])
 
 		}
 
-		var setDefaultProperties =  (element) => {
-			//initializing default values
-			element.properties.forEach((prop) => {
-				prop.value = null;
-				if (prop.Default){
-					if (prop.Type == "1" || prop.Type == "2"){
-						prop.value = prop.Default;
-					}
-					if (prop.Type == "4"){
-						prop.value = prop.Answer[parseInt(prop.Default)];
-						setNestedValues(prop.value);
-						console.log(prop);
-					}
-				}
-				else {
-					throw `property '${prop.Name}' doesn't have default value`;
-				}
-			})
+		//initializing default values
+		var initProperties =  (element) => {
+			element.properties.forEach(initProperty);
 		};
 
-		var setNestedValues = (val) => {
-			//added 13.04
-			if (val.Key && angular.isArray(val.Key)){
-				val.Key.forEach(function (subKey){
-					subKey.value = null;
-					//copy-paste from the outer block
-					if (subKey.Type == "1" || subKey.Type == "2"){
-						subKey.value = subKey.Default;
-					}
-					if (subKey.Type == "4"){
-						subKey.value = subKey.Answer[parseInt(subKey.Default)];
-
-						setNestedValues(subKey.value);
-						//one more nesting
-						if (subKey.value.Answer) {
-							debugger;
-							console.log("app-core 266");
-						}
-					}
-				})
+		var initProperty = (p) => {
+			p.value = null;
+			if (p.Default){
+				if (p.Type === undefined){ //constant-like
+					p.value = p.Default;
+				}
+				if (p.Type == "1" || p.Type == "2"){
+					initSimpleProperty(p);
+				}
+				if (p.Type == "4"){
+					initComplexProperty(p);
+				}
 			}
-			if (val.Answer && angular.isArray(val.Answer)){ //PROPERTY[0]
-				val.value = null;
-				val.value = val.Answer[parseInt(val.Default)]; //possible mistakes here 
-				/*вид намотки -> вид изоляции провода - эмалево-волокн - марка провода - Default = 0.0...013 wtf?*/
+			else {
+				throw `property '${p.Name}' doesn't have default value`;
 			}
 		}
+
+		var initSimpleProperty = (p) => {
+			p.value = p.Default;
+		}
+
+		var initComplexProperty = (p) => {
+			p.value = p.Answer[n(p.Default)];
+			if (p.value.Property && angular.isArray(p.value.Property)){
+				if(p.value.Property.length === 1){
+					initProperty(p.value.Property[0]);	
+				}
+				else {
+					throw `initComplexProperty :: property.value.Property.length !== 1. Name : ${p.value.Name}`;
+				}
+			}
+			if (p.value.Key && angular.isArray(p.value.Key)){
+				p.value.Key.forEach(initProperty);
+			}
+		}
+
+		//parse number from string
+		var n = (string) => parseInt(string, 10);
+		// var setNestedValues = (val) => {
+		// 	//added 13.04
+		// 	if (val.Key && angular.isArray(val.Key)){
+		// 		val.Key.forEach(function (subKey){
+		// 			subKey.value = null;
+		// 			//copy-paste from the outer block
+		// 			if (subKey.Type == "1" || subKey.Type == "2"){
+		// 				subKey.value = subKey.Default;
+		// 			}
+		// 			if (subKey.Type == "4"){
+		// 				subKey.value = subKey.Answer[parseInt(subKey.Default)];
+
+		// 				setNestedValues(subKey.value);
+		// 				//one more nesting
+		// 				if (subKey.value.Answer) {
+		// 					debugger;
+		// 					console.log("app-core 266");
+		// 				}
+		// 			}
+		// 		})
+		// 	}
+		// 	if (val.Answer && angular.isArray(val.Answer)){ //PROPERTY[0]
+		// 		val.value = null;
+		// 		val.value = val.Answer[parseInt(val.Default)]; //possible mistakes here 
+		// 		/*вид намотки -> вид изоляции провода - эмалево-волокн - марка провода - Default = 0.0...013 wtf?*/
+		// 	}
+		// }
 	}])
 
 angular.module('app-core.controller', ['ngRoute'])
@@ -398,7 +422,7 @@ angular.module('app-core.controller', ['ngRoute'])
 				element.group = $scope.elementGroup.className[0];
 				element.owner = $scope.elementOwner.name;
 				element.subGroup = $scope.elementSubGroup;
-				databaseService.initProperties(element);
+				databaseService.loadElement(element);
 				$scope.$parent.treeAsList.push(element);
 			}
 			treeDataService.unshiftNode(parentNode, element);
