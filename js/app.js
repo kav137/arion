@@ -1,6 +1,6 @@
 //init charts and then bootstrap the app
 //TODO: offline mode
-google.load('visualization', '1', {
+/*google.load('visualization', '1', {
 	packages: ['corechart']
 });
 
@@ -8,7 +8,7 @@ google.setOnLoadCallback(function() {
 	console.log("Charts initialized successfully")
 	console.log("Starting the app...")
 	angular.bootstrap(document.body, ['app']);
-})
+})*/
 
 /**
 * app Module

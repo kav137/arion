@@ -1,3 +1,4 @@
+"use strict"
 angular.module('app-core.service', [])
 	.service('treeDataService', function (){
 		var TDS = this;
@@ -212,19 +213,8 @@ angular.module('app-core.service', [])
 					element.properties = response.data.properties;
 					element.coefficients = response.data.coefficients;
 					element.method = response.data.method;
+					setDefaultProperties(element);
 					
-					//initializing default values
-					angular.forEach(element.properties, function (prop){
-						prop.value = null;
-						if (prop.Default){
-							if (prop.Type == "1" || prop.Type == "2"){
-								prop.value = prop.Default;
-							}
-							if (prop.Type == "4"){
-								prop.value = prop.Answer[parseInt(prop.Default)];
-							}
-						}
-					})
 
 					angular.forEach(element.coefficients, function (coef){
 						coef.value = null;
@@ -237,10 +227,58 @@ angular.module('app-core.service', [])
 				})
 
 		}
+
+		var setDefaultProperties =  (element) => {
+			//initializing default values
+			element.properties.forEach((prop) => {
+				prop.value = null;
+				if (prop.Default){
+					if (prop.Type == "1" || prop.Type == "2"){
+						prop.value = prop.Default;
+					}
+					if (prop.Type == "4"){
+						prop.value = prop.Answer[parseInt(prop.Default)];
+						setNestedValues(prop.value);
+						console.log(prop);
+					}
+				}
+				else {
+					throw `property '${prop.Name}' doesn't have default value`;
+				}
+			})
+		};
+
+		var setNestedValues = (val) => {
+			//added 13.04
+			if (val.Key && angular.isArray(val.Key)){
+				val.Key.forEach(function (subKey){
+					subKey.value = null;
+					//copy-paste from the outer block
+					if (subKey.Type == "1" || subKey.Type == "2"){
+						subKey.value = subKey.Default;
+					}
+					if (subKey.Type == "4"){
+						subKey.value = subKey.Answer[parseInt(subKey.Default)];
+
+						setNestedValues(subKey.value);
+						//one more nesting
+						if (subKey.value.Answer) {
+							debugger;
+							console.log("app-core 266");
+						}
+					}
+				})
+			}
+			if (val.Answer && angular.isArray(val.Answer)){ //PROPERTY[0]
+				val.value = null;
+				val.value = val.Answer[parseInt(val.Default)]; //possible mistakes here 
+				/*вид намотки -> вид изоляции провода - эмалево-волокн - марка провода - Default = 0.0...013 wtf?*/
+			}
+		}
 	}])
 
 angular.module('app-core.controller', ['ngRoute'])
-	.controller('RootCtrl', ['$scope', 'treeDataService', 'elementSelectionService', '$rootScope', '$http',
+	.controller('RootCtrl', ['$scope', 'treeDataService', 'elementSelectionService', '$rootScope', '$http', 
 		function ($scope, treeDataService, elementSelectionService, $rootScope, $http){
 
 		//device data
@@ -251,8 +289,8 @@ angular.module('app-core.controller', ['ngRoute'])
 		//authorization data
 		$scope.authorization ={};
 		$scope.authorization.success = false; //require compelete rewriting
-		$scope.authorization.userName = "";
-		$scope.authorization.password = "";
+		$scope.authorization.userName = "admin";
+		$scope.authorization.password = "admin";
 
 		//state data
 		$scope.modal = {
@@ -276,6 +314,7 @@ angular.module('app-core.controller', ['ngRoute'])
 						}
 					})
 		}
+
 		$rootScope.$on('selectedNodeUpdated', function (event, args){
 			$scope.selectedNode = args;
 		})
@@ -289,6 +328,10 @@ angular.module('app-core.controller', ['ngRoute'])
 			}
 			$scope.$emit('selectedNodeUpdated', node)
 		}
+
+		//auto login
+		// $scope.login();
+
 	}])
 
 	.controller('AddElementCtrl', ['$scope', '$controller', '$filter', 'treeDataService', 'elementSelectionService', 'databaseService', '$rootScope',

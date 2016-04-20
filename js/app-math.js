@@ -336,7 +336,7 @@ angular.module('app-math', ['app-core'])
 							return;
 						}
 						else{
-							console.log("inside");
+							debugger;
 							// console.log(getValues(innerKeykey));
 						}
 					})

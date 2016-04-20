@@ -48,7 +48,8 @@ angular.module('app-editor.controller', ['app-core'])
 					$scope.coefficients = coefficientsOut;
 				}
 				catch (error){
-					alertify.error($filter('translate')("Parameters required"));
+					alertify.error(error.message);
+					// alertify.error($filter('translate')("Parameters required"));
 				}
 			}
 
