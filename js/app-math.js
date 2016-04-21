@@ -391,13 +391,46 @@ angular.module('app-math', ['app-core'])
 		// }
 
 		this.calculateCoefficients = function (element, keysArray){
-			var varObj = {};
-			angular.forEach(element.coefficients, function (coef){
-				angular.forEach(keysArray, function (item){
-					varObj[item.key] = item.value;
-				})
-				coef.value = mathService.calculate(coef.Default, varObj)
-			})
+			// angular.forEach(element.coefficients, function (coef){
+			// 	angular.forEach(keysArray, function (item){
+			// 		varObj[item.key] = item.value;
+			// 	})
+
+			// 	coef.value = mathService.calculate(coef.Default, varObj);
+			// })
+			
+			var varObj = keysArray.reduce((acc, item) => {
+				acc[item.key] = item.value;
+				return acc;
+			}, {});
+
+			//some coefs require other coefs for calculation
+			var i = 0;
+			var calculatedCoefficientsKeys = [];
+			while (calculatedCoefficientsKeys.length != element.coefficients.length){
+				i = (i >= element.coefficients.length )? 0 : i; //counter reset
+				// don't allow to calculate the same thing twice
+				if (calculatedCoefficientsKeys.some((key) =>{
+					return key === element.coefficients[i].Key;
+				})){
+					i++;
+					continue; 
+				}
+
+				var val; 
+				try { //if it is not possible to calcualte the value...
+					val = mathService.calculate(element.coefficients[i].Default, varObj);
+				}
+				catch (e) { //...skip this one and try to caluclate another one
+					i++;
+					continue;
+				}
+				// otherwise share the result of calculation with other coefs
+				varObj[element.coefficients[i].Key] = val;
+				element.coefficients[i].value = val;
+				calculatedCoefficientsKeys.push(element.coefficients[i].Key);
+				i++;
+			}
 			return varObj;
 		}
 		

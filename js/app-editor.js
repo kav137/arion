@@ -42,8 +42,9 @@ angular.module('app-editor.controller', ['app-core'])
 					})){
 						throw "empty field"
 					}
+					// (!!!) TODO: refactor this block 'cause varObj doesn't require extension
 					var varObj = calculateService.calculateCoefficients(element, keysArray);
-					var coefficientsOut = calculateService.extendVarObjWithCoefs(element, varObj);
+					var coefficientsOut = calculateService.extendVarObjWithCoefs(element, varObj); //not required anymore
 					calculateService.calculateModel(element, coefficientsOut);
 					$scope.coefficients = coefficientsOut;
 				}
