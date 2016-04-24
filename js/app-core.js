@@ -262,7 +262,9 @@ angular.module('app-core.service', [])
 					initProperty(p.value.Property[0]);	
 				}
 				else {
-					throw `initComplexProperty :: property.value.Property.length !== 1. Name : ${p.value.Name}`;
+					// (!) do not use if-else 'cause thy are doing the same thing
+					p.value.Property.forEach(initProperty);
+					// throw `initComplexProperty :: property.value.Property.length !== 1. Name : ${p.value.Name}`;
 				}
 			}
 			if (p.value.Key && angular.isArray(p.value.Key)){

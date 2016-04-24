@@ -306,7 +306,9 @@ angular.module('app-math', ['app-core'])
 					return getPropertyValue(p.value.Property[0]);	
 				}
 				else {
-					throw `initComplexProperty :: property.value.Property.length !== 1. Name : ${p.value.Name}`;
+					// (!) do not use if-else 'cause thy are doing the same thing
+					return p.value.Property.map(getPropertyValue);
+					// throw `initComplexProperty :: property.value.Property.length !== 1. Name : ${p.value.Name}`;
 				}
 			}
 			if (p.value.Key && angular.isArray(p.value.Key)){
