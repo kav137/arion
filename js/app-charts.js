@@ -54,8 +54,6 @@ angular.module('app-charts', ['app-core']).
 		}
 
 		this.updateLambdaChart = function(chartArray){
-			return; //stub
-
 			// chartState.switchTo("lambdaChart");
 			var data = google.visualization.arrayToDataTable(chartArray);
 	      	var options = {
@@ -77,8 +75,6 @@ angular.module('app-charts', ['app-core']).
 		}
 
 		this.updateBarChart = function(chartArray){
-			return; //stub
-
 			// chartState.switchTo("barChart");
 			var data = google.visualization.arrayToDataTable(chartArray);
 	      	var options = {

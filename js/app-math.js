@@ -105,7 +105,7 @@ angular.module('app-math', ['app-core'])
 		var replacePower = function (expression, data){
 			// // console.log("innerExpression : %s", expression)
 			while(expression.indexOf('^') != -1){
-				var template = expression.match("((?:\\(?-?([0-9]+([\.][0-9]+)?e\-?[0-9]+)\\)?|\\(?-?[0-9]+[\\.]{0,1}(?:[0-9]*)\\)?|\\(?-?[a-zA-Z\\.]+\\)?)(\\^)(?:\\(?-?([0-9]+([\.][0-9]+)?e\-?[0-9]+)\\)?|\\(?-?[0-9]+[\\.]{0,1}(?:[0-9]*)\\)?|\\(?-?[a-zA-Z\\.]+\\)?))");
+				var template = expression.match("((?:\\(?-?([0-9]+([\.][0-9]+)?e\-?[0-9]+)\\)?|\\(?-?[0-9]+[\\.]{0,1}(?:[0-9]*)\\)?|\\(?-?[a-zA-Z0-9\\.]+\\)?)(\\^)(?:\\(?-?([0-9]+([\.][0-9]+)?e\-?[0-9]+)\\)?|\\(?-?[0-9]+[\\.]{0,1}(?:[0-9]*)\\)?|\\(?-?[a-zA-Z0-9\\.]+\\)?))");
 				// // console.log('replacePower match result : ', template)
 				try{   
 					checkBrackets(template[0]);
