@@ -41,7 +41,7 @@ angular.module('app-i18n', ['pascalprecht.translate'])
 			"Nested elements quantity": "Количество элементов, входящих в модуль : ",
 			"Coefficients": "Значение коэффициентов, учитывающихся при расчете: ",
 			"Coefficient": "Коэффициент",
-			"Welcome": "Добро пожаловать",
+			"Welcome": "ДОБРО ПОЖАЛОВАТЬ",
 			"Log in": "Войти",
 			"Username": "Имя пользователя",
 			"Password": "Пароль",

@@ -4,7 +4,8 @@
 * Description
 */
 angular.module('app-charts', ['app-core']).	
-	service('chartService', ['$log', 'calculateService', 'treeDataService', function ($log, calculateService, treeDataService){
+	service('chartService', ['$log', 'calculateService', 'treeDataService', 'globalConfigService', 
+	function ($log, calculateService, treeDataService, globalConfigService){
 		//KAV: check later whether angular.copy required. it seems that it's absent brake nothing
 		//but who knows exactly..
 
@@ -37,6 +38,9 @@ angular.module('app-charts', ['app-core']).
 		}
 
 		this.updateCharts = function (element){
+			// if (!globalConfigService.online){
+			// 	return;
+			// }
 			checkChartType(element);
 			switch (chartState.getActiveChart()){
 				case "lambdaChart": {
@@ -54,6 +58,9 @@ angular.module('app-charts', ['app-core']).
 		}
 
 		this.updateLambdaChart = function(chartArray){
+			// if (!globalConfigService.online){
+			// 	return;
+			// }
 			// chartState.switchTo("lambdaChart");
 			var data = google.visualization.arrayToDataTable(chartArray);
 	      	var options = {
@@ -75,6 +82,9 @@ angular.module('app-charts', ['app-core']).
 		}
 
 		this.updateBarChart = function(chartArray){
+			// if (!globalConfigService.online){
+			// 	return;
+			// }
 			// chartState.switchTo("barChart");
 			var data = google.visualization.arrayToDataTable(chartArray);
 	      	var options = {

@@ -1,5 +1,14 @@
 "use strict"
 angular.module('app-core.service', [])
+	.service('globalConfigService', ['$log', function ($log) {
+		var isNetworkAvailable = false;
+		if (navigator){
+			isNetworkAvailable = navigator.onLine;
+		}
+		return {
+			isNetworkAvailable
+		};
+	}])
 	.service('treeDataService', function (){
 		var TDS = this;
 		var tree = {};

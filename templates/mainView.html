@@ -15,12 +15,11 @@
 		</div>
 	</div>
 
-	
-	<!-- </div> -->
+
 	<div ng-show="modal.visible && authorization.success" ng-include="'templates/modal.html'"></div>
 
 	<div ng-show="!authorization.success" class="authForm" style="text-align:center">
-		<div class="modalHeader"> 
+		<div class="authFormWelcomeMessage"> 
 			{{"Welcome" | translate}} 
 		</div>
 		<br>

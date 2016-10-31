@@ -1,14 +1,7 @@
+"use strict"
 //init charts and then bootstrap the app
 //TODO: offline mode
-google.load('visualization', '1', {
-	packages: ['corechart']
-});
 
-google.setOnLoadCallback(function() {
-	console.log("Charts initialized successfully")
-	console.log("Starting the app...")
-	angular.bootstrap(document.body, ['app']);
-})
 
 /*polyfill (required??)*/
 Number.isFinite = Number.isFinite || function(value) {
@@ -48,3 +41,23 @@ angular.module('app', [
 	.config(['$translateProvider', function($translateProvider) {
 		
 	}])
+
+
+try{
+	google.load('visualization', '1', {
+		packages: ['corechart']
+	});
+
+	google.setOnLoadCallback(function() {
+		console.info(`Online mode`);
+		console.log("Charts initialized successfully")
+		console.log("Starting the app...")
+		angular.bootstrap(document.body, ['app']);
+	})
+}
+catch (e){
+	console.info(`offline mode`);
+	setTimeout(function() {
+		angular.bootstrap(document.body, ['app']);
+	}, 500);
+}
